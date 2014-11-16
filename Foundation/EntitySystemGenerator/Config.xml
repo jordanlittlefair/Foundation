@@ -1,0 +1,5 @@
+<Config>
+	<Directories
+		input_directory = "../../EntitySystemGenerator/Resources/"		
+		output_directory = "../../EntitySystem/" />
+</Config>

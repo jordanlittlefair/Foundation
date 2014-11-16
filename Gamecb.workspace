@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Game">
+		<Project filename="Math/Math.cbp" />
+		<Project filename="Utility/Utility.cbp" />
+		<Project filename="GameComponentInterfaces/GameComponentInterfaces.cbp" />
+		<Project filename="Setup/Setup.cbp" />
+		<Project filename="glew/glew.cbp" />
+		<Project filename="AssetManager/AssetManager.cbp">
+			<Depends filename="ModelLoader/ModelLoader.cbp" />
+		</Project>
+		<Project filename="EntitySystem/EntitySystem.cbp">
+			<Depends filename="Math/Math.cbp" />
+			<Depends filename="Utility/Utility.cbp" />
+		</Project>
+		<Project filename="ModelLoader/ModelLoader.cbp" />
+		<Project filename="Logger/Logger.cbp" />
+		<Project filename="HTTPClient/HTTPClient.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

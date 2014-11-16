@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1256482D-3B9B-4931-AC6B-5794FDF0AAC3}</ProjectGuid>
+    <RootNamespace>DirectX11Graphics</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\AmbientLightSystem.hpp" />
+    <ClInclude Include="Include\DirectionalLightSystem.hpp" />
+    <ClInclude Include="Include\DirectX11Material.hpp" />
+    <ClInclude Include="Include\MeshSystem.hpp" />
+    <ClInclude Include="Include\CameraManagerSystem.hpp" />
+    <ClInclude Include="Include\DirectX11Graphics.hpp" />
+    <ClInclude Include="Include\DirectX11GraphicsBase.hpp" />
+    <ClInclude Include="Include\DirectX11GraphicsSystem.hpp" />
+    <ClInclude Include="Include\DirectX11Model.hpp" />
+    <ClInclude Include="Include\DirectX11Resources.hpp" />
+    <ClInclude Include="Include\DirectX11Texture2D.hpp" />
+    <ClInclude Include="Include\PointLightSystem.hpp" />
+    <ClInclude Include="Include\ScreenBufferResources.hpp" />
+    <ClInclude Include="Include\SpotLightSystem.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\AmbientLightSystem.cpp" />
+    <ClCompile Include="Source\DirectionalLightSystem.cpp" />
+    <ClCompile Include="Source\DirectX11Material.cpp" />
+    <ClCompile Include="Source\MeshSystem.cpp" />
+    <ClCompile Include="Source\CameraManagerSystem.cpp" />
+    <ClCompile Include="Source\DirectX11Graphics.cpp" />
+    <ClCompile Include="Source\DirectX11GraphicsBase.cpp" />
+    <ClCompile Include="Source\DirectX11GraphicsSystem.cpp" />
+    <ClCompile Include="Source\DirectX11Model.cpp" />
+    <ClCompile Include="Source\DirectX11Resources.cpp" />
+    <ClCompile Include="Source\DirectX11Texture2D.cpp" />
+    <ClCompile Include="Source\PointLightSystem.cpp" />
+    <ClCompile Include="Source\ScreenBufferResources.cpp" />
+    <ClCompile Include="Source\SpotLightSystem.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AssetManager\AssetManager.vcxproj">
+      <Project>{aec9ddc5-a1cc-41de-a321-5c4e80b2730f}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

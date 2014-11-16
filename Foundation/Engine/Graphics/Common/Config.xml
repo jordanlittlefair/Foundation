@@ -1,0 +1,18 @@
+<Config>
+	<Textures	directory = "Textures/">
+	<!-- All textures are currently forced to r8g8b8a8 unorm -->
+		<DefaultOpacity		filename = "DefaultOpacity.tga"		format = "r"	generate_mips = "false" />
+		<DefaultDiffuse		filename = "DefaultDiffuse.tga"		format = "rgba"	generate_mips = "false"	/>
+		<DefaultRoughness	filename = "DefaultRoughness.tga"	format = "r"	generate_mips = "false"	/>
+		<DefaultSpecular	filename = "DefaultSpecular.tga"	format = "rgba"	generate_mips = "false"	/>
+		<DefaultFresnel		filename = "DefaultFresnel.tga"		format = "r"	generate_mips = "false"	/>
+		<DefaultNormal		filename = "DefaultNormal.tga"		format = "rgba"	generate_mips = "false"	/>
+		<FilmGrain			filename = "FilmGrain.tga" 			format = "r"	generate_mips = "false"	/>
+	</Textures>
+	<Models		directory = "Models/">
+	<!-- Models should contain a single mesh
+	currently, each vertex only has a position (for light volumes) -->
+		<LightSphere	filename = "LightSphere.obj"	/>
+		<LightCone		filename = "LightCone.obj"		/>
+	</Models>
+</Config>

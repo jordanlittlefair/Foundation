@@ -1,0 +1,18 @@
+<Config>
+	
+	<Scripts directory = "Scripts/">
+	
+		<CameraAnimationScript file = "CameraAnimation.lua">
+			<!-- Global variables to store the state -->
+			<Variables>
+				<period		type = "float32"/>
+			</Variables>
+			<!-- Methods which can be called for this script -->
+			<Methods>
+				<TestMethod	return = "float32"	param0 = "float32"/>
+			</Methods>
+		</CameraAnimationScript>
+		
+	</Scripts>
+	
+</Config>

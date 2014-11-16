@@ -1,0 +1,83 @@
+﻿Build started 28/08/2014 21:01:06.
+     1>Project "C:\Users\Jordan\Dropbox\Foundation\Lua\Lua\Lua.vcxproj" on node 2 (Rebuild target(s)).
+     1>PrepareForBuild:
+         Creating directory "C:\Users\Jordan\Dropbox\Foundation\Lua\Bin\Win32\Release\".
+       InitializeBuildStatus:
+         Creating "C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\Lua.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\\" /Fd"C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt src\lapi.c src\lauxlib.c src\lbaselib.c src\lbitlib.c src\lcode.c src\lcorolib.c src\lctype.c src\ldblib.c src\ldebug.c src\ldo.c src\ldump.c src\lfunc.c src\lgc.c src\linit.c src\liolib.c src\llex.c src\lmathlib.c src\lmem.c src\loadlib.c src\lobject.c src\lopcodes.c src\loslib.c src\lparser.c src\lstate.c src\lstring.c src\lstrlib.c src\ltable.c src\ltablib.c src\ltm.c src\lundump.c src\lvm.c src\lzio.c
+         lapi.c
+         lauxlib.c
+         lbaselib.c
+         lbitlib.c
+         lcode.c
+         lcorolib.c
+         lctype.c
+         ldblib.c
+         ldebug.c
+         ldo.c
+         ldump.c
+         lfunc.c
+         lgc.c
+         linit.c
+         liolib.c
+         llex.c
+         lmathlib.c
+         lmem.c
+         loadlib.c
+         lobject.c
+         Compiling...
+         lopcodes.c
+         loslib.c
+         lparser.c
+         lstate.c
+         lstring.c
+         lstrlib.c
+         ltable.c
+         ltablib.c
+         ltm.c
+         lundump.c
+         lvm.c
+         lzio.c
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\Jordan\Dropbox\Foundation\Lua\Bin\Win32\Release\Lua.lib" /NOLOGO /LTCG C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lapi.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lauxlib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lbaselib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lbitlib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lcode.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lcorolib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lctype.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\ldblib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\ldebug.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\ldo.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\ldump.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lfunc.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lgc.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\linit.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\liolib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\llex.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lmathlib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lmem.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\loadlib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lobject.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lopcodes.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\loslib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lparser.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lstate.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lstring.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lstrlib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\ltable.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\ltablib.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\ltm.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lundump.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lvm.obj
+         C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\lzio.obj
+         Lua.vcxproj -> C:\Users\Jordan\Dropbox\Foundation\Lua\Bin\Win32\Release\Lua.lib
+       FinalizeBuildStatus:
+         Deleting file "C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\Lua.unsuccessfulbuild".
+         Touching "C:\Users\Jordan\Dropbox\Foundation\Lua\Build\Lua\Win32\Release\Lua.lastbuildstate".
+     1>Done Building Project "C:\Users\Jordan\Dropbox\Foundation\Lua\Lua\Lua.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.46

@@ -1,0 +1,308 @@
+<!-- 
+	The game world can be loaded from this xml file.
+	
+	All entities consist of <Components> which store the 
+	entity's data, and <Nodes> which provide behaviour. 
+	
+	Eventually there will be a <ScriptComponent> which will
+	allow an entity's behavious to be scripted in a .py or .lua
+	file.
+-->
+
+<World>
+	
+	<Assets>
+		<AssetFile filename = "todo.xml"/>
+	</Assets>
+	
+	<Entities>
+	
+		<!-- The main user controlled camera -->
+		<Entity name = "Main Camera"> <!--The Entity's name is optional, but must be unique -->
+			<!-- Components must be declared in the Components tag -->
+			<Components>
+				
+				<!-- Each Component should contain the data required -->
+				<SceneNodeComponent>
+					<parent_name value = ""/>
+					<parent_id value = "0"/>
+					<!-- Vectors are declared in brackets -->
+					<position value = "( 0, 1.6, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+					<scale value = "( 1, 1, 1 )"/>
+				</SceneNodeComponent>
+				
+				<CameraPropertiesComponent>
+					<near_plane value = "0.1"/>
+					<far_plane value = "10000"/>
+					<!-- Angles are currently in Degrees-->
+					<fov value = "70"/>
+				</CameraPropertiesComponent>
+				
+				<!-- Rumble is implemented but no gameplay makes us of it yet -->
+				<RumbleComponent>
+					<controller_0		value = "true"	/>
+					<controller_1		value = "false"	/>
+					<controller_2		value = "false"	/>
+					<controller_3		value = "false"	/>
+					<all_controllers	value = "false"	/>
+					<lf_intensity 		value = "0"	/>
+					<rf_intensity 		value = "0"	/>
+				</RumbleComponent>
+				
+				<RigidBodyComponent>
+					<collider_type	value = "4"/>
+					<is_static		value = "false"/>
+					<is_kinematic	value = "false"/>
+					<uses_gravity	value = "false"/>
+					<can_collide	value = "true"/>
+					<mass			value = "4"/>
+					<friction		value = "0.95" />
+					<restitution	value = "0.5" />
+					<velocity		value = "(-1,0,0)"/>
+					<angular_velocity	value = "(0,0,0)"/>
+					<linear_impulse 		value = "(0,0,0)"/>
+					<angular_impulse 		value = "(0,0,0)"/>
+				</RigidBodyComponent>
+			</Components>
+			
+			<!-- Nodes are declared in the Nodes tag -->
+			<Nodes>
+				<!-- Node creation will fail if the Entity doesn't have the correct components -->
+				<CameraNode/>
+				<SceneNodeNode/>
+				<RumbleNode/>
+				<RigidBodyNode/>
+			</Nodes>
+			
+			<Scripts>
+				<OculusCameraAnimationScript/>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "Second Camera">
+			<Components>
+				<SceneNodeComponent>
+					<parent_name value = "Main Camera"/>
+					<parent_id value = "0"/>
+					<position value = "( 0.065, 0, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+					<scale value = "( 1, 1, 1 )"/>
+				</SceneNodeComponent>
+				
+				<CameraPropertiesComponent>
+					<near_plane value = "0.1"/>
+					<far_plane value = "10000"/>
+					<fov value = "70"/>
+					<camera_id value = "1"/>
+				</CameraPropertiesComponent>
+				
+			</Components>
+			
+			<Nodes>
+				<CameraNode/>
+				<SceneNodeNode/>
+				
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<!-- The Sponza model -->
+		<Entity name = "LoadedSponza">
+			
+			<Components>
+			
+				<SceneNodeComponent>
+					<parent_name value = ""/>
+					<parent_id value = "0"/>
+					<position value = "( 0, 0, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+					<scale value = "( 1, 1, 1 )"/>
+				</SceneNodeComponent>
+				
+				<ModelComponent>
+					<model_asset_name value = "SponzaModel"/>
+				</ModelComponent>
+							
+			</Components>
+			
+			<Nodes>
+			
+				<ModelNode/>
+				<ShadowCasterNode/>
+				<SceneNodeNode/>
+				
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "UnitCube0">
+			<Components>
+			
+				<SceneNodeComponent>
+					<position value = "( -5, 0.5, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+				</SceneNodeComponent>
+				
+				<ModelComponent>
+					<model_asset_name value = "UnitCube"/>
+				</ModelComponent>
+											
+			</Components>
+			
+			<Nodes>
+				<ModelNode/>
+				<ShadowCasterNode/>
+				<SceneNodeNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "Cube0Light">
+			<Components>
+			
+				<SceneNodeComponent>
+					<parent_name value = "UnitCube0"/>
+					<position value = "( 0, 2, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+				</SceneNodeComponent>
+				
+				<PointLightComponent>
+					<colour	value = "(0.1,0.5,1)"	/>
+					<range	value = "5"	/>
+					<distance_falloff_start value = "0.5"/>
+					<distance_falloff_params value = "(1,1,0,0)"/>
+				</PointLightComponent>
+											
+			</Components>
+			
+			<Nodes>
+				<SceneNodeNode/>
+				<PointLightNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "UnitCube1">
+			<Components>
+			
+				<SceneNodeComponent>
+					<position value = "( 5, 0.5, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+				</SceneNodeComponent>
+				
+				<ModelComponent>
+					<model_asset_name value = "UnitCube"/>
+				</ModelComponent>
+											
+			</Components>
+			
+			<Nodes>
+				<ModelNode/>
+				<ShadowCasterNode/>
+				<SceneNodeNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "Cube1Light">
+			<Components>
+			
+				<SceneNodeComponent>
+					<parent_name value = "UnitCube1"/>
+					<position value = "( 0, 2, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+				</SceneNodeComponent>
+				
+				<PointLightComponent>
+					<colour	value = "(0.5,0.25,0.05)"	/>
+					<range	value = "5"	/>
+					<distance_falloff_params value = "(1,0.333,0,0)"/>
+				</PointLightComponent>
+											
+			</Components>
+			
+			<Nodes>
+				<SceneNodeNode/>
+				<PointLightNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "spotlight">
+			<Components>
+				<SceneNodeComponent>
+					<position value = "( 0, 4, 0 )"/>
+					<rotation value = "( -0.707, 0, 0, -0.707 )"/>
+				</SceneNodeComponent>
+				<SpotLightComponent>
+					<colour value = "(1,1,1)"/>
+					<range value = "10"/>
+					<fov value = "90"/>
+					<distance_falloff_params value = "(1,0.333,0,0)"/>
+					<angular_falloff_start value = "0.8"/>
+				</SpotLightComponent>
+			</Components>
+			
+			<Nodes>
+				<SpotLightNode/>
+				<SceneNodeNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "AmbientLight">
+			
+			<Components>
+				<AmbientLightComponent>
+					<colour value = "(0.5,0.5,0.5)"/>
+				</AmbientLightComponent>
+			</Components>
+			
+			<Nodes>
+				<AmbientLightNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "DirectionalLight">
+			
+			<Components>
+				<SceneNodeComponent>
+					<!-- Vectors are declared in brackets -->
+					<position value = "( 0, 0, 0 )"/>
+					<rotation value = "( 0.707, 0, 0, 0.707 )"/>
+				</SceneNodeComponent>
+				<DirectionalLightComponent>
+					<colour value = "(0.15,0.15,0.15)"/>
+				</DirectionalLightComponent>
+			</Components>
+			
+			<Nodes>
+				<SceneNodeNode/>
+				<DirectionalLightNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>		
+		
+	</Entities>
+	
+</World>

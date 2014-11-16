@@ -1,0 +1,12 @@
+﻿Build started 21/10/2014 22:14:27.
+     1>Project "C:\Users\Jordan\Dropbox\Foundation\CommonResources\CommonResources.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\CommonResources.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       FinalizeBuildStatus:
+         Deleting file "Debug\CommonResources.unsuccessfulbuild".
+         Touching "Debug\CommonResources.lastbuildstate".
+     1>Done Building Project "C:\Users\Jordan\Dropbox\Foundation\CommonResources\CommonResources.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.04

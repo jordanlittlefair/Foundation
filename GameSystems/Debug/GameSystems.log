@@ -1,0 +1,18 @@
+﻿Build started 14/09/2014 20:10:53.
+     1>Project "C:\Users\Jordan\Dropbox\Foundation\GameSystems\GameSystems.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\GameSystems.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SceneGraphSystem.cpp
+         SceneGraphSystem.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Jordan\Dropbox\Foundation\Debug\GameSystems.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Jordan\Dropbox\Foundation\Debug\GameSystems.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Jordan\Dropbox\Foundation\Debug\GameSystems.lib" /MACHINE:X86 Debug\SceneGraphSystem.obj
+         C:\Users\Jordan\Dropbox\Foundation\Bin\Win32\Debug\Math.lib
+         C:\Users\Jordan\Dropbox\Foundation\Bin\Win32\Debug\Utility.lib
+         C:\Users\Jordan\Dropbox\Foundation\Bin\Win32\Debug\EntitySystem.lib
+     1>LINK : fatal error LNK1561: entry point must be defined
+     1>Done Building Project "C:\Users\Jordan\Dropbox\Foundation\GameSystems\GameSystems.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.91

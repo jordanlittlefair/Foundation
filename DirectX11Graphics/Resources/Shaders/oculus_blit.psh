@@ -1,0 +1,31 @@
+Texture2D <float4> lefteye_buffer: register(t0);
+Texture2D <float4> righteye_buffer: register(t1);
+
+cbuffer Texture : register(b0)
+{
+	float2 lefteye_pos;
+	
+	float2 righteye_pos;
+};
+
+struct PSInput
+{
+	float4 hposition: SV_Position;
+};
+
+struct PSOutput
+{
+	float4 colour: SV_Target;
+};
+
+PSOutput main( PSInput fragment )
+{
+	PSOutput output;
+		
+	output.colour = //lefteye_buffer[fragment.hposition.xy];
+		fragment.hposition.x < righteye_pos.x ?
+			lefteye_buffer[fragment.hposition.xy - lefteye_pos] : //float4( 0.5, 0.5, 0.5, 1 );
+			righteye_buffer[fragment.hposition.xy - righteye_pos];
+			
+	return output;
+}

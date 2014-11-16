@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="EntitySystem" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../Bin/GCC/Debug/EntitySystem" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../Build/EntitySystem/GCC/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="../Bin/GCC/Release/EntitySystem" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../Build/EntitySystem/GCC/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="Include/Component.hpp" />
+		<Unit filename="Include/ComponentDataConversion.hpp" />
+		<Unit filename="Include/ComponentDataTypes.hpp" />
+		<Unit filename="Include/ComponentId.hpp" />
+		<Unit filename="Include/ComponentMaps.hpp" />
+		<Unit filename="Include/Components.hpp" />
+		<Unit filename="Include/Entity.hpp" />
+		<Unit filename="Include/EntityContainer.hpp" />
+		<Unit filename="Include/EntitySystem.hpp" />
+		<Unit filename="Include/SystemNodes.hpp" />
+		<Unit filename="Include/SystemNodesContainer.hpp" />
+		<Unit filename="Source/Component.cpp" />
+		<Unit filename="Source/ComponentCreator.cpp" />
+		<Unit filename="Source/ComponentDataConversion.cpp" />
+		<Unit filename="Source/ComponentMaps.cpp" />
+		<Unit filename="Source/Components.cpp" />
+		<Unit filename="Source/Entity.cpp" />
+		<Unit filename="Source/EntityContainer.cpp" />
+		<Unit filename="Source/EntitySystem.cpp" />
+		<Unit filename="Source/SystemNodes.cpp" />
+		<Unit filename="Source/SystemNodesContainer.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

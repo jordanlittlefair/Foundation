@@ -1,0 +1,35 @@
+<Config>
+	
+	<!--
+		This top level config file contains a node for each component (Graphics, World etc).
+		
+		Each of these contains further nodes for their different implementations, with the directory
+		containing the data required for that implementation and the name of the config file.
+	-->
+	
+	<Window>
+		<Win32Window/>
+		<XWindowsWindow/>
+	</Window>
+	
+	<Graphics common_directory = "Graphics/Common/" common_config_file = "Config.xml" >
+		<DirectX11Graphics	directory = "Graphics/DirectX11Graphics/"	config_file = "Config.xml"/>
+		<OpenGLGraphics 	directory = "Graphics/OpenGLGraphics/"		config_file = "Config.xml"/>
+	</Graphics>
+	
+	<Physics>
+		<BulletPhysics/>
+	</Physics>
+	
+	<Scripts>
+		<Mock/>
+		<Lua/>
+	</Scripts>
+	
+	<World>
+		<LoadedWorld/>
+	</World>
+	
+	<Cache directory = "Cache/"/>
+	
+</Config>

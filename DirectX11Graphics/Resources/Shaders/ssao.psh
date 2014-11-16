@@ -1,0 +1,101 @@
+Texture2D <float> depth_buffer: register(t0);
+Texture2D <float3> normal_buffer: register(t1);
+Texture2D <float3> random_buffer: register(t2);
+
+SamplerState random_sampler: register(s0);
+SamplerState depth_sampler: register(s1);
+
+#define SSAO_KERNEL_SIZE 16
+
+cbuffer SampleKernel: register (b0)
+{
+	float4 kernel[SSAO_KERNEL_SIZE];
+}
+
+cbuffer SSAOData: register (b1)
+{
+	float4x4 proj_matrix;
+	
+	float ssao_radius;
+	float ssao_power;
+	float2 pixel_size;
+}
+
+#define POSITION_RECONSTRUCTION_BUFFER_INDEX b2
+#include "Common/PositionReconstruction.hlsl"
+
+struct PSInput
+{
+	float4 hposition: SV_Position;
+	float2 texcoord: TEXCOORD;
+};
+
+struct PSOutput
+{
+	float occlusion: SV_Target;
+};
+
+PSOutput main( PSInput fragment )
+{	
+	PSOutput output;
+	
+	float3 view_position = GetPositionTexcoord(	fragment.texcoord,
+											depth_buffer.Sample(depth_sampler,fragment.texcoord) );
+	
+	float3 view_normal = normalize( normal_buffer.Sample( depth_sampler, fragment.texcoord ).xyz );
+	
+	float3 random_offset = random_buffer.Sample( random_sampler, fragment.texcoord / ( 4 * pixel_size ) );
+	
+	float3 tangent = normalize( cross( normalize( random_offset ), view_normal ) );
+	
+	float3 bitangent = cross( view_normal, tangent );
+	
+	float3x3 view_to_fragment = 
+	{
+		tangent,
+		bitangent,
+		view_normal
+	};
+	
+	float occlusion = 0;
+
+	[unroll]
+	for ( uint i = 0; i < SSAO_KERNEL_SIZE; ++i )
+	{
+		float3 sample_view_position = mul( kernel[i].xyz, view_to_fragment ) * ssao_radius + view_position;
+	
+		float4 sample_hposition = mul( float4( sample_view_position, 1 ), proj_matrix );
+		
+		float2 sample_screen_position = sample_hposition.xy / sample_hposition.w;
+		
+		float2 sample_texcoord =  sample_screen_position * float2( 0.5, -0.5 ) + 0.5;
+		
+		float sample_depth = depth_buffer.Sample( depth_sampler, sample_texcoord );
+																						
+		float falloff = 1 - saturate( abs(view_position.z - sample_depth) / ssao_radius );
+		falloff *= kernel[i].w;
+		
+		occlusion += (sample_depth <= sample_view_position.z ? 1.0 : 0.0) * falloff;
+	}
+	
+	output.occlusion = pow( 1 - saturate( occlusion / SSAO_KERNEL_SIZE ), ssao_power );
+	
+	return output;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

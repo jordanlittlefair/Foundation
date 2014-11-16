@@ -1,0 +1,298 @@
+<World>
+	
+	<Entities>
+	
+		<Entity name = "Main Camera">
+			<Components>
+			
+				<SceneNodeComponent>
+					<position value = "( 0, 4, -10 )"/>
+					<rotation value = "( 0.15, 0, 0, 0.9 )"/> <!-- Quaternion -->/>
+				</SceneNodeComponent>
+				
+				<CameraPropertiesComponent>
+					<near_plane value = "0.1"/>
+					<far_plane value = "10000"/>
+					<!-- Angles are in either Degrees or Radians (?)-->
+					<fov value = "80"/>
+					<camera_id value = "0"/>
+				</CameraPropertiesComponent>
+				
+				<RigidBodyComponent>
+					<collider_type	value = "4"/>
+					<uses_gravity	value = "false"/>
+					<can_collide	value = "true"/>
+					<mass			value = "20"/>
+					<velocity		value = "(0,0,2)"/>
+				</RigidBodyComponent>
+				
+			</Components>
+			<Nodes>	
+				<CameraNode/>
+				<SceneNodeNode/>
+				<RigidBodyNode/>
+			</Nodes>
+			<Scripts>
+				<CameraAnimationScript/>				
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "Second Camera"> <!--The Entity's name is optional, but must be unique -->
+			<!-- Components must be declared in the Components tag -->
+			<Components>
+				
+				<!-- Each Component should contain the data required -->
+				<SceneNodeComponent>
+					<parent_name value = "Main Camera"/>
+					<parent_id value = "0"/>
+					<!-- Vectors are declared in brackets -->
+					<position value = "( 2, 0, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+					<scale value = "( 1, 1, 1 )"/>
+				</SceneNodeComponent>
+				
+				<CameraPropertiesComponent>
+					<near_plane value = "0.1"/>
+					<far_plane value = "10000"/>
+					<!-- Angles are in either Degrees or Radians (?)-->
+					<fov value = "60"/>
+					<camera_id value = "1"/>
+				</CameraPropertiesComponent>
+				
+				<!-- Rumble is implemented but no gameplay makes us of it yet -->
+			</Components>
+			
+			<!-- Nodes are declared in the Nodes tag -->
+			<Nodes>
+				<!-- Node creation will fail if the Entity doesn't have the correct components -->
+				<CameraNode/>
+				<SceneNodeNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "AmbientLight">
+			
+			<Components>
+				<AmbientLightComponent>
+					<colour value = "(0.25,0.25,0.25)"/>
+				</AmbientLightComponent>
+			</Components>
+			
+			<Nodes>
+				<AmbientLightNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "TestChild">
+			<Components>
+			
+				<SceneNodeComponent>
+					<parent_name value = "Main Camera"/>
+					<position value = "( 0, 0, 10 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/> <!-- Quaternion -->/>
+				</SceneNodeComponent>
+				
+				<ModelComponent>
+					<model	value = "0"	/>
+					<model_asset_name value = "UnitSphere"/>
+					<model_id value = "0"/>
+				</ModelComponent>
+				
+			</Components>
+			<Nodes>	
+				<ModelNode/>
+				<SceneNodeNode/>
+			</Nodes>
+			<Scripts>				
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "Floor">
+			<Components>
+			
+				<SceneNodeComponent>
+					<position value = "( 0, 0, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+				</SceneNodeComponent>
+				
+				<ModelComponent>
+					<model	value = "0"	/>
+					<model_asset_name value = "Plane10x10"/>
+					<model_id value = "0"/>
+				</ModelComponent>
+				
+				<RigidBodyComponent>
+					<collider_type	value = "1"/>
+					<is_static		value = "true"/>
+					<can_collide	value = "true"/>
+					<mass			value = "0"/>
+					<friction		value = "1" />
+					<restitution	value = "0.25" />
+				</RigidBodyComponent>
+							
+			</Components>
+			
+			<Nodes>
+				<ModelNode/>
+				<ShadowCasterNode/>
+				<SceneNodeNode/>
+				<RigidBodyNode/>
+			</Nodes>
+			
+			<Scripts>
+			
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "UnitCube0">
+			<Components>
+			
+				<SceneNodeComponent>
+					<position value = "( 2.1, 4, 0 )"/>
+					<rotation value = "( 0.1464466094067262, -0.35355339059327373, 0.35355339059327373, 0.8535533905932737 )"/>
+				</SceneNodeComponent>
+				
+				<ModelComponent>
+					<model	value = "0"	/>
+					<model_asset_name value = "UnitCube"/>
+					<model_id value = "0"/>
+				</ModelComponent>
+				
+				<RigidBodyComponent>
+					<collider_type	value = "4"/>
+					<mass			value = "2"/>
+					<friction		value = "0.95" />
+					<velocity		value = "(-1,0,0)"/>
+				</RigidBodyComponent>
+							
+			</Components>
+			
+			<Nodes>
+				<ModelNode/>
+				<ShadowCasterNode/>
+				<SceneNodeNode/>
+				<RigidBodyNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "Cube0Light">
+			<Components>
+			
+				<SceneNodeComponent>
+					<parent_name value = "UnitCube0"/>
+					<position value = "( 0, 2, 0 )"/>
+					<rotation value = "( 0, 0, 0, 1 )"/>
+				</SceneNodeComponent>
+				
+				<PointLightComponent>
+					<colour	value = "(0.1,0.5,1)"	/>
+					<range	value = "5"	/>
+					<distance_falloff_start value = "0.5"/>
+					<distance_falloff_params value = "(1,1,0,0)"/>
+				</PointLightComponent>
+											
+			</Components>
+			
+			<Nodes>
+				<SceneNodeNode/>
+				<PointLightNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity>
+			<Components>
+			
+				<SceneNodeComponent>
+					<position value = "( 2.1, 6, 0 )"/>
+					<rotation value = "( 0.1464466094067262, -0.35355339059327373, 0.35355339059327373, 0.8535533905932737 )"/>
+				</SceneNodeComponent>
+				
+				<ModelComponent>
+					<model	value = "0"	/>
+					<model_asset_name value = "UnitCube"/>
+					<model_id value = "0"/>
+				</ModelComponent>
+				
+				<RigidBodyComponent>
+					<collider_type	value = "4"/>
+					<mass			value = "3"/>
+				</RigidBodyComponent>
+							
+			</Components>
+			
+			<Nodes>
+				<ModelNode/>
+				<ShadowCasterNode/>
+				<SceneNodeNode/>
+				<RigidBodyNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+		<Entity name = "UnitSphere0">
+			<Components>
+			
+				<SceneNodeComponent>
+					<position value = "( 2, 2, 0 )"/>
+					<rotation value = "( 0, 0, 1, 1 )"/>
+				</SceneNodeComponent>
+				
+				<ModelComponent>
+					<model	value = "0"	/>
+					<model_asset_name value = "UnitSphere"/>
+					<model_id value = "0"/>
+				</ModelComponent>
+				
+				<RigidBodyComponent>
+					<collider_type	value = "4"/>
+					<mass			value = "2"/>
+				</RigidBodyComponent>
+							
+			</Components>
+			
+			<Nodes>
+				<ModelNode/>
+				<ShadowCasterNode/>
+				<SceneNodeNode/>
+				<RigidBodyNode/>
+			</Nodes>
+			
+			<Scripts>
+			</Scripts>
+		</Entity>
+		
+	</Entities>
+	
+</World>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

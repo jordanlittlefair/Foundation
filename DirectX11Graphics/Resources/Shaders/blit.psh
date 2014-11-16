@@ -1,0 +1,21 @@
+Texture2D <float4> source_buffer: register(t0);
+
+struct PSInput
+{
+	float4 hposition: SV_Position;
+	float2 texcoord : TEXCOORD;
+};
+
+struct PSOutput
+{
+	float4 colour: SV_Target;
+};
+
+PSOutput main( PSInput fragment )
+{
+	PSOutput output;
+		
+	output.colour = source_buffer[fragment.hposition.xy];
+			
+	return output;
+}

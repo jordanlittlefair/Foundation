@@ -1,0 +1,133 @@
+<Components>
+	
+	<!--SceneNodeComponent-->
+	<SceneNodeComponent>
+		<!--<parent_node	type = "EntityId"	default = "~0"	/>-->
+		<parent_name 	type = "string64"				is_required = "false"	default_value = ""				/>
+		<parent_id 		type = "uint32"					is_required = "false"	default_value = "4294967295"	/> <!--The id of the parent entity-->
+		<position 		type = "Fnd::Math::Vector3"		is_required = "true"	default_value = "(0,0,0)"		/>
+		<rotation		type = "Fnd::Math::Quaternion"	is_required = "true"	default_value = "(0,0,0,1)"		/>
+		<scale			type = "Fnd::Math::Vector3"		is_required = "false"	default_value = "(1,1,1)"		/>
+		<transform		type = "Fnd::Math::Matrix4"		is_required = "false"	default_value = "(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1)" />
+	</SceneNodeComponent>
+	
+	<!--CameraPropertiesComponent-->
+	<CameraPropertiesComponent>
+		<camera_id		type = "uint32"		is_required = "false"	default_value = "0"	/> 
+		<!--Can render to multiple views (for eventual switching/splitscreen) - oculus rift support-->
+		<!--How to handle eye offset?-->
+		<!--Graphics should have a SetCameraId method. (should also handle both eyes- 2 params? or a set mode method?)-->
+		<camera_type	type = "uint32"		is_required = "false"	default_value = "0"		/>
+		<!-- type: 0 = default/fullscreen, 1 = viewport/splitscreen, 2 = left eye, 3 right eye -->
+		<viewport_x		type = "sint32"		is_required = "false"	default_value = "0"		/>
+		<viewport_y		type = "sint32"		is_required = "false"	default_value = "0"		/>
+		<viewport_w		type = "sint32"		is_required = "false"	default_value = "0"		/>
+		<viewport_h		type = "sint32"		is_required = "false"	default_value = "0"		/>
+		<near_plane		type = "float32"	is_required = "false"	default_value = "0.1"	/>
+		<far_plane		type = "float32"	is_required = "false"	default_value = "10000"	/>
+		<fov			type = "float32"	is_required = "false"	default_value = "60"	/>
+	</CameraPropertiesComponent>
+	
+	<!--ModelComponent-->
+	<ModelComponent>
+		<!--<model	type = "Model"	default = "~0"	/>-->
+		<model_asset_name type = "string512"	is_required = "true"	default_value = "unknown"		/>
+		<model_id type = "uint32"				is_required = "false"	default_value = "4294967295"	/>
+	</ModelComponent>
+	
+	<!--RigidBodyComponent-->
+	<RigidBodyComponent>
+		<collider_type		type = "uint32"				is_required = "true"	default_value = "0"	/>
+		<!--
+		0	undefined
+		1	infinite plane
+		2	plane
+		3	sphere
+		4	cube
+		5	mesh/model
+		-->
+		<is_static			type = "bool"				is_required = "false"	default_value = "false"		/>
+		<is_kinematic		type = "bool"				is_required = "false"	default_value = "false"		/>
+		<uses_gravity		type = "bool"				is_required = "false"	default_value = "true"		/>
+		<can_collide		type = "bool"				is_required = "false"	default_value = "true"		/>
+		<mass				type = "float32"			is_required = "false"	default_value = "1"			/>
+		<friction			type = "float32"			is_required = "false"	default_value = "0.5"		/>
+		<restitution		type = "float32"			is_required = "false"	default_value = "0.5"		/>
+		<velocity			type = "Fnd::Math::Vector3"	is_required = "false"	default_value = "(0,0,0)"	/>
+		<angular_velocity	type = "Fnd::Math::Vector3" is_required = "false"	default_value = "(0,0,0)"	/>
+		<linear_impulse		type = "Fnd::Math::Vector3" is_required = "false"	default_value = "(0,0,0)"	/>
+		<angular_impulse	type = "Fnd::Math::Vector3"	is_required = "false"	default_value = "(0,0,0)"	/>
+	</RigidBodyComponent>
+	
+	<!--AmbientLightComponent-->
+	<AmbientLightComponent>
+		<colour	type = "Fnd::Math::Vector3"	is_required = "true"	default_value = "(0.5,0.5,0.5)"	/>
+	</AmbientLightComponent>
+	
+	<!--PointLightComponent-->
+	<PointLightComponent>
+		<colour						type = "Fnd::Math::Vector3"	is_required = "true"	default_value = "(1,1,1)"	/>
+		<range						type = "float32"			is_required = "true"	default_value = "1	"		/>
+		<distance_falloff_start		type = "float32"			is_required = "false"	default_value = "0"			/>
+		<distance_falloff_params	type = "Fnd::Math::Vector4"	is_required = "false"	default_value = "(1,1,0,0)"	/>
+	</PointLightComponent>
+	
+	<!--DirectionalLightComponent-->
+	<DirectionalLightComponent>
+		<colour		type = "Fnd::Math::Vector3"	is_required = "true"	default_value = "(1,1,1)"/>
+	</DirectionalLightComponent>
+	
+	<!--SpotLightComponent-->
+	<SpotLightComponent>
+		<colour						type = "Fnd::Math::Vector3"	is_required = "true"	default_value = "(1,1,1)"	/>
+		<range						type = "float32"			is_required = "true"	default_value = "10"		/>
+		<near_plane					type = "float32"			is_required = "false"	default_value = "0.01"		/>
+		<fov						type = "float32"			is_required = "true"	default_value = "30"		/>
+		<distance_falloff_start		type = "float32"			is_required = "false"	default_value = "0"			/>
+		<angular_falloff_start		type = "float32"			is_required = "false"	default_value = "0"			/>
+		<distance_falloff_params	type = "Fnd::Math::Vector4"	is_required = "false"	default_value = "(1,1,0,0)"	/>
+		<angular_falloff_params		type = "Fnd::Math::Vector4"	is_required = "false"	default_value = "(1,1,0,0)"	/>
+	</SpotLightComponent>
+	
+	
+	<!--RumbleComponent
+	<RumbleComponent>
+		<controller_0		type = "bool"		is_required = "false"	default_value = "false"	/>
+		<controller_1		type = "bool"		is_required = "false"	default_value = "false"	/>
+		<controller_2		type = "bool"		is_required = "false"	default_value = "false"	/>
+		<controller_3		type = "bool"		is_required = "false"	default_value = "false"	/>
+		<all_controllers	type = "bool"		is_required = "false"	default_value = "false"	/>
+		<lf_intensity 		type = "float32"	is_required = "false"	default_value = "0"		/>
+		<rf_intensity 		type = "float32"	is_required = "false"	default_value = "0"		/>
+	</RumbleComponent>-->
+		
+	<!--SkyBoxComponent
+	<SkyBoxComponent>
+		<sky_colour	type = "Fnd::Math::Vector3"	is_required = "true"	default_value = "(0,0.5,1)"	/>
+	</SkyBoxComponent>-->
+	
+	<!--MotionBlurComponent
+	<MotionBlurComponent>
+		<target_fps			type = "float32"	is_required = "true"	default_value = "60"	/>
+		<motion_blur_scale	type = "float32"	is_required = "true"	default_value = "0.1"	/>
+	</MotionBlurComponent>-->
+	
+	<!--BloomComponent
+	<BloomComponent>
+		<bloom_threshold	type = "float32"	is_required = "true"	default_value = "1"		/>
+		<bloom_blur_radius	type = "float32"	is_required = "true"	default_value = "10"	/>
+	</BloomComponent>-->
+	
+	<!--ToneMapComponent
+	<ToneMapComponent>
+		<f_number	type = "float32"	is_required = "true"	default_value = "2"	/>
+	</ToneMapComponent>-->
+	
+	<!--AmbientOcclusionComponent
+	<AmbientOcclusionComponent>
+		<ssao_radius		type = "float32"	is_required = "true"	default_value = "4"	/>
+		<ssao_exponent		type = "float32"	is_required = "true"	default_value = "8"	/>
+		<ssao_blur_radius	type = "float32"	is_required = "true"	default_value = "8"	/>
+	</AmbientOcclusionComponent>-->
+		
+</Components>

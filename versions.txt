@@ -1,0 +1,122 @@
+Version 0.1			- initial demo
+
+-EntitySystemGenerator generates code for components, nodes etc.
+-Supports only basic types, and no arrays yet.
+
+-DirectX11ShaderCompiler compiles .*sh shaders to .*sh.cso.
+-Compiles for debug and release.
+-Supports #includes in shaders.
+
+-WorldValidator project has minimal support, may be removed later.
+
+-LogServer handles requests from the game to log events.
+-Uses mongodb to store data.
+-Browser (webapp) is a very basic web service used to browse the results (should ideally be able to sort and search events for common errors etc.)
+-Requires mongodb (not included) to run.
+-Directory structure is not finalised, and execution requires .bat files. Needs cleaning up.
+
+-Game currently has very basic graphics and physics engine (bullet) implementations.
+-Config files (internal to the engine) are used for loading shaders, textures etc.
+-Setup file (for users) is used to choose graphics settings, OpenGL/DirectX, screen resolution and other settings.
+-DirectX11 support includes creation of meshes and very basic rendering (no lighting).
+-OpenGL support includes creation of models but no rendering yet.
+-EntitySystem associates all components and nodes with IDs for easy lookups.
+-Assimp is used to load models.
+-Models do not yet support animation.
+-Worlds are loaded from .xml files.
+-Physics engine (bullet) currently only supports box, plane and sphere colliders.
+-Logger can output to the console and/or a server.
+-Framework is in place for a unix version (including projects and workspaces) but are not yet fully supported (there is no OpenGL rendering in place yet).
+
+-Doxygen is used to generate documentation.
+-Some classes are not fully documented.
+
+
+Version 0.1.1		- Modified physics, ready for scripting
+
+-EntitySystemGenerator has been cleaned up so component and system node definitions are first loaded into a struct. This struct may be needed by the Game in the future.
+
+-Rigid body physics implementation has been moved from RigidBodySystem to a proper Physics component. This component can be switched out (similar to graphics,window etc).
+-Added Lua library ready for scripting.
+-Removed GraphicsUtility project.
+
+
+Version 0.1.2		- Initial scripting implementation, entity system improvements, deferred rendering and multiple cameras.
+
+-EntitySystem now supports required and default data.
+-Systems have an 'OnAddNode' method which can be used to create resources within a system.
+
+-Added keyboard/mouse/xbox input.
+
+-Very basic scripting support (c++, no common scripting interface)
+-Added GameSystems for common systems.
+-Added SceneGraphSystem to handle scene nodes and transform matrices.
+
+-Support for multiple cameras (DirectX11).
+-DirectX11Graphics now uses deferred rendering (DirectX11). (All models currently use a default material).
+-Ambient lights are supported (DirectX11).
+-Point lights are supported (DirectX11).
+-Spot lights are supported (DirectX11).
+-Directional lights are supported (DirectX11).
+-Graphics config now includes common meshes and textures.
+
+-Fixed quaternion methods.
+
+
+Version 0.1.3		- Cleaned up entity system.
+
+-Added AssetLinkerSystem to manager asset names and ids.
+-Added GameTimer to target 60fps (and handle variations in delta time)
+-Refactored EntitySystem code.
+
+
+Version 0.1.4		- Added texture support.
+
+-Added CommonResources project to store... common resources
+-Added texture support (opacity mask, normal map, diffuse, roughness, specular, fresnel) (DirectX11)
+-MipMapGenerator class can be used to generate mip maps (any graphics implementation)
+-Script Update() method now takes FrameData as a parameter (for dt)
+
+Version 0.1.5		- Added Oculus Rift support
+
+-Added LibOVR.
+-Added initial Oculus Rift support (DirectX11) - can be enabled in Setup.xml.
+-Added OculusCameraAnimationScript.
+
+Version 0.1.6		- Added game launcher.
+
+-Added Launcher executable (application directory must now be set for debugging)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

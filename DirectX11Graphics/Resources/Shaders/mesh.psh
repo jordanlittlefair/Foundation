@@ -1,0 +1,130 @@
+Texture2D <float> opacity_texture:		register(t0);
+Texture2D <float3> normal_texture:		register(t1);
+Texture2D <float3> diffuse_texture:		register(t2);
+Texture2D <float> roughness_texture:	register(t3);
+Texture2D <float3> specular_texture:	register(t4);
+Texture2D <float> fresnel_texture:		register(t5);
+
+SamplerState opacity_sampler:	register(s0);
+SamplerState normal_sampler:	register(s1);
+SamplerState diffuse_sampler:	register(s2);
+SamplerState roughness_sampler:	register(s3);
+SamplerState specular_sampler:	register(s4);
+SamplerState fresnel_sampler:	register(s5);
+
+struct PSInput
+{
+	float4 hposition: SV_Position;
+	float3 view_position: POSITION0;
+	float3 view_normal: NORMAL;
+	float3 view_tangent: TANGENT;
+	float2 texcoord: TEXCOORD;
+	
+	//float4 now_hposition : POSITION1;
+	//float4 previous_hposition : POSITION2;
+};
+
+struct PSOutput
+{
+	float4 geometry: SV_Target0;
+	float4 diffuse: SV_Target1;
+	float4 specular: SV_Target2;
+	//float2 motion: SV_Target3;
+};
+
+PSOutput main( PSInput fragment )
+{
+	// Cull the pixel if the opacity is below 0.5.
+	if ( opacity_texture.Sample( opacity_sampler, fragment.texcoord ) < 0.5 )
+	{
+		discard;
+	}
+
+	PSOutput output;
+
+	float3 sampled_normal = normal_texture.Sample( normal_sampler, fragment.texcoord ) * 2 - 1;
+	float3 sampled_diffuse = diffuse_texture.Sample( diffuse_sampler, fragment.texcoord );
+	float  sampled_roughness = 0.3;//roughness_texture.Sample( roughness_sampler, fragment.texcoord );
+	float3 sampled_specular = float3(0.5,0.5,0.5);//specular_texture.Sample( specular_sampler, fragment.texcoord );
+	float  sampled_f0 = 0.3;//f0_texture.Sample( f0_sampler, fragment.texcoord );
+	
+	/*
+		.geometry
+	*/
+		// normal
+	float3 binormal_vector = cross( fragment.view_normal, fragment.view_tangent );
+	
+	float3x3 tangent_to_view = 
+	{
+		normalize( fragment.view_tangent ),
+		normalize( binormal_vector ),
+		normalize( fragment.view_normal )
+	};
+	
+	float3 view_normal = normalize( mul( sampled_normal, tangent_to_view ) );// (disabled normal maps for now)
+	
+	output.geometry.xyz = view_normal;
+	
+		// depth
+	output.geometry.w = fragment.view_position.z;
+		
+	/*
+		.diffuse
+	*/
+		// diffuse colour
+	output.diffuse.xyz = sampled_diffuse.xyz;
+		// roughness
+	output.diffuse.w = sampled_roughness;
+	
+	/*
+		.specular
+	*/
+		// specular colour
+	output.specular.xyz = sampled_specular.xyz;
+		// f0
+	output.specular.w = sampled_f0;
+	
+	/*
+		.motion
+	*/
+	//output.motion = float2( 0, 0 );
+	
+	return output;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

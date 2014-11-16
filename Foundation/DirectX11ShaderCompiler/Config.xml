@@ -1,0 +1,17 @@
+<Config>
+	<Shaders	source_directory = "../../DirectX11Graphics/Resources/Shaders/" 
+				output_directory = "../Engine/Graphics/DirectX11Graphics/Shaders/"
+				output_directory_debug = "../Engine/Graphics/DirectX11Graphics/Shaders/Debug/"
+				compiled_extension = ".cso" 
+				shader_model = "5_0">
+
+		<RenderMesh					vs = "mesh.vsh"					ps = "mesh.psh"					/>
+		<Blit						vs = "blit.vsh"					ps = "blit.psh"					/>
+		<SSAO						vs = "ssao.vsh"					ps = "ssao.psh"					/>
+		<AmbientLight				vs = "ambient_light.vsh"		ps = "ambient_light.psh"		/>
+		<DirectionalLight			vs = "directional_light.vsh"	ps = "directional_light.psh"	/>
+		<PointLight					vs = "point_light.vsh"			ps = "point_light.psh"			/>
+		<SpotLight					vs = "spot_light.vsh"			ps = "spot_light.psh"			/>
+		<OculusBlit					vs = "oculus_blit.vsh"			ps = "oculus_blit.psh"			/>
+	</Shaders>
+</Config>

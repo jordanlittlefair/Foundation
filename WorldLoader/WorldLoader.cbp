@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="WorldLoader" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/WorldLoader" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="..\Utility\bin\Debug\libUtility.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/WorldLoader" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="..\Utility\bin\Release\libUtility.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="Include/WorldDataTags.hpp" />
+		<Unit filename="Include/WorldLoader.hpp" />
+		<Unit filename="Include/WorldLoaderEntity.hpp" />
+		<Unit filename="Include/WorldLoaderErrors.hpp" />
+		<Unit filename="Source/WorldLoader.cpp" />
+		<Unit filename="Source/WorldLoaderEntity.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

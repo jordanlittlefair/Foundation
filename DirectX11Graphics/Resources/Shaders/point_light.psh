@@ -1,0 +1,118 @@
+Texture2D <float4> geometry_buffer:	register(t0);
+Texture2D <float4> diffuse_buffer:	register(t1);
+Texture2D <float4> specular_buffer:	register(t2);
+Texture2D <float2> motion_buffer: register(t3);
+
+#include "Common/PositionReconstruction.hlsl"	// Uses register(b0) for position reconstruction buffer
+#include "Common/LightCalculations.hlsl"
+#include "Common/FalloffCalculations.hlsl"
+
+cbuffer LightData_cbuffer : register(b1)
+{
+	struct LightData
+	{
+		float3 light_view_position;	// in view space
+		float light_range;
+
+		float3 light_colour;
+		float falloff_start;
+
+		float4 falloff_control_points;
+	};
+	LightData light_data;
+};
+
+struct PSInput
+{
+	float4 hposition: SV_Position;
+};
+
+struct PSOutput
+{
+	float4 colour: SV_Target;
+};
+
+[earlydepthstencil] // Will this work? need to figure out the volume stencil stuff
+PSOutput main( PSInput fragment )
+{
+	PSOutput output;
+	
+	/*
+		Get data from gbuffer
+	*/
+	const float depth = geometry_buffer[fragment.hposition.xy].w;
+	const float3 view_normal = normalize(geometry_buffer[fragment.hposition.xy].xyz);
+	const float3 diffuse_colour = diffuse_buffer[fragment.hposition.xy].xyz;
+	const float roughness = diffuse_buffer[fragment.hposition.xy].w;
+	const float3 specular_colour = specular_buffer[fragment.hposition.xy].xyz;
+	const float f0 = specular_buffer[fragment.hposition.xy].w;
+	
+	const float3 view_position = GetPositionHpos( fragment.hposition, depth );
+	
+	const float3 light_vector = light_data.light_view_position - view_position;
+	const float3 light_direction = normalize( light_vector );
+	
+	/*
+		Falloff
+	*/
+	float distance = length( light_vector );
+	
+	float distance_falloff = DistanceFalloff(	distance,
+												light_data.light_range,
+												light_data.falloff_start,
+												light_data.falloff_control_points );
+
+	/*
+		Diffuse.
+	*/
+	float3 diffuse_output = CalculateDiffuse(	-normalize( view_position ),
+												light_direction,
+												light_data.light_colour,
+												view_normal,
+												diffuse_colour,
+												roughness );
+	/*
+		Specular
+	*/
+	float3 specular_output = CalculateSpecular(	-normalize( view_position ),
+												light_direction,
+												light_data.light_colour,
+												view_normal,
+												diffuse_colour,
+												roughness );
+	
+	output.colour = float4( saturate( ( diffuse_output + specular_output ) * distance_falloff ), 1 );
+		
+	return output;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

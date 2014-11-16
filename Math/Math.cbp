@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Math" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../Bin/GCC/Debug/Math" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../Build/Math/GCC/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="../Bin/GCC/Release/Math" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../Build/Math/GCC/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="Include/Gaussian.hpp" />
+		<Unit filename="Include/Math.hpp" />
+		<Unit filename="Include/MathUtility.hpp" />
+		<Unit filename="Include/Matrix3.hpp" />
+		<Unit filename="Include/Matrix3Helper.hpp" />
+		<Unit filename="Include/Matrix4.hpp" />
+		<Unit filename="Include/Matrix4Helper.hpp" />
+		<Unit filename="Include/Vector2.hpp" />
+		<Unit filename="Include/Vector3.hpp" />
+		<Unit filename="Include/Vector4.hpp" />
+		<Unit filename="Source/Math.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,6 @@
+RT0		RGBA16f		Depth		Normal.x	Normal.y	Normal.z
+RT1		RGBA8u		Diffuse.x	Diffuse.y	Diffuse.z	Roughness
+RT2		RGBA8u		Specular.x	Specular.y	Specular.z	F0
+RT3		RG16f		Motion.x	Motion.y
+
+http://ruh.li/GraphicsCookTorrance.html

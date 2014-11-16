@@ -1,0 +1,12 @@
+<Config>
+	<Shaders	directory = "Shaders/" debug_directory = "Shaders/Debug/">
+		<RenderMesh					vs = "mesh.vsh.cso"					ps = "mesh.psh.cso"					/>
+		<Blit						vs = "blit.vsh.cso"					ps = "blit.psh.cso"					/>
+		<SSAO						vs = "ssao.vsh.cso"					ps = "ssao.psh.cso"					/>
+		<AmbientLight				vs = "ambient_light.vsh.cso"		ps = "ambient_light.psh.cso"		/>
+		<DirectionalLight			vs = "directional_light.vsh.cso"	ps = "directional_light.psh.cso"	/>
+		<PointLight					vs = "point_light.vsh.cso"			ps = "point_light.psh.cso"			/>
+		<SpotLight					vs = "spot_light.vsh.cso"			ps = "spot_light.psh.cso"			/>
+		<OculusBlit					vs = "oculus_blit.vsh.cso"			ps = "oculus_blit.psh.cso"			/>
+	</Shaders>
+</Config>

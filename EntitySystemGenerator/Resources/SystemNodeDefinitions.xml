@@ -1,0 +1,69 @@
+<SystemNodes>
+
+	<SceneNodeNode>
+		<SceneNodeComponent/>
+	</SceneNodeNode>
+
+	<AmbientLightNode>
+		<AmbientLightComponent const = "false"/>	<!-- eventually support const components, could possibly define other stuff here too -->
+	</AmbientLightNode>
+	
+	<CameraNode>
+		<SceneNodeComponent/>
+		<CameraPropertiesComponent/>
+	</CameraNode>
+		
+	<ModelNode>
+		<SceneNodeComponent/>
+		<ModelComponent/>
+	</ModelNode>
+	
+	<RigidBodyNode>
+		<SceneNodeComponent/>
+		<RigidBodyComponent/>
+	</RigidBodyNode>
+	
+	<PointLightNode>
+		<SceneNodeComponent/>
+		<PointLightComponent/>
+	</PointLightNode>
+	
+	<DirectionalLightNode>
+		<SceneNodeComponent/>
+		<DirectionalLightComponent/>
+	</DirectionalLightNode>
+	
+	<SpotLightNode>
+		<SceneNodeComponent/>
+		<SpotLightComponent/>
+	</SpotLightNode>
+	
+	<!--
+	<PostProcessNode>
+		<AmbientOcclusionComponent/>
+		<MotionBlurComponent/>
+		<BloomComponent/>
+		<ToneMapComponent/>
+	</PostProcessNode>
+	
+	<RumbleNode>
+		<RumbleComponent/>
+	</RumbleNode>
+	
+	<ShadowCasterNode>
+		<SceneNodeComponent/>
+		<ModelComponent/>
+	</ShadowCasterNode>
+
+	<ShadowedSpotLightNode>
+		<SceneNodeComponent/>
+		<SpotLightComponent/>
+	</ShadowedSpotLightNode>
+	
+	<SkyBoxNode>
+		<SkyBoxComponent/>
+	</SkyBoxNode>
+	
+	-->
+	
+</SystemNodes>

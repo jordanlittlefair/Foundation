@@ -1,0 +1,7 @@
+<Assets>
+	<Models directory = "Models/">
+		<Plane10x10	filename = "plane10x10.obj" />
+		<UnitCube	filename = "unitcube.obj"	/>
+		<UnitSphere	filename = "unitsphere.obj"	/>
+	</Models>
+</Assets>

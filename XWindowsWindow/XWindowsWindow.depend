@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1397585492 source:/home/jordan/Desktop/Foundation/XWindowsWindow/Source/XWindowsWindow.cpp
+	"../Include/XWindowsWindow.hpp"
+	<stdio.h>
+	<stdlib.h>
+	<X11/X.h>
+	<X11/Xlib.h>
+	<GL/gl.h>
+	<GL/glx.h>
+	<GL/glu.h>
+
+1397584317 /home/jordan/Desktop/Foundation/XWindowsWindow/Include/XWindowsWindow.hpp
+	"../../GameComponentInterfaces/Include/IWindow.hpp"
+
+1397076323 /home/jordan/Desktop/Foundation/GameComponentInterfaces/Include/IWindow.hpp
+	<string>
+

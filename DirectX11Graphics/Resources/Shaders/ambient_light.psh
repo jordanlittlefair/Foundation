@@ -1,0 +1,57 @@
+Texture2D <float4> geometry_buffer:	register(t0);
+Texture2D <float4> diffuse_buffer:	register(t1);
+Texture2D <float4> specular_buffer:	register(t2);
+Texture2D <float2> motion_buffer: register(t3);
+
+#include "Common/PositionReconstruction.hlsl"
+#include "Common/LightCalculations.hlsl"
+
+cbuffer AmbientLightData_cuffer : register (b1)
+{
+	struct AmbientLightData
+	{
+		float3 ambient_light_colour;
+		float pad0;
+	};
+	AmbientLightData ambient_light_data;
+};
+
+struct PSInput
+{
+	float4 hposition: SV_Position;
+	float2 texcoord: TEXCOORD;
+};
+
+struct PSOutput
+{
+	float4 colour: SV_Target;
+};
+
+[earlydepthstencil]
+PSOutput main( PSInput fragment )
+{
+	PSOutput output;
+
+	const float depth = geometry_buffer[fragment.hposition.xy].w;
+	const float3 view_normal = normalize(geometry_buffer[fragment.hposition.xy].xyz);
+	const float3 diffuse_colour = diffuse_buffer[fragment.hposition.xy].xyz;
+	const float roughness = diffuse_buffer[fragment.hposition.xy].w;
+	const float3 specular_colour = specular_buffer[fragment.hposition.xy].xyz;
+	const float f0 = specular_buffer[fragment.hposition.xy].w;
+	
+	const float3 view_position = GetPositionHpos( fragment.hposition, depth );
+	
+	// Use half vector for light direction
+	float3 light_direction = normalize( view_normal + -normalize(view_position) );
+		
+	float3 diffuse_output =	CalculateDiffuse(	-normalize( view_position ),
+												light_direction,
+												ambient_light_data.ambient_light_colour,
+												view_normal,
+												diffuse_colour,
+												roughness );
+		
+	output.colour = float4( diffuse_output, 1 );
+
+	return output;
+}

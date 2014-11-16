@@ -1,0 +1,38 @@
+<GameSetup>
+
+	<Engine directory = "../Engine"/>
+
+	<Logger other_common_info = "etc"
+		server = "127.0.0.1"
+		port = "27463">
+		<NetworkLogger/>
+		<ConsoleLogger/>
+	</Logger>
+	
+	<Window	window = "Win32Window"
+		window_title   = "Game Test"
+		initial_width  = "1280"
+		initial_height = "720"
+		is_resizable   = "true"
+		is_fullscreen  = "false"
+	/>
+	
+	<Graphics	graphics = "DirectX11Graphics" 
+		enable_vr = "true"
+	/>
+	
+	<Physics	physics = "Bullet" />
+	
+	<!--<Scripting	scripts = "Lua" directory = "Scripts/Lua/" filename = "Config.xml" />-->
+	<Scripting	scripting = "Mock" directory = "Resources/Scripts/Mock/" filename = "Resources/Config.xml" />
+	
+	<World world = "LoadedWorld"> <!-- "LoadedWorld" only supports a single world file (a single level).-->
+		<WorldFile	index = "0"
+					filename = "Resources/Worlds/sponza_test.xml">
+			<Assets>
+				<AssetFile filename = "Resources/Assets/sponza_test_assets.xml"/>
+			</Assets>
+		</WorldFile>
+	</World>
+	
+</GameSetup>

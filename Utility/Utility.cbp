@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Utility" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../Bin/GCC/Debug/Utility" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../Build/Utility/GCC/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="../Bin/GCC/Release/Utility" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../Build/Utility/GCC/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="Include/BitReverse.hpp" />
+		<Unit filename="Include/IdGenerator.hpp" />
+		<Unit filename="Include/Image.hpp" />
+		<Unit filename="Include/MessageBox.hpp" />
+		<Unit filename="Include/String.hpp" />
+		<Unit filename="Include/XmlManager.hpp" />
+		<Unit filename="Include/rapidxml/rapidxml.hpp" />
+		<Unit filename="Include/rapidxml/rapidxml_iterators.hpp" />
+		<Unit filename="Include/rapidxml/rapidxml_print.hpp" />
+		<Unit filename="Include/rapidxml/rapidxml_utils.hpp" />
+		<Unit filename="Source/IdGenerator.cpp" />
+		<Unit filename="Source/Image.cpp" />
+		<Unit filename="Source/MessageBox.cpp" />
+		<Unit filename="Source/String.cpp" />
+		<Unit filename="Source/XmlManager.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

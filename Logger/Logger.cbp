@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Logger" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../Bin/GCC/Debug/Logger" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../Build/Logger/GCC/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add directory="../boost" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="../Bin/GCC/Release/Logger" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../Build/Logger/GCC/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add directory="../boost" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="../boost" />
+		</Compiler>
+		<Unit filename="Include/ILogger.hpp" />
+		<Unit filename="Include/LogRecords.hpp" />
+		<Unit filename="Include/Logger.hpp" />
+		<Unit filename="Include/NetworkLogger.hpp" />
+		<Unit filename="Source/LogRecords.cpp" />
+		<Unit filename="Source/Logger.cpp" />
+		<Unit filename="Source/NetworkLogger.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

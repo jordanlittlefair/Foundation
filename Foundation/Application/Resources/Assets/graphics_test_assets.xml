@@ -1,0 +1,9 @@
+<Assets>
+	<Models directory = "Models/">
+		<SponzaModel	filename = "sponza.obj" />
+		<BuddhaModel	filename = "buddha.obj" />
+		<BunnyModel		filename = "bunny.obj" />
+		<DragonModel	filename = "dragon.obj" />
+		<TeapotModel	filename = "wt_teapot.obj" />
+	</Models>
+</Assets>
