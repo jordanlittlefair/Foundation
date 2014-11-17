@@ -58,6 +58,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OculusRift", "OculusRift\Oc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Launcher", "Launcher\Launcher.vcxproj", "{F6AB4731-543E-41A5-960A-BBDC2984230A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineSettings", "EngineSettings\EngineSettings.vcxproj", "{20283EC5-2BA6-4673-B662-6C105B641E6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -232,6 +234,12 @@ Global
 		{F6AB4731-543E-41A5-960A-BBDC2984230A}.Release|Win32.ActiveCfg = Release|Win32
 		{F6AB4731-543E-41A5-960A-BBDC2984230A}.Release|Win32.Build.0 = Release|Win32
 		{F6AB4731-543E-41A5-960A-BBDC2984230A}.Release|x64.ActiveCfg = Release|Win32
+		{20283EC5-2BA6-4673-B662-6C105B641E6C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{20283EC5-2BA6-4673-B662-6C105B641E6C}.Debug|Win32.Build.0 = Debug|Win32
+		{20283EC5-2BA6-4673-B662-6C105B641E6C}.Debug|x64.ActiveCfg = Debug|Win32
+		{20283EC5-2BA6-4673-B662-6C105B641E6C}.Release|Win32.ActiveCfg = Release|Win32
+		{20283EC5-2BA6-4673-B662-6C105B641E6C}.Release|Win32.Build.0 = Release|Win32
+		{20283EC5-2BA6-4673-B662-6C105B641E6C}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

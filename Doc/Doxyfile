@@ -755,6 +755,7 @@ INPUT                  = ../AssetManager \
 						 ../Configuration \
                          ../DirectX11Graphics \
 						 ../DirectX11ShaderCompiler \
+						 ../EngineSettings \
                          ../EntitySystem \
                          ../EntitySystemGenerator \
                          ../Game \
