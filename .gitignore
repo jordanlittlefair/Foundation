@@ -5,3 +5,5 @@
 /Foundation/Application
 /Bin/Win32
 /Build
+/Foundation/Assimp32.dll
+/Foundation/Assimp32d.dll
