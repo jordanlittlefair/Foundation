@@ -1,30 +1,27 @@
 #include "../Include/LogRecords.hpp"
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
 
 #include "../../Setup/Include/GameComponentData.hpp"
+
+#include <sstream>
 
 using namespace Fnd::Logger;
 
 std::string Fnd::Logger::ParseLogSessionIdJson( const std::string& json )
 {
 	std::string ret;
+	
+	rapidjson::Document doc;
+	doc.Parse(json.c_str());
 
-	try
+	if ( doc.HasMember("logSessionId") )
 	{
-		std::stringstream ss;
-		ss << json;
+		rapidjson::Value& logsessionid_val = doc["logSessionId"];
 
-		boost::property_tree::ptree tree;
-		boost::property_tree::json_parser::read_json( ss, tree );
-
-		ret = tree.get<std::string>("logSessionId");
-
-	}
-	catch ( std::exception& e )
-	{
-		(void)e;
+		ret = logsessionid_val.GetString();
 	}
 
 	return ret;
@@ -34,26 +31,28 @@ std::string Fnd::Logger::WriteWindowSetupDataJson( const Fnd::Setup::WindowSetup
 {
 	std::string ret;
 
-	try
-	{
-		boost::property_tree::ptree tree;
-
-		tree.put( "windowData.implementation", window_data.window );
-		tree.put( "windowData.windowTitle", window_data.window_title );
-		tree.put( "windowData.initialWidth", window_data.initial_width );
-		tree.put( "windowData.initialHeight", window_data.initial_height );
-		tree.put( "windowData.isResizable", window_data.is_resizable );
-		tree.put( "windowData.isFullscreen", window_data.is_fullscreen );
-
-		std::stringstream ss;
-		boost::property_tree::json_parser::write_json( ss, tree, false );
-		
-		ret = ss.str();
-	}
-	catch ( std::exception& e )
-	{
-		(void)e;
-	}
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+    
+	writer.StartObject();
+		writer.String("windowData");
+		writer.StartObject();
+			writer.String("implementation");
+			writer.String(window_data.window.c_str());
+			writer.String("windowTitle");
+			writer.String(window_data.window_title.c_str());
+			writer.String("initialWidth");
+			writer.Int(window_data.initial_width);
+			writer.String("initialHeight");
+			writer.Int(window_data.initial_height);
+			writer.String("isResizable");
+			writer.Bool(window_data.is_resizable);
+			writer.String("isFullscreen");
+			writer.Bool(window_data.is_fullscreen);
+		writer.EndObject();
+	writer.EndObject();
+	
+	ret = s.GetString();
 
 	return ret;
 }
@@ -62,21 +61,20 @@ std::string Fnd::Logger::WriteGraphicsSetupDataJson( const Fnd::Setup::GraphicsS
 {
 	std::string ret;
 
-	try
-	{
-		boost::property_tree::ptree tree;
-
-		tree.put( "graphicsData.implementation", graphics_data.graphics );
-
-		std::stringstream ss;
-		boost::property_tree::json_parser::write_json( ss, tree, false );
-		
-		ret = ss.str();
-	}
-	catch ( std::exception& e )
-	{
-		(void)e;
-	}
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+    
+	writer.StartObject();
+		writer.String("graphicsData");
+		writer.StartObject();
+			writer.String("implementation");
+			writer.String(graphics_data.graphics.c_str());
+			writer.String("vr_enabled");
+			writer.Bool(graphics_data.enable_vr);
+		writer.EndObject();
+	writer.EndObject();
+	
+	ret = s.GetString();
 
 	return ret;
 }
@@ -85,35 +83,32 @@ std::string Fnd::Logger::WriteWorldSetupDataJson( const Fnd::Setup::WorldSetupDa
 {
 	std::string ret;
 
-	try
-	{
-		boost::property_tree::ptree tree;
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+    
+	writer.StartObject();
+		writer.String("worldData");
+		writer.StartObject();
+			writer.String("implementation");
+			writer.String(world_data.world.c_str());
+				
+			writer.String("worldFiles");
+			writer.StartArray();
+			for ( auto iter = world_data.world_files.begin(); iter != world_data.world_files.end(); ++iter )
+			{
+				writer.StartObject();
+					std::stringstream ss;
+					ss << iter->first;
+					writer.String(ss.str().c_str());
+					writer.String(iter->second.world_filename.c_str());
+				writer.EndObject();
+			}
+			writer.EndArray();
 
-		tree.put( "worldData.implementation", world_data.world );
-
-		boost::property_tree::ptree world_file_array;
-
-		for ( auto iter = world_data.world_files.begin(); iter != world_data.world_files.end(); ++iter )
-		{
-			boost::property_tree::ptree element;
-			std::stringstream level_index_ss; level_index_ss << iter->first;
-			auto s = level_index_ss.str();
-			element.put( level_index_ss.str(), iter->second.world_filename );
-
-			world_file_array.push_back( std::make_pair( "", element ) );
-		}
-
-		tree.add_child( "worldData.worldFiles", world_file_array );
-
-		std::stringstream ss;
-		boost::property_tree::json_parser::write_json( ss, tree, false );
-		
-		ret = ss.str();
-	}
-	catch ( std::exception& e )
-	{
-		(void)e;
-	}
+		writer.EndObject();
+	writer.EndObject();
+	
+	ret = s.GetString();
 
 	return ret;
 }
@@ -122,23 +117,19 @@ std::string Fnd::Logger::WriteLogMessageJson( const LogMessage& log_message, uns
 {
 	std::string ret;
 
-	try
-	{
-		boost::property_tree::ptree tree;
-
-		tree.put( "type", "message" );
-		tree.put( "time", time );
-		tree.put( "message", log_message.message );
-
-		std::stringstream ss;
-		boost::property_tree::json_parser::write_json( ss, tree, false );
-		
-		ret = ss.str();
-	}
-	catch ( std::exception& e )
-	{
-		(void)e;
-	}
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+    
+	writer.StartObject();
+		writer.String("type");
+		writer.String("message");
+		writer.String("time");
+		writer.Int(time);
+		writer.String("message");
+		writer.String(log_message.message.c_str());
+	writer.EndObject();
+	
+	ret = s.GetString();
 
 	return ret;
 }
@@ -147,23 +138,19 @@ std::string Fnd::Logger::WriteLogErrorJson( const LogError& log_error, unsigned 
 {
 	std::string ret;
 
-	try
-	{
-		boost::property_tree::ptree tree;
-
-		tree.put( "type", "error" );
-		tree.put( "time", time );
-		tree.put( "message", log_error.message );
-
-		std::stringstream ss;
-		boost::property_tree::json_parser::write_json( ss, tree, false );
-		
-		ret = ss.str();
-	}
-	catch ( std::exception& e )
-	{
-		(void)e;
-	}
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+    
+	writer.StartObject();
+		writer.String("type");
+		writer.String("error");
+		writer.String("time");
+		writer.Int(time);
+		writer.String("message");
+		writer.String(log_error.message.c_str());
+	writer.EndObject();
+	
+	ret = s.GetString();
 
 	return ret;
 }
@@ -172,23 +159,19 @@ std::string Fnd::Logger::WriteLogWarningJson( const LogWarning& log_warning, uns
 {
 	std::string ret;
 
-	try
-	{
-		boost::property_tree::ptree tree;
-
-		tree.put( "type", "warning" );
-		tree.put( "time", time );
-		tree.put( "message", log_warning.message );
-
-		std::stringstream ss;
-		boost::property_tree::json_parser::write_json( ss, tree, false );
-		
-		ret = ss.str();
-	}
-	catch ( std::exception& e )
-	{
-		(void)e;
-	}
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+    
+	writer.StartObject();
+		writer.String("type");
+		writer.String("warning");
+		writer.String("time");
+		writer.Int(time);
+		writer.String("message");
+		writer.String(log_warning.message.c_str());
+	writer.EndObject();
+	
+	ret = s.GetString();
 
 	return ret;
 }
