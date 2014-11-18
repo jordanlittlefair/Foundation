@@ -132,3 +132,8 @@ std::vector<std::string> FileSystem::ParseCommandLine( const std::string& comman
 
 	return ret;
 }
+
+std::vector<std::string> FileSystem::GetDirectories( const std::string& directory )
+{
+	return Fnd::Utility::SplitString( CanonicaliseFile( directory ), '/' );
+}
