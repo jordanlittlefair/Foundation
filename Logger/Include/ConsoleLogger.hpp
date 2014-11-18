@@ -30,6 +30,8 @@ class ConsoleLogger:
 		void Log( const LogError& log_error );
 		void Log( const LogWarning& log_warning );
 
+		void Shutdown();
+
 		~ConsoleLogger();
 };
 

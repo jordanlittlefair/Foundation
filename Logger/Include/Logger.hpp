@@ -38,6 +38,8 @@ class Logger:
 		void Log( const LogError& log_error );
 		void Log( const LogWarning& log_warning );
 		
+		void Shutdown();
+
 		~Logger();
 
 	private:

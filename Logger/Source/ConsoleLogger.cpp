@@ -65,6 +65,10 @@ void ConsoleLogger::Log( const LogWarning& log_warning )
 	OutputDebugString( ( "Warning: " + log_warning.message + '\n' ).c_str() );
 }
 
+void ConsoleLogger::Shutdown()
+{
+}
+
 ConsoleLogger::~ConsoleLogger()
 {
 }

@@ -2,6 +2,9 @@
 
 #include "../../Setup/Include/GameComponentData.hpp"
 
+#include <chrono>
+#include <cassert>
+
 using namespace Fnd::Logger;
 
 NetworkLogger::NetworkLogger():
@@ -35,19 +38,20 @@ void NetworkLogger::ThreadFunc()
 		else
 		{
 			_mutex.unlock();
-			boost::posix_time::millisec t(1000);
-			boost::this_thread::sleep(t); 
+			std::this_thread::sleep_for( std::chrono::seconds(2) );
 		}
 	}
 }
 			
 NetworkLogger::~NetworkLogger()
 {
-	if ( _is_running )
-	{
-		_is_running = false;
-		_thread.join();
-	}
+	// The thread MUST be stopped/joined in Shutdown.
+	// Calling join() here (global object destructor, after main) will cause the app to hang.
+	assert( !_is_running );
+
+	// Also, there is a known issue in VS2012- it will always leak 44 bytes when using std::thread.
+	// This is fixed in VS2013.
+	// https://connect.microsoft.com/VisualStudio/feedback/details/757212/vs-2012-rc-std-thread-reports-memory-leak-even-on-stack
 }
 
 bool NetworkLogger::Initialise( const Fnd::Setup::LoggerSetupData& logger_data )
@@ -61,14 +65,14 @@ bool NetworkLogger::Initialise( const Fnd::Setup::LoggerSetupData& logger_data )
 	}
 
 	_is_running = true;
-	_thread = boost::thread(&NetworkLogger::ThreadFunc, this);
+	_thread = std::thread( &NetworkLogger::ThreadFunc, this );
 
 	return true;
 }
 
 void NetworkLogger::SetWindowSetupData( const Fnd::Setup::WindowSetupData& window_data )
 {
-	boost::mutex::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 	
 	std::string json = WriteWindowSetupDataJson( window_data );
 
@@ -85,7 +89,7 @@ void NetworkLogger::SetWindowSetupData( const Fnd::Setup::WindowSetupData& windo
 
 void NetworkLogger::SetGraphicsSetupData( const Fnd::Setup::GraphicsSetupData& graphics_data )
 {
-	boost::mutex::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 	
 	std::string json = WriteGraphicsSetupDataJson( graphics_data );
 
@@ -102,7 +106,7 @@ void NetworkLogger::SetGraphicsSetupData( const Fnd::Setup::GraphicsSetupData& g
 
 void NetworkLogger::SetWorldSetupData( const Fnd::Setup::WorldSetupData& world_data )
 {
-	boost::mutex::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 	
 	std::string json = WriteWorldSetupDataJson( world_data );
 
@@ -119,7 +123,7 @@ void NetworkLogger::SetWorldSetupData( const Fnd::Setup::WorldSetupData& world_d
 
 void NetworkLogger::Log( const LogMessage& log_message )
 {
-	boost::mutex::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 
 	unsigned int t = (unsigned int)time(nullptr);
 
@@ -130,7 +134,7 @@ void NetworkLogger::Log( const LogMessage& log_message )
 
 void NetworkLogger::Log( const LogError& log_error )
 {
-	boost::mutex::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 
 	unsigned int t = (unsigned int)time(nullptr);
 	
@@ -141,7 +145,7 @@ void NetworkLogger::Log( const LogError& log_error )
 
 void NetworkLogger::Log( const LogWarning& log_warning )
 {
-	boost::mutex::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 
 	unsigned int t = (unsigned int)time(nullptr);
 	
@@ -150,9 +154,18 @@ void NetworkLogger::Log( const LogWarning& log_warning )
 	_log_queue.push( json );
 }
 
+void NetworkLogger::Shutdown()
+{
+	if ( _is_running )
+	{
+		_is_running = false;
+		_thread.join();
+	}
+}
+
 bool NetworkLogger::GetId()
 {
-	boost::mutex::scoped_lock lock(_mutex);
+	std::lock_guard<std::mutex> lock(_mutex);
 	
 	HTTPClient::Request request;
 	request.method = "POST";

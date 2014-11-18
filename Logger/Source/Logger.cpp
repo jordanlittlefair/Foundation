@@ -102,6 +102,14 @@ void Logger::Log( const LogWarning& log_warning )
 	}
 }
 
+void Logger::Shutdown()
+{
+	for ( unsigned int i = 0; i < _impl.size(); ++i )
+	{
+		_impl[i]->Shutdown();
+	}
+}
+
 Logger::~Logger()
 {
 }

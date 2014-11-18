@@ -7,7 +7,8 @@
 
 #include <queue>
 
-#include <boost/thread.hpp>
+#include <thread>
+#include <mutex>
 #include "../../HTTPClient/Include/HTTPClient.hpp"
 
 namespace Fnd
@@ -30,6 +31,8 @@ class NetworkLogger:
 		void Log( const LogError& log_error );
 		void Log( const LogWarning& log_warning );
 
+		void Shutdown();
+
 		~NetworkLogger();
 
 	private:
@@ -44,11 +47,11 @@ class NetworkLogger:
 
 		Fnd::HTTPClient::HTTPClient _http_client;
 
-		boost::mutex _mutex;
+		std::mutex _mutex;
 
 		std::queue<std::string> _log_queue;
 
-		boost::thread _thread;
+		std::thread _thread;
 		bool _is_running;
 };
 

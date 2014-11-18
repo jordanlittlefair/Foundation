@@ -113,5 +113,7 @@ WinMain (	_In_ struct HINSTANCE__* hIinstance,
 	component_factory.Release(window);
 	component_factory.Release(scripting);
 
+	Logger::GetInstance().Shutdown();
+
 	return 0;
 }
