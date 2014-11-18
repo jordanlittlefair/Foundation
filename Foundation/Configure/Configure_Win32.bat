@@ -6,6 +6,7 @@ echo "Copying Game.exe to Foundation/Engine/"
 xcopy  "..\..\Bin\Win32\Release\Game.exe" "..\Engine\" /y
 
 echo "Copying Launcher.exe to Foundation/"
+mkdir ..\Application
 xcopy  "..\..\Bin\Win32\Release\Launcher.exe" "..\Application" /y
 
 echo "Copying EntitySystemGenerator.exe to Foundation/"
