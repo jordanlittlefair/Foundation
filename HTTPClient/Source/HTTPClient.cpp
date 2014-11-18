@@ -1,8 +1,5 @@
 #include "../Include/HTTPClient.hpp"
 
-#define _WIN32_WINNT 0x0501
-#include <boost/asio.hpp>
-
 namespace Fnd
 {
 namespace HTTPClient
@@ -71,6 +68,7 @@ void HTTPClientImpl::SetPort( const std::string& port )
 
 bool HTTPClientImpl::Send( const Request& request, Response& response )
 {
+	/*
 	try
 	{
 		boost::asio::io_service io_service;
@@ -138,7 +136,7 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 
 			/*
 				Read status line.
-			*/
+			/
 			boost::asio::read_until( socket, streambuf, "\r\n" );
 
 			std::istream response_stream(&streambuf);
@@ -153,7 +151,7 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 
 			/*
 				Read headers.
-			*/
+			/
 			boost::asio::read_until( socket, streambuf, "\r\n\r\n" );
 
 			std::string header;
@@ -174,7 +172,7 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 
 			/*
 				Read body.
-			*/
+			/
 			std::stringstream body_ss;
 
 			if ( streambuf.size() > 0 )
@@ -203,6 +201,13 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 	}
 
 	return true;
+	*/
+
+	/*
+		TODO: HTTPClient must be implemented again, without using boost.
+	*/
+
+	return false;
 }
 
 HTTPClientImpl::~HTTPClientImpl()

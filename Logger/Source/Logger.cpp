@@ -9,8 +9,6 @@
 
 #include <queue>
 
-#include <boost/thread.hpp>
-
 using namespace Fnd::Logger;
 
 Logger::Logger()

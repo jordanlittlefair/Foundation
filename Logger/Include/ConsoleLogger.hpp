@@ -7,7 +7,6 @@
 
 #include <queue>
 
-#include <boost/thread.hpp>
 #include "../../HTTPClient/Include/HTTPClient.hpp"
 
 namespace Fnd

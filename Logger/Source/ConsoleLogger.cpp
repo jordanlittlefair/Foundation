@@ -4,6 +4,8 @@
 
 using namespace Fnd::Logger;
 
+#include <sstream>
+
 #include <Windows.h>
 
 ConsoleLogger::ConsoleLogger()
