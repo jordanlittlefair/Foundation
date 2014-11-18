@@ -9,3 +9,6 @@
 /Foundation/Assimp32d.dll
 /*.suo
 /Doc/html
+/Foundation/Engine/*.dll
+/Foundation/*.dll
+/Foundation/Engine/Graphics/DirectX11Graphics/Shaders/
