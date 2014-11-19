@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _BULLETHELPER_HPP_
-#define _BULLETHELPER_HPP_
+#ifndef _BULLETPHYSICS_BULLETHELPER_HPP_
+#define _BULLETPHYSICS_BULLETHELPER_HPP_
 
 #include <btBulletDynamicsCommon.h>
 #include "../../Math/Include/Math.hpp"

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _CONFIGURATION_HPP_
-#define _CONFIGURATION_HPP_
+#ifndef _CONFIGURATION_CONFIGURATION_HPP_
+#define _CONFIGURATION_CONFIGURATION_HPP_
 
 #include "../../CommonResources/Include/Texture2DDesc.hpp"
 #include "../../CommonResources/Include/PipelineDesc.hpp"

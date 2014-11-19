@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _WORLDDATATAGS_HPP_
-#define _WORLDDATATAGS_HPP_
+#ifndef _WORLDLOADER_WORLDDATATAGS_HPP_
+#define _WORLDLOADER_WORLDDATATAGS_HPP_
 
 /*
 	Define the tags which make up the entities in an xml world file.

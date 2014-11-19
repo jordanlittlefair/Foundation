@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IWORLD_HPP_
-#define _IWORLD_HPP_
+#ifndef _GAMECOMPONENTINTERFACES_IWORLD_HPP_
+#define _GAMECOMPONENTINTERFACES_IWORLD_HPP_
 
 #include <string>
 #include <map>

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IKEYBOARDINPUT_HPP_
-#define _IKEYBOARDINPUT_HPP_
+#ifndef _INPUT_IKEYBOARDINPUT_HPP_
+#define _INPUT_IKEYBOARDINPUT_HPP_
 
 
 #include <Windows.h>

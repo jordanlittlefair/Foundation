@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _BULLETPHYSICS_HPP_
-#define _BULLETPHYSICS_HPP_
+#ifndef _BULLETPHYSICS_BULLETPHYSICS_HPP_
+#define _BULLETPHYSICS_BULLETPHYSICS_HPP_
 
 #include "../../GameComponentInterfaces/Include/IPhysics.hpp"
 

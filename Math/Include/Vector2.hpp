@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _VECTOR2_
-#define _VECTOR2_
+#ifndef _MATH_VECTOR2_
+#define _MATH_VECTOR2_
 
 namespace Fnd
 {

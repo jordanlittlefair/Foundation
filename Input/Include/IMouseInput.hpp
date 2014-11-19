@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IMOUSEINPUT_HPP_
-#define _IMOUSEINPUT_HPP_
+#ifndef _INPUT_IMOUSEINPUT_HPP_
+#define _INPUT_IMOUSEINPUT_HPP_
 
 namespace Fnd
 {

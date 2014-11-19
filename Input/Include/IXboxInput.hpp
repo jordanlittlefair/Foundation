@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IXBOXINPUT_HPP_
-#define _IXBOXINPUT_HPP_
+#ifndef _INPUT_IXBOXINPUT_HPP_
+#define _INPUT_IXBOXINPUT_HPP_
 
 
 #include "GamePadButtons.hpp"

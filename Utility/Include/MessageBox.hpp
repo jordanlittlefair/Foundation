@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MESSAGEBOX_HPP_
-#define _MESSAGEBOX_HPP_
+#ifndef _UTILITY_MESSAGEBOX_HPP_
+#define _UTILITY_MESSAGEBOX_HPP_
 
 #include <string>
 

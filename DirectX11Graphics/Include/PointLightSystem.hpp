@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _POINTLIGHTSYSTEM_HPP_
-#define _POINTLIGHTSYSTEM_HPP_
+#ifndef _DIRECTX11GRAPHICS_POINTLIGHTSYSTEM_HPP_
+#define _DIRECTX11GRAPHICS_POINTLIGHTSYSTEM_HPP_
 
 #include "DirectX11GraphicsSystem.hpp"
 #include "../../Math/Include/Math.hpp"

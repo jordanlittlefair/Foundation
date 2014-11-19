@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _STRINGUTILITY_HPP_
-#define _STRINGUTILITY_HPP_
+#ifndef _UTILITY_STRING_HPP_
+#define _UTILITY_STRING_HPP_
 
 #include <string>
 #include <vector>

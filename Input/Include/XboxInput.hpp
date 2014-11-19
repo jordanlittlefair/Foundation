@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _XBOXINPUT_HPP_
-#define _XBOXINPUT_HPP_
+#ifndef _INPUT_XBOXINPUT_HPP_
+#define _INPUT_XBOXINPUT_HPP_
 
 
 #include "IXboxInput.hpp"

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _DIRECTX11RESOURCES_HPP_
-#define _DIRECTX11RESOURCES_HPP_
+#ifndef _DIRECTX11GRAPHICS_DIRECTX11RESOURCES_HPP_
+#define _DIRECTX11GRAPHICS_DIRECTX11RESOURCES_HPP_
 
 #include "../../Configuration/Include/Configuration.hpp"
 #include "../../Math/Include/Math.hpp"

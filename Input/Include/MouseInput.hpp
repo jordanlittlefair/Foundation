@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MOUSEINPUT_HPP_
-#define _MOUSEINPUT_HPP_
+#ifndef _INPUT_MOUSEINPUT_HPP_
+#define _INPUT_MOUSEINPUT_HPP_
 
 
 #include <Windows.h>

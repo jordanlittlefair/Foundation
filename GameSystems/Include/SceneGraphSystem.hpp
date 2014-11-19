@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _SCENEGRAPHSYSTEM_HPP_
-#define _SCENEGRAPHSYSTEM_HPP_
+#ifndef _GAMESYSTEMS_SCENEGRAPHSYSTEM_HPP_
+#define _GAMESYSTEMS_SCENEGRAPHSYSTEM_HPP_
 
 #include "../../EntitySystem/Include/System.hpp"
 #include "../../EntitySystem/Include/SystemNodes.hpp"

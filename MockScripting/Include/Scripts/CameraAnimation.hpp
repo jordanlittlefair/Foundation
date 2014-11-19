@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _CAMERAANIMATION_HPP_
-#define _CAMERAANIMATION_HPP_
+#ifndef _MOCKSCRIPTING_CAMERAANIMATION_HPP_
+#define _MOCKSCRIPTING_CAMERAANIMATION_HPP_
 
 #include "../MockScript.hpp"
 #include "../../../Logger/Include/Logger.hpp"

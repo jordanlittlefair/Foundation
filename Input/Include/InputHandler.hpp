@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _INPUTHANDLER_HPP_
-#define _INPUTHANDLER_HPP_
+#ifndef _INPUT_INPUTHANDLER_HPP_
+#define _INPUT_INPUTHANDLER_HPP_
 
 #include "IInput.hpp"
 #include "KeyboardInput.hpp"

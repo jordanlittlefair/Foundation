@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _ENTITYCONTAINER_HPP_
-#define _ENTITYCONTAINER_HPP_
+#ifndef _ENTITYSYSTEM_ENTITYCONTAINER_HPP_
+#define _ENTITYSYSTEM_ENTITYCONTAINER_HPP_
 
 #include <map>
 

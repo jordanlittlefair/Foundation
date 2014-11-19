@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IDGENERATOR_HPP_
-#define _IDGENERATOR_HPP_
+#ifndef _UTILITY_IDGENERATOR_HPP_
+#define _UTILITY_IDGENERATOR_HPP_
 
 namespace Fnd
 {

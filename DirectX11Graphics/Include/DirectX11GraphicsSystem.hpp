@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _DIRECTX11GRAPHICSSYSTEM_HPP_
-#define _DIRECTX11GRAPHICSSYSTEM_HPP_
+#ifndef _DIRECTX11GRAPHICS_DIRECTX11GRAPHICSSYSTEM_HPP_
+#define _DIRECTX11GRAPHICS_DIRECTX11GRAPHICSSYSTEM_HPP_
 
 #include "../Include/DirectX11GraphicsBase.hpp"
 #include "../../EntitySystem/Include/Components.hpp"

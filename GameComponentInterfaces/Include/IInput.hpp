@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IINPUT_HPP_
-#define _IINPUT_HPP_
+#ifndef _GAMECOMPONENTINTERFACES_IINPUT_HPP_
+#define _GAMECOMPONENTINTERFACES_IINPUT_HPP_
 
 namespace Fnd
 {

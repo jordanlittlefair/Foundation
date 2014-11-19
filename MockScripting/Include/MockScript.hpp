@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MOCKSCRIPT_HPP_
-#define _MOCKSCRIPT_HPP_
+#ifndef _MOCKSCRIPTINGMOCKSCRIPT_HPP_
+#define _MOCKSCRIPTINGMOCKSCRIPT_HPP_
 
 #include "../../Scripting/Include/Script.hpp"
 #include "../../EntitySystem/Include/EntitySystem.hpp"

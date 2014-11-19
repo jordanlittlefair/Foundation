@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _OPENGLGRAPHICSBASE_HPP_
-#define _OPENGLGRAPHICSBASE_HPP_
+#ifndef _OPENGLGRAPHICS_OPENGLGRAPHICSBASE_HPP_
+#define _OPENGLGRAPHICS_OPENGLGRAPHICSBASE_HPP_
 
 #include "../../GameComponentInterfaces/Include/IGraphics.hpp"
 

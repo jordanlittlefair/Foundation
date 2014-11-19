@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _VECTOR3_
-#define _VECTOR3_
+#ifndef _MATH_VECTOR3_
+#define _MATH_VECTOR3_
 
 #include "MathUtility.hpp"
 

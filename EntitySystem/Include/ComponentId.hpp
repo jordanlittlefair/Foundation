@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _COMPONENTID_HPP_
-#define _COMPONENTID_HPP_
+#ifndef _ENTITYSYSTEM_COMPONENTID_HPP_
+#define _ENTITYSYSTEM_COMPONENTID_HPP_
 
 namespace Fnd
 {

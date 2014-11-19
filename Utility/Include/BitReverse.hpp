@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _BITREVERSE_HPP_
-#define _BITREVERSE_HPP_
+#ifndef _UTILITY_BITREVERSE_HPP_
+#define _UTILITY_BITREVERSE_HPP_
 
 namespace Fnd
 {

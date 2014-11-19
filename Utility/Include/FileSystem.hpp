@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _FILESYSTEM_HPP_
-#define _FILESYSTEM_HPP_
+#ifndef _UTILITY_FILESYSTEM_HPP_
+#define _UTILITY_FILESYSTEM_HPP_
 
 #include <string>
 #include <vector>

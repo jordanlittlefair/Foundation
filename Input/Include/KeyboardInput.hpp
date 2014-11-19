@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _KEYBOARDINPUT_HPP_
-#define _KEYBOARDINPUT_HPP_
+#ifndef _INPUT_KEYBOARDINPUT_HPP_
+#define _INPUT_KEYBOARDINPUT_HPP_
 
 
 #ifndef DIRECTINPUT_VERSION

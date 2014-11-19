@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _SYSTEM_HPP_
-#define _SYSTEM_HPP_
+#ifndef _ENTITYSYSTEM_SYSTEM_HPP_
+#define _ENTITYSYSTEM_SYSTEM_HPP_
 
 #include "EntitySystem.hpp"
 #include "../../AssetManager/Include/AssetManager.hpp"

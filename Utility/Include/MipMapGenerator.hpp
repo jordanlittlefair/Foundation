@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MIPMAPGENERATOR_HPP_
-#define _MIPMAPGENERATOR_HPP_
+#ifndef _UTILITY_MIPMAPGENERATOR_HPP_
+#define _UTILITY_MIPMAPGENERATOR_HPP_
 
 #include "Image.hpp"
 

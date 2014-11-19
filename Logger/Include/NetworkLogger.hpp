@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _NETWORKLOGGER_HPP_
-#define _NETWORKLOGGER_HPP_
+#ifndef _LOGGER_NETWORKLOGGER_HPP_
+#define _LOGGER_NETWORKLOGGER_HPP_
 
 #include "ILogger.hpp"
 

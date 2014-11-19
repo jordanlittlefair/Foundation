@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _LOGRECORDS_HPP_
-#define _LOGRECORDS_HPP_
+#ifndef _LOGGER_LOGRECORDS_HPP_
+#define _LOGGER_LOGRECORDS_HPP_
 
 #include <string>
 

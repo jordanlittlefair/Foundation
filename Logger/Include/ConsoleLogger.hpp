@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _CONSOLELOGGER_HPP_
-#define _CONSOLELOGGER_HPP_
+#ifndef _LOGGER_CONSOLELOGGER_HPP_
+#define _LOGGER_CONSOLELOGGER_HPP_
 
 #include "ILogger.hpp"
 

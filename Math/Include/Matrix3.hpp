@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MATRIX3_
-#define _MATRIX3_
+#ifndef _MATH_MATRIX3_
+#define _MATH_MATRIX3_
 
 #include "Vector3.hpp"
 

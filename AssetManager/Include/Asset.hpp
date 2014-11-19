@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _ASSET_HPP_
-#define _ASSET_HPP_
+#ifndef _ASSETMANAGER_ASSET_HPP_
+#define _ASSETMANAGER_ASSET_HPP_
 
 #include <string>
 

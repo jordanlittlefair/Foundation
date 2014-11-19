@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _DX11GRAPHICS_HPP_
-#define _DX11GRAPHICS_HPP_
+#ifndef _DIRECTX11GRAPHICS_DIRECTX11GRAPHICS_HPP_
+#define _DIRECTX11GRAPHICS_DIRECTX11GRAPHICS_HPP_
 
 #include "DirectX11GraphicsBase.hpp"
 

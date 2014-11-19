@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IRUMBLE_HPP_
-#define _IRUMBLE_HPP_
+#ifndef _GAMECOMPONENTINTERFACES_IRUMBLE_HPP_
+#define _GAMECOMPONENTINTERFACES_IRUMBLE_HPP_
 
 namespace Fnd
 {

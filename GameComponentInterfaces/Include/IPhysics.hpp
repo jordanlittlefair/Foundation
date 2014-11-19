@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IPHYSICS_HPP_
-#define _IPHYSICS_HPP_
+#ifndef _GAMECOMPONENTINTERFACES_IPHYSICS_HPP_
+#define _GAMECOMPONENTINTERFACES_IPHYSICS_HPP_
 
 #include <vector>
 #include <memory>

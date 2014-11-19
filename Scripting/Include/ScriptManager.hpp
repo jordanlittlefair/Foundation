@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _SCRIPTMANAGER_HPP_
-#define _SCRIPTMANAGER_HPP_
+#ifndef _SCRIPTING_SCRIPTMANAGER_HPP_
+#define _SCRIPTING_SCRIPTMANAGER_HPP_
 
 #include <string>
 #include <vector>

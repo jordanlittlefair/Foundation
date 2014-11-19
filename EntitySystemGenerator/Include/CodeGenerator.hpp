@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _CODEGENERATOR_HPP_
-#define _CODEGENERATOR_HPP_
+#ifndef _ENTITYSYSTEMGENERATOR_CODEGENERATOR_HPP_
+#define _EntITYSYSTEMGENERATOR_CODEGENERATOR_HPP_
 
 #include <sstream>
 #include <vector>

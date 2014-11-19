@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MATHUTILITY_
-#define _MATHUTILITY_
+#ifndef _MATH_MATHUTILITY_
+#define _MATH_MATHUTILITY_
 
 #include <cmath>
 #include <cstdlib>

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _HTTPCLIENT_HPP_
-#define _HTTPCLIENT_HPP_
+#ifndef _HTTPCLIENT_HTTPCLIENT_HPP_
+#define _HTTPCLIENT_HTTPCLIENT_HPP_
 
 #include <string>
 #include <map>

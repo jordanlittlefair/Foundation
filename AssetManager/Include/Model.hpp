@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MODEL_HPP_
-#define _MODEL_HPP_
+#ifndef _ASSETMANAGER_MODEL_HPP_
+#define _ASSETMANAGER_MODEL_HPP_
 
 #include "Asset.hpp"
 #include "../../Math/Include/Math.hpp"

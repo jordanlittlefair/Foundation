@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IMAGE_HPP_
-#define _IMAGE_HPP_
+#ifndef _UTILITY_IMAGE_HPP_
+#define _UTILITY_IMAGE_HPP_
 
 #include <string>
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _LOADEDWORLD_HPP_
-#define _LOADEDWORLD_HPP_
+#ifndef _LOADEDWORLD_LOADEDWORLD_HPP_
+#define _LOADEDWORLD_LOADEDWORLD_HPP_
 
 #include "../../GameComponentInterfaces/Include/IWorld.hpp"
 

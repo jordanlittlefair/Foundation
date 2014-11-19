@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _OPENGLGRAPHICS_HPP_
-#define _OPENGLGRAPHICS_HPP_
+#ifndef _OPENGLGRAPHICS_OPENGLGRAPHICS_HPP_
+#define _OPENGLGRAPHICS_OPENGLGRAPHICS_HPP_
 
 #include "..//Include/OpenGLGraphicsBase.hpp"
 

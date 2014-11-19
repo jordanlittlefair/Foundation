@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _DIRECTX11MODEL_HPP_
-#define _DIRECTX11MODEL_HPP_
+#ifndef _OPENGLGRAPHICS_OPENGLMODEL_HPP_
+#define _OPENGLGRAPHICS_OPENGLMODEL_HPP_
 
 #include "../../AssetManager/Include/Model.hpp"
 

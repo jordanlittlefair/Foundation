@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MESHSYSTEM_HPP_
-#define _MESHSYSTEM_HPP_
+#ifndef _DIRECTX11GRAPHICS_MESHSYSTEM_HPP_
+#define _DIRECTX11GRAPHICS_MESHSYSTEM_HPP_
 
 #include "DirectX11GraphicsSystem.hpp"
 #include "../Include/DirectX11Model.hpp"

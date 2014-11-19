@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IGRAPHICS_HPP_
-#define _IGRAPHICS_HPP_
+#ifndef _GAMECOMPONENTINTERFACES_IGRAPHICS_HPP_
+#define _GAMECOMPONENTINTERFACES_IGRAPHICS_HPP_
 
 #include <vector>
 #include <memory>

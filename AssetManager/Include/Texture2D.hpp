@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _TEXTURE2DCONTENT_HPP_
-#define _TEXTURE2DCONTENT_HPP_
+#ifndef _ASSETMANAGER_TEXTURE2DCONTENT_HPP_
+#define _ASSETMANAGER_TEXTURE2DCONTENT_HPP_
 
 #include "Asset.hpp"
 #include "../../Utility/Include/Image.hpp"

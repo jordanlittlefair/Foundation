@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MODELLOADER_HPP_
-#define _MODELLOADER_HPP_
+#ifndef _MODELLOADER_MODELLOADER_HPP_
+#define _MODELLOADER_MODELLOADER_HPP_
 
 #include <string>
 

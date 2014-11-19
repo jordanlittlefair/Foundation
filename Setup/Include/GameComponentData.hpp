@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _GAMECOMPONENTDATA_HPP_
-#define _GAMECOMPONENTDATA_HPP_
+#ifndef _SETUP_GAMECOMPONENTDATA_HPP_
+#define _SETUP_GAMECOMPONENTDATA_HPP_
 
 #include <string>
 #include <map>

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _ILOGGER_HPP_
-#define _ILOGGER_HPP_
+#ifndef _LOGGER_ILOGGER_HPP_
+#define _LOGGER_ILOGGER_HPP_
 
 #include "LogRecords.hpp"
 

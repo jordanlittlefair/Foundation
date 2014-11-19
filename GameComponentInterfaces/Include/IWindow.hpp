@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _IWINDOW_HPP_
-#define _IWINDOW_HPP_
+#ifndef _GAMECOMPONENTINTERFACES_IWINDOW_HPP_
+#define _GAMECOMPONENTINTERFACES_IWINDOW_HPP_
 
 #include <string>
 

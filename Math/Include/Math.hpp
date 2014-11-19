@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MATH_
-#define _MATH_
+#ifndef _MATH_MATH_
+#define _MATH_MATH_
 
 #include "MathUtility.hpp"
 

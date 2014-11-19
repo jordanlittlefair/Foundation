@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _UTILITYDEBUG_HPP_
-#define _UTILITYDEBUG_HPP_
+#ifndef _UTILITY_DEBUG_HPP_
+#define _UTILITY_DEBUG_HPP_
 
 #include <cassert>
 #include <Windows.h>

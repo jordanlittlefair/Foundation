@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _GAUSSIAN_
-#define _GAUSSIAN_
+#ifndef _MATH_GAUSSIAN_
+#define _MATH_GAUSSIAN_
 
 namespace Fnd
 {

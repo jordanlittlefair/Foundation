@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _WORLDLOADER_HPP_
-#define _WORLDLOADER_HPP_
+#ifndef _WORLDLOADER_WORLDLOADER_HPP_
+#define _WORLDLOADER_WORLDLOADER_HPP_
 
 #include <string>
 

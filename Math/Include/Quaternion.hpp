@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _QUATERNION_HPP_
-#define _QUATERNION_HPP_
+#ifndef _MATH_QUATERNION_HPP_
+#define _MATH_QUATERNION_HPP_
 
 #include <cmath>
 #include "Vector3.hpp"

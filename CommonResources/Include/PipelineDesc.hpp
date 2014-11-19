@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _PIPELINEDESC_HPP_
-#define _PIPELINEDESC_HPP_
+#ifndef _COMMONRESOURCES_PIPELINEDESC_HPP_
+#define _COMMONRESOURCES_PIPELINEDESC_HPP_
 
 #include <string>
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _ASSETMANAGER_HPP_
-#define _ASSETMANAGER_HPP_
+#ifndef _ASSETMANAGER_ASSETMANAGER_HPP_
+#define _ASSETMANAGER_ASSETMANAGER_HPP_
 
 #include "../../Utility/Include/XmlManager.hpp"
 #include "../../Utility/Include/IdGenerator.hpp"

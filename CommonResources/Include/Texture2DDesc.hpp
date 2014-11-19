@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _TEXTURE2DDESC_HPP_
-#define _TEXTURE2DDESC_HPP_
+#ifndef _COMMONRESOURCES_TEXTURE2DDESC_HPP_
+#define _COMMONRESOURCES_TEXTURE2DDESC_HPP_
 
 #include <string>
 

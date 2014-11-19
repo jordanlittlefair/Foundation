@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _FRAMEDATA_HPP_
-#define _FRAMEDATA_HPP_
+#ifndef _COMMONRESOURCES_FRAMEDATA_HPP_
+#define _COMMONRESOURCES_FRAMEDATA_HPP_
 
 namespace Fnd
 {

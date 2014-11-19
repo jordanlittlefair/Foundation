@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _SETUP_HPP_
-#define _SETUP_HPP_
+#ifndef _SETUP_SETUP_HPP_
+#define _SETUP_SETUP_HPP_
 
 #include "GameComponentData.hpp"
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _ASSETLINKERSYSTEM_HPP_
-#define _ASSETLINKERSYSTEM_HPP_
+#ifndef _GAMESYSTEMS_ASSETLINKERSYSTEM_HPP_
+#define _GAMESYSTEMS_ASSETLINKERSYSTEM_HPP_
 
 #include "../../EntitySystem/Include/System.hpp"
 

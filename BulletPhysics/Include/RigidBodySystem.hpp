@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _PHYSICSSYSTEM_HPP_
-#define _PHYSICSSYSTEM_HPP_
+#ifndef _BULLETPHYSICS_PHYSICSSYSTEM_HPP_
+#define _BULLETPHYSICS_PHYSICSSYSTEM_HPP_
 
 #include "BulletPhysicsSystem.hpp"
 #include <memory>

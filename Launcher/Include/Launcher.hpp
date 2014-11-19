@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _LAUNCHER_HPP_
-#define _LAUNCHER_HPP_
+#ifndef _LAUNCHER_LAUNCHER_HPP_
+#define _LAUNCHER_LAUNCHER_HPP_
 
 #include <string>
 

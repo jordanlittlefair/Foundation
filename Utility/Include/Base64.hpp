@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _BASE64_HPP_
-#define _BASE64_HPP_
+#ifndef _UTILITY_BASE64_HPP_
+#define _UTILITY_BASE64_HPP_
 
 #include <vector>
 #include <string>

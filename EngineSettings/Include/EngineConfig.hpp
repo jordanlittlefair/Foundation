@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _ENGINECONFIG_HPP_
-#define _ENGINECONFIG_HPP_
+#ifndef _ENGINESETTINGS_ENGINECONFIG_HPP_
+#define _ENGINESETTINGS_ENGINECONFIG_HPP_
 
 #include <string>
 

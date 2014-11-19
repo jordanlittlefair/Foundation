@@ -67,7 +67,7 @@ void CodeGenerator::WriteHeaderGuardStart()
 		}
 	}
 	
-	def = "_" + def.substr( def.find_last_of('\\')+1, std::string::npos ) + "_";
+	def = "_ENTITYSYSTEM_" + def.substr( def.find_last_of('\\')+1, std::string::npos ) + "_";
 
 	_file << "#ifndef " << def << '\n';
 	_file << "#define " << def << "\n\n";

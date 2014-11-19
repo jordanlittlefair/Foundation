@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _COMPONENT_HPP_
-#define _COMPONENT_HPP_
+#ifndef _ENTITYSYSTEM_COMPONENT_HPP_
+#define _ENTITYSYSTEM_COMPONENT_HPP_
 
 #include "ComponentId.hpp"
 

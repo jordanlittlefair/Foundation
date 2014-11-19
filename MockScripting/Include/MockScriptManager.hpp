@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _MOCKSCRIPTMANAGER_HPP_
-#define _MOCKSCRIPTMANAGER_HPP_
+#ifndef _MOCKSCRIPTINGMOCKSCRIPTMANAGER_HPP_
+#define _MOCKSCRIPTINGMOCKSCRIPTMANAGER_HPP_
 
 #include "../../Scripting/Include/ScriptManager.hpp"
 

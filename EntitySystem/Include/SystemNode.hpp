@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _SYSTEMNODE_HPP_
-#define _SYSTEMNODE_HPP_
+#ifndef _ENTITYSYSTEM_SYSTEMNODE_HPP_
+#define _ENTITYSYSTEM_SYSTEMNODE_HPP_
 
 #include <string>
 

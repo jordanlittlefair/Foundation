@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _SCRIPT_HPP_
-#define _SCRIPT_HPP_
+#ifndef _SCRIPTING_SCRIPT_HPP_
+#define _SCRIPTING_SCRIPT_HPP_
 
 #include "../../CommonResources/Include/FrameData.hpp"
 

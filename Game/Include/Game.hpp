@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _GAME_HPP_
-#define _GAME_HPP_
+#ifndef _GAME_GAME_HPP_
+#define _GAME_GAME_HPP_
 
 #include "../../GameComponentInterfaces/Include/IWindowMessageListener.hpp"
 #include "../../GameComponentInterfaces/Include/IGraphicsMessageListener.hpp"

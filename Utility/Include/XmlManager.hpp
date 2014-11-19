@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _XMLMANAGER_HPP_
-#define _XMLMANAGER_HPP_
+#ifndef _UTILITY_XMLMANAGER_HPP_
+#define _UTILITY_XMLMANAGER_HPP_
 
 #include "rapidxml/rapidxml.hpp"
 

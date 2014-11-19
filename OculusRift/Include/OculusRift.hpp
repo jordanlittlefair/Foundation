@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _OCULUSRIFT_HPP_
-#define _OCULUSRIFT_HPP_
+#ifndef _OCULUSRIFT_OCULUSRIFT_HPP_
+#define _OCULUSRIFT_OCULUSRIFT_HPP_
 
 #include "../../GameComponentInterfaces/Include/IWindow.hpp"
 #include "../../GameComponentInterfaces/Include/IGraphics.hpp"

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _DX11GRAPHICS_BASE_HPP_
-#define _DX11GRAPHICS_BASE_HPP_
+#ifndef _DIRECTX11GRAPHICS_DIRECTX11GRAPHICSBASE_HPP_
+#define _DIRECTX11GRAPHICS_DIRECTX11GRAPHICSBASE_HPP_
 
 #include "../../GameComponentInterfaces/Include/IGraphics.hpp"
 #include "DirectX11Resources.hpp"

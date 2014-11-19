@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _UTILITY_HPP_
-#define _UTILITY_HPP_
+#ifndef _UTILITY_UTILITY_HPP_
+#define _UTILITY_UTILITY_HPP_
 
 namespace Fnd
 {

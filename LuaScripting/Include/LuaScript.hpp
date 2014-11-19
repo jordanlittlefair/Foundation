@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _LUASCRIPT_HPP_
-#define _LUASCRIPT_HPP_
+#ifndef _LUASCRIPTING_LUASCRIPT_HPP_
+#define _LUASCRIPTING_LUASCRIPT_HPP_
 
 #include <string>
 

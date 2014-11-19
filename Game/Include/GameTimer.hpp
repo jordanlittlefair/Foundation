@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _GAMETIMER_
-#define _GAMETIMER_
+#ifndef _GAME_GAMETIMER_
+#define _GAME_GAMETIMER_
 
 #include <chrono>
 

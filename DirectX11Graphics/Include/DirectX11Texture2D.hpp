@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _DIRECTX11TEXTURE2D_HPP_
-#define _DIRECTX11TEXTURE2D_HPP_
+#ifndef _DIRECTX11GRAPHICS_DIRECTX11TEXTURE2D_HPP_
+#define _DIRECTX11GRAPHICS_DIRECTX11TEXTURE2D_HPP_
 
 #include "../../AssetManager/Include/Texture2D.hpp"
 
