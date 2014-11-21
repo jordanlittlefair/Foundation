@@ -9,7 +9,7 @@
 #include "../../GameComponentInterfaces/Include/IWorldMessageListener.hpp"
 #include "../../GameComponentInterfaces/Include/IAssetManagerMessageListener.hpp"
 
-#include "../../Configuration/Include/Configuration.hpp"
+#include "../../Settings/Include/EngineSettings.hpp"
 
 #include <memory>
 #include <vector>
@@ -67,7 +67,7 @@ class Game:
 		/**
 			Default Constructor.
 		*/
-		Game( const Fnd::Configuration::Config& config );
+		Game( const Fnd::Settings::Config& config );
 
 		// Set the Window.
 		void SetWindow( Fnd::GameComponentInterfaces::IWindow* window );
@@ -168,7 +168,7 @@ class Game:
 
 		std::vector<std::shared_ptr<Fnd::EntitySystem::System>> _systems;
 
-		Fnd::Configuration::Config _config;
+		Fnd::Settings::Config _config;
 };
 
 }

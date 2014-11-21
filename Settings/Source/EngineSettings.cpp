@@ -1,11 +1,11 @@
-#include "../Include/Configuration.hpp"
+#include "../Include/EngineSettings.hpp"
 #include "../../Utility/Include/XmlManager.hpp"
 
-using namespace Fnd::Configuration;
+using namespace Fnd::Settings;
 using namespace Fnd::Utility;
 
 
-bool Configuration::LoadConfiguration( const std::string& filename )
+bool EngineSettings::LoadConfiguration( const std::string& filename )
 {
 	auto last_slash = filename.find_last_of('/');
 	std::string directory = ( last_slash != std::string::npos ) ? filename.substr(0,filename.find_last_of('/')) + '/' : "";
@@ -92,13 +92,13 @@ bool Configuration::LoadConfiguration( const std::string& filename )
 	return true;
 }
 
-bool Configuration::LoadWindowImplementation( const std::string& directory, const std::string& filename, const std::string& name )
+bool EngineSettings::LoadWindowImplementation( const std::string& directory, const std::string& filename, const std::string& name )
 {
 	// There are currently no window config files in the Engine.
 	return true;
 }
 
-bool Configuration::LoadGraphicsCommon( const std::string& directory, const std::string& filename )
+bool EngineSettings::LoadGraphicsCommon( const std::string& directory, const std::string& filename )
 {
 	XmlManager setup_xml;
 	if ( !setup_xml.CreateFromFile( directory + filename ) )
@@ -200,7 +200,7 @@ bool Configuration::LoadGraphicsCommon( const std::string& directory, const std:
 	return true;
 }
 
-bool Configuration::LoadGraphicsImplementation( const std::string& directory, const std::string& filename, const std::string& name )
+bool EngineSettings::LoadGraphicsImplementation( const std::string& directory, const std::string& filename, const std::string& name )
 {
 	XmlManager setup_xml;
 	if ( !setup_xml.CreateFromFile( directory + filename ) )
@@ -284,12 +284,12 @@ bool Configuration::LoadGraphicsImplementation( const std::string& directory, co
 	return true;
 }
 
-const Config& Configuration::GetConfig() const
+const Config& EngineSettings::GetConfig() const
 {
 	return _config;
 }
 
-Config& Configuration::GetConfigNonConst()
+Config& EngineSettings::GetConfigNonConst()
 {
 	return _config;
 }

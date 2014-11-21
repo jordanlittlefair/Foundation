@@ -24,12 +24,18 @@
     <ClInclude Include="Include\GameComponentSettings.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Include\EngineSettings.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\EngineConfig.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\ApplicationSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EngineSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

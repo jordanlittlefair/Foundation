@@ -12,7 +12,7 @@
 
 #include "../../LuaScripting/Include/LuaScripting.hpp"
 
-#include "../../Configuration/Include/Configuration.hpp"
+#include "../../Settings/Include/EngineSettings.hpp"
 #include "../../Utility/Include/FileSystem.hpp"
 
 #include "../../Settings/Include/ApplicationSettings.hpp"
@@ -62,7 +62,7 @@ WinMain (	_In_ struct HINSTANCE__* hIinstance,
 	*/
 
 	const std::string config_file = "EngineSettings.xml";
-	Fnd::Configuration::Configuration config;
+	Fnd::Settings::EngineSettings config;
 	if ( !config.LoadConfiguration(config_file) )
 	{
 		Fnd::Utility::BlockingMessageBox( "Error", "Failed to load and parse \"" + config_file + "\"." );
@@ -92,6 +92,14 @@ WinMain (	_In_ struct HINSTANCE__* hIinstance,
 	if ( !( window && graphics && physics && world && scripting ) )
 	{
 		Fnd::Utility::BlockingMessageBox( "Error", "Failed to create game components." );
+		/*
+			Release the game components.
+		*/
+		component_factory.Release(world);
+		component_factory.Release(physics);
+		component_factory.Release(graphics);
+		component_factory.Release(window);
+		component_factory.Release(scripting);
 		return 2;
 	}
 

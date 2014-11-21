@@ -20,12 +20,14 @@
 #include "../../GameSystems/Include/SceneGraphSystem.hpp"
 #include "../../GameSystems/Include/AssetLinkerSystem.hpp"
 #include "../../OculusRift/Include/OculusRift.hpp"
+#include "../../Settings/Include/EngineSettings.hpp"
+#include "../../Settings/Include/EngineConfig.hpp"
 
 using namespace Fnd::GameComponentInterfaces;
 using namespace Fnd::Game;
 using namespace Fnd::Logger;
 
-Game::Game( const Fnd::Configuration::Config& config ):
+Game::Game( const Fnd::Settings::Config& config ):
 	_is_initialised(false),
 	_window(nullptr),
 	_graphics(nullptr),

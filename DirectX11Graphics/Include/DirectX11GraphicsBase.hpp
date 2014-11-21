@@ -6,7 +6,7 @@
 #include "../../GameComponentInterfaces/Include/IGraphics.hpp"
 #include "DirectX11Resources.hpp"
 #include "ScreenBufferResources.hpp"
-#include "../../Configuration/Include/Configuration.hpp"
+#include "../../Settings/Include/EngineSettings.hpp"
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
@@ -70,7 +70,7 @@ class DirectX11GraphicsBase:
 		// The derived Graphics class calls IGraphicsMessageListener methods to get data needed from the Game class.
 		void SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game );
 
-		void SetConfig( const Fnd::Configuration::GraphicsConfig& config );
+		void SetConfig( const Fnd::Settings::GraphicsConfig& config );
 
 		void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system );
 
@@ -164,7 +164,7 @@ class DirectX11GraphicsBase:
 		// Height of the screen.
 		unsigned int _height;
 
-		Fnd::Configuration::GraphicsConfig _config;
+		Fnd::Settings::GraphicsConfig _config;
 		Fnd::EntitySystem::EntitySystem* _entity_system;
 		DirectX11Resources _resources;
 

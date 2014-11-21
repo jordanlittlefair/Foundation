@@ -6,7 +6,7 @@
 #include <string>
 
 #include "../../Utility/Include/XmlManager.hpp"
-#include "../../Configuration/Include/Configuration.hpp"
+#include "../../Settings/Include/EngineSettings.hpp"
 #include "../../Settings/Include/GameComponentSettings.hpp"
 
 namespace Fnd
@@ -41,14 +41,14 @@ class GameComponentFactory
 			Returns null if the creation of the window failed.
 			@return Returns a pointer to the IWindow interface of the window.
 		*/
-		Fnd::GameComponentInterfaces::IWindow* GetWindowComponent( const Fnd::Settings::WindowSettings& window_data, Fnd::Configuration::WindowConfig& window_config );
+		Fnd::GameComponentInterfaces::IWindow* GetWindowComponent( const Fnd::Settings::WindowSettings& window_data, Fnd::Settings::WindowConfig& window_config );
 
 		/**
 			Get the graphics implementation described by the setup file.
 			Returns null if the creation of the graphics failed.
 			@return Returns a pointer to the IGraphics interface of the graphics.
 		*/
-		Fnd::GameComponentInterfaces::IGraphics* GetGraphicsComponent( const Fnd::Settings::GraphicsSettings& graphics_data, Fnd::Configuration::GraphicsConfig& graphics_config );
+		Fnd::GameComponentInterfaces::IGraphics* GetGraphicsComponent( const Fnd::Settings::GraphicsSettings& graphics_data, Fnd::Settings::GraphicsConfig& graphics_config );
 
 		Fnd::GameComponentInterfaces::IPhysics* GetPhysicsComponent( const Fnd::Settings::PhysicsSettings& physics_data );
 

@@ -25,7 +25,7 @@ class ApplicationSettings
 
 	private:
 
-		bool CheckCompatibility();
+		bool CheckCompatibility( EngineConfig::Config config );
 		
 		LoggerSettings _logger_settings;
 		WindowSettings _window_settings;

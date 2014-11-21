@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _CONFIGURATION_CONFIGURATION_HPP_
-#define _CONFIGURATION_CONFIGURATION_HPP_
+#ifndef _SETTINGS_ENGINESETTINGS_HPP_
+#define _SETTINGS_ENGINESETTINGS_HPP_
 
 #include "../../CommonResources/Include/Texture2DDesc.hpp"
 #include "../../CommonResources/Include/PipelineDesc.hpp"
@@ -11,7 +11,7 @@
 
 namespace Fnd
 {
-namespace Configuration
+namespace Settings
 {
 struct WindowConfig
 {
@@ -56,7 +56,7 @@ struct Config
 	GraphicsConfig graphics_config;
 };
 
-class Configuration
+class EngineSettings
 {
 public:
 	bool LoadConfiguration( const std::string& filename );

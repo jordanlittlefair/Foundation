@@ -98,9 +98,6 @@
     <ProjectReference Include="..\BulletPhysics\BulletPhysics.vcxproj">
       <Project>{5fa7878b-a97b-4a49-a7fd-d179da35ea7d}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Configuration\Configuration.vcxproj">
-      <Project>{3abd78b1-bb1d-49a3-9ca9-3aa20eb0ea1a}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\EntitySystem\EntitySystem.vcxproj">
       <Project>{fd522682-759f-46d6-ae98-9dce1dfe4d4a}</Project>
     </ProjectReference>

@@ -8,6 +8,7 @@
 
 #include "../../Math/Include/Vector3.hpp"
 #include "../../Math/Include/Quaternion.hpp"
+#include "../../Settings/Include/EngineSettings.hpp"
 
 namespace Fnd
 {
@@ -19,10 +20,6 @@ namespace GameComponentInterfaces
 
 namespace Fnd
 {
-namespace Configuration
-{
-struct GraphicsConfig;
-}
 namespace AssetManager
 {
 class Texture2D;
@@ -55,7 +52,7 @@ class IGraphics
 		*/
 		virtual void SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game ) = 0;
 
-		virtual void SetConfig( const Fnd::Configuration::GraphicsConfig& config ) = 0;
+		virtual void SetConfig( const Fnd::Settings::GraphicsConfig& config ) = 0;
 
 		virtual void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system ) = 0;
 

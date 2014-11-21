@@ -32,7 +32,7 @@ using namespace Fnd::Logger;
 	#include "../../XWindowsWindow/Include/XWindowsWindow.hpp"
 #endif
 
-IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::WindowSettings& window_data, Fnd::Configuration::WindowConfig& window_config )
+IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::WindowSettings& window_data, Fnd::Settings::WindowConfig& window_config )
 {
 	window_config.implementation = window_data.implementation;
 
@@ -50,19 +50,19 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::WindowSe
 	/*
 		Check the 'implementation' against all existing implementations.
 	*/
-	if ( Settings::EngineConfig::GetWindowImplementationString(window_data.implementation) == "Win32Window" )
+	switch (window_data.implementation)
 	{
+	case Fnd::Settings::EngineConfig::Win32Window_implementation:
 #ifdef WIN32WINDOW
 		window = new Fnd::Win32Window::Win32Window();
 #endif
-	}
-	if ( Settings::EngineConfig::GetWindowImplementationString(window_data.implementation) == "XWindowsWindow" )
-	{
+		break;
+	case Fnd::Settings::EngineConfig::XWindowsWindow_implementation:
 #ifdef XWINDOWSWINDOW
 		window = new Fnd::XWindowsWindow::XWindowsWindow();
 #endif
+		break;
 	}
-	// TODO: Check other implementations.
 
 	if ( !window )
 	{
@@ -88,7 +88,7 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::WindowSe
 	#include "../../DirectX11Graphics/Include/DirectX11Graphics.hpp"
 #endif
 
-IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::GraphicsSettings& graphics_data, Fnd::Configuration::GraphicsConfig& graphics_config )
+IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::GraphicsSettings& graphics_data, Fnd::Settings::GraphicsConfig& graphics_config )
 {
 	graphics_config.implementation = Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation);
 
@@ -104,20 +104,20 @@ IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::Grap
 	/*
 		Check the 'implementation' against all existing implementations.
 	*/
-	if ( Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation) == "OpenGLGraphics" )
+	switch (graphics_data.implementation)
 	{
-#ifdef OPENGLGRAPHICS
-		graphics = new Fnd::OpenGLGraphics::OpenGLGraphics();
-#endif
-	}
-	else
-	if ( Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation) == "DirectX11Graphics" )
-	{
+	case Fnd::Settings::EngineConfig::DirectX11Graphics_implementation:
 #ifdef DIRECTX11GRAPHICS
 		graphics = new Fnd::DirectX11Graphics::DirectX11Graphics();
 #endif
+		break;
+	case Fnd::Settings::EngineConfig::OpenGLGraphics_implementation:
+#ifdef OPENGLGRAPHICS
+		graphics = new Fnd::OpenGLGraphics::OpenGLGraphics();
+#endif
+		break;
 	}
-	// TODO: Check other implementations.
+
 
 	if ( !graphics )
 	{
@@ -143,11 +143,12 @@ Fnd::GameComponentInterfaces::IPhysics* GameComponentFactory::GetPhysicsComponen
 	/*
 		Check the 'implementation' against all existing implementations.
 	*/
-	if ( Settings::EngineConfig::GetPhysicsImplementationString(physics_data.implementation) == "Bullet" )
+	switch (physics_data.implementation)
 	{
+	case Fnd::Settings::EngineConfig::BulletPhysics_implementation:
 		physics = new Fnd::BulletPhysics::BulletPhysics();
+		break;
 	}
-	// TODO: Check other implementations.
 
 	if ( !physics )
 	{
@@ -171,11 +172,12 @@ Fnd::GameComponentInterfaces::IWorld* GameComponentFactory::GetWorldComponent( c
 	/*
 		Check the 'implementation' against all existing implementations.
 	*/
-	if ( Settings::EngineConfig::GetWorldImplementationString(world_data.implementation) == "LoadedWorld" )
+	switch (world_data.implementation)
 	{
+	case Fnd::Settings::EngineConfig::LoadedWorld_implementation:
 		world = new Fnd::LoadedWorld::LoadedWorld();
+		break;
 	}
-	// TODO: Check other implementations.
 
 	if ( !world )
 	{
@@ -201,11 +203,15 @@ Fnd::Scripting::ScriptManager* GameComponentFactory::GetScriptManager( const Fnd
 	/*
 		Check the 'implementation' against all existing implementations.
 	*/
-	if ( Settings::EngineConfig::GetScriptingImplementationString(scripting_data.implementation) == "Mock" )
+	switch (scripting_data.implementation)
 	{
+	case Fnd::Settings::EngineConfig::MockScripting_implementation:
 		scripting = new Fnd::MockScripting::MockScriptManager();
+		break;
+	case Fnd::Settings::EngineConfig::LuaScripting_implementation:
+		scripting = nullptr;
+		break;
 	}
-	// TODO: Check other implementations.
 
 	if ( !scripting )
 	{

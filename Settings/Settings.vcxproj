@@ -73,11 +73,13 @@
   <ItemGroup>
     <ClInclude Include="Include\ApplicationSettings.hpp" />
     <ClInclude Include="Include\EngineConfig.hpp" />
+    <ClInclude Include="Include\EngineSettings.hpp" />
     <ClInclude Include="Include\GameComponentSettings.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\ApplicationSettings.cpp" />
     <ClCompile Include="Source\EngineConfig.cpp" />
+    <ClCompile Include="Source\EngineSettings.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

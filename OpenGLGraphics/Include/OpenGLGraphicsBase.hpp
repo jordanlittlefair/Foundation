@@ -29,7 +29,7 @@ class OpenGLGraphicsBase:
 		*/
 		void SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game );
 
-		void SetConfig( const Fnd::Configuration::GraphicsConfig& config );
+		void SetConfig( const Fnd::Settings::GraphicsConfig& config );
 
 		void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system );
 

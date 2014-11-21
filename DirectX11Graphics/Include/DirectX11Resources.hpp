@@ -3,7 +3,7 @@
 #ifndef _DIRECTX11GRAPHICS_DIRECTX11RESOURCES_HPP_
 #define _DIRECTX11GRAPHICS_DIRECTX11RESOURCES_HPP_
 
-#include "../../Configuration/Include/Configuration.hpp"
+#include "../../Settings/Include/EngineSettings.hpp"
 #include "../../Math/Include/Math.hpp"
 
 #include <vector>
@@ -59,7 +59,7 @@ class DirectX11Resources
 
 		DirectX11Resources( DirectX11GraphicsBase* graphics );
 
-		void SetConfig( const Fnd::Configuration::GraphicsConfig& config );
+		void SetConfig( const Fnd::Settings::GraphicsConfig& config );
 
 		bool GetBytecodeFromFile( const std::string& filename, std::vector<char>& buffer ) const;
 		const Fnd::CommonResources::PipelineDesc GetPipelineData( const std::string& pipeline ) const;
@@ -104,8 +104,8 @@ class DirectX11Resources
 		
 		Fnd::DirectX11Graphics::DirectX11GraphicsBase* _graphics;
 
-		Fnd::Configuration::GraphicsConfig::GraphicsImplementation _config;
-		Fnd::Configuration::GraphicsConfig::GraphicsCommon _common;
+		Fnd::Settings::GraphicsConfig::GraphicsImplementation _config;
+		Fnd::Settings::GraphicsConfig::GraphicsCommon _common;
 
 		std::map<std::string,Pipeline> _pipelines;
 		std::map<std::string,Texture2D> _textures;

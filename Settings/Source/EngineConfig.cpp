@@ -60,32 +60,32 @@ EngineConfig::Config EngineConfig::GetConfig( const std::string& config_str )
 
 int EngineConfig::GetCompatibleLoggers( EngineConfig::Config config )
 {
-	return _compatibility_map[LoggerImplementations_offset][config];
+	return _compatibility_map[config][LoggerImplementations_offset];
 }
 
 int EngineConfig::GetCompatibleWindows( EngineConfig::Config config )
 {
-	return _compatibility_map[WindowImplementations_offset][config];
+	return _compatibility_map[config][LoggerImplementations_offset];
 }
 
 int EngineConfig::GetCompatibleGraphics( EngineConfig::Config config )
 {
-	return _compatibility_map[GraphicsImplementations_offset][config];
+	return _compatibility_map[config][LoggerImplementations_offset];
 }
 
 int EngineConfig::GetCompatiblePhysics( EngineConfig::Config config )
 {
-	return _compatibility_map[PhysicsImplementations_offset][config];
+	return _compatibility_map[config][LoggerImplementations_offset];
 }
 
 int EngineConfig::GetCompatibleWorlds( EngineConfig::Config config )
 {
-	return _compatibility_map[WorldImplementations_offset][config];
+	return _compatibility_map[config][LoggerImplementations_offset];
 }
 
 int EngineConfig::GetCompatibleScripting( EngineConfig::Config config )
 {
-	return _compatibility_map[ScriptingImplementations_offset][config];
+	return _compatibility_map[config][LoggerImplementations_offset];
 }
 
 EngineConfig::LoggerImplementation EngineConfig::GetLoggerImplementation( const std::string& str )

@@ -23,10 +23,7 @@ LoggerSettings ReadLoggerSettings( const std::string& directory, rapidxml::xml_n
 		{
 			EngineConfig::LoggerImplementation impl = EngineConfig::GetLoggerImplementation( loggers_iter->name() );
 			
-			if ( impl | EngineConfig::GetCompatibleLoggers( config ) )
-			{
-				ret.implementations |= impl;
-			}
+			ret.implementations |= impl;
 
 			loggers_iter = loggers_iter->next_sibling();
 		}
@@ -63,7 +60,7 @@ WindowSettings ReadWindowSettings( const std::string& directory, rapidxml::xml_n
 		auto attrib = window_node->first_attribute("window");
 		if ( attrib )
 		{
-			ret.implementation = (EngineConfig::WindowImplementation)( EngineConfig::GetWindowImplementation( attrib->value() ) | EngineConfig::GetCompatibleWindows( config ) );
+			ret.implementation = (EngineConfig::WindowImplementation)( EngineConfig::GetWindowImplementation( attrib->value() ) );
 		}
 	}
 	{
@@ -113,7 +110,7 @@ GraphicsSettings ReadGraphicsSetupData( const std::string& directory, rapidxml::
 		auto attrib = graphics_node->first_attribute("graphics");
 		if ( attrib )
 		{
-			ret.implementation = (EngineConfig::GraphicsImplementation)( EngineConfig::GetGraphicsImplementation( attrib->value() ) | EngineConfig::GetCompatibleGraphics( config ) );
+			ret.implementation = (EngineConfig::GraphicsImplementation)( EngineConfig::GetGraphicsImplementation( attrib->value() ) );
 		}
 	}
 
@@ -136,7 +133,7 @@ PhysicsSettings ReadPhysicsSetupData( const std::string& directory, rapidxml::xm
 		auto attrib = physics_node->first_attribute("physics");
 		if ( attrib )
 		{
-			ret.implementation = (EngineConfig::PhysicsImplementation)( EngineConfig::GetPhysicsImplementation( attrib->value() ) | EngineConfig::GetCompatiblePhysics( config ) );
+			ret.implementation = (EngineConfig::PhysicsImplementation)( EngineConfig::GetPhysicsImplementation( attrib->value() ) );
 		}
 	}
 
@@ -151,7 +148,7 @@ WorldSettings ReadWorldSetupData( const std::string& directory, rapidxml::xml_no
 		auto attrib = world_node->first_attribute("world");
 		if ( attrib )
 		{
-			ret.implementation = (EngineConfig::WorldImplementation)( EngineConfig::GetWindowImplementation( attrib->value() ) | EngineConfig::GetCompatibleWorlds( config ) );
+			ret.implementation = (EngineConfig::WorldImplementation)( EngineConfig::GetWorldImplementation( attrib->value() ) );
 		}
 	}
 
@@ -202,7 +199,7 @@ ScriptingSettings ReadScriptingSetupData( const std::string& directory, rapidxml
 		auto attrib = scripting_node->first_attribute("scripting");
 		if ( attrib )
 		{
-			ret.implementation = (EngineConfig::ScriptingImplementation)( EngineConfig::GetScriptingImplementation( attrib->value() ) | EngineConfig::GetCompatibleScripting( config ) );
+			ret.implementation = (EngineConfig::ScriptingImplementation)( EngineConfig::GetScriptingImplementation( attrib->value() ) );
 		}
 	}
 
@@ -325,7 +322,7 @@ bool ApplicationSettings::LoadSetupFile( const std::string& directory, const std
 		BlockingMessageBox( "Setup Error", "Failed to read 'Setup.xml'.\nApplication will exit." );
 	}
 
-	return ret && CheckCompatibility();
+	return ret && CheckCompatibility( config );
 }
 
 const LoggerSettings& ApplicationSettings::GetLoggerSettings() const
@@ -358,8 +355,13 @@ const ScriptingSettings& ApplicationSettings::GetScriptingSettings() const
 	return _scripting_settings;
 }
 
-bool ApplicationSettings::CheckCompatibility()
+bool ApplicationSettings::CheckCompatibility( EngineConfig::Config config )
 {
-
-	return false;
+	return
+	 	( EngineConfig::GetCompatibleLoggers(config) & _logger_settings.implementations ) &&
+		( EngineConfig::GetCompatibleWindows(config) & _window_settings.implementation ) &&
+		( EngineConfig::GetCompatibleGraphics(config) & _graphics_settings.implementation ) &&
+		( EngineConfig::GetCompatiblePhysics(config) & _physics_settings.implementation ) &&
+		( EngineConfig::GetCompatibleWorlds(config) & _world_settings.implementation ) &&
+		( EngineConfig::GetCompatibleScripting(config) & _scripting_settings.implementation );
 }

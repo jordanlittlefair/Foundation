@@ -33,8 +33,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AssetManager", "AssetManage
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelLoader", "ModelLoader\ModelLoader.vcxproj", "{F328E5BA-27A1-4CDE-8203-DFC65808BD6D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Configuration", "Configuration\Configuration.vcxproj", "{3ABD78B1-BB1D-49A3-9CA9-3AA20EB0EA1A}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletPhysics", "BulletPhysics\BulletPhysics.vcxproj", "{5FA7878B-A97B-4A49-A7FD-D179DA35EA7D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaScripting", "LuaScripting\LuaScripting.vcxproj", "{85816F80-E85D-445F-B1B8-2F61EAFD41A2}"
@@ -166,12 +164,6 @@ Global
 		{F328E5BA-27A1-4CDE-8203-DFC65808BD6D}.Release|Win32.ActiveCfg = Release|Win32
 		{F328E5BA-27A1-4CDE-8203-DFC65808BD6D}.Release|Win32.Build.0 = Release|Win32
 		{F328E5BA-27A1-4CDE-8203-DFC65808BD6D}.Release|x64.ActiveCfg = Release|Win32
-		{3ABD78B1-BB1D-49A3-9CA9-3AA20EB0EA1A}.Debug|Win32.ActiveCfg = Debug|Win32
-		{3ABD78B1-BB1D-49A3-9CA9-3AA20EB0EA1A}.Debug|Win32.Build.0 = Debug|Win32
-		{3ABD78B1-BB1D-49A3-9CA9-3AA20EB0EA1A}.Debug|x64.ActiveCfg = Debug|Win32
-		{3ABD78B1-BB1D-49A3-9CA9-3AA20EB0EA1A}.Release|Win32.ActiveCfg = Release|Win32
-		{3ABD78B1-BB1D-49A3-9CA9-3AA20EB0EA1A}.Release|Win32.Build.0 = Release|Win32
-		{3ABD78B1-BB1D-49A3-9CA9-3AA20EB0EA1A}.Release|x64.ActiveCfg = Release|Win32
 		{5FA7878B-A97B-4A49-A7FD-D179DA35EA7D}.Debug|Win32.ActiveCfg = Debug|Win32
 		{5FA7878B-A97B-4A49-A7FD-D179DA35EA7D}.Debug|Win32.Build.0 = Debug|Win32
 		{5FA7878B-A97B-4A49-A7FD-D179DA35EA7D}.Debug|x64.ActiveCfg = Debug|Win32

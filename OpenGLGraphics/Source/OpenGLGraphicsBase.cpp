@@ -25,7 +25,7 @@ void OpenGLGraphicsBase::SetGraphicsMessageListener( IGraphicsMessageListener* g
 	_game = game;
 }
 
-void OpenGLGraphicsBase::SetConfig( const Fnd::Configuration::GraphicsConfig& config )
+void OpenGLGraphicsBase::SetConfig( const Fnd::Settings::GraphicsConfig& config )
 {
 	// TODO
 }
