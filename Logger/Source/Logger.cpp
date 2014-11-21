@@ -1,7 +1,7 @@
 #include "../Include/Logger.hpp"
 
 #include "../../HTTPClient/Include/HTTPClient.hpp"
-#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/ApplicationSettings.hpp"
 #include "../../Settings/Include/EngineConfig.hpp"
 
 #include "../Include/ILogger.hpp"
@@ -22,7 +22,7 @@ Logger& Logger::GetInstance()
 	return logger;
 }
 
-bool Logger::Initialise( const Fnd::Settings::LoggerSettings& logger_data )
+bool Logger::Initialise( const Fnd::Settings::ApplicationSettings::LoggerSettings& logger_data )
 {
 	if ( logger_data.implementations | Settings::EngineConfig::NetworkLogger_implementation )
 	{
@@ -53,7 +53,7 @@ bool Logger::Initialise( const Fnd::Settings::LoggerSettings& logger_data )
 	return true;
 }
 
-void Logger::SetWindowSetupData( const Fnd::Settings::WindowSettings& window_data )
+void Logger::SetWindowSetupData( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data )
 {
 	for ( unsigned int i = 0; i < _impl.size(); ++i )
 	{
@@ -61,7 +61,7 @@ void Logger::SetWindowSetupData( const Fnd::Settings::WindowSettings& window_dat
 	}
 }
 
-void Logger::SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings& graphics_data )
+void Logger::SetGraphicsSetupData( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data )
 {
 	for ( unsigned int i = 0; i < _impl.size(); ++i )
 	{
@@ -69,7 +69,7 @@ void Logger::SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings& graphi
 	}
 }
 
-void Logger::SetWorldSetupData( const Fnd::Settings::WorldSettings& world_data )
+void Logger::SetWorldSetupData( const Fnd::Settings::ApplicationSettings::WorldSettings& world_data )
 {
 	for ( unsigned int i = 0; i < _impl.size(); ++i )
 	{

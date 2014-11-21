@@ -6,7 +6,7 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/ApplicationSettings.hpp"
 
 namespace Fnd
 {
@@ -69,7 +69,7 @@ class IWorld
 
 		virtual void SetWorldMessageListener( Fnd::GameComponentInterfaces::IWorldMessageListener* game ) = 0;
 
-		virtual void SetWorldSetupData( const Fnd::Settings::WorldSettings& world_setup_data ) = 0;
+		virtual void SetWorldSetupData( const Fnd::Settings::ApplicationSettings::WorldSettings& world_setup_data ) = 0;
 
 		virtual bool Initialise() = 0;
 

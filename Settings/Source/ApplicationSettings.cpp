@@ -9,9 +9,9 @@ using namespace Fnd::Utility;
 namespace ApplicationSettingsHelper
 {
 
-LoggerSettings ReadLoggerSettings( const std::string& directory, rapidxml::xml_node<char>* logger_node, EngineConfig::Config config )
+ApplicationSettings::LoggerSettings ReadLoggerSettings( const std::string& directory, rapidxml::xml_node<char>* logger_node, EngineConfig::Config config )
 {
-	LoggerSettings ret;
+	ApplicationSettings::LoggerSettings ret;
 	ret.implementations = 0;
 	ret.server = "";
 	ret.port = "";
@@ -46,9 +46,9 @@ LoggerSettings ReadLoggerSettings( const std::string& directory, rapidxml::xml_n
 	return ret;
 } 
 
-WindowSettings ReadWindowSettings( const std::string& directory, rapidxml::xml_node<char>* window_node, EngineConfig::Config config )
+ApplicationSettings::WindowSettings ReadWindowSettings( const std::string& directory, rapidxml::xml_node<char>* window_node, EngineConfig::Config config )
 {
-	WindowSettings ret;
+	ApplicationSettings::WindowSettings ret;
 	ret.implementation = EngineConfig::InvalidWindow_implementation;
 	ret.window_title = "Unknown";
 	ret.initial_width = 0;
@@ -102,9 +102,9 @@ WindowSettings ReadWindowSettings( const std::string& directory, rapidxml::xml_n
 	return ret;
 }
 
-GraphicsSettings ReadGraphicsSetupData( const std::string& directory, rapidxml::xml_node<char>* graphics_node, EngineConfig::Config config )
+ApplicationSettings::GraphicsSettings ReadGraphicsSetupData( const std::string& directory, rapidxml::xml_node<char>* graphics_node, EngineConfig::Config config )
 {
-	GraphicsSettings ret;
+	ApplicationSettings::GraphicsSettings ret;
 
 	{
 		auto attrib = graphics_node->first_attribute("graphics");
@@ -125,9 +125,9 @@ GraphicsSettings ReadGraphicsSetupData( const std::string& directory, rapidxml::
 	return ret;
 }
 
-PhysicsSettings ReadPhysicsSetupData( const std::string& directory, rapidxml::xml_node<char>* physics_node, EngineConfig::Config config )
+ApplicationSettings::PhysicsSettings ReadPhysicsSetupData( const std::string& directory, rapidxml::xml_node<char>* physics_node, EngineConfig::Config config )
 {
-	PhysicsSettings ret;
+	ApplicationSettings::PhysicsSettings ret;
 
 	{
 		auto attrib = physics_node->first_attribute("physics");
@@ -140,9 +140,9 @@ PhysicsSettings ReadPhysicsSetupData( const std::string& directory, rapidxml::xm
 	return ret;
 }
 
-WorldSettings ReadWorldSetupData( const std::string& directory, rapidxml::xml_node<char>* world_node, EngineConfig::Config config )
+ApplicationSettings::WorldSettings ReadWorldSetupData( const std::string& directory, rapidxml::xml_node<char>* world_node, EngineConfig::Config config )
 {
-	WorldSettings ret;
+	ApplicationSettings::WorldSettings ret;
 
 	{
 		auto attrib = world_node->first_attribute("world");
@@ -161,7 +161,7 @@ WorldSettings ReadWorldSetupData( const std::string& directory, rapidxml::xml_no
 
 		if ( index_attrib && file_attrib )
 		{
-			WorldSettings::WorldFile world_file;
+			ApplicationSettings::WorldSettings::WorldFile world_file;
 			world_file.world_filename = directory + file_attrib->value();
 
 			auto assets = world_files_iter->first_node("Assets");
@@ -192,9 +192,9 @@ WorldSettings ReadWorldSetupData( const std::string& directory, rapidxml::xml_no
 	return ret;
 }
 
-ScriptingSettings ReadScriptingSetupData( const std::string& directory, rapidxml::xml_node<char>* scripting_node, EngineConfig::Config config )
+ApplicationSettings::ScriptingSettings ReadScriptingSetupData( const std::string& directory, rapidxml::xml_node<char>* scripting_node, EngineConfig::Config config )
 {
-	ScriptingSettings ret;
+	ApplicationSettings::ScriptingSettings ret;
 	{
 		auto attrib = scripting_node->first_attribute("scripting");
 		if ( attrib )
@@ -325,32 +325,32 @@ bool ApplicationSettings::LoadSetupFile( const std::string& directory, const std
 	return ret && CheckCompatibility( config );
 }
 
-const LoggerSettings& ApplicationSettings::GetLoggerSettings() const
+const ApplicationSettings::LoggerSettings& ApplicationSettings::GetLoggerSettings() const
 {
 	return _logger_settings;
 }
 
-const WindowSettings& ApplicationSettings::GetWindowSettings() const
+const ApplicationSettings::WindowSettings& ApplicationSettings::GetWindowSettings() const
 {
 	return _window_settings;
 }
 
-const GraphicsSettings& ApplicationSettings::GetGraphicsSettings() const
+const ApplicationSettings::GraphicsSettings& ApplicationSettings::GetGraphicsSettings() const
 {
 	return _graphics_settings;
 }
 
-const PhysicsSettings& ApplicationSettings::GetPhysicsSettings() const
+const ApplicationSettings::PhysicsSettings& ApplicationSettings::GetPhysicsSettings() const
 {
 	return _physics_settings;
 }
 
-const WorldSettings& ApplicationSettings::GetWorldSettings() const
+const ApplicationSettings::WorldSettings& ApplicationSettings::GetWorldSettings() const
 {
 	return _world_settings;
 }
 
-const ScriptingSettings& ApplicationSettings::GetScriptingSettings() const
+const ApplicationSettings::ScriptingSettings& ApplicationSettings::GetScriptingSettings() const
 {
 	return _scripting_settings;
 }

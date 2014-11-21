@@ -1,6 +1,6 @@
 #include "../Include/NetworkLogger.hpp"
 
-#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/ApplicationSettings.hpp"
 
 #include <chrono>
 #include <cassert>
@@ -54,7 +54,7 @@ NetworkLogger::~NetworkLogger()
 	// https://connect.microsoft.com/VisualStudio/feedback/details/757212/vs-2012-rc-std-thread-reports-memory-leak-even-on-stack
 }
 
-bool NetworkLogger::Initialise( const Fnd::Settings::LoggerSettings& logger_data )
+bool NetworkLogger::Initialise( const Fnd::Settings::ApplicationSettings::LoggerSettings& logger_data )
 {
 	_http_client.SetServer( logger_data.server );
 	_http_client.SetPort( logger_data.port );
@@ -70,7 +70,7 @@ bool NetworkLogger::Initialise( const Fnd::Settings::LoggerSettings& logger_data
 	return true;
 }
 
-void NetworkLogger::SetWindowSetupData( const Fnd::Settings::WindowSettings& window_data )
+void NetworkLogger::SetWindowSetupData( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data )
 {
 	std::lock_guard<std::mutex> lock(_mutex);
 	
@@ -87,7 +87,7 @@ void NetworkLogger::SetWindowSetupData( const Fnd::Settings::WindowSettings& win
 	_http_client.Send( request, response );
 }
 
-void NetworkLogger::SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings& graphics_data )
+void NetworkLogger::SetGraphicsSetupData( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data )
 {
 	std::lock_guard<std::mutex> lock(_mutex);
 	
@@ -104,7 +104,7 @@ void NetworkLogger::SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings&
 	_http_client.Send( request, response );
 }
 
-void NetworkLogger::SetWorldSetupData( const Fnd::Settings::WorldSettings& world_data )
+void NetworkLogger::SetWorldSetupData( const Fnd::Settings::ApplicationSettings::WorldSettings& world_data )
 {
 	std::lock_guard<std::mutex> lock(_mutex);
 	

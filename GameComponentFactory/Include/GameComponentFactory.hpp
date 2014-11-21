@@ -7,7 +7,7 @@
 
 #include "../../Utility/Include/XmlManager.hpp"
 #include "../../Settings/Include/EngineSettings.hpp"
-#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/ApplicationSettings.hpp"
 
 namespace Fnd
 {
@@ -41,20 +41,20 @@ class GameComponentFactory
 			Returns null if the creation of the window failed.
 			@return Returns a pointer to the IWindow interface of the window.
 		*/
-		Fnd::GameComponentInterfaces::IWindow* GetWindowComponent( const Fnd::Settings::WindowSettings& window_data, Fnd::Settings::WindowConfig& window_config );
+		Fnd::GameComponentInterfaces::IWindow* GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, Fnd::Settings::WindowConfig& window_config );
 
 		/**
 			Get the graphics implementation described by the setup file.
 			Returns null if the creation of the graphics failed.
 			@return Returns a pointer to the IGraphics interface of the graphics.
 		*/
-		Fnd::GameComponentInterfaces::IGraphics* GetGraphicsComponent( const Fnd::Settings::GraphicsSettings& graphics_data, Fnd::Settings::GraphicsConfig& graphics_config );
+		Fnd::GameComponentInterfaces::IGraphics* GetGraphicsComponent( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data, Fnd::Settings::GraphicsConfig& graphics_config );
 
-		Fnd::GameComponentInterfaces::IPhysics* GetPhysicsComponent( const Fnd::Settings::PhysicsSettings& physics_data );
+		Fnd::GameComponentInterfaces::IPhysics* GetPhysicsComponent( const Fnd::Settings::ApplicationSettings::PhysicsSettings& physics_data );
 
-		Fnd::GameComponentInterfaces::IWorld* GetWorldComponent( const Fnd::Settings::WorldSettings& world_data );
+		Fnd::GameComponentInterfaces::IWorld* GetWorldComponent( const Fnd::Settings::ApplicationSettings::WorldSettings& world_data );
 
-		Fnd::Scripting::ScriptManager* GetScriptManager( const Fnd::Settings::ScriptingSettings& scripting_data );
+		Fnd::Scripting::ScriptManager* GetScriptManager( const Fnd::Settings::ApplicationSettings::ScriptingSettings& scripting_data );
 
 		/**
 			Release any resources and delete the window pointer.

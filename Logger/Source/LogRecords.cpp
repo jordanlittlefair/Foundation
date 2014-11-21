@@ -4,7 +4,7 @@
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 
-#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/ApplicationSettings.hpp"
 
 #include <sstream>
 
@@ -27,7 +27,7 @@ std::string Fnd::Logger::ParseLogSessionIdJson( const std::string& json )
 	return ret;
 }
 
-std::string Fnd::Logger::WriteWindowSetupDataJson( const Fnd::Settings::WindowSettings& window_data )
+std::string Fnd::Logger::WriteWindowSetupDataJson( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data )
 {
 	std::string ret;
 
@@ -57,7 +57,7 @@ std::string Fnd::Logger::WriteWindowSetupDataJson( const Fnd::Settings::WindowSe
 	return ret;
 }
 
-std::string Fnd::Logger::WriteGraphicsSetupDataJson( const Fnd::Settings::GraphicsSettings& graphics_data )
+std::string Fnd::Logger::WriteGraphicsSetupDataJson( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data )
 {
 	std::string ret;
 
@@ -79,7 +79,7 @@ std::string Fnd::Logger::WriteGraphicsSetupDataJson( const Fnd::Settings::Graphi
 	return ret;
 }
 
-std::string Fnd::Logger::WriteWorldSetupDataJson( const Fnd::Settings::WorldSettings& world_data )
+std::string Fnd::Logger::WriteWorldSetupDataJson( const Fnd::Settings::ApplicationSettings::WorldSettings& world_data )
 {
 	std::string ret;
 

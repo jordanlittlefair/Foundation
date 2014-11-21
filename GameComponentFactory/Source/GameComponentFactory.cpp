@@ -1,6 +1,6 @@
 #include "../Include/GameComponentFactory.hpp"
 
-#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/ApplicationSettings.hpp"
 #include "../../Utility/Include/MessageBox.hpp"
 
 #include "../../Logger/Include/Logger.hpp"
@@ -32,7 +32,7 @@ using namespace Fnd::Logger;
 	#include "../../XWindowsWindow/Include/XWindowsWindow.hpp"
 #endif
 
-IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::WindowSettings& window_data, Fnd::Settings::WindowConfig& window_config )
+IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, Fnd::Settings::WindowConfig& window_config )
 {
 	window_config.implementation = window_data.implementation;
 
@@ -88,7 +88,7 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::WindowSe
 	#include "../../DirectX11Graphics/Include/DirectX11Graphics.hpp"
 #endif
 
-IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::GraphicsSettings& graphics_data, Fnd::Settings::GraphicsConfig& graphics_config )
+IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data, Fnd::Settings::GraphicsConfig& graphics_config )
 {
 	graphics_config.implementation = Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation);
 
@@ -135,7 +135,7 @@ IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::Grap
 
 #include "../../BulletPhysics/Include/BulletPhysics.hpp"
 
-Fnd::GameComponentInterfaces::IPhysics* GameComponentFactory::GetPhysicsComponent( const Fnd::Settings::PhysicsSettings& physics_data )
+Fnd::GameComponentInterfaces::IPhysics* GameComponentFactory::GetPhysicsComponent( const Fnd::Settings::ApplicationSettings::PhysicsSettings& physics_data )
 {
 	Fnd::Logger::Logger::GetInstance().Log( LogMessage("Creating Physics [" + Settings::EngineConfig::GetPhysicsImplementationString(physics_data.implementation) + "].") );
 	IPhysics* physics = nullptr;
@@ -164,7 +164,7 @@ Fnd::GameComponentInterfaces::IPhysics* GameComponentFactory::GetPhysicsComponen
 
 #include "../../LoadedWorld/Include/LoadedWorld.hpp"
 
-Fnd::GameComponentInterfaces::IWorld* GameComponentFactory::GetWorldComponent( const Fnd::Settings::WorldSettings& world_data )
+Fnd::GameComponentInterfaces::IWorld* GameComponentFactory::GetWorldComponent( const Fnd::Settings::ApplicationSettings::WorldSettings& world_data )
 {
 	Fnd::Logger::Logger::GetInstance().Log( LogMessage("Creating World [" + Settings::EngineConfig::GetWorldImplementationString(world_data.implementation) + "]") );
 	IWorld* world = nullptr;
@@ -195,7 +195,7 @@ Fnd::GameComponentInterfaces::IWorld* GameComponentFactory::GetWorldComponent( c
 
 #include "../../MockScripting/Include/MockScriptManager.hpp"
 
-Fnd::Scripting::ScriptManager* GameComponentFactory::GetScriptManager( const Fnd::Settings::ScriptingSettings& scripting_data )
+Fnd::Scripting::ScriptManager* GameComponentFactory::GetScriptManager( const Fnd::Settings::ApplicationSettings::ScriptingSettings& scripting_data )
 {
 	Fnd::Logger::Logger::GetInstance().Log( LogMessage("Creating Scripting [" + Settings::EngineConfig::GetScriptingImplementationString(scripting_data.implementation) + "]") );
 	Fnd::Scripting::ScriptManager* scripting = nullptr;

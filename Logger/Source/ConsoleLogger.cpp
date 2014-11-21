@@ -1,6 +1,6 @@
 #include "../Include/ConsoleLogger.hpp"
 
-#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/ApplicationSettings.hpp"
 
 using namespace Fnd::Logger;
 
@@ -12,12 +12,12 @@ ConsoleLogger::ConsoleLogger()
 {
 }
 
-bool ConsoleLogger::Initialise( const Fnd::Settings::LoggerSettings& logger_data )
+bool ConsoleLogger::Initialise( const Fnd::Settings::ApplicationSettings::LoggerSettings& logger_data )
 {
 	return true;
 }
 
-void ConsoleLogger::SetWindowSetupData( const Fnd::Settings::WindowSettings& window_data )
+void ConsoleLogger::SetWindowSetupData( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data )
 {
 	std::stringstream ss;
 
@@ -31,7 +31,7 @@ void ConsoleLogger::SetWindowSetupData( const Fnd::Settings::WindowSettings& win
 	OutputDebugString( ss.str().c_str() );
 }
 
-void ConsoleLogger::SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings& graphics_data )
+void ConsoleLogger::SetGraphicsSetupData( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data )
 {
 	std::stringstream ss;
 
@@ -41,7 +41,7 @@ void ConsoleLogger::SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings&
 	OutputDebugString( ss.str().c_str() );
 }
 
-void ConsoleLogger::SetWorldSetupData( const Fnd::Settings::WorldSettings& world_data )
+void ConsoleLogger::SetWorldSetupData( const Fnd::Settings::ApplicationSettings::WorldSettings& world_data )
 {
 	std::stringstream ss;
 

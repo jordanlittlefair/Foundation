@@ -3,7 +3,7 @@
 
 #include "../../Logger/Include/Logger.hpp"
 
-#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/ApplicationSettings.hpp"
 
 #include "../../AssetManager/Include/AssetManager.hpp"
 #include "../../AssetManager/Include/Model.hpp"

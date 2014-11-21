@@ -21,9 +21,6 @@
     <ClInclude Include="Include\ApplicationSettings.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\GameComponentSettings.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Include\EngineSettings.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
