@@ -27,7 +27,7 @@ using namespace Fnd::GameComponentInterfaces;
 using namespace Fnd::Game;
 using namespace Fnd::Logger;
 
-Game::Game( const Fnd::Settings::Config& config ):
+Game::Game( const Fnd::Settings::EngineSettings::Settings& config ):
 	_is_initialised(false),
 	_window(nullptr),
 	_graphics(nullptr),

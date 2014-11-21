@@ -70,7 +70,7 @@ class DirectX11GraphicsBase:
 		// The derived Graphics class calls IGraphicsMessageListener methods to get data needed from the Game class.
 		void SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game );
 
-		void SetConfig( const Fnd::Settings::GraphicsConfig& config );
+		void SetConfig( const Fnd::Settings::EngineSettings::GraphicsSettings& config );
 
 		void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system );
 
@@ -164,7 +164,7 @@ class DirectX11GraphicsBase:
 		// Height of the screen.
 		unsigned int _height;
 
-		Fnd::Settings::GraphicsConfig _config;
+		Fnd::Settings::EngineSettings::GraphicsSettings _config;
 		Fnd::EntitySystem::EntitySystem* _entity_system;
 		DirectX11Resources _resources;
 

@@ -32,7 +32,7 @@ bool EngineSettings::LoadConfiguration( const std::string& filename )
 	auto window_iter = window_root->first_node();
 	while (window_iter)
 	{
-		WindowConfig::WindowImplementation impl;
+		EngineSettings::WindowSettings::WindowImplementation impl;
 		impl.placeholder = 0;
 		
 		_config.window_config.implementations[window_iter->name()] = impl;
@@ -284,12 +284,12 @@ bool EngineSettings::LoadGraphicsImplementation( const std::string& directory, c
 	return true;
 }
 
-const Config& EngineSettings::GetConfig() const
+const EngineSettings::Settings& EngineSettings::GetConfig() const
 {
 	return _config;
 }
 
-Config& EngineSettings::GetConfigNonConst()
+EngineSettings::Settings& EngineSettings::GetConfigNonConst()
 {
 	return _config;
 }

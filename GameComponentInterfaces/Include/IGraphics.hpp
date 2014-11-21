@@ -52,7 +52,7 @@ class IGraphics
 		*/
 		virtual void SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game ) = 0;
 
-		virtual void SetConfig( const Fnd::Settings::GraphicsConfig& config ) = 0;
+		virtual void SetConfig( const Fnd::Settings::EngineSettings::GraphicsSettings& config ) = 0;
 
 		virtual void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system ) = 0;
 

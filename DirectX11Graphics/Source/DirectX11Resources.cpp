@@ -52,7 +52,7 @@ DirectX11Resources::DirectX11Resources( DirectX11GraphicsBase* graphics ):
 {
 }
 
-void DirectX11Resources::SetConfig( const Fnd::Settings::GraphicsConfig& config )
+void DirectX11Resources::SetConfig( const Fnd::Settings::EngineSettings::GraphicsSettings& config )
 {
 	auto iter = config.implementations.find(config.implementation);
 

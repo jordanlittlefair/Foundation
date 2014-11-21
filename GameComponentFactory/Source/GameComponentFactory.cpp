@@ -32,7 +32,7 @@ using namespace Fnd::Logger;
 	#include "../../XWindowsWindow/Include/XWindowsWindow.hpp"
 #endif
 
-IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, Fnd::Settings::WindowConfig& window_config )
+IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, Fnd::Settings::EngineSettings::WindowSettings& window_config )
 {
 	window_config.implementation = window_data.implementation;
 
@@ -88,7 +88,7 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::Applicat
 	#include "../../DirectX11Graphics/Include/DirectX11Graphics.hpp"
 #endif
 
-IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data, Fnd::Settings::GraphicsConfig& graphics_config )
+IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data, Fnd::Settings::EngineSettings::GraphicsSettings& graphics_config )
 {
 	graphics_config.implementation = Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation);
 

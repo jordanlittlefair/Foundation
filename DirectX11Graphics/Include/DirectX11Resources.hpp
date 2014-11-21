@@ -59,7 +59,7 @@ class DirectX11Resources
 
 		DirectX11Resources( DirectX11GraphicsBase* graphics );
 
-		void SetConfig( const Fnd::Settings::GraphicsConfig& config );
+		void SetConfig( const Fnd::Settings::EngineSettings::GraphicsSettings& config );
 
 		bool GetBytecodeFromFile( const std::string& filename, std::vector<char>& buffer ) const;
 		const Fnd::CommonResources::PipelineDesc GetPipelineData( const std::string& pipeline ) const;
@@ -104,8 +104,8 @@ class DirectX11Resources
 		
 		Fnd::DirectX11Graphics::DirectX11GraphicsBase* _graphics;
 
-		Fnd::Settings::GraphicsConfig::GraphicsImplementation _config;
-		Fnd::Settings::GraphicsConfig::GraphicsCommon _common;
+		Fnd::Settings::EngineSettings::GraphicsSettings::GraphicsImplementation _config;
+		Fnd::Settings::EngineSettings::GraphicsSettings::GraphicsCommon _common;
 
 		std::map<std::string,Pipeline> _pipelines;
 		std::map<std::string,Texture2D> _textures;
