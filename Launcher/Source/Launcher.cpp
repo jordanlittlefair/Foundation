@@ -23,8 +23,18 @@ void Launcher::SetApplicationDirectory( const std::string& directory )
 Launcher::ApplicationReturnCode Launcher::Launch()
 {
 	std::string executable_name = FileSystem::CanonicaliseFile( _engine_directory + "Game.exe" );
+	std::string config_str;
 
-	std::string command_line = executable_name + " " + _application_directory;
+	// Can probably do a better check than this....
+#ifdef WIN32
+	config_str = "Windows";
+#elif defined MAC
+	config_str = "Mac";
+#else
+	config_str = "Linux";
+#endif
+
+	std::string command_line = executable_name + " " + _application_directory + " " + config_str;
 
 	char command_line_str[MAX_PATH] = {0};
 	strcpy_s(command_line_str, command_line.c_str());

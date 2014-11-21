@@ -5,16 +5,7 @@
 
 #include "LogRecords.hpp"
 
-namespace Fnd
-{
-namespace Setup
-{
-struct LoggerSetupData;
-struct WindowSetupData;
-struct GraphicsSetupData;
-struct WorldSetupData;
-}
-}
+#include "../../Settings/Include/GameComponentSettings.hpp"
 
 namespace Fnd
 {
@@ -25,10 +16,10 @@ class ILogger
 {
 	public:
 
-		virtual bool Initialise( const Fnd::Setup::LoggerSetupData& logger_data ) = 0;
-		virtual void SetWindowSetupData( const Fnd::Setup::WindowSetupData& window_data ) = 0;
-		virtual void SetGraphicsSetupData( const Fnd::Setup::GraphicsSetupData& graphics_data ) = 0;
-		virtual void SetWorldSetupData( const Fnd::Setup::WorldSetupData& world_data ) = 0;
+		virtual bool Initialise( const Fnd::Settings::LoggerSettings& logger_data ) = 0;
+		virtual void SetWindowSetupData( const Fnd::Settings::WindowSettings& window_data ) = 0;
+		virtual void SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings& graphics_data ) = 0;
+		virtual void SetWorldSetupData( const Fnd::Settings::WorldSettings& world_data ) = 0;
 		virtual void Log( const LogMessage& log_message ) = 0;
 		virtual void Log( const LogError& log_error ) = 0;
 		virtual void Log( const LogWarning& log_warning ) = 0;

@@ -5,15 +5,7 @@
 
 #include <string>
 
-namespace Fnd
-{
-namespace Setup
-{
-struct WindowSetupData;
-struct GraphicsSetupData;
-struct WorldSetupData;
-}
-}
+#include "../../Settings/Include/GameComponentSettings.hpp"
 
 namespace Fnd
 {
@@ -49,9 +41,9 @@ struct LogWarning
 	Methods for reading/writing json
 */
 std::string ParseLogSessionIdJson( const std::string& json );
-std::string WriteWindowSetupDataJson( const Fnd::Setup::WindowSetupData& window_data );
-std::string WriteGraphicsSetupDataJson( const Fnd::Setup::GraphicsSetupData& graphics_data );
-std::string WriteWorldSetupDataJson( const Fnd::Setup::WorldSetupData& world_data );
+std::string WriteWindowSetupDataJson( const Fnd::Settings::WindowSettings& window_data );
+std::string WriteGraphicsSetupDataJson( const Fnd::Settings::GraphicsSettings& graphics_data );
+std::string WriteWorldSetupDataJson( const Fnd::Settings::WorldSettings& world_data );
 std::string WriteLogMessageJson( const LogMessage& log_message, unsigned int time );
 std::string WriteLogErrorJson( const LogError& log_error, unsigned int time );
 std::string WriteLogWarningJson( const LogWarning& log_warning, unsigned int time );

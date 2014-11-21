@@ -3,11 +3,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerWorkingDirectory>$(SolutionDir)/Foundation/Engine</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>C:/Users/Jordan/Dropbox/Foundation/Foundation/Application/</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>C:/Users/Jordan/Dropbox/Foundation/Foundation/Application/ Windows</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerWorkingDirectory>$(SolutionDir)/Foundation/Engine</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>C:/Users/Jordan/Dropbox/Foundation/Foundation/Application/</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>C:/Users/Jordan/Dropbox/Foundation/Foundation/Application/ Windows</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

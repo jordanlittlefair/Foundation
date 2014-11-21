@@ -20,7 +20,7 @@ class LoadedWorld:
 		void SetWorldMessageListener( Fnd::GameComponentInterfaces::IWorldMessageListener* game );
 
 		// LoadedWorld only supports a single world file (a single level).
-		void SetWorldSetupData( const Fnd::Setup::WorldSetupData& world_setup_data );
+		void SetWorldSetupData( const Fnd::Settings::WorldSettings& world_setup_data );
 
 		bool Initialise();
 
@@ -30,7 +30,7 @@ class LoadedWorld:
 
 		Fnd::GameComponentInterfaces::IWorldMessageListener* _game;
 
-		Fnd::Setup::WorldSetupData _world_setup_data;
+		Fnd::Settings::WorldSettings _world_setup_data;
 };
 
 }

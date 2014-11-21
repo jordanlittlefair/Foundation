@@ -26,7 +26,7 @@ void LoadedWorld::SetWorldMessageListener( Fnd::GameComponentInterfaces::IWorldM
 	_game = game;
 }
 
-void LoadedWorld::SetWorldSetupData( const Fnd::Setup::WorldSetupData& world_setup_data )
+void LoadedWorld::SetWorldSetupData( const Fnd::Settings::WorldSettings& world_setup_data )
 {
 	assert( world_setup_data.world_files.find(0) != world_setup_data.world_files.end() );
 	

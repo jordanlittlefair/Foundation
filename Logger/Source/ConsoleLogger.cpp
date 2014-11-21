@@ -1,6 +1,6 @@
 #include "../Include/ConsoleLogger.hpp"
 
-#include "../../Setup/Include/GameComponentData.hpp"
+#include "../../Settings/Include/GameComponentSettings.hpp"
 
 using namespace Fnd::Logger;
 
@@ -12,17 +12,17 @@ ConsoleLogger::ConsoleLogger()
 {
 }
 
-bool ConsoleLogger::Initialise( const Fnd::Setup::LoggerSetupData& logger_data )
+bool ConsoleLogger::Initialise( const Fnd::Settings::LoggerSettings& logger_data )
 {
 	return true;
 }
 
-void ConsoleLogger::SetWindowSetupData( const Fnd::Setup::WindowSetupData& window_data )
+void ConsoleLogger::SetWindowSetupData( const Fnd::Settings::WindowSettings& window_data )
 {
 	std::stringstream ss;
 
 	ss	<< "Window Data:\n"
-		<< "\tImplementation: " << window_data.window << "\n"
+		<< "\tImplementation: " << window_data.implementation << "\n"
 		<< "\tTitle: " << window_data.window_title << "\n"
 		<< "\tSize: " << window_data.initial_width << "x" << window_data.initial_height << "\n"
 		<< "\tResizable: " << ( window_data.is_resizable ? "true" : "false" ) << "\n"
@@ -31,22 +31,22 @@ void ConsoleLogger::SetWindowSetupData( const Fnd::Setup::WindowSetupData& windo
 	OutputDebugString( ss.str().c_str() );
 }
 
-void ConsoleLogger::SetGraphicsSetupData( const Fnd::Setup::GraphicsSetupData& graphics_data )
+void ConsoleLogger::SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings& graphics_data )
 {
 	std::stringstream ss;
 
 	ss	<< "Graphics Data:\n"
-		<< "\tImplementation: " << graphics_data.graphics << "\n";
+		<< "\tImplementation: " << graphics_data.implementation << "\n";
 
 	OutputDebugString( ss.str().c_str() );
 }
 
-void ConsoleLogger::SetWorldSetupData( const Fnd::Setup::WorldSetupData& world_data )
+void ConsoleLogger::SetWorldSetupData( const Fnd::Settings::WorldSettings& world_data )
 {
 	std::stringstream ss;
 
 	ss	<< "World Data:\n"
-		<< "\tImplementation: " << world_data.world << "\n"
+		<< "\tImplementation: " << world_data.implementation << "\n"
 		<< "\tWorld files: " << "can't be arsed to get this from the map" << "\n";
 
 	OutputDebugString( ss.str().c_str() );

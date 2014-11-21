@@ -119,8 +119,8 @@
     <ProjectReference Include="..\OculusRift\OculusRift.vcxproj">
       <Project>{7c113c50-caf2-4b65-b016-c887c1079ce8}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Setup\Setup.vcxproj">
-      <Project>{787978c1-9bdb-486c-848b-8081429ce9eb}</Project>
+    <ProjectReference Include="..\Settings\Settings.vcxproj">
+      <Project>{2f8453a6-d18d-479d-a17c-45f5d51b9a71}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

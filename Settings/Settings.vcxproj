@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{787978C1-9BDB-486C-848B-8081429CE9EB}</ProjectGuid>
-    <RootNamespace>Setup</RootNamespace>
+    <ProjectGuid>{2F8453A6-D18D-479D-A17C-45F5D51B9A71}</ProjectGuid>
+    <RootNamespace>Settings</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,17 +71,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Include\GameComponentData.hpp" />
-    <ClInclude Include="Include\Setup.hpp" />
+    <ClInclude Include="Include\ApplicationSettings.hpp" />
+    <ClInclude Include="Include\EngineConfig.hpp" />
+    <ClInclude Include="Include\GameComponentSettings.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\GameComponentData.cpp" />
-    <ClCompile Include="Source\Setup.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utility\Utility.vcxproj">
-      <Project>{5c047422-6d4a-460d-bdce-18f02e310fff}</Project>
-    </ProjectReference>
+    <ClCompile Include="Source\ApplicationSettings.cpp" />
+    <ClCompile Include="Source\EngineConfig.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

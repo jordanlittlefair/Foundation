@@ -1,7 +1,8 @@
 #include "../Include/Logger.hpp"
 
 #include "../../HTTPClient/Include/HTTPClient.hpp"
-#include "../../Setup/Include/GameComponentData.hpp"
+#include "../../Settings/Include/GameComponentSettings.hpp"
+#include "../../Settings/Include/EngineConfig.hpp"
 
 #include "../Include/ILogger.hpp"
 #include "../Include/NetworkLogger.hpp"
@@ -21,14 +22,14 @@ Logger& Logger::GetInstance()
 	return logger;
 }
 
-bool Logger::Initialise( const Fnd::Setup::LoggerSetupData& logger_data )
+bool Logger::Initialise( const Fnd::Settings::LoggerSettings& logger_data )
 {
-	if ( std::find( logger_data.loggers.begin(), logger_data.loggers.end(), "NetworkLogger" ) != logger_data.loggers.end() )
+	if ( logger_data.implementations | Settings::EngineConfig::NetworkLogger_implementation )
 	{
 		_impl.push_back(std::move(std::unique_ptr<NetworkLogger>(new NetworkLogger())));
 	}
 
-	if ( std::find( logger_data.loggers.begin(), logger_data.loggers.end(), "ConsoleLogger" ) != logger_data.loggers.end() )
+	if ( logger_data.implementations | Settings::EngineConfig::ConsoleLogger_implementation )
 	{
 		_impl.push_back(std::move(std::unique_ptr<ConsoleLogger>(new ConsoleLogger())));
 	}
@@ -52,7 +53,7 @@ bool Logger::Initialise( const Fnd::Setup::LoggerSetupData& logger_data )
 	return true;
 }
 
-void Logger::SetWindowSetupData( const Fnd::Setup::WindowSetupData& window_data )
+void Logger::SetWindowSetupData( const Fnd::Settings::WindowSettings& window_data )
 {
 	for ( unsigned int i = 0; i < _impl.size(); ++i )
 	{
@@ -60,7 +61,7 @@ void Logger::SetWindowSetupData( const Fnd::Setup::WindowSetupData& window_data 
 	}
 }
 
-void Logger::SetGraphicsSetupData( const Fnd::Setup::GraphicsSetupData& graphics_data )
+void Logger::SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings& graphics_data )
 {
 	for ( unsigned int i = 0; i < _impl.size(); ++i )
 	{
@@ -68,7 +69,7 @@ void Logger::SetGraphicsSetupData( const Fnd::Setup::GraphicsSetupData& graphics
 	}
 }
 
-void Logger::SetWorldSetupData( const Fnd::Setup::WorldSetupData& world_data )
+void Logger::SetWorldSetupData( const Fnd::Settings::WorldSettings& world_data )
 {
 	for ( unsigned int i = 0; i < _impl.size(); ++i )
 	{

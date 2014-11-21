@@ -4,7 +4,7 @@
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 
-#include "../../Setup/Include/GameComponentData.hpp"
+#include "../../Settings/Include/GameComponentSettings.hpp"
 
 #include <sstream>
 
@@ -27,7 +27,7 @@ std::string Fnd::Logger::ParseLogSessionIdJson( const std::string& json )
 	return ret;
 }
 
-std::string Fnd::Logger::WriteWindowSetupDataJson( const Fnd::Setup::WindowSetupData& window_data )
+std::string Fnd::Logger::WriteWindowSetupDataJson( const Fnd::Settings::WindowSettings& window_data )
 {
 	std::string ret;
 
@@ -38,7 +38,7 @@ std::string Fnd::Logger::WriteWindowSetupDataJson( const Fnd::Setup::WindowSetup
 		writer.String("windowData");
 		writer.StartObject();
 			writer.String("implementation");
-			writer.String(window_data.window.c_str());
+			writer.String(Settings::EngineConfig::GetWindowImplementationString(window_data.implementation).c_str());
 			writer.String("windowTitle");
 			writer.String(window_data.window_title.c_str());
 			writer.String("initialWidth");
@@ -57,7 +57,7 @@ std::string Fnd::Logger::WriteWindowSetupDataJson( const Fnd::Setup::WindowSetup
 	return ret;
 }
 
-std::string Fnd::Logger::WriteGraphicsSetupDataJson( const Fnd::Setup::GraphicsSetupData& graphics_data )
+std::string Fnd::Logger::WriteGraphicsSetupDataJson( const Fnd::Settings::GraphicsSettings& graphics_data )
 {
 	std::string ret;
 
@@ -68,7 +68,7 @@ std::string Fnd::Logger::WriteGraphicsSetupDataJson( const Fnd::Setup::GraphicsS
 		writer.String("graphicsData");
 		writer.StartObject();
 			writer.String("implementation");
-			writer.String(graphics_data.graphics.c_str());
+			writer.String(Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation).c_str());
 			writer.String("vr_enabled");
 			writer.Bool(graphics_data.enable_vr);
 		writer.EndObject();
@@ -79,7 +79,7 @@ std::string Fnd::Logger::WriteGraphicsSetupDataJson( const Fnd::Setup::GraphicsS
 	return ret;
 }
 
-std::string Fnd::Logger::WriteWorldSetupDataJson( const Fnd::Setup::WorldSetupData& world_data )
+std::string Fnd::Logger::WriteWorldSetupDataJson( const Fnd::Settings::WorldSettings& world_data )
 {
 	std::string ret;
 
@@ -90,7 +90,7 @@ std::string Fnd::Logger::WriteWorldSetupDataJson( const Fnd::Setup::WorldSetupDa
 		writer.String("worldData");
 		writer.StartObject();
 			writer.String("implementation");
-			writer.String(world_data.world.c_str());
+			writer.String(Settings::EngineConfig::GetWorldImplementationString(world_data.implementation).c_str());
 				
 			writer.String("worldFiles");
 			writer.StartArray();

@@ -12,14 +12,6 @@
 
 namespace Fnd
 {
-namespace Setup
-{
-struct LoggerSetupData;
-}
-}
-
-namespace Fnd
-{
 namespace Logger
 {
 
@@ -30,10 +22,10 @@ class Logger:
 
 		static Logger& GetInstance();
 
-		bool Initialise( const Fnd::Setup::LoggerSetupData& logger_data );
-		void SetWindowSetupData( const Fnd::Setup::WindowSetupData& window_data );
-		void SetGraphicsSetupData( const Fnd::Setup::GraphicsSetupData& graphics_data );
-		void SetWorldSetupData( const Fnd::Setup::WorldSetupData& world_data );
+		bool Initialise( const Fnd::Settings::LoggerSettings& logger_data );
+		void SetWindowSetupData( const Fnd::Settings::WindowSettings& window_data );
+		void SetGraphicsSetupData( const Fnd::Settings::GraphicsSettings& graphics_data );
+		void SetWorldSetupData( const Fnd::Settings::WorldSettings& world_data );
 		void Log( const LogMessage& log_message );
 		void Log( const LogError& log_error );
 		void Log( const LogWarning& log_warning );

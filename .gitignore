@@ -12,3 +12,5 @@
 /Foundation/Engine/*.dll
 /Foundation/*.dll
 /Foundation/Engine/Graphics/DirectX11Graphics/Shaders/
+/Foundation/*.exe
+/Foundation/Engine/*.exe
