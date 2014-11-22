@@ -93,9 +93,6 @@
     <ClCompile Include="Source\ShaderIncluder.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Setup\Setup.vcxproj">
-      <Project>{787978c1-9bdb-486c-848b-8081429ce9eb}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.vcxproj">
       <Project>{5c047422-6d4a-460d-bdce-18f02e310fff}</Project>
     </ProjectReference>

@@ -1,4 +1,3 @@
-#include "../../Setup/Include/Setup.hpp"
 #include "../Include/DirectX11ShaderCompiler.hpp"
 #include "../Include/DirectX11ShaderCompilerConfig.hpp"
 

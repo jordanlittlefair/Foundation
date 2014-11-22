@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectX11ShaderCompiler", "DirectX11ShaderCompiler\DirectX11ShaderCompiler.vcxproj", "{7ED4565A-6712-4B13-8636-8AFCCF072443}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Setup", "Setup\Setup.vcxproj", "{787978C1-9BDB-486C-848B-8081429CE9EB}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utility", "Utility\Utility.vcxproj", "{5C047422-6D4A-460D-BDCE-18F02E310FFF}"
 EndProject
 Global
@@ -21,12 +19,6 @@ Global
 		{7ED4565A-6712-4B13-8636-8AFCCF072443}.Release|Win32.ActiveCfg = Release|Win32
 		{7ED4565A-6712-4B13-8636-8AFCCF072443}.Release|Win32.Build.0 = Release|Win32
 		{7ED4565A-6712-4B13-8636-8AFCCF072443}.Release|x64.ActiveCfg = Release|Win32
-		{787978C1-9BDB-486C-848B-8081429CE9EB}.Debug|Win32.ActiveCfg = Debug|Win32
-		{787978C1-9BDB-486C-848B-8081429CE9EB}.Debug|Win32.Build.0 = Debug|Win32
-		{787978C1-9BDB-486C-848B-8081429CE9EB}.Debug|x64.ActiveCfg = Debug|Win32
-		{787978C1-9BDB-486C-848B-8081429CE9EB}.Release|Win32.ActiveCfg = Release|Win32
-		{787978C1-9BDB-486C-848B-8081429CE9EB}.Release|Win32.Build.0 = Release|Win32
-		{787978C1-9BDB-486C-848B-8081429CE9EB}.Release|x64.ActiveCfg = Release|Win32
 		{5C047422-6D4A-460D-BDCE-18F02E310FFF}.Debug|Win32.ActiveCfg = Debug|Win32
 		{5C047422-6D4A-460D-BDCE-18F02E310FFF}.Debug|Win32.Build.0 = Debug|Win32
 		{5C047422-6D4A-460D-BDCE-18F02E310FFF}.Debug|x64.ActiveCfg = Debug|x64
