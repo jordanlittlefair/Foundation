@@ -96,7 +96,7 @@ WinMain (	_In_ struct HINSTANCE__* hIinstance,
 	/*
 		Create the Game with the game components.
 	*/
-	Fnd::Game::Game game( engine_settings.GetGraphicsSettings() );
+	Fnd::Game::Game game( engine_settings );
 	game.SetWindow( window );
 	game.SetGraphics( graphics );
 	game.SetPhysics( physics );
