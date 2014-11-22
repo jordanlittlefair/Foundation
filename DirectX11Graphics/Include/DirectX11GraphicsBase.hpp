@@ -70,7 +70,7 @@ class DirectX11GraphicsBase:
 		// The derived Graphics class calls IGraphicsMessageListener methods to get data needed from the Game class.
 		void SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game );
 
-		void SetConfig( const Fnd::Settings::EngineSettings::GraphicsSettings& config );
+		void SetGraphicsSettings( const Fnd::Settings::EngineSettings::GraphicsSettings& config );
 
 		void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system );
 

@@ -27,7 +27,7 @@ using namespace Fnd::GameComponentInterfaces;
 using namespace Fnd::Game;
 using namespace Fnd::Logger;
 
-Game::Game( const Fnd::Settings::EngineSettings::Settings& config ):
+Game::Game( const Fnd::Settings::EngineSettings::GraphicsSettings& graphics_settings ):
 	_is_initialised(false),
 	_window(nullptr),
 	_graphics(nullptr),
@@ -37,7 +37,7 @@ Game::Game( const Fnd::Settings::EngineSettings::Settings& config ):
 	_entity_system(new Fnd::EntitySystem::EntitySystem()),
 	_asset_manager(new Fnd::AssetManager::AssetManager()),
 	_input_handler(new Fnd::Input::InputHandler()),
-	_config(config)
+	_graphics_settings(graphics_settings)
 {
 }
 
@@ -156,7 +156,7 @@ bool Game::Initialise()
 	
 
 	_graphics->SetGraphicsMessageListener(this);
-	_graphics->SetConfig(_config.graphics_config);
+	_graphics->SetGraphicsSettings(_graphics_settings);
 	_graphics->SetEntitySystem( _entity_system.get() );
 	_graphics->SetActiveCamera( 0, 0 );
 	if ( !_graphics->Initialise() )

@@ -175,7 +175,7 @@ void DirectX11GraphicsBase::SetGraphicsMessageListener( Fnd::GameComponentInterf
 	}
 }
 
-void DirectX11GraphicsBase::SetConfig( const Fnd::Settings::EngineSettings::GraphicsSettings& config )
+void DirectX11GraphicsBase::SetGraphicsSettings( const Fnd::Settings::EngineSettings::GraphicsSettings& config )
 {
 	_config = config;
 }

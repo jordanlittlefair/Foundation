@@ -32,20 +32,12 @@ using namespace Fnd::Logger;
 	#include "../../XWindowsWindow/Include/XWindowsWindow.hpp"
 #endif
 
-IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, Fnd::Settings::EngineSettings::WindowSettings& window_config )
+IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, const Fnd::Settings::EngineSettings::WindowSettings& window_settings )
 {
-	window_config.implementation = window_data.implementation;
-
 	std::stringstream ss; ss << window_data.implementation;
 
 	Fnd::Logger::Logger::GetInstance().Log( LogMessage("Creating Window [" + ss.str() + "].") );
 	IWindow* window = nullptr;
-
-	if ( window_config.implementations.find(Settings::EngineConfig::GetWindowImplementationString(window_data.implementation)) == window_config.implementations.end() )
-	{
-		const auto err = "Window [" + Settings::EngineConfig::GetWindowImplementationString(window_data.implementation) + "] is not supported.";
-		Fnd::Logger::Logger::GetInstance().Log( LogError(err) );
-	}
 
 	/*
 		Check the 'implementation' against all existing implementations.
@@ -88,18 +80,10 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::Applicat
 	#include "../../DirectX11Graphics/Include/DirectX11Graphics.hpp"
 #endif
 
-IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data, Fnd::Settings::EngineSettings::GraphicsSettings& graphics_config )
+IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data, const Fnd::Settings::EngineSettings::GraphicsSettings& graphics_config )
 {
-	graphics_config.implementation = Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation);
-
 	Fnd::Logger::Logger::GetInstance().Log( LogMessage("Creating Graphics [" + Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation) + "].") );
 	IGraphics* graphics = nullptr;
-
-	if ( graphics_config.implementations.find(Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation)) == graphics_config.implementations.end() )
-	{
-		const auto err = "Graphics [" + Settings::EngineConfig::GetGraphicsImplementationString(graphics_data.implementation) + "] is not supported.";
-		Fnd::Logger::Logger::GetInstance().Log( LogError(err) );
-	}
 
 	/*
 		Check the 'implementation' against all existing implementations.

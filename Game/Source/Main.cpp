@@ -45,37 +45,27 @@ WinMain (	_In_ struct HINSTANCE__* hIinstance,
 	const std::string engine_settings_filename = Fnd::Utility::FileSystem::CanonicaliseFile( Fnd::Utility::FileSystem::GetWorkingDirectory() + "/EngineSettings.xml" );
 	const std::string application_settings_filename = Fnd::Utility::FileSystem::CanonicaliseFile( application_directory + "/ApplicationSettings.xml" );
 
-
-	ApplicationSettings appsettings;
-	std::string a;
-	std::string b;
-	Fnd::Utility::FileSystem::GetPathAndName( application_settings_filename, a, b );
-	if ( !appsettings.LoadSetupFile( a, b, EngineConfig::GetConfig(config_str) ) )
+	ApplicationSettings application_settings;
+	if ( !application_settings.Load( application_settings_filename, EngineConfig::GetConfig(config_str) ) )
 	{
 		Fnd::Utility::BlockingMessageBox( "Error", "Failed to load and parse \"" + application_settings_filename + "\"." );
 		return 2;
 	}
-	/*
-		Load ApplicationSettings.
-		Get config enum and check flags using EngineConfig. (put an IsValid method in ApplicationSettings?)
-		Load EngineSettings- using ApplicationSettings->Implementations to load the correct implementation.
-	*/
 
-	const std::string config_file = "EngineSettings.xml";
-	Fnd::Settings::EngineSettings config;
-	if ( !config.LoadConfiguration(config_file) )
+	Fnd::Settings::EngineSettings engine_settings;
+	if ( !engine_settings.Load( engine_settings_filename, application_settings ) )
 	{
-		Fnd::Utility::BlockingMessageBox( "Error", "Failed to load and parse \"" + config_file + "\"." );
+		Fnd::Utility::BlockingMessageBox( "Error", "Failed to load and parse \"" + engine_settings_filename + "\"." );
 		return 2;
 	}
 
 	/*
 		Create a logger and give it info about the game components.
 	*/
-	Logger::GetInstance().Initialise( appsettings.GetLoggerSettings() );
-	Logger::GetInstance().SetWindowSetupData( appsettings.GetWindowSettings() );
-	Logger::GetInstance().SetGraphicsSetupData( appsettings.GetGraphicsSettings() );
-	Logger::GetInstance().SetWorldSetupData( appsettings.GetWorldSettings() );
+	Logger::GetInstance().Initialise( application_settings.GetLoggerSettings() );
+	Logger::GetInstance().SetWindowSetupData( application_settings.GetWindowSettings() );
+	Logger::GetInstance().SetGraphicsSetupData( application_settings.GetGraphicsSettings() );
+	Logger::GetInstance().SetWorldSetupData( application_settings.GetWorldSettings() );
 	// TODO: log physics and scripting data
 
 	/*
@@ -83,11 +73,11 @@ WinMain (	_In_ struct HINSTANCE__* hIinstance,
 	*/
 	Fnd::GameComponentFactory::GameComponentFactory component_factory;
 
-	Fnd::GameComponentInterfaces::IWindow* window = component_factory.GetWindowComponent( appsettings.GetWindowSettings(), config.GetConfigNonConst().window_config );
-	Fnd::GameComponentInterfaces::IGraphics* graphics = component_factory.GetGraphicsComponent( appsettings.GetGraphicsSettings(), config.GetConfigNonConst().graphics_config );
-	Fnd::GameComponentInterfaces::IPhysics* physics = component_factory.GetPhysicsComponent( appsettings.GetPhysicsSettings() );
-	Fnd::GameComponentInterfaces::IWorld* world = component_factory.GetWorldComponent( appsettings.GetWorldSettings() );
-	Fnd::Scripting::ScriptManager* scripting = component_factory.GetScriptManager( appsettings.GetScriptingSettings() );
+	Fnd::GameComponentInterfaces::IWindow* window = component_factory.GetWindowComponent( application_settings.GetWindowSettings(), engine_settings.GetWindowSettings() );
+	Fnd::GameComponentInterfaces::IGraphics* graphics = component_factory.GetGraphicsComponent( application_settings.GetGraphicsSettings(), engine_settings.GetGraphicsSettings() );
+	Fnd::GameComponentInterfaces::IPhysics* physics = component_factory.GetPhysicsComponent( application_settings.GetPhysicsSettings() );
+	Fnd::GameComponentInterfaces::IWorld* world = component_factory.GetWorldComponent( application_settings.GetWorldSettings() );
+	Fnd::Scripting::ScriptManager* scripting = component_factory.GetScriptManager( application_settings.GetScriptingSettings() );
 
 	if ( !( window && graphics && physics && world && scripting ) )
 	{
@@ -106,7 +96,7 @@ WinMain (	_In_ struct HINSTANCE__* hIinstance,
 	/*
 		Create the Game with the game components.
 	*/
-	Fnd::Game::Game game( config.GetConfig() );
+	Fnd::Game::Game game( engine_settings.GetGraphicsSettings() );
 	game.SetWindow( window );
 	game.SetGraphics( graphics );
 	game.SetPhysics( physics );

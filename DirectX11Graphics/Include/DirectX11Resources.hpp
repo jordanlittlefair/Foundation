@@ -104,8 +104,7 @@ class DirectX11Resources
 		
 		Fnd::DirectX11Graphics::DirectX11GraphicsBase* _graphics;
 
-		Fnd::Settings::EngineSettings::GraphicsSettings::GraphicsImplementation _config;
-		Fnd::Settings::EngineSettings::GraphicsSettings::GraphicsCommon _common;
+		Fnd::Settings::EngineSettings::GraphicsSettings _config;
 
 		std::map<std::string,Pipeline> _pipelines;
 		std::map<std::string,Texture2D> _textures;

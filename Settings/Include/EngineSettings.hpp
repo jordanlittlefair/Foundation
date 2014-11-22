@@ -6,6 +6,8 @@
 #include "../../CommonResources/Include/Texture2DDesc.hpp"
 #include "../../CommonResources/Include/PipelineDesc.hpp"
 
+#include "ApplicationSettings.hpp"
+
 #include <string>
 #include <map>
 
@@ -17,20 +19,10 @@ namespace Settings
 class EngineSettings
 {
 public:
-
-	//-change to xxxSettings
-	//-use enums instead of strings
-	//-only store 1 implementation, dont store impl name
-
+	
 	struct WindowSettings
 	{
-		struct WindowImplementation
-		{
-			int placeholder;
-		};
-
-		std::map<std::string,WindowImplementation> implementations;
-		std::string implementation;	// Updated by the Setup.xml file to the chosen implementation
+		int placeholder;
 	};
 
 	struct GraphicsSettings
@@ -40,46 +32,35 @@ public:
 			std::string filename;
 		};
 
-		struct GraphicsImplementation
-		{
-			std::map<std::string,Fnd::CommonResources::PipelineDesc> shader_pipelines;
+		std::map<std::string,Fnd::CommonResources::PipelineDesc> shader_pipelines;
 
-			std::map<std::string,Fnd::CommonResources::Texture2DDesc> textures;
-		};
+		std::map<std::string,Fnd::CommonResources::Texture2DDesc> textures;
 
 		struct GraphicsCommon
 		{
 			std::map<std::string,Fnd::CommonResources::Texture2DDesc> textures;
 			std::map<std::string,Model> models;
 		};
-
-		std::map<std::string,GraphicsImplementation> implementations;
-		std::string implementation;	// Updated by the Setup.xml file to the chosen implementation
 	
 		GraphicsCommon common;
 	};
 
-	struct Settings
-	{
-		WindowSettings window_config;
-		GraphicsSettings graphics_config;
-	};
+	bool Load( const std::string& filename, const ApplicationSettings& application_settings );
 
-	bool LoadConfiguration( const std::string& filename );
+	const WindowSettings& GetWindowSettings() const;
 
-	const Settings& GetConfig() const;
-
-	Settings& GetConfigNonConst();
+	const GraphicsSettings& GetGraphicsSettings() const;
 
 private:
 
-	bool LoadWindowImplementation( const std::string& directory, const std::string& filename, const std::string& name );
+	WindowSettings LoadWindowImplementation( const std::string& directory, const std::string& filename, const std::string& name );
 
-	bool LoadGraphicsCommon( const std::string& directory, const std::string& filename );
+	GraphicsSettings::GraphicsCommon LoadGraphicsCommon( const std::string& directory, const std::string& filename );
 
-	bool LoadGraphicsImplementation( const std::string& directory, const std::string& filename, const std::string& name );
+	GraphicsSettings LoadGraphicsImplementation( const std::string& directory, const std::string& filename, const std::string& name );
 
-	Settings _config;
+	WindowSettings _window_settings;
+	GraphicsSettings _graphics_settings;
 };
 }
 }

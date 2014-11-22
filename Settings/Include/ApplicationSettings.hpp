@@ -83,7 +83,7 @@ class ApplicationSettings
 			EngineConfig::ScriptingImplementation implementation;
 		};
 
-		bool LoadSetupFile( const std::string& directory, const std::string& filename, EngineConfig::Config config );
+		bool Load( const std::string& filename, EngineConfig::Config config );
 
 		const LoggerSettings& GetLoggerSettings() const;
 		const WindowSettings& GetWindowSettings() const;

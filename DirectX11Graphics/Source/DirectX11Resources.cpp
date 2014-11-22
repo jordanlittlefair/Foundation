@@ -54,14 +54,7 @@ DirectX11Resources::DirectX11Resources( DirectX11GraphicsBase* graphics ):
 
 void DirectX11Resources::SetConfig( const Fnd::Settings::EngineSettings::GraphicsSettings& config )
 {
-	auto iter = config.implementations.find(config.implementation);
-
-	if ( iter != config.implementations.end() )
-	{
-		_config = iter->second;
-	}
-
-	_common = config.common;
+	_config = config;
 }
 
 bool DirectX11Resources::GetBytecodeFromFile( const std::string& filename, std::vector<char>& buffer ) const
@@ -513,7 +506,7 @@ bool DirectX11Resources::LoadEngineTextures()
 {
 	_textures[""] = Texture2D();
 	
-	for ( auto texture_iter = _common.textures.begin(); texture_iter != _common.textures.end(); ++texture_iter )
+	for ( auto texture_iter = _config.common.textures.begin(); texture_iter != _config.common.textures.end(); ++texture_iter )
 	{
 		Texture2D engine_texture;
 		engine_texture.mip_levels = 1; // TODO: generate mip levels
@@ -585,7 +578,7 @@ bool DirectX11Resources::LoadEngineModels()
 {
 	_meshes[""] = EngineMesh();
 
-	for ( auto model_iter = _common.models.begin(); model_iter != _common.models.end(); ++model_iter )
+	for ( auto model_iter = _config.common.models.begin(); model_iter != _config.common.models.end(); ++model_iter )
 	{
 		Fnd::AssetManager::ModelData model_data;
 

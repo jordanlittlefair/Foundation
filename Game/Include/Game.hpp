@@ -67,7 +67,7 @@ class Game:
 		/**
 			Default Constructor.
 		*/
-		Game( const Fnd::Settings::EngineSettings::Settings& config );
+		Game( const Fnd::Settings::EngineSettings::GraphicsSettings& graphics_settings );
 
 		// Set the Window.
 		void SetWindow( Fnd::GameComponentInterfaces::IWindow* window );
@@ -168,7 +168,7 @@ class Game:
 
 		std::vector<std::shared_ptr<Fnd::EntitySystem::System>> _systems;
 
-		Fnd::Settings::EngineSettings::Settings _config;
+		Fnd::Settings::EngineSettings::GraphicsSettings _graphics_settings;
 };
 
 }

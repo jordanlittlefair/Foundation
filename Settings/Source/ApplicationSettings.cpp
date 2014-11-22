@@ -2,6 +2,7 @@
 
 #include "../../Utility/Include/XmlManager.hpp"
 #include "../../Utility/Include/MessageBox.hpp"
+#include "../../Utility/Include/FileSystem.hpp"
 
 using namespace Fnd::Settings;
 using namespace Fnd::Utility;
@@ -208,16 +209,18 @@ ApplicationSettings::ScriptingSettings ReadScriptingSetupData( const std::string
 
 }
 
-bool ApplicationSettings::LoadSetupFile( const std::string& directory, const std::string& filename, EngineConfig::Config config )
+bool ApplicationSettings::Load( const std::string& filename, EngineConfig::Config config )
 {
 	bool ret = true;
 
-	std::string setup_file = directory + filename;
-
+	std::string directory;
+	std::string file;
+	Fnd::Utility::FileSystem::GetPathAndName( filename, directory, file );
+	
 	do
 	{
 		XmlManager setup_xml;
-		if ( !setup_xml.CreateFromFile( setup_file ) )
+		if ( !setup_xml.CreateFromFile( filename ) )
 		{
 			ret = false;
 			break;

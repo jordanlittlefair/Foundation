@@ -41,14 +41,14 @@ class GameComponentFactory
 			Returns null if the creation of the window failed.
 			@return Returns a pointer to the IWindow interface of the window.
 		*/
-		Fnd::GameComponentInterfaces::IWindow* GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, Fnd::Settings::EngineSettings::WindowSettings& window_config );
+		Fnd::GameComponentInterfaces::IWindow* GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, const Fnd::Settings::EngineSettings::WindowSettings& window_settings );
 
 		/**
 			Get the graphics implementation described by the setup file.
 			Returns null if the creation of the graphics failed.
 			@return Returns a pointer to the IGraphics interface of the graphics.
 		*/
-		Fnd::GameComponentInterfaces::IGraphics* GetGraphicsComponent( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data, Fnd::Settings::EngineSettings::GraphicsSettings& graphics_config );
+		Fnd::GameComponentInterfaces::IGraphics* GetGraphicsComponent( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data, const Fnd::Settings::EngineSettings::GraphicsSettings& graphics_settings );
 
 		Fnd::GameComponentInterfaces::IPhysics* GetPhysicsComponent( const Fnd::Settings::ApplicationSettings::PhysicsSettings& physics_data );
 
