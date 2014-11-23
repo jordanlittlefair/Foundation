@@ -1,0 +1,6 @@
+<Assets>
+	<Models directory = "Models/">
+		<SponzaModel	filename = "sponza.obj" scale = "0.012"	/>
+		<UnitCube	filename = "unitcube.obj"	scale = "1"	/>
+	</Models>
+</Assets>
