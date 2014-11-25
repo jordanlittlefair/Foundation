@@ -83,7 +83,7 @@ void Game::SetScriptManager( Fnd::Scripting::ScriptManager* script_manager )
 
 bool Game::Initialise()
 {
-	if ( _graphics->VRIsEnabled() )
+	if ( _graphics->VRIsEnabled() && _graphics->VRIsSupported() )
 	{
 		_oculus.reset( new Fnd::OculusRift::OculusRift() );
 		

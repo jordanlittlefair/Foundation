@@ -56,6 +56,8 @@ class IGraphics
 
 		virtual void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system ) = 0;
 
+		virtual bool VRIsSupported() = 0;
+
 		virtual void EnableVR( bool enable ) = 0;
 
 		virtual bool VRIsEnabled() const = 0;

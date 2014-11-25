@@ -185,6 +185,11 @@ void DirectX11GraphicsBase::SetEntitySystem( Fnd::EntitySystem::EntitySystem* en
 	_entity_system = entity_system;
 }
 
+bool DirectX11GraphicsBase::VRIsSupported()
+{
+	return true;
+}
+
 void DirectX11GraphicsBase::EnableVR( bool enable )
 {
 	_vr_enabled = enable;

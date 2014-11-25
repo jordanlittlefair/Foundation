@@ -33,6 +33,8 @@ class OpenGLGraphicsBase:
 
 		void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system );
 
+		bool VRIsSupported();
+
 		void EnableVR( bool enable );
 
 		bool VRIsEnabled() const;

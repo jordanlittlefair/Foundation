@@ -35,6 +35,11 @@ void OpenGLGraphicsBase::SetEntitySystem( Fnd::EntitySystem::EntitySystem* entit
 	// TODO
 }
 
+bool OpenGLGraphicsBase::VRIsSupported()
+{
+	return false;
+}
+
 void OpenGLGraphicsBase::EnableVR( bool enable )
 {
 	// TODO
