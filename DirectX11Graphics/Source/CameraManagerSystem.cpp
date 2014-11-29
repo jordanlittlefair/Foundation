@@ -8,18 +8,18 @@ using namespace Fnd::DirectX11Graphics;
 using namespace Fnd::EntitySystem;
 
 CameraManagerSystem::CameraManagerSystem( DirectX11GraphicsBase* graphics ):
-	DirectX11GraphicsSystem("CameraManagerSystem",graphics),
-	_vr_enabled(false),
-	_lefteye_fov(0),
-	_righteye_fov(0)
+	DirectX11GraphicsSystem("CameraManagerSystem",graphics)
 {
+	_vr_data.vr_enabled = false;
+	_vr_data.lefteye_fov = 0;
+	_vr_data.righteye_fov = 0;
 }
 
 void CameraManagerSystem::SetVREnabled( bool enabled, float lefteye_fov, float righteye_fov )
 {
-	_vr_enabled = enabled;
-	_lefteye_fov = lefteye_fov;
-	_righteye_fov = righteye_fov;
+	_vr_data.vr_enabled = enabled;
+	_vr_data.lefteye_fov = lefteye_fov;
+	_vr_data.righteye_fov = righteye_fov;
 }
 
 void CameraManagerSystem::AddNode( Fnd::EntitySystem::SystemNode* node )
@@ -69,11 +69,11 @@ void CameraManagerSystem::OnUpdate( const Fnd::CommonResources::FrameData& frame
 		auto camera_properties = camera_data.camera_components.cameraproperties;
 
 		// Need to update the fov if VR is enabled
-		if ( _vr_enabled )
+		if ( _vr_data.vr_enabled )
 		{
 			if ( camera_properties->data.camera_id == 0 )
 			{	
-				camera_properties->data.fov = _lefteye_fov;
+				camera_properties->data.fov = _vr_data.lefteye_fov;
 
 				auto rotation_offset_matrix = Fnd::Math::Matrix4Helper<>::CreateRotationMatrix( _offsets.lefteye_rotation_offset );
 				auto position_offset_matrix = Fnd::Math::Matrix4Helper<>::CreateTranslationMatrix( _offsets.lefteye_position_offset );
@@ -83,7 +83,7 @@ void CameraManagerSystem::OnUpdate( const Fnd::CommonResources::FrameData& frame
 			else
 			if ( camera_properties->data.camera_id == 1 )
 			{
-				camera_properties->data.fov = _righteye_fov;
+				camera_properties->data.fov = _vr_data.righteye_fov;
 
 				auto rotation_offset_matrix = Fnd::Math::Matrix4Helper<>::CreateRotationMatrix( _offsets.righteye_rotation_offset );
 				auto position_offset_matrix = Fnd::Math::Matrix4Helper<>::CreateTranslationMatrix( _offsets.righteye_position_offset );
@@ -92,10 +92,10 @@ void CameraManagerSystem::OnUpdate( const Fnd::CommonResources::FrameData& frame
 			}
 		}
 
-		auto bufferdata = camera_data.screenbuffer->GetPositionReconstructionData();
+		auto bufferdata = ((ScreenBufferResources*)camera_data.screenbuffer)->GetPositionReconstructionData();
 		bufferdata.tan_half_fov_y = tan( Fnd::Math::ToRadians(camera_data.camera_components.cameraproperties->data.fov) / 2 );
 
-		if ( camera_data.screenbuffer->UpdatePositionReconstructionData( bufferdata ) )
+		if ( ((ScreenBufferResources*)camera_data.screenbuffer)->UpdatePositionReconstructionData( bufferdata ) )
 		{
 			auto a = 0;
 		}
@@ -106,4 +106,9 @@ void CameraManagerSystem::OnUpdate( const Fnd::CommonResources::FrameData& frame
 void CameraManagerSystem::UpdateVRCameraOffsets( const Fnd::GameComponentInterfaces::IGraphics::CameraOffsets& camera_offsets )
 {
 	_offsets = camera_offsets;
+}
+
+Fnd::GraphicsResources::ICameraManagerSystem::VRData& CameraManagerSystem::GetVRData()
+{
+	return _vr_data;
 }

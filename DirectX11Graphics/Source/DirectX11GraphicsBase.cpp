@@ -25,9 +25,7 @@ using namespace Fnd::DirectX11Graphics;
 using namespace Fnd::EntitySystem;
 
 DirectX11GraphicsBase::DirectX11GraphicsBase():	
-	_is_initialised(false),		
-	_vr_enabled(false),
-	_game(nullptr),
+	_is_initialised(false),
 	_device(nullptr),
 	_immediate_device_context(nullptr),
 	_swap_chain(nullptr),
@@ -35,15 +33,10 @@ DirectX11GraphicsBase::DirectX11GraphicsBase():
 	_width(0),
 	_height(0),
 	_resources(this),
-	_entity_system(nullptr),
-	_active_camera_primary(~0),
-	_active_camera_secondary(~0),
 	_vr_eye_texture(nullptr),
 	_vr_eye_sr(nullptr),
 	_vr_eye_rt(nullptr),
-	_oculus_blit_cbuffer(nullptr),
-	_lefteye_fov(0),
-	_righteye_fov(0)
+	_oculus_blit_cbuffer(nullptr)
 {
 }
 
@@ -109,9 +102,7 @@ DirectX11GraphicsBase::~DirectX11GraphicsBase()
 	}
 
 	_swap_chain->SetFullscreenState( false, nullptr );
-
-	_game = nullptr;
-			
+				
 	if ( _swap_chain )
 	{
 		_swap_chain->Release();
@@ -163,41 +154,9 @@ DirectX11GraphicsBase::~DirectX11GraphicsBase()
 	_is_initialised = false;
 }
 		
-void DirectX11GraphicsBase::SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game )
-{
-	if ( _is_initialised )
-	{
-		//LogWarning( "F11", "Cannot set graphics message listener; F11Graphics is currently initialised." );
-	}
-	else
-	{
-		_game = game;
-	}
-}
-
-void DirectX11GraphicsBase::SetGraphicsSettings( const Fnd::Settings::EngineSettings::GraphicsSettings& config )
-{
-	_config = config;
-}
-
-void DirectX11GraphicsBase::SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system )
-{
-	_entity_system = entity_system;
-}
-
 bool DirectX11GraphicsBase::VRIsSupported()
 {
 	return true;
-}
-
-void DirectX11GraphicsBase::EnableVR( bool enable )
-{
-	_vr_enabled = enable;
-}
-		
-bool DirectX11GraphicsBase::VRIsEnabled() const
-{
-	return _vr_enabled;
 }
 
 bool DirectX11GraphicsBase::Initialise()
@@ -209,7 +168,7 @@ bool DirectX11GraphicsBase::Initialise()
 	}
 
 	// Return false if no game has been set.
-	if ( !_game )
+	if ( !GetGame() )
 	{
 		//LogError( "F11", "Cannot initialise F11Graphics; F11Graphics has no graphics message listener set." );
 		return false;
@@ -218,14 +177,14 @@ bool DirectX11GraphicsBase::Initialise()
 	// Get the dimensions of the screen.
 
 	RECT rectangle;
-	GetClientRect( HWND(_game->GetHWND()), &rectangle );
+	GetClientRect( HWND(GetGame()->GetHWND()), &rectangle );
 
 	unsigned int width = rectangle.right - rectangle.left;
 	unsigned int height = rectangle.bottom - rectangle.top;
 
-	if ( _vr_enabled )
+	if ( VRIsEnabled() )
 	{	
-		_game->GetVRTextureDimensions( width, height );
+		GetGame()->GetVRTextureDimensions( width, height );
 	}
 
 	// Use the default adapter and hardware drivers.
@@ -261,7 +220,7 @@ bool DirectX11GraphicsBase::Initialise()
 	swap_chain_desc.SampleDesc.Quality = 0;
 	swap_chain_desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swap_chain_desc.BufferCount = 2;
-	swap_chain_desc.OutputWindow = HWND(_game->GetHWND());
+	swap_chain_desc.OutputWindow = HWND(GetGame()->GetHWND());
 	swap_chain_desc.Windowed = true;
 	swap_chain_desc.SwapEffect = DXGI_SWAP_EFFECT_SEQUENTIAL;
 	swap_chain_desc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
@@ -314,7 +273,7 @@ bool DirectX11GraphicsBase::Initialise()
 		factory->Release();
 	}
 
-	if ( _vr_enabled )
+	if ( VRIsEnabled() )
 	{
 		{
 			D3D11_BUFFER_DESC cbuffer_desc;
@@ -359,7 +318,7 @@ bool DirectX11GraphicsBase::Initialise()
 			return false;
 		}
 
-		factory->MakeWindowAssociation( HWND(_game->GetHWND()), DXGI_MWA_NO_WINDOW_CHANGES );
+		factory->MakeWindowAssociation( HWND(GetGame()->GetHWND()), DXGI_MWA_NO_WINDOW_CHANGES );
 
 		dxgi_device->Release();
 		adapter->Release();
@@ -369,7 +328,7 @@ bool DirectX11GraphicsBase::Initialise()
 	// Create the back buffer by resizing
 	//Resize( width, height );
 
-	_resources.SetConfig(_config);
+	_resources.SetConfig(GetGraphicsSettings());
 	if ( !_resources.Initialise() )
 	{
 		return false;
@@ -413,18 +372,18 @@ void DirectX11GraphicsBase::Render()
 	float default_colour[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	_immediate_device_context->ClearRenderTargetView( _back_buffer, default_colour );
 	
-	for ( auto iter = _screen_buffer_resources.begin(); iter != _screen_buffer_resources.end(); ++iter )
+	for ( auto iter = GetIScreenBufferResources().begin(); iter != GetIScreenBufferResources().end(); ++iter )
 	{
-		DeviceContext()->ClearDepthStencilView( iter->second->GetGBuffer_ds(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0 );
+		DeviceContext()->ClearDepthStencilView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer_ds(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0 );
 
-		DeviceContext()->ClearRenderTargetView( iter->second->GetGBuffer0_rt(), default_colour );
-		DeviceContext()->ClearRenderTargetView( iter->second->GetGBuffer1_rt(), default_colour );
-		DeviceContext()->ClearRenderTargetView( iter->second->GetGBuffer2_rt(), default_colour );
-		DeviceContext()->ClearRenderTargetView( iter->second->GetGBuffer3_rt(), default_colour );
+		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer0_rt(), default_colour );
+		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer1_rt(), default_colour );
+		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer2_rt(), default_colour );
+		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer3_rt(), default_colour );
 
-		DeviceContext()->ClearRenderTargetView( iter->second->GetAOBuffer_rt(), default_colour );
+		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetAOBuffer_rt(), default_colour );
 
-		DeviceContext()->ClearRenderTargetView( iter->second->GetLBuffer_rt(), default_colour );
+		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetLBuffer_rt(), default_colour );
 	}
 	
 	// Render the derived class.
@@ -433,17 +392,17 @@ void DirectX11GraphicsBase::Render()
 
 void DirectX11GraphicsBase::Present()
 {
-	unsigned int chosen_camera = _active_camera_primary;
+	unsigned int chosen_camera = GetActiveCamera(Primary_ActiveCamera);
 
 	CameraNode* camera_node = nullptr;
 
-	for ( auto iter = _entity_system->GetSystemNodesContainer().GetNodeMap<CameraNode>().begin();
-		iter != _entity_system->GetSystemNodesContainer().GetNodeMap<CameraNode>().end();
+	for ( auto iter = GetEntitySystem()->GetSystemNodesContainer().GetNodeMap<CameraNode>().begin();
+		iter != GetEntitySystem()->GetSystemNodesContainer().GetNodeMap<CameraNode>().end();
 		++iter )
 	{
 		CameraNode::Pointers camera_components;
 
-		if ( iter->second.GetPointers( *_entity_system, camera_components ) )
+		if ( iter->second.GetPointers( *GetEntitySystem(), camera_components ) )
 		{
 			if ( camera_components.cameraproperties->data.camera_id == chosen_camera )
 			{
@@ -456,7 +415,7 @@ void DirectX11GraphicsBase::Present()
 
 	CameraNode::Pointers camera_components;
 
-	if ( camera_node && camera_node->GetPointers( *_entity_system, camera_components ) )
+	if ( camera_node && camera_node->GetPointers( *GetEntitySystem(), camera_components ) )
 	{
 		DeviceContext()->IASetPrimitiveTopology( D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
@@ -468,7 +427,7 @@ void DirectX11GraphicsBase::Present()
 
 		DeviceContext()->PSSetShader( _resources.GetShaders("Blit").ps, nullptr, 0 );
 
-		ID3D11ShaderResourceView* ps_srvs[1] = { _screen_buffer_resources[chosen_camera]->GetLBuffer_sr() };
+		ID3D11ShaderResourceView* ps_srvs[1] = { GetScreenBufferResources(chosen_camera)->GetLBuffer_sr() };
 
 		DeviceContext()->PSSetShaderResources( 0, 1, ps_srvs );
 
@@ -486,7 +445,7 @@ void DirectX11GraphicsBase::Present()
 		_immediate_device_context->ClearRenderTargetView( _back_buffer, error_colour );
 	}
 
-	if ( _vr_enabled )
+	if ( VRIsEnabled() )
 	{
 		float col[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		this->_immediate_device_context->ClearRenderTargetView( _vr_eye_rt, col );
@@ -495,13 +454,13 @@ void DirectX11GraphicsBase::Present()
 
 		DeviceContext()->VSSetShader( _resources.GetShaders("OculusBlit").vs, nullptr, 0 );
 
-		D3D11_VIEWPORT viewport = { 0, 0, (float)_oculus_data.lefteye_width+_oculus_data.righteye_width, (float)max(_oculus_data.lefteye_height,_oculus_data.righteye_height), 0, 1 };
+		D3D11_VIEWPORT viewport = { 0, 0, (float)GetOculusData().lefteye_width+GetOculusData().righteye_width, (float)max(GetOculusData().lefteye_height,GetOculusData().righteye_height), 0, 1 };
 
 		DeviceContext()->RSSetViewports( 1, &viewport );
 
 		DeviceContext()->PSSetShader( _resources.GetShaders("OculusBlit").ps, nullptr, 0 );
 
-		ID3D11ShaderResourceView* ps_srvs[2] = { _screen_buffer_resources[chosen_camera]->GetLBuffer_sr(), _screen_buffer_resources[chosen_camera+1]->GetLBuffer_sr() };
+		ID3D11ShaderResourceView* ps_srvs[2] = { GetScreenBufferResources(chosen_camera)->GetLBuffer_sr(), GetScreenBufferResources(chosen_camera+1)->GetLBuffer_sr() };
 
 		DeviceContext()->PSSetShaderResources( 0, 2, ps_srvs );
 
@@ -525,9 +484,9 @@ void DirectX11GraphicsBase::Present()
 
 void DirectX11GraphicsBase::Resize( unsigned int width, unsigned int height )
 {
-	if ( _vr_enabled )
+	if ( VRIsEnabled() )
 	{	
-		_game->GetVRTextureDimensions( width, height );
+		GetGame()->GetVRTextureDimensions( width, height );
 	}
 
 	//std::stringstream ss;
@@ -569,7 +528,7 @@ void DirectX11GraphicsBase::Resize( unsigned int width, unsigned int height )
 
 	buffer->Release();
 
-	for ( auto iter = _screen_buffer_resources.begin(); iter != _screen_buffer_resources.end(); ++iter )
+	for ( auto iter = GetIScreenBufferResources().begin(); iter != GetIScreenBufferResources().end(); ++iter )
 	{
 		iter->second->Resize( _width, _height );
 	}
@@ -592,24 +551,8 @@ Fnd::AssetManager::Model* DirectX11GraphicsBase::GetNewModel()
 	return new DirectX11Model(this);
 }
 
-void DirectX11GraphicsBase::SetActiveCamera( unsigned int i, unsigned int j )
+void DirectX11GraphicsBase::OnSetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data )
 {
-	_active_camera_primary = i;
-	_active_camera_secondary = j;
-}
-
-void DirectX11GraphicsBase::SetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data )
-{
-	_oculus_data = oculus_data;
-
-	AddScreenBufferResources( 0, oculus_data.lefteye_width, oculus_data.lefteye_height );
-	AddScreenBufferResources( 1, oculus_data.righteye_width, oculus_data.righteye_height );
-	_lefteye_fov = Fnd::Math::ToDegrees( oculus_data.lefteye_fov_v );
-	_righteye_fov = Fnd::Math::ToDegrees( oculus_data.righteye_fov_v );
-
-	if ( _camera_system )
-		_camera_system->SetVREnabled( _vr_enabled, _lefteye_fov, _righteye_fov );
-
 	{
 		D3D11_MAPPED_SUBRESOURCE data;
 
@@ -679,27 +622,8 @@ Fnd::GameComponentInterfaces::IGraphics::OculusDataD3D11 DirectX11GraphicsBase::
 	ret.device_context = _immediate_device_context;
 	ret.back_buffer_rt = _back_buffer;
 	ret.swap_chain = _swap_chain;
-
-	_screen_buffer_resources;
-
+	
 	return ret;
-}
-
-Fnd::GameComponentInterfaces::IGraphics::OculusDataOpenGL DirectX11GraphicsBase::GetOculusDataOpenGL()
-{
-	Fnd::GameComponentInterfaces::IGraphics::OculusDataOpenGL ret;
-
-	memset( &ret, 0, sizeof(ret) );
-
-	return ret;
-}
-
-void DirectX11GraphicsBase::UpdateVRCameraOffsets( const Fnd::GameComponentInterfaces::IGraphics::CameraOffsets& camera_offsets )
-{
-	if ( _camera_system )
-	{
-		_camera_system->UpdateVRCameraOffsets( camera_offsets );
-	}
 }
 
 DirectX11Resources& DirectX11GraphicsBase::GetResources()
@@ -709,13 +633,13 @@ DirectX11Resources& DirectX11GraphicsBase::GetResources()
 
 bool DirectX11GraphicsBase::AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height )
 {
-	if ( _screen_buffer_resources.find(id) == _screen_buffer_resources.end() )
+	if ( !GetScreenBufferResources(id) )
 	{
 		std::shared_ptr<ScreenBufferResources> srb( new ScreenBufferResources(this));
 
 		if ( srb->Initialise( width, height ) )
 		{
-			_screen_buffer_resources.insert( std::make_pair( id, srb ) );
+			GetIScreenBufferResources().insert( std::make_pair( id, srb ) );
 
 			return true;
 		}
@@ -726,11 +650,11 @@ bool DirectX11GraphicsBase::AddScreenBufferResources( unsigned int id, unsigned 
 
 ScreenBufferResources* DirectX11GraphicsBase::GetScreenBufferResources( unsigned int id )
 {
-	auto found = _screen_buffer_resources.find(id);
+	auto found = GetIScreenBufferResources().find(id);
 
-	if ( found != _screen_buffer_resources.end() )
+	if ( found != GetIScreenBufferResources().end() )
 	{
-		return found->second.get();
+		return (ScreenBufferResources*)found->second.get();
 	}
 	else
 	{
@@ -742,9 +666,10 @@ std::vector<std::shared_ptr<Fnd::EntitySystem::System>> DirectX11GraphicsBase::G
 {
 	auto systems = std::vector<std::shared_ptr<Fnd::EntitySystem::System>>();
 
-	_camera_system = std::shared_ptr<CameraManagerSystem>( new CameraManagerSystem( this ) );
+	CameraManagerSystem* camera_manager_system = new CameraManagerSystem( this );
+	SetCameraManagerSystem( camera_manager_system, camera_manager_system );
 	
-	systems.push_back( _camera_system );
+	systems.push_back( (std::shared_ptr<Fnd::EntitySystem::System>)GetCameraManagerSystem() );
 	systems.push_back( std::shared_ptr<MeshSystem>( new MeshSystem( this ) ) );
 	systems.push_back( std::shared_ptr<AmbientLightSystem>( new AmbientLightSystem( this ) ) );
 	systems.push_back( std::shared_ptr<DirectionalLightSystem>( new DirectionalLightSystem( this ) ) );

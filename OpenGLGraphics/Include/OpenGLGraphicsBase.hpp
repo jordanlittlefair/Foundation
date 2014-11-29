@@ -3,7 +3,7 @@
 #ifndef _OPENGLGRAPHICS_OPENGLGRAPHICSBASE_HPP_
 #define _OPENGLGRAPHICS_OPENGLGRAPHICSBASE_HPP_
 
-#include "../../GameComponentInterfaces/Include/IGraphics.hpp"
+#include "../../GraphicsResources/Include/GraphicsImplementation.hpp"
 
 namespace Fnd
 {
@@ -14,7 +14,7 @@ namespace OpenGLGraphics
 	Base class for OpenGL graphics implementations.
 */
 class OpenGLGraphicsBase:
-	public Fnd::GameComponentInterfaces::IGraphics
+	public Fnd::GraphicsResources::GraphicsImplementation
 {
 	public:
 
@@ -72,11 +72,12 @@ class OpenGLGraphicsBase:
 
 		void SetActiveCamera( unsigned int i, unsigned int j );
 
-		void SetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data );
 		Fnd::GameComponentInterfaces::IGraphics::OculusDataD3D11 GetOculusDataD3D11();
 		Fnd::GameComponentInterfaces::IGraphics::OculusDataOpenGL GetOculusDataOpenGL();
 
 		void UpdateVRCameraOffsets( const CameraOffsets& camera_offsets );
+
+		bool AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height );
 
 	public:	
 
@@ -98,6 +99,8 @@ class OpenGLGraphicsBase:
 		virtual void OnRelease() = 0;
 
 	protected:
+
+		void OnSetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data );
 
 		Fnd::GameComponentInterfaces::IGraphicsMessageListener* _game;
 		void* _hglrc;

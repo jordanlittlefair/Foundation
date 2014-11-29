@@ -760,6 +760,7 @@ INPUT                  = ../AssetManager \
                          ../GameComponentFactory \
                          ../GameComponentInterfaces \
 						 ../GameSystems \
+						 ../GraphicsResources \
 						 ../HTTPClient \
 						 ../Input \
                          ../LoadedWorld \

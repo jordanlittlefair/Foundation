@@ -5,13 +5,16 @@
 
 #include "DirectX11GraphicsSystem.hpp"
 
+#include "../../GraphicsResources/Include/ICameraManagerSystem.hpp"
+
 namespace Fnd
 {
 namespace DirectX11Graphics
 {
 
 class CameraManagerSystem:
-	public Fnd::DirectX11Graphics::DirectX11GraphicsSystem
+	public DirectX11GraphicsSystem,
+	public Fnd::GraphicsResources::ICameraManagerSystem
 {
 	public:
 
@@ -27,15 +30,17 @@ class CameraManagerSystem:
 
 		void UpdateVRCameraOffsets( const Fnd::GameComponentInterfaces::IGraphics::CameraOffsets& camera_offsets );
 
+	protected:
+
+		Fnd::GraphicsResources::ICameraManagerSystem::VRData& GetVRData();
+
 	private:	
 
 		void OnUpdate( const Fnd::CommonResources::FrameData& frame_data );
 				
-		Fnd::GameComponentInterfaces::IGraphics::CameraOffsets _offsets;
+		Fnd::GraphicsResources::ICameraManagerSystem::VRData _vr_data;
 
-		bool _vr_enabled;
-		float _lefteye_fov;
-		float _righteye_fov;
+		Fnd::GameComponentInterfaces::IGraphics::CameraOffsets _offsets;
 
 };
 

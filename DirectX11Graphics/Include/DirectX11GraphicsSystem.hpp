@@ -13,13 +13,15 @@
 #include "../../EntitySystem/Include/SystemNodesContainer.hpp"
 #include "../../EntitySystem/Include/System.hpp"
 
+#include "../../GraphicsResources/Include/GraphicsSystem.hpp"
+
 namespace Fnd
 {
 namespace DirectX11Graphics
 {
 
 class DirectX11GraphicsSystem:
-	public Fnd::EntitySystem::System
+	public Fnd::GraphicsResources::GraphicsSystem
 {
 	public:
 
@@ -31,36 +33,7 @@ class DirectX11GraphicsSystem:
 
 		DirectX11GraphicsBase* GetGraphics();
 
-		struct CameraData
-		{
-			Fnd::EntitySystem::CameraNode::Pointers camera_components;
-			Fnd::DirectX11Graphics::ScreenBufferResources* screenbuffer;
-		};
-
-		template <typename FunctionType>
-		void ForEachCamera( FunctionType function )
-		{
-			for (	auto camera_iter = GetEntitySystem().GetSystemNodesContainer().GetNodeMap<CameraNode>().begin();
-					camera_iter != GetEntitySystem().GetSystemNodesContainer().GetNodeMap<CameraNode>().end();
-					++camera_iter )
-			{
-				CameraNode::Pointers camera_components;
-				if ( !camera_iter->second.GetPointers( GetEntitySystem(), camera_components ) )
-				{
-					continue;
-				}
-
-				ScreenBufferResources* screenbuffer = GetGraphics()->GetScreenBufferResources( camera_components.cameraproperties->data.camera_id );
-				if ( !screenbuffer )
-				{
-					continue;
-				}
-
-				CameraData camera_data = { camera_components, screenbuffer };
-
-				function( camera_data );
-			}
-		}
+		Fnd::GraphicsResources::IScreenBufferResources* GetScreenBufferResources( unsigned int camera_id );
 
 	private:
 

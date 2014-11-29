@@ -158,7 +158,8 @@ bool Game::Initialise()
 	_graphics->SetGraphicsMessageListener(this);
 	_graphics->SetGraphicsSettings(_engine_settings.GetGraphicsSettings());
 	_graphics->SetEntitySystem( _entity_system.get() );
-	_graphics->SetActiveCamera( 0, 0 );
+	_graphics->SetActiveCamera( IGraphics::Primary_ActiveCamera, 0 );
+	_graphics->SetActiveCamera( IGraphics::Secondary_ActiveCamera, 0 );
 	if ( !_graphics->Initialise() )
 	{
 		Logger::Logger::GetInstance().Log( LogError( "Failed to initialise Graphics component." ) );

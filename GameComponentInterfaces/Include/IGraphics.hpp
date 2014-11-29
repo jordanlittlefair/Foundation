@@ -111,7 +111,16 @@ class IGraphics
 			Set the active camera(s)
 			(2nd param is to enable oculus rift stuff)
 		*/
-		virtual void SetActiveCamera( unsigned int i, unsigned int j = ~0 ) = 0;
+		enum ActiveCameraType
+		{
+			Primary_ActiveCamera	= 0,
+			Secondary_ActiveCamera	= 1,
+			ActiveCamera_Count		= 2
+		};
+
+		virtual void SetActiveCamera( ActiveCameraType type, unsigned int index ) = 0;
+		
+		virtual unsigned int GetActiveCamera( ActiveCameraType type ) = 0;
 
 		struct OculusDataD3D11
 		{

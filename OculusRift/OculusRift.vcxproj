@@ -78,6 +78,14 @@
   <ItemGroup>
     <ClCompile Include="Source\OculusRift.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DirectX11Graphics\DirectX11Graphics.vcxproj">
+      <Project>{1256482d-3b9b-4931-ac6b-5794fdf0aac3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenGLGraphics\OpenGLGraphics.vcxproj">
+      <Project>{438b0c2c-f90b-4563-94d8-3f0ad10976ad}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

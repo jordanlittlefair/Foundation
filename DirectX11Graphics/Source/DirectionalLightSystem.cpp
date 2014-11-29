@@ -75,19 +75,19 @@ void DirectionalLightSystem::OnUpdate( const Fnd::CommonResources::FrameData& fr
 		/*
 			PS
 		*/
-		ID3D11ShaderResourceView* ps_srs[4] = {	camera_data.screenbuffer->GetGBuffer0_sr(),
-												camera_data.screenbuffer->GetGBuffer1_sr(),
-												camera_data.screenbuffer->GetGBuffer2_sr(),
-												camera_data.screenbuffer->GetGBuffer3_sr() };
+		ID3D11ShaderResourceView* ps_srs[4] = {	((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer0_sr(),
+												((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer1_sr(),
+												((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer2_sr(),
+												((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer3_sr() };
 
 		GetGraphics()->DeviceContext()->PSSetShaderResources( 0, 4, ps_srs );
 
 		/*
 			OM
 		*/	
-		ID3D11RenderTargetView* rts[1] = { camera_data.screenbuffer->GetLBuffer_rt() };
+		ID3D11RenderTargetView* rts[1] = { ((ScreenBufferResources*)camera_data.screenbuffer)->GetLBuffer_rt() };
 
-		GetGraphics()->DeviceContext()->OMSetRenderTargets( 1, rts, camera_data.screenbuffer->GetGBuffer_ds() );
+		GetGraphics()->DeviceContext()->OMSetRenderTargets( 1, rts, ((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer_ds() );
 	
 		for ( auto light_iter = GetEntitySystem().GetSystemNodesContainer().GetNodeMap<DirectionalLightNode>().begin(); light_iter != GetEntitySystem().GetSystemNodesContainer().GetNodeMap<DirectionalLightNode>().end(); ++light_iter )
 		{
@@ -117,7 +117,7 @@ void DirectionalLightSystem::OnUpdate( const Fnd::CommonResources::FrameData& fr
 			/*
 				PS
 			*/
-			ID3D11Buffer* ps_cbuffers[2] = { camera_data.screenbuffer->GetPositionReconstructionBuffer(), _directional_light_buffer };
+			ID3D11Buffer* ps_cbuffers[2] = { ((ScreenBufferResources*)camera_data.screenbuffer)->GetPositionReconstructionBuffer(), _directional_light_buffer };
 	 
 			GetGraphics()->DeviceContext()->PSSetConstantBuffers( 0, 2, ps_cbuffers );
 

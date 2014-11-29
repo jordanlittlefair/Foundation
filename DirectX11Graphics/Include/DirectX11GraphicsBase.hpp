@@ -7,6 +7,7 @@
 #include "DirectX11Resources.hpp"
 #include "ScreenBufferResources.hpp"
 #include "../../Settings/Include/EngineSettings.hpp"
+#include "../../GraphicsResources/Include/GraphicsImplementation.hpp"
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
@@ -24,7 +25,7 @@ class CameraManagerSystem;
 	Base class for DX11 graphics implementations which handles creation of the back buffer and swap chain.
 */
 class DirectX11GraphicsBase:
-	public Fnd::GameComponentInterfaces::IGraphics
+	public Fnd::GraphicsResources::GraphicsImplementation
 {
 	public:
 
@@ -65,20 +66,7 @@ class DirectX11GraphicsBase:
 		/*
 			Methods inherited from IGraphics.
 		*/
-		
-		// Sets a pointer to the IGraphicsMessageListener inferface of the Game component.
-		// The derived Graphics class calls IGraphicsMessageListener methods to get data needed from the Game class.
-		void SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game );
-
-		void SetGraphicsSettings( const Fnd::Settings::EngineSettings::GraphicsSettings& config );
-
-		void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system );
-
 		bool VRIsSupported();
-
-		void EnableVR( bool enable );
-
-		bool VRIsEnabled() const;
 
 		// Initialise the Graphics.
 		// Returns true if successful.
@@ -102,21 +90,25 @@ class DirectX11GraphicsBase:
 
 		Fnd::AssetManager::Texture2D* GetNewTexture2D();
 		Fnd::AssetManager::Model* GetNewModel();
-
-		void SetActiveCamera( unsigned int i, unsigned int j );
-		
-		void SetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data );
+				
 		Fnd::GameComponentInterfaces::IGraphics::OculusDataD3D11 GetOculusDataD3D11();
-		Fnd::GameComponentInterfaces::IGraphics::OculusDataOpenGL GetOculusDataOpenGL();
-
-		void UpdateVRCameraOffsets( const CameraOffsets& camera_offsets );
 
 		DirectX11Resources& GetResources();
+		
+		ScreenBufferResources* GetScreenBufferResources( unsigned int id );
 
+		/*
+			Methods inherited from GraphicsImplementation.
+		*/
 		bool AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height );
 
-		ScreenBufferResources* GetScreenBufferResources( unsigned int id );
-			
+	protected:
+
+		/*
+			Methods inherited from GraphicsImplementation.
+		*/
+		void OnSetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data );
+					
 	protected:
 	
 		/*
@@ -131,15 +123,11 @@ class DirectX11GraphicsBase:
 				
 		// Called when Graphics is rendered.
 		virtual void OnRender() = 0;
-		
+
 	private:
 
 		bool _is_initialised;
-
-		bool _vr_enabled;
-	
-		Fnd::GameComponentInterfaces::IGraphicsMessageListener* _game;
-		
+			
 		ID3D11Device* _device;
 		
 		ID3D11DeviceContext* _immediate_device_context;
@@ -156,26 +144,14 @@ class DirectX11GraphicsBase:
 			Fnd::Math::Vector2 righteye_pos;
 		};
 		ID3D11Buffer* _oculus_blit_cbuffer;
-		OculusData _oculus_data;
-		float _lefteye_fov;
-		float _righteye_fov;
-				
+						
 		// Width of the screen.
 		unsigned int _width;
 		
 		// Height of the screen.
 		unsigned int _height;
 
-		Fnd::Settings::EngineSettings::GraphicsSettings _config;
-		Fnd::EntitySystem::EntitySystem* _entity_system;
 		DirectX11Resources _resources;
-
-		unsigned int _active_camera_primary;
-		unsigned int _active_camera_secondary;
-
-		std::map<unsigned int,std::shared_ptr<ScreenBufferResources>> _screen_buffer_resources;
-
-		std::shared_ptr<CameraManagerSystem> _camera_system;
 };
 
 }

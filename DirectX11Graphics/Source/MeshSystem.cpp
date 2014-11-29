@@ -112,12 +112,12 @@ void MeshSystem::OnUpdate( const Fnd::CommonResources::FrameData& frame_data )
 
 		ID3D11RenderTargetView* render_targets[4] = 
 		{
-			camera_data.screenbuffer->GetGBuffer0_rt(),
-			camera_data.screenbuffer->GetGBuffer1_rt(),
-			camera_data.screenbuffer->GetGBuffer2_rt(),
-			camera_data.screenbuffer->GetGBuffer3_rt()
+			((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer0_rt(),
+			((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer1_rt(),
+			((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer2_rt(),
+			((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer3_rt()
 		};
-		GetGraphics()->DeviceContext()->OMSetRenderTargets( 4, render_targets, camera_data.screenbuffer->GetGBuffer_ds() );
+		GetGraphics()->DeviceContext()->OMSetRenderTargets( 4, render_targets, ((ScreenBufferResources*)camera_data.screenbuffer)->GetGBuffer_ds() );
 
 		/*
 			Get required/common data

@@ -56,6 +56,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Launcher", "Launcher\Launch
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Settings", "Settings\Settings.vcxproj", "{2F8453A6-D18D-479D-A17C-45F5D51B9A71}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphicsResources", "GraphicsResources\GraphicsResources.vcxproj", "{8AFE728F-D5D8-45D5-B553-1B6050FAB0D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -224,6 +226,12 @@ Global
 		{2F8453A6-D18D-479D-A17C-45F5D51B9A71}.Release|Win32.ActiveCfg = Release|Win32
 		{2F8453A6-D18D-479D-A17C-45F5D51B9A71}.Release|Win32.Build.0 = Release|Win32
 		{2F8453A6-D18D-479D-A17C-45F5D51B9A71}.Release|x64.ActiveCfg = Release|Win32
+		{8AFE728F-D5D8-45D5-B553-1B6050FAB0D8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8AFE728F-D5D8-45D5-B553-1B6050FAB0D8}.Debug|Win32.Build.0 = Debug|Win32
+		{8AFE728F-D5D8-45D5-B553-1B6050FAB0D8}.Debug|x64.ActiveCfg = Debug|Win32
+		{8AFE728F-D5D8-45D5-B553-1B6050FAB0D8}.Release|Win32.ActiveCfg = Release|Win32
+		{8AFE728F-D5D8-45D5-B553-1B6050FAB0D8}.Release|Win32.Build.0 = Release|Win32
+		{8AFE728F-D5D8-45D5-B553-1B6050FAB0D8}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

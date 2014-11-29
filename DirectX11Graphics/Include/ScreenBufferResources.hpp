@@ -5,6 +5,8 @@
 
 #include "../../Math/Include/Math.hpp"
 
+#include "../../GraphicsResources/Include/IScreenBufferResources.hpp"
+
 #include <d3d11.h>
 
 
@@ -14,7 +16,8 @@ namespace DirectX11Graphics
 {
 class DirectX11GraphicsBase;
 
-class ScreenBufferResources
+class ScreenBufferResources:
+	public Fnd::GraphicsResources::IScreenBufferResources
 {
 	public:
 

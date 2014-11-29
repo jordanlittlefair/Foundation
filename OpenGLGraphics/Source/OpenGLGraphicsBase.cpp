@@ -134,7 +134,7 @@ void OpenGLGraphicsBase::SetActiveCamera( unsigned int i, unsigned int j )
 {
 }
 
-void OpenGLGraphicsBase::SetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data )
+void OpenGLGraphicsBase::OnSetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data )
 {
 
 }
@@ -159,4 +159,9 @@ Fnd::GameComponentInterfaces::IGraphics::OculusDataOpenGL OpenGLGraphicsBase::Ge
 
 void OpenGLGraphicsBase::UpdateVRCameraOffsets( const Fnd::GameComponentInterfaces::IGraphics::CameraOffsets& camera_offsets )
 {
+}
+
+bool OpenGLGraphicsBase::AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height )
+{
+	return false;
 }
