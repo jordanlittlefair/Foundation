@@ -18,7 +18,7 @@ class PointLightSystem:
 {
 	public:
 	
-		PointLightSystem( DirectX11GraphicsBase* graphics );
+		PointLightSystem( DirectX11Graphics* graphics );
 
 		bool Initialise();
 

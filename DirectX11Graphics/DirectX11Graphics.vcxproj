@@ -78,7 +78,6 @@
     <ClInclude Include="Include\MeshSystem.hpp" />
     <ClInclude Include="Include\CameraManagerSystem.hpp" />
     <ClInclude Include="Include\DirectX11Graphics.hpp" />
-    <ClInclude Include="Include\DirectX11GraphicsBase.hpp" />
     <ClInclude Include="Include\DirectX11GraphicsSystem.hpp" />
     <ClInclude Include="Include\DirectX11Model.hpp" />
     <ClInclude Include="Include\DirectX11Resources.hpp" />
@@ -94,7 +93,6 @@
     <ClCompile Include="Source\MeshSystem.cpp" />
     <ClCompile Include="Source\CameraManagerSystem.cpp" />
     <ClCompile Include="Source\DirectX11Graphics.cpp" />
-    <ClCompile Include="Source\DirectX11GraphicsBase.cpp" />
     <ClCompile Include="Source\DirectX11GraphicsSystem.cpp" />
     <ClCompile Include="Source\DirectX11Model.cpp" />
     <ClCompile Include="Source\DirectX11Resources.cpp" />

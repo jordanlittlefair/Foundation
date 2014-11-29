@@ -3,7 +3,7 @@
 #ifndef _DIRECTX11GRAPHICS_DIRECTX11GRAPHICSSYSTEM_HPP_
 #define _DIRECTX11GRAPHICS_DIRECTX11GRAPHICSSYSTEM_HPP_
 
-#include "../Include/DirectX11GraphicsBase.hpp"
+#include "../Include/DirectX11Graphics.hpp"
 #include "../../EntitySystem/Include/Components.hpp"
 #include "../../EntitySystem/Include/Entity.hpp"
 #include "../../EntitySystem/Include/ComponentMaps.hpp"
@@ -25,19 +25,19 @@ class DirectX11GraphicsSystem:
 {
 	public:
 
-		DirectX11GraphicsSystem( const std::string& system_name, DirectX11GraphicsBase* graphics );
+		DirectX11GraphicsSystem( const std::string& system_name, DirectX11Graphics* graphics );
 
 		virtual void Resize( unsigned int width, unsigned int height );
 
 	protected:
 
-		DirectX11GraphicsBase* GetGraphics();
+		DirectX11Graphics* GetGraphics();
 
 		Fnd::GraphicsResources::IScreenBufferResources* GetScreenBufferResources( unsigned int camera_id );
 
 	private:
 
-		DirectX11GraphicsBase* _graphics;
+		DirectX11Graphics* _graphics;
 };
 
 }

@@ -13,14 +13,14 @@ namespace Fnd
 {
 namespace OpenGLGraphics
 {
-class OpenGLGraphicsBase;
+class OpenGLGraphics;
 
 class OpenGLModel:
 	public Fnd::AssetManager::Model
 {
 	public:
 
-		OpenGLModel( Fnd::OpenGLGraphics::OpenGLGraphicsBase* graphics );
+		OpenGLModel( Fnd::OpenGLGraphics::OpenGLGraphics* graphics );
 
 		bool Create( const Fnd::AssetManager::ModelData& data );
 
@@ -50,7 +50,7 @@ class OpenGLModel:
 
 	private:
 
-		Fnd::OpenGLGraphics::OpenGLGraphicsBase* _graphics;
+		Fnd::OpenGLGraphics::OpenGLGraphics* _graphics;
 
 		Model _resource;
 };

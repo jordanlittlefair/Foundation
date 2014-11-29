@@ -105,7 +105,7 @@ ApplicationSettings::WindowSettings ReadWindowSettings( const std::string& direc
 
 ApplicationSettings::GraphicsSettings ReadGraphicsSetupData( const std::string& directory, rapidxml::xml_node<char>* graphics_node, EngineConfig::Config config )
 {
-	ApplicationSettings::GraphicsSettings ret;
+	ApplicationSettings::GraphicsSettings ret = ApplicationSettings::GraphicsSettings();
 
 	{
 		auto attrib = graphics_node->first_attribute("graphics");
@@ -128,7 +128,7 @@ ApplicationSettings::GraphicsSettings ReadGraphicsSetupData( const std::string& 
 
 ApplicationSettings::PhysicsSettings ReadPhysicsSetupData( const std::string& directory, rapidxml::xml_node<char>* physics_node, EngineConfig::Config config )
 {
-	ApplicationSettings::PhysicsSettings ret;
+	ApplicationSettings::PhysicsSettings ret = ApplicationSettings::PhysicsSettings();
 
 	{
 		auto attrib = physics_node->first_attribute("physics");
@@ -195,7 +195,7 @@ ApplicationSettings::WorldSettings ReadWorldSetupData( const std::string& direct
 
 ApplicationSettings::ScriptingSettings ReadScriptingSetupData( const std::string& directory, rapidxml::xml_node<char>* scripting_node, EngineConfig::Config config )
 {
-	ApplicationSettings::ScriptingSettings ret;
+	ApplicationSettings::ScriptingSettings ret = ApplicationSettings::ScriptingSettings();
 	{
 		auto attrib = scripting_node->first_attribute("scripting");
 		if ( attrib )

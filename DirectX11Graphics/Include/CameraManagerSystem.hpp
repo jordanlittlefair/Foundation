@@ -18,7 +18,7 @@ class CameraManagerSystem:
 {
 	public:
 
-		CameraManagerSystem( DirectX11GraphicsBase* graphics );
+		CameraManagerSystem( DirectX11Graphics* graphics );
 
 		void SetVREnabled( bool enabled, float lefteye_fov, float righteye_fov );
 

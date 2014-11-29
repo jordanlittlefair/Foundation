@@ -18,7 +18,7 @@ class SpotLightSystem:
 {
 	public:
 	
-		SpotLightSystem( DirectX11GraphicsBase* graphics );
+		SpotLightSystem( DirectX11Graphics* graphics );
 
 		bool Initialise();
 

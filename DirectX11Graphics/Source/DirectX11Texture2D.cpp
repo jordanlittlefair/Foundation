@@ -2,7 +2,7 @@
 
 using namespace Fnd::DirectX11Graphics;
 
-DirectX11Texture2D::DirectX11Texture2D( Fnd::DirectX11Graphics::DirectX11GraphicsBase* graphics ):
+DirectX11Texture2D::DirectX11Texture2D( Fnd::DirectX11Graphics::DirectX11Graphics* graphics ):
 	_graphics(graphics)
 {
 }

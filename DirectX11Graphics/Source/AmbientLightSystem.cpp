@@ -4,7 +4,7 @@ using namespace Fnd::DirectX11Graphics;
 using namespace Fnd::EntitySystem;
 using namespace Fnd::Math;
 
-AmbientLightSystem::AmbientLightSystem( DirectX11GraphicsBase* graphics ):
+AmbientLightSystem::AmbientLightSystem( DirectX11Graphics* graphics ):
 	DirectX11GraphicsSystem("AmbientLightSystem",graphics),
 	_ambient_light_buffer(nullptr)
 {

@@ -1,10 +1,10 @@
 #include "../Include/ScreenBufferResources.hpp"
 
-#include "../Include/DirectX11GraphicsBase.hpp"
+#include "../Include/DirectX11Graphics.hpp"
 
 using namespace Fnd::DirectX11Graphics;
 
-ScreenBufferResources::ScreenBufferResources( DirectX11GraphicsBase* graphics ):
+ScreenBufferResources::ScreenBufferResources( DirectX11Graphics* graphics ):
 	_graphics(graphics),
 	_width(0),
 	_height(0),

@@ -73,7 +73,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Include\OpenGLGraphics.hpp" />
-    <ClInclude Include="Include\OpenGLGraphicsBase.hpp" />
     <ClInclude Include="Include\OpenGLModel.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -89,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\OpenGLGraphics.cpp" />
-    <ClCompile Include="Source\OpenGLGraphicsBase.cpp" />
     <ClCompile Include="Source\OpenGLModel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

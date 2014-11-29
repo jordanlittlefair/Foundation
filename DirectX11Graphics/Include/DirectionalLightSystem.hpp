@@ -18,7 +18,7 @@ class DirectionalLightSystem:
 {
 	public:
 	
-		DirectionalLightSystem( DirectX11GraphicsBase* graphics );
+		DirectionalLightSystem( DirectX11Graphics* graphics );
 
 		bool Initialise();
 

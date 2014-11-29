@@ -19,7 +19,7 @@ class AmbientLightSystem:
 {
 	public:
 	
-		AmbientLightSystem( DirectX11GraphicsBase* graphics );
+		AmbientLightSystem( DirectX11Graphics* graphics );
 
 		bool Initialise();
 

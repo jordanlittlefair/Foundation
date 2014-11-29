@@ -1,10 +1,10 @@
 #include "../Include/OpenGLModel.hpp"
 
-#include "../Include/OpenGLGraphicsBase.hpp"
+#include "../Include/OpenGLGraphics.hpp"
 
 using namespace Fnd::OpenGLGraphics;
 
-OpenGLModel::OpenGLModel( Fnd::OpenGLGraphics::OpenGLGraphicsBase* graphics ):
+OpenGLModel::OpenGLModel( Fnd::OpenGLGraphics::OpenGLGraphics* graphics ):
 	_graphics(graphics)
 {
 }

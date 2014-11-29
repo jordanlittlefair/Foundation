@@ -7,7 +7,7 @@
 using namespace Fnd::DirectX11Graphics;
 using namespace Fnd::EntitySystem;
 
-CameraManagerSystem::CameraManagerSystem( DirectX11GraphicsBase* graphics ):
+CameraManagerSystem::CameraManagerSystem( DirectX11Graphics* graphics ):
 	DirectX11GraphicsSystem("CameraManagerSystem",graphics)
 {
 	_vr_data.vr_enabled = false;

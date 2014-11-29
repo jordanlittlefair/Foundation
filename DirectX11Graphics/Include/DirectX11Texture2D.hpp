@@ -9,14 +9,14 @@ namespace Fnd
 {
 namespace DirectX11Graphics
 {
-class DirectX11GraphicsBase;
+class DirectX11Graphics;
 
 class DirectX11Texture2D:
 	public Fnd::AssetManager::Texture2D
 {
 	public:
 
-		DirectX11Texture2D( Fnd::DirectX11Graphics::DirectX11GraphicsBase* graphics );
+		DirectX11Texture2D( Fnd::DirectX11Graphics::DirectX11Graphics* graphics );
 
 		bool Create( const Fnd::AssetManager::Texture2DData& data );
 
@@ -33,7 +33,7 @@ class DirectX11Texture2D:
 
 	private:
 
-		Fnd::DirectX11Graphics::DirectX11GraphicsBase* _graphics;
+		Fnd::DirectX11Graphics::DirectX11Graphics* _graphics;
 
 		Resource _resource;
 };

@@ -13,14 +13,14 @@ namespace Fnd
 {
 namespace DirectX11Graphics
 {
-class DirectX11GraphicsBase;
+class DirectX11Graphics;
 
 class DirectX11Model:
 	public Fnd::AssetManager::Model
 {
 	public:
 
-		DirectX11Model( Fnd::DirectX11Graphics::DirectX11GraphicsBase* graphics );
+		DirectX11Model( Fnd::DirectX11Graphics::DirectX11Graphics* graphics );
 
 		bool Create( const Fnd::AssetManager::ModelData& data );
 
@@ -51,7 +51,7 @@ class DirectX11Model:
 
 	private:
 
-		Fnd::DirectX11Graphics::DirectX11GraphicsBase* _graphics;
+		Fnd::DirectX11Graphics::DirectX11Graphics* _graphics;
 
 		Model _resource;
 };

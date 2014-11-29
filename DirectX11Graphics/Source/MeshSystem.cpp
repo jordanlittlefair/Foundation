@@ -12,7 +12,7 @@ using namespace Fnd::DirectX11Graphics;
 using namespace Fnd::EntitySystem;
 using namespace Fnd::Math;
 
-MeshSystem::MeshSystem( DirectX11GraphicsBase* graphics ):
+MeshSystem::MeshSystem( DirectX11Graphics* graphics ):
 	DirectX11GraphicsSystem( "MeshSystem", graphics ),
 	_input_layout(nullptr),
 	_transform_matrices(nullptr)

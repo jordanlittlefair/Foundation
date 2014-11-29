@@ -14,14 +14,14 @@ namespace Fnd
 {
 namespace DirectX11Graphics
 {
-class DirectX11GraphicsBase;
+class DirectX11Graphics;
 
 class ScreenBufferResources:
 	public Fnd::GraphicsResources::IScreenBufferResources
 {
 	public:
 
-		ScreenBufferResources( DirectX11GraphicsBase* graphics );
+		ScreenBufferResources( DirectX11Graphics* graphics );
 
 		bool Initialise( unsigned int w, unsigned int h );
 
@@ -73,7 +73,7 @@ class ScreenBufferResources:
 
 	private:
 
-		DirectX11GraphicsBase* _graphics;
+		DirectX11Graphics* _graphics;
 
 		unsigned int _width;
 		unsigned int _height;

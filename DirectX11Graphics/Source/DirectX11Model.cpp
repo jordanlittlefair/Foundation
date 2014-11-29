@@ -1,10 +1,10 @@
 #include "../Include/DirectX11Model.hpp"
 
-#include "../Include/DirectX11GraphicsBase.hpp"
+#include "../Include/DirectX11Graphics.hpp"
 
 using namespace Fnd::DirectX11Graphics;
 
-DirectX11Model::DirectX11Model( Fnd::DirectX11Graphics::DirectX11GraphicsBase* graphics ):
+DirectX11Model::DirectX11Model( Fnd::DirectX11Graphics::DirectX11Graphics* graphics ):
 	_graphics(graphics)
 {
 }

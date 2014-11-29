@@ -1,6 +1,6 @@
 #include "../Include/DirectX11Resources.hpp"
 
-#include "../Include/DirectX11GraphicsBase.hpp"
+#include "../Include/DirectX11Graphics.hpp"
 
 #include "../../Utility/Include/Image.hpp"
 #include "../../ModelLoader/Include/ModelLoader.hpp"
@@ -38,7 +38,7 @@ EngineMesh::EngineMesh():
 {
 }
 
-DirectX11Resources::DirectX11Resources( DirectX11GraphicsBase* graphics ):
+DirectX11Resources::DirectX11Resources( DirectX11Graphics* graphics ):
 	_graphics(graphics),
 	_default_sampler(nullptr),
 	_light_quad_rasteriser(nullptr),

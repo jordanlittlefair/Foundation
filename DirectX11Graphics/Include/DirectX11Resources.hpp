@@ -13,7 +13,7 @@ namespace Fnd
 {
 namespace DirectX11Graphics
 {
-class DirectX11GraphicsBase;
+class DirectX11Graphics;
 
 struct Pipeline
 {
@@ -57,7 +57,7 @@ class DirectX11Resources
 {
 	public:
 
-		DirectX11Resources( DirectX11GraphicsBase* graphics );
+		DirectX11Resources( DirectX11Graphics* graphics );
 
 		void SetConfig( const Fnd::Settings::EngineSettings::GraphicsSettings& config );
 
@@ -102,7 +102,7 @@ class DirectX11Resources
 
 		bool LoadEngineModels();
 		
-		Fnd::DirectX11Graphics::DirectX11GraphicsBase* _graphics;
+		Fnd::DirectX11Graphics::DirectX11Graphics* _graphics;
 
 		Fnd::Settings::EngineSettings::GraphicsSettings _config;
 

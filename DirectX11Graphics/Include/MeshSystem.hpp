@@ -19,7 +19,7 @@ class MeshSystem:
 {
 	public:
 	
-		MeshSystem( DirectX11GraphicsBase* graphics );
+		MeshSystem( DirectX11Graphics* graphics );
 
 		bool Initialise();
 

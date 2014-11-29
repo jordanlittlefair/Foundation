@@ -4,7 +4,7 @@ using namespace Fnd::DirectX11Graphics;
 using namespace Fnd::EntitySystem;
 using namespace Fnd::Math;
 
-SpotLightSystem::SpotLightSystem( DirectX11GraphicsBase* graphics ):
+SpotLightSystem::SpotLightSystem( DirectX11Graphics* graphics ):
 	DirectX11GraphicsSystem("SpotLightSystem",graphics),
 	_input_layout(nullptr),
 	_transform_cbuffer(nullptr),
