@@ -15,7 +15,6 @@ bool DirectX11Model::Create( const Fnd::AssetManager::ModelData& data )
 	{
 		_resource.meshes.push_back(Model::Mesh());
 		Model::Mesh& mesh = _resource.meshes.back();
-		memset(&mesh,0,sizeof(mesh));
 
 		auto& mesh_data = data.meshes[i];
 
