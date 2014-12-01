@@ -28,9 +28,13 @@ std::wstring DirectX11ShaderCompiler::GetWString( const char char_array[] )
 	return to_return;
 }
 
-bool DirectX11ShaderCompiler::CompileShaders( const DirectX11ShaderCompilerConfig::ShaderData& shader_data )
+bool DirectX11ShaderCompiler::CompileShaders( const Fnd::GraphicsResources::ShaderCompilerConfig::ShaderData& shader_data )
 {
 	bool ret = true;
+
+	unsigned int shader_count = 0;
+	unsigned int success_count = 0;
+
 	const std::string vs_target = "vs_" + shader_data.shader_model;
 	const std::string hs_target = "hs_" + shader_data.shader_model;
 	const std::string ds_target = "ds_" + shader_data.shader_model;
@@ -48,34 +52,48 @@ bool DirectX11ShaderCompiler::CompileShaders( const DirectX11ShaderCompilerConfi
 		*/
 		if ( !iter->second.vertex_shader.empty() )
 		{
-			ret = ret &&
-				CompileShader(	shader_data.source_directory + iter->second.vertex_shader, 
+			++shader_count;
+
+			if ( CompileShader(	shader_data.source_directory + iter->second.vertex_shader, 
 								shader_data.output_directory_debug + iter->second.vertex_shader + shader_data.compiled_extension, 
 								vs_target, 
-								debug_flags );
-
-			ret = ret &&
+								debug_flags )
+				&&
 				CompileShader(	shader_data.source_directory + iter->second.vertex_shader,
 								shader_data.output_directory + iter->second.vertex_shader + shader_data.compiled_extension,
 								vs_target,
-								release_flags );
+								release_flags ) )
+			{
+				++success_count;
+			}
+			else
+			{
+				ret = false;
+			}
 		}
 		/*
 			HS
 		*/
 		if ( !iter->second.hull_shader.empty() )
 		{
-			ret = ret &&
-				CompileShader(	shader_data.source_directory + iter->second.hull_shader, 
+			++shader_count;
+
+			if ( CompileShader(	shader_data.source_directory + iter->second.hull_shader, 
 								shader_data.output_directory_debug + iter->second.hull_shader + shader_data.compiled_extension, 
 								hs_target, 
-								debug_flags );
-
-			ret = ret &&
+								debug_flags )
+				&&
 				CompileShader(	shader_data.source_directory + iter->second.hull_shader,
 								shader_data.output_directory + iter->second.hull_shader + shader_data.compiled_extension,
 								hs_target,
-								release_flags );
+								release_flags ) )
+			{
+				++success_count;
+			}
+			else
+			{
+				ret = false;
+			}
 		}
 
 		/*
@@ -83,17 +101,24 @@ bool DirectX11ShaderCompiler::CompileShaders( const DirectX11ShaderCompilerConfi
 		*/
 		if ( !iter->second.domain_shader.empty() )
 		{
-			ret = ret &&
-				CompileShader(	shader_data.source_directory + iter->second.domain_shader, 
+			++shader_count;
+
+			if ( CompileShader(	shader_data.source_directory + iter->second.domain_shader, 
 								shader_data.output_directory_debug + iter->second.domain_shader + shader_data.compiled_extension, 
 								ds_target, 
-								debug_flags );
-
-			ret = ret &&
+								debug_flags )
+				&&
 				CompileShader(	shader_data.source_directory + iter->second.domain_shader,
 								shader_data.output_directory + iter->second.domain_shader + shader_data.compiled_extension,
 								ds_target,
-								release_flags );
+								release_flags ) )
+			{
+				++success_count;
+			}
+			else
+			{
+				ret = false;
+			}
 		}
 
 		/*
@@ -101,17 +126,24 @@ bool DirectX11ShaderCompiler::CompileShaders( const DirectX11ShaderCompilerConfi
 		*/
 		if ( !iter->second.geometry_shader.empty() )
 		{
-			ret = ret &&
-				CompileShader(	shader_data.source_directory + iter->second.geometry_shader, 
+			++shader_count;
+
+			if ( CompileShader(	shader_data.source_directory + iter->second.geometry_shader, 
 								shader_data.output_directory_debug + iter->second.geometry_shader + shader_data.compiled_extension, 
 								gs_target, 
-								debug_flags );
-
-			ret = ret &&
+								debug_flags )
+				&&
 				CompileShader(	shader_data.source_directory + iter->second.geometry_shader,
 								shader_data.output_directory + iter->second.geometry_shader + shader_data.compiled_extension,
 								gs_target,
-								release_flags );
+								release_flags ) )
+			{
+				++success_count;
+			}
+			else
+			{
+				ret = false;
+			}
 		}
 
 		/*
@@ -119,17 +151,24 @@ bool DirectX11ShaderCompiler::CompileShaders( const DirectX11ShaderCompilerConfi
 		*/
 		if ( !iter->second.pixel_shader.empty() )
 		{
-			ret = ret &&
-				CompileShader(	shader_data.source_directory + iter->second.pixel_shader, 
+			++shader_count;
+
+			if ( CompileShader(	shader_data.source_directory + iter->second.pixel_shader, 
 								shader_data.output_directory_debug + iter->second.pixel_shader + shader_data.compiled_extension, 
 								ps_target, 
-								debug_flags );
-
-			ret = ret &&
+								debug_flags )
+				&&
 				CompileShader(	shader_data.source_directory + iter->second.pixel_shader,
 								shader_data.output_directory + iter->second.pixel_shader + shader_data.compiled_extension,
 								ps_target,
-								release_flags );
+								release_flags ) )
+			{
+				++success_count;
+			}
+			else
+			{
+				ret = false;
+			}
 		}
 
 		/*
@@ -137,26 +176,37 @@ bool DirectX11ShaderCompiler::CompileShaders( const DirectX11ShaderCompilerConfi
 		*/
 		if ( !iter->second.compute_shader.empty() )
 		{
-			ret = ret &&
-				CompileShader(	shader_data.source_directory + iter->second.compute_shader, 
+			++shader_count;
+
+			if ( CompileShader(	shader_data.source_directory + iter->second.compute_shader, 
 								shader_data.output_directory_debug + iter->second.compute_shader + shader_data.compiled_extension, 
 								cs_target, 
-								debug_flags );
-
-			ret = ret &&
+								debug_flags )
+				&&
 				CompileShader(	shader_data.source_directory + iter->second.compute_shader,
 								shader_data.output_directory + iter->second.compute_shader + shader_data.compiled_extension,
 								cs_target,
-								release_flags );
+								release_flags ) )
+			{
+				++success_count;
+			}
+			else
+			{
+				ret = false;
+			}
 		}
 
 	}
+
+	std::cout << "----\n\nSuccessfully compiled " << success_count << "/" << shader_count << " shaders.\n----\n" << std::endl;
 
 	return ret;
 }
 
 bool DirectX11ShaderCompiler::CompileShader( const std::string& input_filename, const std::string& output_filename, const std::string& target, unsigned int flags )
 {
+	std::cout << "----\nCompiling \"" << input_filename << "\"....\n" << std::endl;
+
 	ID3DBlob* shader_bytecode = nullptr;
 	ID3DBlob* errors = nullptr;
 
@@ -172,6 +222,8 @@ bool DirectX11ShaderCompiler::CompileShader( const std::string& input_filename, 
 										&shader_bytecode,
 										&errors ) ) )
 	{
+		std::cout << "Successfully compiled \" " << input_filename << "\"." << std::endl;
+
 		std::ofstream out_file( output_filename, std::ios::out | std::ios::trunc | std::ios::binary );
 
 		bool succeeded = true;
@@ -184,6 +236,8 @@ bool DirectX11ShaderCompiler::CompileShader( const std::string& input_filename, 
 		else 
 		{
 			succeeded = false;
+
+			std::cout << "Failed to write output to file \" " << output_filename << "\"." << std::endl;
 		}
 
 		shader_bytecode->Release();
@@ -192,11 +246,11 @@ bool DirectX11ShaderCompiler::CompileShader( const std::string& input_filename, 
 	}
 	else
 	{
-		std::cout << "Failed to compile shader: " << input_filename << std::endl;
+		std::cout << "Failed to compile \" " << input_filename << "\"." << std::endl;
 
 		if ( errors )
 		{
-			std::cout << (const char*) errors->GetBufferPointer() << '\n';
+			std::cout << (const char*)errors->GetBufferPointer() << std::endl;
 			errors->Release();
 		}
 

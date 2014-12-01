@@ -137,3 +137,8 @@ std::vector<std::string> FileSystem::GetDirectories( const std::string& director
 {
 	return Fnd::Utility::SplitString( CanonicaliseFile( directory ), '/' );
 }
+
+bool FileSystem::CopyFile_( const std::string& source, const std::string& destination )
+{
+	return CopyFile( source.c_str(), destination.c_str(), false ) != 0;
+}

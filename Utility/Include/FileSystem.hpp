@@ -29,6 +29,8 @@ std::vector<std::string> ParseCommandLine( const std::string& command_line );
 // Get a vector of parent directories.
 std::vector<std::string> GetDirectories( const std::string& directory );
 
+bool CopyFile_( const std::string& source, const std::string& destination );
+
 }
 }
 }

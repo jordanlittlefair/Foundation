@@ -3,7 +3,7 @@
 #ifndef _DIRECTX11SHADERCOMPILER_DIRECTX11SHADERCOMPILER_HPP_
 #define _DIRECTX11SHADERCOMPILER_DIRECTX11SHADERCOMPILER_HPP_
 
-#include "DirectX11ShaderCompilerConfig.hpp"
+#include "../../GraphicsResources/Include/ShaderCompilerConfig.hpp"
 
 namespace Fnd
 {
@@ -14,7 +14,7 @@ class DirectX11ShaderCompiler
 {
 	public:
 
-		bool CompileShaders( const DirectX11ShaderCompilerConfig::ShaderData& shader_data );
+		bool CompileShaders( const Fnd::GraphicsResources::ShaderCompilerConfig::ShaderData& shader_data );
 
 	private:
 

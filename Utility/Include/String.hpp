@@ -35,6 +35,12 @@ std::vector<std::string> SplitString( const std::string& str, char c );
 */
 void RemoveEmptyStrings( std::vector<std::string>& strs );
 
+/**
+	Load a file into a string.
+	@param
+*/
+bool LoadFileIntoString( const std::string& filename, std::string& str );
+
 }
 }
 

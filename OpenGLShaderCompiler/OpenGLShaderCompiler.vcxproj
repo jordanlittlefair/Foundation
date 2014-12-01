@@ -11,18 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8AFE728F-D5D8-45D5-B553-1B6050FAB0D8}</ProjectGuid>
-    <RootNamespace>GraphicsResources</RootNamespace>
+    <ProjectGuid>{CE873EA0-16D3-4A75-A325-54BD16971F01}</ProjectGuid>
+    <RootNamespace>OpenGLShaderCompiler</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -54,6 +54,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -68,24 +69,23 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Include\GraphicsImplementation.hpp" />
-    <ClInclude Include="Include\GraphicsSystem.hpp" />
-    <ClInclude Include="Include\ICameraManagerSystem.hpp" />
-    <ClInclude Include="Include\IScreenBufferResources.hpp" />
-    <ClInclude Include="Include\ShaderCompilerConfig.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source\GraphicsImplementation.cpp" />
-    <ClCompile Include="Source\GraphicsSystem.cpp" />
-    <ClCompile Include="Source\ShaderCompilerConfig.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utility\Utility.vcxproj">
-      <Project>{5c047422-6d4a-460d-bdce-18f02e310fff}</Project>
+    <ProjectReference Include="..\glew\glew.vcxproj">
+      <Project>{355483cf-8c2a-4c11-9cae-2848b07480e6}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\GraphicsResources\GraphicsResources.vcxproj">
+      <Project>{8afe728f-d5d8-45d5-b553-1b6050fab0d8}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\OpenGLShaderCompiler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\OpenGLShaderCompiler.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,12 +1,14 @@
-#include "../Include/DirectX11ShaderCompiler.hpp"
+#include "../Include/OpenGLShaderCompiler.hpp"
 #include "../../GraphicsResources/Include/ShaderCompilerConfig.hpp"
 
 #include "../../Utility/Include/FileSystem.hpp"
 
+#include "../../glew/Include/Glew.hpp"
+
 int main()
 {
 	Fnd::GraphicsResources::ShaderCompilerConfig config;
-	if ( !config.Load( "DirectX11ShaderCompiler/", "Config.xml" ) ) 
+	if ( !config.Load( "OpenGLShaderCompiler/", "Config.xml" ) ) 
 	{
 		return 0;
 	}
@@ -14,7 +16,7 @@ int main()
 	/*
 		Create directories
 	*/
-	auto directories = Fnd::Utility::FileSystem::GetDirectories( config.GetShaderData().output_directory_debug );
+	auto directories = Fnd::Utility::FileSystem::GetDirectories( config.GetShaderData().output_directory );
 	std::string directory;
 	for ( unsigned int i = 0; i < directories.size(); ++i )
 	{
@@ -23,7 +25,7 @@ int main()
 		directory += '/';
 	}
 
-	Fnd::DirectX11ShaderCompiler::DirectX11ShaderCompiler compiler;
+	Fnd::OpenGLShaderCompiler::OpenGLShaderCompiler compiler;
 
 	if ( !compiler.CompileShaders( config.GetShaderData() ) )
 	{

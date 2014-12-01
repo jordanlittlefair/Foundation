@@ -12,6 +12,7 @@
 /Foundation/Engine/*.dll
 /Foundation/*.dll
 /Foundation/Engine/Graphics/DirectX11Graphics/Shaders/
+/Foundation/Engine/Graphics/OpenGLGraphics/Shaders/
 /Foundation/*.exe
 /Foundation/Engine/*.exe
 /Foundation/TestApp/Launcher.exe

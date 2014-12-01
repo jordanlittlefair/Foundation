@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <sstream>
+#include <fstream>
 
 void Fnd::Utility::RemoveWhitespace( std::string& str )
 {
@@ -39,4 +40,22 @@ void Fnd::Utility::RemoveEmptyStrings( std::vector<std::string>& strs )
 								[] (const std::string& str) -> bool { return str.empty(); }
 							),
 							strs.end() );
+}
+
+bool Fnd::Utility::LoadFileIntoString( const std::string& filename, std::string& str )
+{
+	std::ifstream filestream( filename, std::ios::beg );
+
+	if ( filestream.is_open() )
+	{
+		std::stringstream ss;
+		ss << filestream.rdbuf();
+		str = ss.str();
+		filestream.close();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

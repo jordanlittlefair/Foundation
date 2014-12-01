@@ -83,16 +83,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Include\DirectX11ShaderCompiler.hpp" />
-    <ClInclude Include="Include\DirectX11ShaderCompilerConfig.hpp" />
     <ClInclude Include="Include\ShaderIncluder.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\DirectX11ShaderCompiler.cpp" />
-    <ClCompile Include="Source\DirectX11ShaderCompilerConfig.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\ShaderIncluder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GraphicsResources\GraphicsResources.vcxproj">
+      <Project>{8afe728f-d5d8-45d5-b553-1b6050fab0d8}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.vcxproj">
       <Project>{5c047422-6d4a-460d-bdce-18f02e310fff}</Project>
     </ProjectReference>
