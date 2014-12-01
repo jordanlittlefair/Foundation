@@ -359,7 +359,7 @@ void DirectX11Graphics::MakeFullscreen( bool fullscreen )
 
 }
 				
-void DirectX11Graphics::Render()
+void DirectX11Graphics::BeginRender()
 {
 	// Clear the back buffer.
 	float default_colour[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
@@ -369,12 +369,12 @@ void DirectX11Graphics::Render()
 	{
 		DeviceContext()->ClearDepthStencilView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer_ds(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0 );
 
-		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer0_rt(), default_colour );
-		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer1_rt(), default_colour );
-		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer2_rt(), default_colour );
-		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer3_rt(), default_colour );
+		//DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer0_rt(), default_colour );
+		//DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer1_rt(), default_colour );
+		//DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer2_rt(), default_colour );
+		//DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer3_rt(), default_colour );
 
-		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetAOBuffer_rt(), default_colour );
+		//DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetAOBuffer_rt(), default_colour );
 
 		DeviceContext()->ClearRenderTargetView( ((ScreenBufferResources*)iter->second.get())->GetLBuffer_rt(), default_colour );
 	}

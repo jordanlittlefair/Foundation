@@ -59,7 +59,7 @@ class OpenGLGraphics:
 		*/
 		void Resize( unsigned int width, unsigned int height );
 
-		void Render();
+		void BeginRender();
 
 		/**
 			Release the graphics resources.

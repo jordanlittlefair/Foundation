@@ -73,7 +73,7 @@ class DirectX11Graphics:
 		bool Initialise();
 				
 		// Render the scene.
-		void Render();
+		void BeginRender();
 		
 		// Present the backbuffer to the screen.
 		void Present();

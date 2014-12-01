@@ -111,7 +111,7 @@ void OpenGLGraphics::Resize( unsigned int width, unsigned int height )
 	// TODO: resize resources
 }
 
-void OpenGLGraphics::Render()
+void OpenGLGraphics::BeginRender()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 

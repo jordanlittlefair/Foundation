@@ -71,7 +71,7 @@ class IGraphics
 		/**
 			Render the scene.
 		*/
-		virtual void Render() = 0;
+		virtual void BeginRender() = 0;
 
 		/**
 			Present the backbuffer to the screen.

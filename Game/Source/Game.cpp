@@ -255,7 +255,7 @@ void Game::Play()
 		if ( _oculus )
 			_oculus->BeginRender( game_timer.GetTickCount() );
 
-		_graphics->Render(); // Actually just clears the screen
+		_graphics->BeginRender();
 
 		//auto e = _entity_system->GetEntityContainer().CreateEntity();
 		//auto c = _entity_system->GetComponentMaps().AddComponent<Fnd::EntitySystem::AmbientLightComponent>(Fnd::EntitySystem::AmbientLightComponent());
