@@ -6,8 +6,6 @@ using namespace Fnd::DirectX11Graphics;
 
 ScreenBufferResources::ScreenBufferResources( DirectX11Graphics* graphics ):
 	_graphics(graphics),
-	_width(0),
-	_height(0),
 	_GBuffer0_rt(nullptr),
 	_GBuffer1_rt(nullptr),
 	_GBuffer2_rt(nullptr),
@@ -36,57 +34,6 @@ ScreenBufferResources::~ScreenBufferResources()
 		_position_reconstruction_cbuffer->Release();
 		_position_reconstruction_cbuffer = nullptr;
 	}
-}
-
-bool ScreenBufferResources::Initialise( unsigned int w, unsigned int h )
-{
-	_width = w;
-	_height = h;
-
-	if ( !CreateResources() )
-	{
-		return false;
-	}
-
-	PositionReconstruction_cbuffer data;
-	data.screen_size = Fnd::Math::Vector2( (float)w, (float)h );
-	data.aspect_ratio = ((float)w) / ((float)h);
-	data.tan_half_fov_y = 0;	// requires the first CameraManagerSystem::Update() to get the correct value
-
-	UpdatePositionReconstructionData(data);
-
-	return true;
-}
-
-bool ScreenBufferResources::Resize( unsigned int w, unsigned int h )
-{
-	_width = w;
-	_height = h;
-
-	ReleaseResources();
-	
-	if ( !CreateResources() )
-	{
-		return false;
-	}
-
-	auto data = GetPositionReconstructionData();
-	data.screen_size = Fnd::Math::Vector2( (float)w, (float)h );
-	data.aspect_ratio = ((float)w) / ((float)h);
-
-	UpdatePositionReconstructionData(data);
-
-	return true;
-}
-
-unsigned int ScreenBufferResources::GetWidth() const
-{
-	return _width;
-}
-
-unsigned int ScreenBufferResources::GetHeight() const
-{
-	return _height;
 }
 
 ID3D11RenderTargetView* ScreenBufferResources::GetGBuffer0_rt()
@@ -160,33 +107,16 @@ ID3D11ShaderResourceView* ScreenBufferResources::GetAOBuffer_sr()
 	return _AOBuffer_sr;
 }
 
-ScreenBufferResources::PositionReconstruction_cbuffer ScreenBufferResources::GetPositionReconstructionData() const
+void ScreenBufferResources::OnUpdatePositionReconstructionData( const ScreenBufferResources::PositionReconstruction_cbuffer& data )
 {
-	return _position_reconstruction_data;
-}
+	D3D11_MAPPED_SUBRESOURCE cbuffer;
 
-bool ScreenBufferResources::UpdatePositionReconstructionData( const ScreenBufferResources::PositionReconstruction_cbuffer& data )
-{
-	bool equal = 
-		( data.screen_size.x == _position_reconstruction_data.screen_size.x ) &&
-		( data.screen_size.y == _position_reconstruction_data.screen_size.y ) &&
-		( data.aspect_ratio == _position_reconstruction_data.aspect_ratio ) &&
-		( data.tan_half_fov_y == _position_reconstruction_data.tan_half_fov_y );
+	_graphics->DeviceContext()->Map( _position_reconstruction_cbuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &cbuffer );
 
-	if ( !equal )
-	{
-		_position_reconstruction_data = data;
+	memcpy( cbuffer.pData, &data, sizeof(PositionReconstruction_cbuffer) );
 
-		D3D11_MAPPED_SUBRESOURCE cbuffer;
+	_graphics->DeviceContext()->Unmap( _position_reconstruction_cbuffer, 0 );
 
-		_graphics->DeviceContext()->Map( _position_reconstruction_cbuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &cbuffer );
-
-		memcpy( cbuffer.pData, &_position_reconstruction_data, sizeof(PositionReconstruction_cbuffer) );
-
-		_graphics->DeviceContext()->Unmap( _position_reconstruction_cbuffer, 0 );
-	}
-
-	return !equal;
 }
 
 ID3D11Buffer* ScreenBufferResources::GetPositionReconstructionBuffer()
@@ -281,8 +211,8 @@ bool ScreenBufferResources::CreateResources()
 		ID3D11Texture2D* tex = nullptr;
 
 		D3D11_TEXTURE2D_DESC tex_desc;
-		tex_desc.Width = _width;
-		tex_desc.Height = _height;
+		tex_desc.Width = GetWidth();
+		tex_desc.Height = GetHeight();
 		tex_desc.MipLevels = 1;
 		tex_desc.ArraySize = 1;
 		tex_desc.Format = DXGI_FORMAT_R16G16B16A16_FLOAT;
@@ -329,8 +259,8 @@ bool ScreenBufferResources::CreateResources()
 		ID3D11Texture2D* tex = nullptr;
 
 		D3D11_TEXTURE2D_DESC tex_desc;
-		tex_desc.Width = _width;
-		tex_desc.Height = _height;
+		tex_desc.Width = GetWidth();
+		tex_desc.Height = GetHeight();
 		tex_desc.MipLevels = 1;
 		tex_desc.ArraySize = 1;
 		tex_desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -377,8 +307,8 @@ bool ScreenBufferResources::CreateResources()
 		ID3D11Texture2D* tex = nullptr;
 
 		D3D11_TEXTURE2D_DESC tex_desc;
-		tex_desc.Width = _width;
-		tex_desc.Height = _height;
+		tex_desc.Width = GetWidth();
+		tex_desc.Height = GetHeight();
 		tex_desc.MipLevels = 1;
 		tex_desc.ArraySize = 1;
 		tex_desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -425,8 +355,8 @@ bool ScreenBufferResources::CreateResources()
 		ID3D11Texture2D* tex = nullptr;
 
 		D3D11_TEXTURE2D_DESC tex_desc;
-		tex_desc.Width = _width;
-		tex_desc.Height = _height;
+		tex_desc.Width = GetWidth();
+		tex_desc.Height = GetHeight();
 		tex_desc.MipLevels = 1;
 		tex_desc.ArraySize = 1;
 		tex_desc.Format = DXGI_FORMAT_R16G16_FLOAT;
@@ -473,8 +403,8 @@ bool ScreenBufferResources::CreateResources()
 		ID3D11Texture2D* tex = nullptr;
 
 		D3D11_TEXTURE2D_DESC tex_desc;
-		tex_desc.Width = _width;
-		tex_desc.Height = _height;
+		tex_desc.Width = GetWidth();
+		tex_desc.Height = GetHeight();
 		tex_desc.MipLevels = 1;
 		tex_desc.ArraySize = 1;
 		tex_desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
@@ -509,8 +439,8 @@ bool ScreenBufferResources::CreateResources()
 	*/
 	{	
 		D3D11_TEXTURE2D_DESC tex_desc;
-		tex_desc.Width = _width;
-		tex_desc.Height = _height;
+		tex_desc.Width = GetWidth();
+		tex_desc.Height = GetHeight();
 		tex_desc.MipLevels = 1;
 		tex_desc.ArraySize = 1;
 		tex_desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -555,8 +485,8 @@ bool ScreenBufferResources::CreateResources()
 		ID3D11Texture2D* tex = nullptr;
 
 		D3D11_TEXTURE2D_DESC tex_desc;
-		tex_desc.Width = _width;
-		tex_desc.Height = _height;
+		tex_desc.Width = GetWidth();
+		tex_desc.Height = GetHeight();
 		tex_desc.MipLevels = 1;
 		tex_desc.ArraySize = 1;
 		tex_desc.Format = DXGI_FORMAT_R8_UNORM;

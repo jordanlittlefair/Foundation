@@ -1,9 +1,9 @@
 #pragma once
 
-#ifndef _DIRECTX11GRAPHICS_DIRECTX11GRAPHICSSYSTEM_HPP_
-#define _DIRECTX11GRAPHICS_DIRECTX11GRAPHICSSYSTEM_HPP_
+#ifndef _OPENGLGRAPHICS_DIRECTX11GRAPHICSSYSTEM_HPP_
+#define _OPENGLGRAPHICS_DIRECTX11GRAPHICSSYSTEM_HPP_
 
-#include "../Include/DirectX11Graphics.hpp"
+#include "../Include/OpenGLGraphics.hpp"
 #include "../../EntitySystem/Include/Components.hpp"
 #include "../../EntitySystem/Include/Entity.hpp"
 #include "../../EntitySystem/Include/ComponentMaps.hpp"
@@ -17,27 +17,27 @@
 
 namespace Fnd
 {
-namespace DirectX11Graphics
+namespace OpenGLGraphics
 {
 
-class DirectX11GraphicsSystem:
+class OpenGLGraphicsSystem:
 	public Fnd::GraphicsResources::GraphicsSystem
 {
 	public:
 
-		DirectX11GraphicsSystem( const std::string& system_name, DirectX11Graphics* graphics );
+		OpenGLGraphicsSystem( const std::string& system_name, OpenGLGraphics* graphics );
 
 		virtual void Resize( unsigned int width, unsigned int height );
 
 	protected:
 
-		DirectX11Graphics* GetGraphics();
+		OpenGLGraphics* GetGraphics();
 
 		Fnd::GraphicsResources::ScreenBufferResourcesBase* GetScreenBufferResources( unsigned int camera_id );
 
 	private:
 
-		DirectX11Graphics* _graphics;
+		OpenGLGraphics* _graphics;
 };
 
 }

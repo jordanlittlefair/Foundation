@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\IScreenBufferResources.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Include\GraphicsSystem.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -30,6 +27,9 @@
     <ClInclude Include="Include\ShaderCompilerConfig.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Include\ScreenBufferResourcesBase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GraphicsSystem.cpp">
@@ -39,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\ShaderCompilerConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ScreenBufferResourcesBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

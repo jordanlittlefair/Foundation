@@ -73,7 +73,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Include\OpenGLGraphics.hpp" />
+    <ClInclude Include="Include\OpenGLGraphicsSystem.hpp" />
     <ClInclude Include="Include\OpenGLModel.hpp" />
+    <ClInclude Include="Include\ScreenBufferResources.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AssetManager\AssetManager.vcxproj">
@@ -88,7 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\OpenGLGraphics.cpp" />
+    <ClCompile Include="Source\OpenGLGraphicsSystem.cpp" />
     <ClCompile Include="Source\OpenGLModel.cpp" />
+    <ClCompile Include="Source\ScreenBufferResources.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

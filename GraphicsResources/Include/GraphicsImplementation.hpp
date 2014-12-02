@@ -3,7 +3,7 @@
 #ifndef _GRAPHICSRESOURCES_GRAPHICSIMPLEMENTATION_HPP_
 #define	_GRAPHICSRESOURCES_GRAPHICSIMPLEMENTATION_HPP_
 
-#include "IScreenBufferResources.hpp"
+#include "ScreenBufferResourcesBase.hpp"
 #include "ICameraManagerSystem.hpp"
 
 #include "../../GameComponentInterfaces/Include/IGraphics.hpp"
@@ -28,7 +28,7 @@ class GraphicsImplementation:
 
 		virtual bool AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height ) = 0;
 
-		std::map<unsigned int,std::shared_ptr<IScreenBufferResources>>& GetIScreenBufferResources();
+		std::map<unsigned int,std::shared_ptr<ScreenBufferResourcesBase>>& GetScreenBufferResourcesBase();
 
 		/*
 			Inherited from IGraphics
@@ -80,7 +80,7 @@ class GraphicsImplementation:
 		std::shared_ptr<Fnd::EntitySystem::System> _camera_manager_system;
 		ICameraManagerSystem* _i_camera_manager_system;
 
-		std::map<unsigned int,std::shared_ptr<IScreenBufferResources>> _screen_buffer_resources;
+		std::map<unsigned int,std::shared_ptr<ScreenBufferResourcesBase>> _screen_buffer_resources;
 
 		unsigned int _active_camera[ActiveCamera_Count];
 

@@ -365,7 +365,7 @@ void DirectX11Graphics::BeginRender()
 	float default_colour[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	_immediate_device_context->ClearRenderTargetView( _back_buffer, default_colour );
 	
-	for ( auto iter = GetIScreenBufferResources().begin(); iter != GetIScreenBufferResources().end(); ++iter )
+	for ( auto iter = GetScreenBufferResourcesBase().begin(); iter != GetScreenBufferResourcesBase().end(); ++iter )
 	{
 		DeviceContext()->ClearDepthStencilView( ((ScreenBufferResources*)iter->second.get())->GetGBuffer_ds(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0 );
 
@@ -518,7 +518,7 @@ void DirectX11Graphics::Resize( unsigned int width, unsigned int height )
 
 	buffer->Release();
 
-	for ( auto iter = GetIScreenBufferResources().begin(); iter != GetIScreenBufferResources().end(); ++iter )
+	for ( auto iter = GetScreenBufferResourcesBase().begin(); iter != GetScreenBufferResourcesBase().end(); ++iter )
 	{
 		iter->second->Resize( _width, _height );
 	}
@@ -626,7 +626,7 @@ bool DirectX11Graphics::AddScreenBufferResources( unsigned int id, unsigned int 
 
 		if ( srb->Initialise( width, height ) )
 		{
-			GetIScreenBufferResources().insert( std::make_pair( id, srb ) );
+			GetScreenBufferResourcesBase().insert( std::make_pair( id, srb ) );
 
 			return true;
 		}
@@ -637,9 +637,9 @@ bool DirectX11Graphics::AddScreenBufferResources( unsigned int id, unsigned int 
 
 ScreenBufferResources* DirectX11Graphics::GetScreenBufferResources( unsigned int id )
 {
-	auto found = GetIScreenBufferResources().find(id);
+	auto found = GetScreenBufferResourcesBase().find(id);
 
-	if ( found != GetIScreenBufferResources().end() )
+	if ( found != GetScreenBufferResourcesBase().end() )
 	{
 		return (ScreenBufferResources*)found->second.get();
 	}

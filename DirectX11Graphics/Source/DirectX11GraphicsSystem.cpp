@@ -18,7 +18,7 @@ DirectX11Graphics* DirectX11GraphicsSystem::GetGraphics()
 	return _graphics;
 }
 
-Fnd::GraphicsResources::IScreenBufferResources* DirectX11GraphicsSystem::GetScreenBufferResources( unsigned int camera_id )
+Fnd::GraphicsResources::ScreenBufferResourcesBase* DirectX11GraphicsSystem::GetScreenBufferResources( unsigned int camera_id )
 {
 	return _graphics->GetScreenBufferResources(camera_id);
 }

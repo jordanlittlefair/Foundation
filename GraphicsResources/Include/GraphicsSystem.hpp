@@ -3,7 +3,7 @@
 #ifndef _GRAPHICSRESOURCES_GRAPHICSSYSTEM_HPP_
 #define	_GRAPHICSRESOURCES_GRAPHICSSYSTEM_HPP_
 
-#include "IScreenBufferResources.hpp"
+#include "ScreenBufferResourcesBase.hpp"
 
 #include "../../GameComponentInterfaces/Include/IGraphics.hpp"
 #include "../../EntitySystem/Include/EntitySystem.hpp"
@@ -30,12 +30,12 @@ class GraphicsSystem:
 		
 	protected:
 	
-		virtual IScreenBufferResources* GetScreenBufferResources( unsigned int camera_id ) = 0;
+		virtual ScreenBufferResourcesBase* GetScreenBufferResources( unsigned int camera_id ) = 0;
 		
 		struct CameraData
 		{
 			Fnd::EntitySystem::CameraNode::Pointers camera_components;
-			IScreenBufferResources* screenbuffer;
+			ScreenBufferResourcesBase* screenbuffer;
 		};
 	
 		template <typename FunctionType>
@@ -51,7 +51,7 @@ class GraphicsSystem:
 					continue;
 				}
 				
-				IScreenBufferResources* screenbuffer = GetScreenBufferResources( camera_components.cameraproperties->data.camera_id );
+				ScreenBufferResourcesBase* screenbuffer = GetScreenBufferResources( camera_components.cameraproperties->data.camera_id );
 				if ( !screenbuffer )
 				{
 					continue;

@@ -32,7 +32,7 @@ ICameraManagerSystem* GraphicsImplementation::GetCameraManager()
 	return _i_camera_manager_system;
 }
 
-std::map<unsigned int,std::shared_ptr<IScreenBufferResources>>& GraphicsImplementation::GetIScreenBufferResources()
+std::map<unsigned int,std::shared_ptr<ScreenBufferResourcesBase>>& GraphicsImplementation::GetScreenBufferResourcesBase()
 {
 	return _screen_buffer_resources;
 }

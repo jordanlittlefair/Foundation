@@ -5,7 +5,7 @@
 
 #include "../../Math/Include/Math.hpp"
 
-#include "../../GraphicsResources/Include/IScreenBufferResources.hpp"
+#include "../../GraphicsResources/Include/ScreenBufferResourcesBase.hpp"
 
 #include <d3d11.h>
 
@@ -17,19 +17,12 @@ namespace DirectX11Graphics
 class DirectX11Graphics;
 
 class ScreenBufferResources:
-	public Fnd::GraphicsResources::IScreenBufferResources
+	public Fnd::GraphicsResources::ScreenBufferResourcesBase
 {
 	public:
 
 		ScreenBufferResources( DirectX11Graphics* graphics );
-
-		bool Initialise( unsigned int w, unsigned int h );
-
-		bool Resize( unsigned int w, unsigned int h );
-
-		unsigned int GetWidth() const;
-		unsigned int GetHeight() const;
-
+				
 		/*
 			Gbuffer
 		*/
@@ -58,28 +51,21 @@ class ScreenBufferResources:
 		ID3D11RenderTargetView* GetAOBuffer_rt();
 		ID3D11ShaderResourceView* GetAOBuffer_sr();
 
-		struct PositionReconstruction_cbuffer
-		{
-			Fnd::Math::Vector2 screen_size;
-			float aspect_ratio;
-			float tan_half_fov_y;
-		};
-		PositionReconstruction_cbuffer GetPositionReconstructionData() const;
-		bool UpdatePositionReconstructionData( const PositionReconstruction_cbuffer& data );
 
 		ID3D11Buffer* GetPositionReconstructionBuffer();
 		
 		~ScreenBufferResources();
 
-	private:
+	protected:
 
-		DirectX11Graphics* _graphics;
-
-		unsigned int _width;
-		unsigned int _height;
+		void OnUpdatePositionReconstructionData( const ScreenBufferResources::PositionReconstruction_cbuffer& data );
 
 		void ReleaseResources();
 		bool CreateResources();
+
+	private:
+
+		DirectX11Graphics* _graphics;
 
 		ID3D11RenderTargetView* _GBuffer0_rt;
 		ID3D11RenderTargetView* _GBuffer1_rt;
@@ -100,7 +86,6 @@ class ScreenBufferResources:
 		ID3D11RenderTargetView* _AOBuffer_rt;
 		ID3D11ShaderResourceView* _AOBuffer_sr;
 
-		PositionReconstruction_cbuffer _position_reconstruction_data;
 		ID3D11Buffer* _position_reconstruction_cbuffer;
 };
 
