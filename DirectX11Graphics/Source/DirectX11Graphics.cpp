@@ -30,24 +30,12 @@ DirectX11Graphics::DirectX11Graphics():
 	_immediate_device_context(nullptr),
 	_swap_chain(nullptr),
 	_back_buffer(nullptr),
-	_width(0),
-	_height(0),
 	_resources(this),
 	_vr_eye_texture(nullptr),
 	_vr_eye_sr(nullptr),
 	_vr_eye_rt(nullptr),
 	_oculus_blit_cbuffer(nullptr)
 {
-}
-
-unsigned int DirectX11Graphics::GetWidth() const
-{
-	return _width;
-}
-
-unsigned int DirectX11Graphics::GetHeight() const
-{
-	return _height;
 }
 
 ID3D11Device* DirectX11Graphics::Device() const
@@ -62,12 +50,12 @@ ID3D11DeviceContext* DirectX11Graphics::DeviceContext() const
 
 unsigned int DirectX11Graphics::GetScreenWidth() const
 {
-	return _width;
+	return GetWidth();
 }
 		
 unsigned int DirectX11Graphics::GetScreenHeight() const
 {
-	return _height;
+	return GetHeight();
 }
 
 ID3D11DeviceContext* DirectX11Graphics::GetNewDeferredDeviceContext() const
@@ -148,9 +136,6 @@ DirectX11Graphics::~DirectX11Graphics()
 		_oculus_blit_cbuffer = nullptr;
 	}
 		
-	_width = 0;
-	_height = 0;
-
 	_is_initialised = false;
 }
 		
@@ -260,8 +245,8 @@ bool DirectX11Graphics::Initialise()
     if (FAILED(hr))
         return false;
 
-	_width = width;
-	_height = height;
+	SetWidth( width );
+	SetHeight( height );
 
 	if ( backbuffer )
 	{
@@ -411,7 +396,7 @@ void DirectX11Graphics::Present()
 
 		DeviceContext()->VSSetShader( _resources.GetShaders("Blit").vs, nullptr, 0 );
 
-		D3D11_VIEWPORT viewport = { 0, 0, (float)_width, (float)_height, 0, 1 };
+		D3D11_VIEWPORT viewport = { 0, 0, (float)GetWidth(), (float)GetHeight(), 0, 1 };
 
 		DeviceContext()->RSSetViewports( 1, &viewport );
 
@@ -483,7 +468,7 @@ void DirectX11Graphics::Resize( unsigned int width, unsigned int height )
 	//ss << "Changing resolution to: " << width << " x " << height << std::endl;
 	//Error::Log( ss.str() );
 	// Don't do anything if the new size is the same as the old.
-	if ( _width == width && _height == height )
+	if ( GetWidth() == width && GetHeight() == height )
 	{
 		return;
 	}
@@ -494,8 +479,8 @@ void DirectX11Graphics::Resize( unsigned int width, unsigned int height )
 		return;
 	}
 
-	_width = width;
-	_height = height;
+	SetWidth( width );
+	SetHeight( height );
 
 	//return;
 	// Release the current back buffer.
@@ -508,7 +493,7 @@ void DirectX11Graphics::Resize( unsigned int width, unsigned int height )
 
 	
 	// Resize the swap chain and create a new back buffer.
-	_swap_chain->ResizeBuffers( 2, _width, _height, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH );
+	_swap_chain->ResizeBuffers( 2, GetWidth(), GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH );
 
 	ID3D11Texture2D* buffer = nullptr;
 
@@ -520,7 +505,7 @@ void DirectX11Graphics::Resize( unsigned int width, unsigned int height )
 
 	for ( auto iter = GetScreenBufferResourcesBase().begin(); iter != GetScreenBufferResourcesBase().end(); ++iter )
 	{
-		iter->second->Resize( _width, _height );
+		iter->second->Resize( GetWidth(), GetHeight() );
 	}
 }
 

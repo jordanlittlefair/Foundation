@@ -31,13 +31,7 @@ class DirectX11Graphics:
 
 		// Default Constructor.
 		DirectX11Graphics();
-		
-		// Get the width of the screen.
-		unsigned int GetWidth() const;
-		
-		// Get the height of the screen.
-		unsigned int GetHeight() const;
-		
+				
 		// Get the device.
 		ID3D11Device* Device() const;
 		
@@ -129,12 +123,6 @@ class DirectX11Graphics:
 			Fnd::Math::Vector2 righteye_pos;
 		};
 		ID3D11Buffer* _oculus_blit_cbuffer;
-						
-		// Width of the screen.
-		unsigned int _width;
-		
-		// Height of the screen.
-		unsigned int _height;
 
 		DirectX11Resources _resources;
 };

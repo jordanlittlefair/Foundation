@@ -10,7 +10,9 @@ GraphicsImplementation::GraphicsImplementation():
 	_i_camera_manager_system(nullptr),
 	_vr_enabled(false),
 	_lefteye_fov(0),
-	_righteye_fov(0)
+	_righteye_fov(0),
+	_width(0),
+	_height(0)
 {
 	memset( _active_camera, ~0, ActiveCamera_Count );
 	memset( &_oculus_data, 0, sizeof(_oculus_data) );
@@ -35,6 +37,26 @@ ICameraManagerSystem* GraphicsImplementation::GetCameraManager()
 std::map<unsigned int,std::shared_ptr<ScreenBufferResourcesBase>>& GraphicsImplementation::GetScreenBufferResourcesBase()
 {
 	return _screen_buffer_resources;
+}
+
+unsigned int GraphicsImplementation::GetWidth() const
+{
+	return _width;
+}
+
+unsigned int GraphicsImplementation::GetHeight() const
+{
+	return _height;
+}
+
+void GraphicsImplementation::SetWidth( unsigned int width )
+{
+	_width = width;
+}
+
+void GraphicsImplementation::SetHeight( unsigned int height )
+{
+	_height = height;
 }
 
 void GraphicsImplementation::SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game )

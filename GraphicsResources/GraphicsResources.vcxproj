@@ -71,6 +71,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Include\CameraManagerSystemTemplate.hpp" />
     <ClInclude Include="Include\GraphicsImplementation.hpp" />
     <ClInclude Include="Include\GraphicsSystem.hpp" />
     <ClInclude Include="Include\ICameraManagerSystem.hpp" />

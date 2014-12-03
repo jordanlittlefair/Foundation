@@ -155,7 +155,33 @@ void OpenGLGraphics::UpdateVRCameraOffsets( const Fnd::GameComponentInterfaces::
 {
 }
 
+ScreenBufferResources* OpenGLGraphics::GetScreenBufferResources( unsigned int id )
+{
+	auto found = GetScreenBufferResourcesBase().find(id);
+
+	if ( found != GetScreenBufferResourcesBase().end() )
+	{
+		return (ScreenBufferResources*)found->second.get();
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
 bool OpenGLGraphics::AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height )
 {
+	if ( !GetScreenBufferResources(id) )
+	{
+		std::shared_ptr<ScreenBufferResources> srb( new ScreenBufferResources(this));
+
+		if ( srb->Initialise( width, height ) )
+		{
+			GetScreenBufferResourcesBase().insert( std::make_pair( id, srb ) );
+
+			return true;
+		}
+	}
+
 	return false;
 }

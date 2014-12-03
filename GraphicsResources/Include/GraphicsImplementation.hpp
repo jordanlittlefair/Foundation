@@ -16,6 +16,14 @@ namespace GraphicsResources
 class GraphicsImplementation:
 	public Fnd::GameComponentInterfaces::IGraphics
 {
+	public:
+
+		// Get the width of the screen.
+		unsigned int GetWidth() const;
+		
+		// Get the height of the screen.
+		unsigned int GetHeight() const;
+
 	protected:
 
 		GraphicsImplementation();
@@ -29,6 +37,10 @@ class GraphicsImplementation:
 		virtual bool AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height ) = 0;
 
 		std::map<unsigned int,std::shared_ptr<ScreenBufferResourcesBase>>& GetScreenBufferResourcesBase();
+
+		void SetWidth( unsigned int width );
+
+		void SetHeight( unsigned int height );
 
 		/*
 			Inherited from IGraphics
@@ -89,6 +101,12 @@ class GraphicsImplementation:
 		OculusData _oculus_data;
 		float _lefteye_fov;
 		float _righteye_fov;
+
+		// Width of the screen.
+		unsigned int _width;
+		
+		// Height of the screen.
+		unsigned int _height;
 
 };
 

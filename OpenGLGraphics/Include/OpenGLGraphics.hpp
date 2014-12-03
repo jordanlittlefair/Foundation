@@ -4,6 +4,7 @@
 #define _OPENGLGRAPHICS_OPENGLGRAPHICS_HPP_
 
 #include "../../GraphicsResources/Include/GraphicsImplementation.hpp"
+#include "ScreenBufferResources.hpp"
 
 namespace Fnd
 {
@@ -81,6 +82,8 @@ class OpenGLGraphics:
 		bool AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height );
 
 	protected:
+
+		ScreenBufferResources* GetScreenBufferResources( unsigned int id );
 
 		void OnSetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data );
 

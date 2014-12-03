@@ -72,6 +72,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Include\CameraManagerSystem.hpp" />
     <ClInclude Include="Include\OpenGLGraphics.hpp" />
     <ClInclude Include="Include\OpenGLGraphicsSystem.hpp" />
     <ClInclude Include="Include\OpenGLModel.hpp" />
@@ -89,6 +90,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\CameraManagerSystem.cpp" />
     <ClCompile Include="Source\OpenGLGraphics.cpp" />
     <ClCompile Include="Source\OpenGLGraphicsSystem.cpp" />
     <ClCompile Include="Source\OpenGLModel.cpp" />
