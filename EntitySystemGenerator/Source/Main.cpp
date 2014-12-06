@@ -1,9 +1,9 @@
 #include <iostream>
 
 #include "../Include/EntitySystemGeneratorConfig.hpp"
-#include "..\Include\ComponentsHeaderGenerator.hpp"
-#include "..\Include\ComponentsSourceGenerator.hpp"
-#include "..\Include\ComponentCreatorSourceGenerator.hpp"
+#include "../Include/ComponentsHeaderGenerator.hpp"
+#include "../Include/ComponentsSourceGenerator.hpp"
+#include "../Include/ComponentCreatorSourceGenerator.hpp"
 #include "../Include/ComponentMapsHeaderGenerator.hpp"
 #include "../Include/ComponentMapsSourceGenerator.hpp"
 #include "../Include/SystemNodesHeaderGenerator.hpp"
@@ -14,9 +14,10 @@
 #include "../Include/ComponentDefinitions.hpp"
 #include "../Include/SystemNodeDefinitions.hpp"
 
-using namespace Fnd::EntitySystemCodeGeneration;
+#include "../../Utility/Include/FileSystem.hpp"
 
-#include <Windows.h>
+using namespace Fnd::EntitySystemCodeGeneration;
+using namespace Fnd::Utility;
 
 bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Directories& directories, const ComponentDefinitions& component_definitions, const Fnd::EntitySystemCodeGeneration::SystemNodeDefinitions& systemnode_definitions )
 {
@@ -24,22 +25,16 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 
 	std::cout << "Creating \"Include\" and \"Source\" directories...." << std::endl;
 
-	if ( !CreateDirectory( ( directories.output + "Include" ).c_str(), nullptr ) )
+    if ( FileSystem::CreateNewDirectory( directories.output + "Include" ) )
 	{
-		if ( GetLastError() != ERROR_ALREADY_EXISTS )
-		{
-			std::cout << "\tFailed to create \"Include\" directory." << std::endl;
-			return false;
-		}
+        std::cout << "\tFailed to create \"Include\" directory." << std::endl;
+        return false;
 	}
-	if ( !CreateDirectory( ( directories.output + "Source" ).c_str(), nullptr ) )
-	{
-		if ( GetLastError() != ERROR_ALREADY_EXISTS )
-		{
-			std::cout << "\tFailed to create \"Source\" directory." << std::endl;
-			return false;
-		}
-	}
+    if ( FileSystem::CreateNewDirectory( directories.output + "Source" ) )
+    {
+        std::cout << "\tFailed to create \"Source\" directory." << std::endl;
+        return false;
+    }
 
 
 	/*
@@ -232,7 +227,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 	return true;
 }
 
-int wmain(int argc, wchar_t* argv[])
+int main(int argc, char* argv[])
 {
 	std::cout <<	"--------------------------------\n";
 	std::cout <<	"EntitySystemGenerator\n";
@@ -248,10 +243,10 @@ int wmain(int argc, wchar_t* argv[])
 	}
 
 	Fnd::EntitySystemCodeGeneration::ComponentDefinitions component_definitions;
-	auto a = component_definitions.Load( config.GetDirectories().input + "ComponentDefinitions.xml" );
+	component_definitions.Load( config.GetDirectories().input + "ComponentDefinitions.xml" );
 
 	Fnd::EntitySystemCodeGeneration::SystemNodeDefinitions systemnode_definitions;
-	auto b = systemnode_definitions.Load( config.GetDirectories().input + "SystemNodeDefinitions.xml" );
+	systemnode_definitions.Load( config.GetDirectories().input + "SystemNodeDefinitions.xml" );
 	//return 0;
 	bool success = Generate( config.GetDirectories(), component_definitions, systemnode_definitions );
 

@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:EntitySystemGenerator/EntitySystemGenerator.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Math/Math.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Utility/Utility.xcodeproj">
    </FileRef>
 </Workspace>

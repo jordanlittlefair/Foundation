@@ -1,4 +1,4 @@
-#include "..\Include\CodeGenerator.hpp"
+#include "../Include/CodeGenerator.hpp"
 
 #include <fstream>
 
