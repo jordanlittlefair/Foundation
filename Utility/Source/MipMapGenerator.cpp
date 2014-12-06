@@ -2,6 +2,8 @@
 
 #include "../Include/Utility.hpp"
 
+#include <cmath>
+
 using namespace Fnd::Utility;
 
 unsigned int MipMapGenerator::GetNumMipLevels( const Image& image )
