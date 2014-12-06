@@ -3,7 +3,7 @@
 
 using namespace Fnd::Utility;
 
-#ifdef WINDOWS
+#ifdef _WIN32
 #include <Windows.h>
 #else
 #include <unistd.h>
@@ -13,7 +13,7 @@ using namespace Fnd::Utility;
 
 bool FileSystem::CreateNewDirectory( const std::string& directory_name )
 {
-#ifdef WINDOWS
+#ifdef _WIN32
 	if ( !CreateDirectory( directory_name.c_str(), nullptr ) )
 	{
 		if ( GetLastError() != ERROR_ALREADY_EXISTS )
@@ -98,7 +98,7 @@ void FileSystem::GetPathAndName( const std::string& full_path, std::string& path
 
 std::string FileSystem::GetWorkingDirectory()
 {
-#ifdef WINDOWS
+#ifdef _WIN32
 	char buffer[MAX_PATH] = {0};
 
 	GetCurrentDirectory( MAX_PATH, buffer );

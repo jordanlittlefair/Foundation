@@ -25,17 +25,9 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 
 	std::cout << "Creating \"Include\" and \"Source\" directories...." << std::endl;
 
-    if ( FileSystem::CreateNewDirectory( directories.output + "Include" ) )
-	{
-        std::cout << "\tFailed to create \"Include\" directory." << std::endl;
-        return false;
-	}
-    if ( FileSystem::CreateNewDirectory( directories.output + "Source" ) )
-    {
-        std::cout << "\tFailed to create \"Source\" directory." << std::endl;
-        return false;
-    }
-
+    FileSystem::CreateNewDirectory( directories.output + "Include" );
+	
+	FileSystem::CreateNewDirectory( directories.output + "Source" );
 
 	/*
 		Generate Components.hpp
