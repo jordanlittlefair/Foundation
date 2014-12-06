@@ -17,3 +17,4 @@
 /Foundation/Engine/*.exe
 /Foundation/TestApp/Launcher.exe
 *.user
+xcuserdata
