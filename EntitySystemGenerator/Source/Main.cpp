@@ -255,9 +255,5 @@ int main(int argc, char* argv[])
 
 	std::cout <<	"--------------------------------" << std::endl;
 
-	system("pause");
-
-	std::cout <<	"--------------------------------" << std::endl;
-
 	return success ? 0 : 1;
 }
