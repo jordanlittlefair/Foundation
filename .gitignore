@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -18,3 +18,20 @@
 /Foundation/TestApp/Launcher.exe
 *.user
 xcuserdata
+EntitySystem/Include/ComponentMaps.hpp
+
+EntitySystem/Include/Components.hpp
+
+EntitySystem/Include/SystemNodes.hpp
+
+EntitySystem/Include/SystemNodesContainer.hpp
+
+EntitySystem/Source/ComponentCreator.cpp
+
+EntitySystem/Source/ComponentMaps.cpp
+
+EntitySystem/Source/Components.cpp
+
+EntitySystem/Source/SystemNodes.cpp
+
+EntitySystem/Source/SystemNodesContainer.cpp

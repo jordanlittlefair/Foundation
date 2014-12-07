@@ -9,6 +9,7 @@
 #include "../../EntitySystem/Include/EntitySystem.hpp"
 #include "../../EntitySystem/Include/SystemNodes.hpp"
 #include "../../EntitySystem/Include/System.hpp"
+#include "../../EntitySystem/Include/SystemNodesContainer.hpp"
 
 namespace Fnd
 {
@@ -41,11 +42,11 @@ class GraphicsSystem:
 		template <typename FunctionType>
 		void ForEachCamera( FunctionType function )
 		{
-			for (	auto camera_iter = GetEntitySystem().GetSystemNodesContainer().GetNodeMap<CameraNode>().begin();
-					camera_iter != GetEntitySystem().GetSystemNodesContainer().GetNodeMap<CameraNode>().end();
+			for (	auto camera_iter = GetEntitySystem().GetSystemNodesContainer().GetNodeMap<Fnd::EntitySystem::CameraNode>().begin();
+					camera_iter != GetEntitySystem().GetSystemNodesContainer().GetNodeMap<Fnd::EntitySystem::CameraNode>().end();
 					++camera_iter )
 			{
-				CameraNode::Pointers camera_components;
+				Fnd::EntitySystem::CameraNode::Pointers camera_components;
 				if ( !camera_iter->second.GetPointers( GetEntitySystem(), camera_components ) )
 				{
 					continue;

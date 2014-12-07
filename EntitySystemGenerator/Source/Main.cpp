@@ -37,7 +37,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 
 		ComponentsHeaderGenerator chg;
 		success = chg.Generate(	component_definitions,
-								directories.output + "Include\\Components.hpp" );
+								directories.output + "Include/Components.hpp" );
 
 		if ( !success )
 		{
@@ -57,7 +57,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		ComponentsSourceGenerator csg;
 
 		success = csg.Generate(	component_definitions,
-								directories.output + "Source\\Components.cpp" );
+								directories.output + "Source/Components.cpp" );
 
 		if ( !success )
 		{
@@ -78,7 +78,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		ComponentCreatorSourceGenerator ccsg;
 
 		success = ccsg.Generate(	component_definitions,
-									directories.output + "Source\\ComponentCreator.cpp" );
+									directories.output + "Source/ComponentCreator.cpp" );
 
 		if ( !success )
 		{
@@ -99,7 +99,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		ComponentMapsHeaderGenerator cmhg;
 
 		success = cmhg.Generate(	component_definitions,
-									directories.output + "Include\\ComponentMaps.hpp" );
+									directories.output + "Include/ComponentMaps.hpp" );
 
 		if ( !success )
 		{
@@ -120,7 +120,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		ComponentMapsSourceGenerator cmsg;
 
 		success = cmsg.Generate(	component_definitions,
-									directories.output + "Source\\ComponentMaps.cpp" );
+									directories.output + "Source/ComponentMaps.cpp" );
 
 		if ( !success )
 		{
@@ -141,7 +141,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		SystemNodesHeaderGenerator snhg;
 
 		success = snhg.Generate(	systemnode_definitions,
-									directories.output + "Include\\SystemNodes.hpp" );
+									directories.output + "Include/SystemNodes.hpp" );
 
 		if ( !success )
 		{
@@ -162,7 +162,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		SystemNodesSourceGenerator snsg;
 
 		success = snsg.Generate(	systemnode_definitions,
-									directories.output + "Source\\SystemNodes.cpp" );
+									directories.output + "Source/SystemNodes.cpp" );
 
 		if ( !success )
 		{
@@ -183,7 +183,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		SystemNodesContainerHeaderGenerator snchg;
 
 		success = snchg.Generate(	systemnode_definitions,
-									directories.output + "Include\\SystemNodesContainer.hpp" );
+									directories.output + "Include/SystemNodesContainer.hpp" );
 
 		if ( !success )
 		{
@@ -204,7 +204,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		SystemNodesContainerSourceGenerator sncsg;
 
 		success = sncsg.Generate(	systemnode_definitions,
-									directories.output + "Source\\SystemNodesContainer.cpp" );
+									directories.output + "Source/SystemNodesContainer.cpp" );
 
 		if ( !success )
 		{

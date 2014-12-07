@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:EntitySystem/EntitySystem.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GraphicsResources/GraphicsResources.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Utility/Utility.xcodeproj">
+   </FileRef>
+</Workspace>
