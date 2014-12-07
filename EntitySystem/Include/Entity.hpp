@@ -7,6 +7,7 @@
 
 #include "Components.hpp"
 #include "EntitySystem.hpp"
+#include "ComponentMaps.hpp"
 
 namespace Fnd
 {
