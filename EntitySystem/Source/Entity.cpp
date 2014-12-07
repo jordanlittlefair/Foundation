@@ -103,22 +103,6 @@ bool Entity::RemoveComponent( unsigned int component_type, EntitySystem& entity_
 	}
 }
 
-
-template <class ComponentType>
-ComponentType* Fnd::EntitySystem::Entity::GetComponent( Fnd::EntitySystem::EntitySystem& entity_system ) const
-{
-    auto iter = _components.find( ComponentType::GetComponentIDstatic() );
-    
-    if ( iter != _components.end() )
-    {
-        return entity_system.GetComponentMaps().GetComponent<ComponentType>(iter->second);
-    }
-    else
-    {
-        return nullptr;
-    }
-}
-
 void Entity::ClearComponents( EntitySystem& entity_system )
 {
 	for ( auto iter = _components.begin(); iter != _components.end(); ++iter )
