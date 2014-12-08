@@ -17,6 +17,7 @@
 		10D7293B1A33BA4300585AF6 /* GraphicsSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10D729311A33BA4300585AF6 /* GraphicsSystem.cpp */; };
 		10D7293C1A33BA4300585AF6 /* ScreenBufferResourcesBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10D729321A33BA4300585AF6 /* ScreenBufferResourcesBase.cpp */; };
 		10D7293D1A33BA4300585AF6 /* ShaderCompilerConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10D729331A33BA4300585AF6 /* ShaderCompilerConfig.cpp */; };
+		10D901D11A3657BA00A6EF2C /* libEntitySystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D901D01A3657BA00A6EF2C /* libEntitySystem.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		10D729311A33BA4300585AF6 /* GraphicsSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsSystem.cpp; sourceTree = "<group>"; };
 		10D729321A33BA4300585AF6 /* ScreenBufferResourcesBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenBufferResourcesBase.cpp; sourceTree = "<group>"; };
 		10D729331A33BA4300585AF6 /* ShaderCompilerConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderCompilerConfig.cpp; sourceTree = "<group>"; };
+		10D901D01A3657BA00A6EF2C /* libEntitySystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libEntitySystem.a; path = "../../Library/Developer/Xcode/DerivedData/OpenGLShaderCompiler-dzxfvrnzvsvhwxgmuvwnijbmenkx/Build/Products/Debug/libEntitySystem.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D901D11A3657BA00A6EF2C /* libEntitySystem.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +50,7 @@
 		10D729111A33BA1E00585AF6 = {
 			isa = PBXGroup;
 			children = (
+				10D901D01A3657BA00A6EF2C /* libEntitySystem.a */,
 				10D729281A33BA4300585AF6 /* Include */,
 				10D7292F1A33BA4300585AF6 /* Source */,
 				10D7291B1A33BA1E00585AF6 /* Products */,
@@ -248,6 +252,10 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OpenGLShaderCompiler-dzxfvrnzvsvhwxgmuvwnijbmenkx/Build/Products/Debug",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -259,6 +267,10 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OpenGLShaderCompiler-dzxfvrnzvsvhwxgmuvwnijbmenkx/Build/Products/Debug",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -282,6 +294,7 @@
 				10D729271A33BA1E00585AF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

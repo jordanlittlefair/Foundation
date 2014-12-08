@@ -3,21 +3,27 @@
 #include "../../Utility/Include/String.hpp"
 #include "../../Utility/Include/FileSystem.hpp"
 
+#ifdef _WIN32
 #include <Windows.h>
 #include <wingdi.h>
+#else
+#endif
 
 #include <iostream>
 
 using namespace Fnd::OpenGLShaderCompiler;
 
+#ifdef _Win32
 LRESULT WINAPI wndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
 	return DefWindowProc(wnd,msg,wParam,lParam);
 }
+#endif
 
 OpenGLShaderCompiler::OpenGLShaderCompiler():
 	_initialised_successfully(false)
 {
+#ifdef _win32
 	WNDCLASSEX window_class;
 
 	window_class.cbSize = sizeof(WNDCLASSEX);
@@ -82,6 +88,8 @@ OpenGLShaderCompiler::OpenGLShaderCompiler():
 	{
 		std::cout << "Failed to initialise glew, error code: " << err << std::endl;
 	}
+#else
+#endif
 }
 
 GLuint OpenGLShaderCompiler::CompileShader( const std::string& input_filename, const std::string& output_filename, GLuint type, std::string& error )
@@ -133,9 +141,10 @@ bool OpenGLShaderCompiler::CompileShaders( const Fnd::GraphicsResources::ShaderC
 
 	if ( !ret )
 	{
+        std::cout << "Failed to initialise OpenGL graphics." << std::endl;
 		return false;
 	}
-
+    
 	for ( auto iter = shader_data.pipelines.begin(); iter != shader_data.pipelines.end(); ++iter )
 	{
 		/*

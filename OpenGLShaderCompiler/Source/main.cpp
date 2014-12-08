@@ -3,8 +3,6 @@
 
 #include "../../Utility/Include/FileSystem.hpp"
 
-#include "../../glew/Include/Glew.hpp"
-
 int main()
 {
 	Fnd::GraphicsResources::ShaderCompilerConfig config;
@@ -21,7 +19,7 @@ int main()
 	for ( unsigned int i = 0; i < directories.size(); ++i )
 	{
 		directory += directories[i];
-		auto res = Fnd::Utility::FileSystem::CreateNewDirectory( directory );
+		Fnd::Utility::FileSystem::CreateNewDirectory( directory );
 		directory += '/';
 	}
 
@@ -31,9 +29,6 @@ int main()
 	{
 		return 0;
 	}
-
-
-	system( "pause" );
 
 	return 0;
 }
