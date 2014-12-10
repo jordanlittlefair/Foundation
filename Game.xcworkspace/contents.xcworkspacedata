@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:EntitySystem/EntitySystem.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CommonResources/CommonResources.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AssetManager/AssetManager.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Logger/Logger.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Math/Math.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelLoader/ModelLoader.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Utility/Utility.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:HTTPClient/HTTPClient.xcodeproj">
+   </FileRef>
+</Workspace>
