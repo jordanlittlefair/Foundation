@@ -67,10 +67,11 @@ All projects require Visual Studio 2012 to build (untested in later versions).
 To build this application:
 
 1. Build the *DirectX11ShaderCompiler* solution (in Release).
-2. Build the *Game* solution (in Release).
-3. Run *CopyDLLs.bat* in the root directory.
-4. Run *Configure_Win32.bat* in *Foundation\Configure*.
-5. Run *DirectX11ShaderCompiler.exe* in *Foundation*.
+2. Build the *Assimp* solution in the *Assimp* directory (in Debug and Release).
+3. Build the *Game* solution (in Release).
+4. Run *CopyDLLs.bat* in the root directory.
+5. Run *Configure_Win32.bat* in *Foundation\Configure*.
+6. Run *DirectX11ShaderCompiler.exe* in *Foundation*.
 
 You have now built the Foundation Game Engine and TestApp.
 
