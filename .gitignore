@@ -7,7 +7,7 @@
 /Build
 /Foundation/Assimp32.dll
 /Foundation/Assimp32d.dll
-/*.suo
+*.suo
 /Doc/html
 /Foundation/Engine/*.dll
 /Foundation/*.dll
