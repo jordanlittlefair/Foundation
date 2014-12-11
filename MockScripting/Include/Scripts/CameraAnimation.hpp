@@ -70,9 +70,11 @@ class CameraAnimationScript:
 			{
 				if ( GetScriptManager()->GetInputHandler()->GetXbox()->IsReleased( XBOX_A ) )
 				{
+#ifdef _WIN32
 					std::stringstream ss;
 					ss << "( " << sc_comp->data.position.x << "," << sc_comp->data.position.y << ", " << sc_comp->data.position.z << " )\n";
-					OutputDebugString(ss.str().c_str());
+                    OutputDebugString(ss.str().c_str());
+#endif
 				}
 			}
 		}

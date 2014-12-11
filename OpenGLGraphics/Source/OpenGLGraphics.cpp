@@ -3,11 +3,10 @@
 #include "../../GameComponentInterfaces/Include/IGraphicsMessageListener.hpp"
 #include "../Include/OpenGLModel.hpp"
 
-//#ifdef _WIN32
-//#define WIN32_LEAN_AND_MEAN
+#ifdef _WIN32
 #include <Windows.h>
 #include <wingdi.h>
-//#endif
+#endif
 
 #include "../../glew/Include/glew.hpp"
 
@@ -91,6 +90,7 @@ bool OpenGLGraphics::Initialise()
 
 void OpenGLGraphics::Release()
 {
+#ifdef _WIN32
 	HDC hdc = HDC(_game->GetHDC());
 
 	wglMakeCurrent( hdc, nullptr );
@@ -98,12 +98,16 @@ void OpenGLGraphics::Release()
 	wglDeleteContext( (HGLRC)_hglrc );
 
 	_hglrc = nullptr;
+#endif
 }
 
 void OpenGLGraphics::Present()
 {
 	glFlush();
+    
+#ifdef _WIN32
 	SwapBuffers(HDC(_game->GetHDC()));
+#endif
 }
 
 void OpenGLGraphics::Resize( unsigned int width, unsigned int height )

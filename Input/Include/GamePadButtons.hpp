@@ -3,6 +3,7 @@
 #ifndef _INPUT_GAMEPADBUTTONS_HPP_
 #define _INPUT_GAMEPADBUTTONS_HPP_
 
+#ifdef _WIN32
 
 #ifndef DIRECTINPUT_VERSION
 #define DIRECTINPUT_VERSION 0x0800
@@ -28,6 +29,26 @@
 #define XBOX_X				XINPUT_GAMEPAD_X
 #define XBOX_Y				XINPUT_GAMEPAD_Y
 
+#else
+
+// Buttons - complete bollocks on Mac but this'll fix the build until Input is abstracted properly
+#define XBOX_UP				0
+#define XBOX_DOWN			1
+#define XBOX_LEFT			2
+#define XBOX_RIGHT			3
+#define XBOX_START			4
+#define XBOX_BACK			5
+#define XBOX_LEFT_STICK		6
+#define XBOX_RIGHT_STICK	7
+#define XBOX_LB				8
+#define XBOX_RB				9
+#define XBOX_A				10
+#define XBOX_B				11
+#define XBOX_X				12
+#define XBOX_Y				13
+
+#endif
+
 // Axes
 #define XBOX_LT			0
 #define XBOX_RT			1
@@ -45,20 +66,20 @@ namespace Xbox
 {
 enum Buttons
 {
-	Up				= XINPUT_GAMEPAD_DPAD_UP,
-	Down			= XINPUT_GAMEPAD_DPAD_DOWN,
-	Left			= XINPUT_GAMEPAD_DPAD_LEFT,
-	Right			= XINPUT_GAMEPAD_DPAD_RIGHT,
-	Start			= XINPUT_GAMEPAD_START,
-	Back			= XINPUT_GAMEPAD_BACK,
-	LeftStick		= XINPUT_GAMEPAD_LEFT_THUMB,
-	RightStick		= XINPUT_GAMEPAD_RIGHT_THUMB,
-	LeftShoulder	= XINPUT_GAMEPAD_LEFT_SHOULDER,
-	RightShoulder	= XINPUT_GAMEPAD_RIGHT_SHOULDER,
-	A				= XINPUT_GAMEPAD_A,
-	B				= XINPUT_GAMEPAD_B,
-	X				= XINPUT_GAMEPAD_X,
-	Y				= XINPUT_GAMEPAD_Y
+	Up				= XBOX_UP,
+	Down			= XBOX_DOWN,
+	Left			= XBOX_LEFT,
+	Right			= XBOX_RIGHT,
+	Start			= XBOX_START,
+	Back			= XBOX_BACK,
+	LeftStick		= XBOX_LEFT_STICK,
+	RightStick		= XBOX_RIGHT_STICK,
+	LeftShoulder	= XBOX_LB,
+	RightShoulder	= XBOX_RB,
+	A				= XBOX_A,
+	B				= XBOX_B,
+	X				= XBOX_X,
+	Y				= XBOX_Y
 };
 enum Axes
 {

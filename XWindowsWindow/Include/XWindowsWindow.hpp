@@ -96,8 +96,8 @@ class XWindowsWindow:
 	private:
 
 		Display* _display;
-		Window _window;
-		XVisualInfo* _visual_info;
+		//Window _window;
+		//XVisualInfo* _visual_info;
 
 
 		bool _is_initialised;

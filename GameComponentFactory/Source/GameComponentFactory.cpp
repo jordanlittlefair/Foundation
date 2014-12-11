@@ -11,7 +11,10 @@ using namespace Fnd::Settings;
 using namespace Fnd::Logger;
 
 #define OPENGLGRAPHICS
-#define USE_DIRECTX
+
+#ifdef _WIN32
+    #define USE_DIRECTX
+#endif
 
 #ifdef _WIN32
 	#define WIN32WINDOW

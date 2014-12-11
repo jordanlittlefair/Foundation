@@ -2,6 +2,36 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Settings/Settings.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GameSystems/GameSystems.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GameComponentFactory/GameComponentFactory.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MockScripting/MockScripting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LoadedWorld/LoadedWorld.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OpenGLGraphics/OpenGLGraphics.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GraphicsResources/GraphicsResources.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Scripting/Scripting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WorldLoader/WorldLoader.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GameComponentInterfaces/GameComponentInterfaces.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:EntitySystem/EntitySystem.xcodeproj">
    </FileRef>
    <FileRef
