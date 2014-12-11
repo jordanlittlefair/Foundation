@@ -73,27 +73,27 @@ bool XboxInput::IsConnected( unsigned int index ) const
 	return _connected_controllers[index];
 }
 
-bool XboxInput::IsDown( DWORD button, unsigned int index ) const 
+bool XboxInput::IsDown( unsigned int button, unsigned int index ) const 
 {
 	return _connected_controllers[index] && ( _current_states[index].Gamepad.wButtons & button ) != 0;
 }
 
-bool XboxInput::IsUp( DWORD button, unsigned int index ) const
+bool XboxInput::IsUp( unsigned int button, unsigned int index ) const
 {
 	return _connected_controllers[index] && ( _current_states[index].Gamepad.wButtons & button ) == 0;
 }
 
-bool XboxInput::IsPressed( DWORD button, unsigned int index ) const 
+bool XboxInput::IsPressed( unsigned int button, unsigned int index ) const 
 {
 	return _connected_controllers[index] && ( ( _current_states[index].Gamepad.wButtons & button ) != 0 ) && ( ( _previous_states[index].Gamepad.wButtons & button ) == 0 );
 }
 
-bool XboxInput::IsReleased( DWORD button, unsigned int index ) const 
+bool XboxInput::IsReleased( unsigned int button, unsigned int index ) const 
 {
 	return _connected_controllers[index] && ( ( _previous_states[index].Gamepad.wButtons & button ) != 0 ) && ( ( _current_states[index].Gamepad.wButtons & button ) == 0 );
 }
 
-float XboxInput::GetAxisValue( WORD axis, unsigned int index ) const 
+float XboxInput::GetAxisValue( unsigned short axis, unsigned int index ) const 
 {
 	// return zero if the controller is not connected
 	if ( !_connected_controllers[index] ) 

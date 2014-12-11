@@ -40,18 +40,18 @@ class KeyboardInput:
 		void Update();
 
 		// Get whether or not a key is down.
-		bool IsDown( DWORD key ) const;
+		bool IsDown( unsigned int key ) const;
 		
 		// Get whether or not a key is up.
-		bool IsUp( DWORD key ) const;
+		bool IsUp( unsigned int key ) const;
 		
 		// Get whether or not a key has been pressed.
 		// Returns true if the key is down, but was not down in the previous update.
-		bool IsPressed( DWORD key ) const;
+		bool IsPressed( unsigned int key ) const;
 		
 		// Get whether or not a key has been released.
 		// Returns true if the key is up, but was not up in the previous update.
-		bool IsReleased( DWORD key ) const;
+		bool IsReleased( unsigned int key ) const;
 		
 		// Destructor.
 		~KeyboardInput();

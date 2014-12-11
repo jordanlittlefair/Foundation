@@ -74,22 +74,22 @@ void KeyboardInput::Update()
 	_keyboard->GetDeviceState( sizeof(unsigned char) * 256, _current_state );
 }
 
-bool KeyboardInput::IsDown( DWORD key ) const
+bool KeyboardInput::IsDown( unsigned int key ) const
 {
 	return (_current_state[key] & 0x80) != 0;
 }
 
-bool KeyboardInput::IsUp( DWORD key ) const
+bool KeyboardInput::IsUp( unsigned int key ) const
 {
 	return (_current_state[key] & 0x80) == 0;
 }
 
-bool KeyboardInput::IsPressed( DWORD key ) const
+bool KeyboardInput::IsPressed( unsigned int key ) const
 {
 	return (_current_state[key] & 0x80) != 0 && (_previous_state[key] & 0x80) == 0;
 }
 
-bool KeyboardInput::IsReleased( DWORD key ) const
+bool KeyboardInput::IsReleased( unsigned int key ) const
 {
 	return (_current_state[key] & 0x80) == 0 && (_previous_state[key] & 0x80) != 0;
 }

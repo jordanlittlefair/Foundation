@@ -42,21 +42,21 @@ class XboxInput:
 		bool IsConnected( unsigned int index = 0 ) const;
 
 		// Get whether or not a button is down.
-		bool IsDown( DWORD button, unsigned int index = 0 ) const;
+		bool IsDown( unsigned int button, unsigned int index = 0 ) const;
 		
 		// Get whether or not a button is up.
-		bool IsUp( DWORD button, unsigned int index = 0 ) const; 
+		bool IsUp( unsigned int button, unsigned int index = 0 ) const; 
 		
 		// Get whether or not a button has been pressed.
 		// Returns true if the button is down, but was not down in the previous update.
-		bool IsPressed( DWORD button, unsigned int index = 0 ) const;
+		bool IsPressed( unsigned int button, unsigned int index = 0 ) const;
 		
 		// Get whether or not a button has been released.
 		// Returns true if the button is up, but was not up in the previous update.
-		bool IsReleased( DWORD button, unsigned int index = 0 ) const;
+		bool IsReleased( unsigned int button, unsigned int index = 0 ) const;
 
 		// Get the value of an axis.
-		float GetAxisValue( WORD axis, unsigned int index = 0 ) const;
+		float GetAxisValue( unsigned short axis, unsigned int index = 0 ) const;
 		
 		// Destructor.
 		~XboxInput();
