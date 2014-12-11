@@ -1,19 +1,43 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Foundation/Application
-/Bin/Win32
+# Ignore build output directories
+
+/Bin
 /Build
-/Foundation/Assimp32.dll
-/Foundation/Assimp32d.dll
-/*.suo
-/Doc/html
-/Foundation/Engine/*.dll
+/Assimp/Bin
+/Assimp/Build
+
+# Ignore files created in the Foundation directory- the end product
+
+/Foundation/*.exe
 /Foundation/*.dll
+/Foundation/Engine/*.exe
+/Foundation/Engine/*.dll
+/Foundation/Application
 /Foundation/Engine/Graphics/DirectX11Graphics/Shaders/
 /Foundation/Engine/Graphics/OpenGLGraphics/Shaders/
-/Foundation/*.exe
-/Foundation/Engine/*.exe
-/Foundation/TestApp/Launcher.exe
+/Foundation/TestApp/*.exe
+
+# Ignore generated documentation
+
+/Doc/html
+
+# Ignore user specific project data
+
+*.suo
 *.user
+xcuserdata
+
+# Ignore generated code (note: code is currently in source control anyway)
+
+EntitySystem/Include/ComponentMaps.hpp
+EntitySystem/Include/Components.hpp
+EntitySystem/Include/SystemNodes.hpp
+EntitySystem/Include/SystemNodesContainer.hpp
+EntitySystem/Source/ComponentCreator.cpp
+EntitySystem/Source/ComponentMaps.cpp
+EntitySystem/Source/Components.cpp
+EntitySystem/Source/SystemNodes.cpp
+EntitySystem/Source/SystemNodesContainer.cpp
