@@ -8,6 +8,8 @@
 /Build
 /Assimp/Bin
 /Assimp/Build
+/Bullet/Bin
+/Bullet/Build
 
 # Ignore files created in the Foundation directory- the end product
 
