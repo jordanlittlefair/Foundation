@@ -10,12 +10,6 @@
 #include "MouseInputBase.hpp"
 #include "GamePadInputBase.hpp"
 
-
-#ifndef DIRECTINPUT_VERSION
-#define DIRECTINPUT_VERSION 0x0800
-#endif
-#include <dinput.h>
-
 namespace Fnd
 {
 namespace Input
@@ -47,10 +41,15 @@ class InputHandler:
 
 	private:
 
-		// Make these optional/internal impl- only needed for windows
-		void* _window;
-
-		IDirectInput8* _direct_input;
+        struct WindowsData
+        {
+            WindowsData();
+            
+            void* _window;
+            void* _direct_input;
+        };
+    
+        WindowsData _windows_data;
 
 		std::unique_ptr<KeyboardInputBase> _keyboard;
 		std::unique_ptr<MouseInputBase> _mouse;

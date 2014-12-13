@@ -31,6 +31,8 @@ public:
     
     void Update();
     
+    virtual ~GamePadInputBase();
+    
 protected:
 
     struct GamePadState

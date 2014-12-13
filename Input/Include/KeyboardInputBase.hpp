@@ -30,6 +30,8 @@ public:
     
     void Update();
     
+    virtual ~KeyboardInputBase();
+    
 protected:
 
     struct KeyboardState

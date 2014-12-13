@@ -51,3 +51,7 @@ void GamePadInputBase::Update()
     
     _gamepad_state[_current_state] = GetNextState();
 }
+
+GamePadInputBase::~GamePadInputBase()
+{
+}

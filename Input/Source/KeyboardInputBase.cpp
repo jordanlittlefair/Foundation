@@ -41,3 +41,7 @@ void KeyboardInputBase::Update()
     
     _keyboard_state[_current_state] = GetNextState();
 }
+
+KeyboardInputBase::~KeyboardInputBase()
+{
+}

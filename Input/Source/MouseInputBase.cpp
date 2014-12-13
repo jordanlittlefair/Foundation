@@ -97,23 +97,6 @@ void MouseInputBase::Update()
     _mouse_state[_current_state] = GetNextState();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+MouseInputBase::~MouseInputBase()
+{
+}

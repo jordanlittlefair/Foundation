@@ -1,25 +1,36 @@
 #include "../Include/InputHandler.hpp"
 
+#ifdef _WIN32
+#ifndef DIRECTINPUT_VERSION
+#define DIRECTINPUT_VERSION 0x0800
+#endif
+#include <dinput.h>
+#endif
+
 using namespace Fnd::Input;
 
 InputHandler::InputHandler():
-	_window(nullptr),
-	_direct_input(nullptr),
+    _windows_data(),
 	_keyboard(),
 	_mouse(),
 	_gamepad()
 {
+
 }
 
 void InputHandler::SetWindow( void* window )
 {
-	_window = window;
+	_windows_data._window = window;
 }
 
 #ifdef _WIN32
 #include "../Include/WindowsMouseInput.hpp"
 #include "../Include/WindowsKeyboardInput.hpp"
 #include "../Include/WindowsGamePadInput.hpp"
+#else
+#include "../Include/MacMouseInput.hpp"
+#include "../Include/MacKeyboardInput.hpp"
+#include "../Include/MacGamePadInput.hpp"
 #endif
 
 bool InputHandler::Initialise()
@@ -73,10 +84,18 @@ bool InputHandler::Initialise()
 	_gamepad = std::move(gamepad);
 	
 	return true;
+#else
 
+    std::unique_ptr<MacMouseInput> mouse( new MacMouseInput() );
+    std::unique_ptr<MacKeyboardInput> keyboard( new MacKeyboardInput() );
+    std::unique_ptr<MacGamePadInput> gamepad( new MacGamePadInput() );
+
+    _mouse = std::move(mouse);
+    _keyboard = std::move(keyboard);
+    _gamepad = std::move(gamepad);
+    
+    return true;
 #endif
-
-	return false;
 }
 
 void InputHandler::Update()
@@ -103,8 +122,16 @@ const IGamePadInput* InputHandler::GetGamePad() const
 
 InputHandler::~InputHandler()
 {
-	/*if ( _direct_input )
+#ifdef _WIN32
+	if ( _windows_data._direct_input )
 	{
-		_direct_input->Release(); 
-	}*/
+		((IDirectInput8*)_windows_data._direct_input))->Release();
+	}
+#endif
+}
+
+InputHandler::WindowsData::WindowsData():
+    _window(nullptr),
+    _direct_input(nullptr)
+{
 }

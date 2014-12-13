@@ -49,6 +49,8 @@ class MouseInputBase:
     
         void Update();
     
+        virtual ~MouseInputBase();
+    
     protected:
     
         struct MouseState
