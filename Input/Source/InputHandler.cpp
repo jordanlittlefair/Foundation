@@ -36,7 +36,7 @@ void InputHandler::SetWindow( void* window )
 bool InputHandler::Initialise()
 {
 #ifdef _WIN32
-	if ( !_window )
+	if ( !_windows_data._window )
 	{
 		return false;
 	}
@@ -48,15 +48,15 @@ bool InputHandler::Initialise()
 	if ( FAILED( DirectInput8Create(	GetModuleHandle(0), 
 										DIRECTINPUT_VERSION,
 										IID_IDirectInput8,
-										(void**)(&_direct_input),
+										(void**)(&_windows_data._direct_input),
 										0 )))
 	{
 		return false;
 	}
 
 	// create keyboard input
-	keyboard->SetWindow( (HWND)_window );
-	keyboard->SetDirectInputDevice( _direct_input );
+	keyboard->SetWindow( (HWND)_windows_data._window );
+	keyboard->SetDirectInputDevice( (IDirectInput8*)_windows_data._direct_input );
 	
 	if ( !keyboard->Initialise() )
 	{
@@ -64,8 +64,8 @@ bool InputHandler::Initialise()
 	}
 		
 	// create mouse input
-	mouse->SetWindow( (HWND)_window );
-	mouse->SetDirectInputDevice( _direct_input );
+	mouse->SetWindow( (HWND)_windows_data._window );
+	mouse->SetDirectInputDevice( (IDirectInput8*)_windows_data._direct_input );
 	
 	if ( !mouse->Initialise() )
 	{
@@ -73,7 +73,7 @@ bool InputHandler::Initialise()
 	}
 
 	// create xbox input
-	gamepad->SetDirectInputDevice( _direct_input );
+	gamepad->SetDirectInputDevice( (IDirectInput8*)_windows_data._direct_input );
 	if ( !gamepad->Initialise() )
 	{
 		return false;
@@ -125,7 +125,7 @@ InputHandler::~InputHandler()
 #ifdef _WIN32
 	if ( _windows_data._direct_input )
 	{
-		((IDirectInput8*)_windows_data._direct_input))->Release();
+		((IDirectInput8*)_windows_data._direct_input)->Release();
 	}
 #endif
 }
