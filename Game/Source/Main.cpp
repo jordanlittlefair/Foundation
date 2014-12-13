@@ -17,20 +17,33 @@
 
 #include "../../Settings/Include/ApplicationSettings.hpp"
 
-#include <Windows.h>
-
 using namespace Fnd::Logger;
 using namespace Fnd::Settings;
 
+#ifdef _WIN32
 int _stdcall
 WinMain (	_In_ struct HINSTANCE__* hIinstance,
 			_In_opt_ struct HINSTANCE__* hPrevInstance,
 			_In_ char* lpszCmdLine,
 			_In_ int nCmdShow )
+#else
+int main( int argc, char* argv[] )
+#endif
 {
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 
+#ifdef _WIN32
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+#endif
+
+#ifdef _WIN32
 	auto cmds = Fnd::Utility::FileSystem::ParseCommandLine( lpszCmdLine );
+#else
+    std::vector<std::string> cmds;
+    for ( int i = 0; i < argc; ++i )
+    {
+        cmds.push_back( argv[i] );
+    }
+#endif
 	
 	if ( cmds.size() < 2 )
 	{

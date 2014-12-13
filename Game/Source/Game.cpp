@@ -19,7 +19,9 @@
 #include "../../Logger/Include/Logger.hpp"
 #include "../../GameSystems/Include/SceneGraphSystem.hpp"
 #include "../../GameSystems/Include/AssetLinkerSystem.hpp"
+#ifdef _WIN32
 #include "../../OculusRift/Include/OculusRift.hpp"
+#endif
 #include "../../Settings/Include/EngineSettings.hpp"
 #include "../../Settings/Include/EngineConfig.hpp"
 
@@ -83,6 +85,7 @@ void Game::SetScriptManager( Fnd::Scripting::ScriptManager* script_manager )
 
 bool Game::Initialise()
 {
+#ifdef _WIN32
 	if ( _graphics->VRIsEnabled() && _graphics->VRIsSupported() )
 	{
 		_oculus.reset( new Fnd::OculusRift::OculusRift() );
@@ -90,7 +93,7 @@ bool Game::Initialise()
 		_oculus->SetWindow( _window );
 		_oculus->SetGraphics( _graphics );
 	}
-
+#endif
 	Logger::Logger::GetInstance().Log( LogMessage( "Initialising Game...." ) );
 
 	_asset_manager->SetGame(this);
@@ -149,11 +152,12 @@ bool Game::Initialise()
 	//scene_graph_system->SetAssetManager(_asset_manager.get());
 	//scene_graph_system->Initialise();
 
+#ifdef _WIN32
 	if ( _oculus )
 	{
 		_oculus->InitialiseStart();
 	}
-	
+#endif
 
 	_graphics->SetGraphicsMessageListener(this);
 	_graphics->SetGraphicsSettings(_engine_settings.GetGraphicsSettings());
@@ -185,19 +189,22 @@ bool Game::Initialise()
 
 	Logger::Logger::GetInstance().Log( LogMessage( "Initialised Scripting component." ) );
 
+#ifdef _WIN32
 	_input_handler->SetWindow((HWND)_window->GetHWND());
+#endif
 	_input_handler->Initialise();
 
 	/*
 		Oculus stuff
 	*/
-
+#ifdef _WIN32
 	if ( _graphics->VRIsEnabled() )
 	{	
 		auto res = _oculus->Initialise();
 	}
 //	_window->SetWindowSize(1920,1080);
-	
+#endif
+
 	for ( unsigned int i = 0; i < _systems.size(); ++i )
 	{
 		Logger::Logger::GetInstance().Log( LogMessage( "Initialising [" + _systems[i]->GetSystemName() + "] system...." ) );
@@ -236,8 +243,7 @@ bool Game::Initialise()
 
 #include <sstream>
 #include <fstream>
-#define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
+
 static int t = 0;
 void Game::Play()
 {
@@ -252,9 +258,10 @@ void Game::Play()
 
 	while ( _window->IsOpen() )
 	{
+#ifdef _WIN32
 		if ( _oculus )
 			_oculus->BeginRender( game_timer.GetTickCount() );
-
+#endif
 		_graphics->BeginRender();
 
 		//auto e = _entity_system->GetEntityContainer().CreateEntity();
@@ -308,8 +315,10 @@ void Game::Play()
 		_graphics->Present();
 		_window->HandleWindowMessages();
 
+#ifdef _WIN32
 		if ( _oculus )
 			_oculus->FinishRender();
+#endif
 
 		game_timer.Tick();
 	}
@@ -352,6 +361,7 @@ bool Game::GetVRTextureDimensions( unsigned int& width, unsigned int& height )
 	width = 1920;
 	height = 1080;
 	return true;
+#ifdef _WIN32
 	if ( _oculus )
 	{
 		width = _oculus->GetTextureWidth();
@@ -363,6 +373,7 @@ bool Game::GetVRTextureDimensions( unsigned int& width, unsigned int& height )
 	{
 		return false;
 	}
+#endif
 }
 
 Fnd::EntitySystem::EntitySystem& Game::GetEntitySystem()
