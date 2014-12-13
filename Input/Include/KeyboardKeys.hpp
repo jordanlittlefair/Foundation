@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _INPUT_IKEYBOARDINPUT_HPP_
-#define _INPUT_IKEYBOARDINPUT_HPP_
+#ifndef _INPUT_KEYBOARDKEYS_HPP_
+#define _INPUT_KEYBOARDKEYS_HPP_
 
 namespace Fnd
 {
@@ -17,7 +17,7 @@ enum eKey
     Alt_Key,
     CapsLock_Key,
     Esc_Key,
-    SpaceBar_Key
+    SpaceBar_Key,
     PageUp_Key,
     PageDown_Key,
     End_Key,

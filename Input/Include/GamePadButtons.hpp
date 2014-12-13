@@ -46,48 +46,35 @@ namespace PS
 {
 enum Button
 {
-	Up			= Xbox::Buttons::Up,
-	Down		= Xbox::Buttons::Down,
-	Left		= Xbox::Buttons::Left,
-	Right		= Xbox::Buttons::Right,
-	Start		= Xbox::Buttons::Start,
-	Select		= Xbox::Buttons::Back,
-	LeftStick	= Xbox::Buttons::LeftStick,
-	RightStick	= Xbox::Buttons::RightStick,
-	L1			= Xbox::Buttons::LeftShoulder,
-	R1			= Xbox::Buttons::RightShoulder,
-	Cross		= Xbox::Buttons::A,
-	Circle		= Xbox::Buttons::B,
-	Square		= Xbox::Buttons::X,
-	Triangle	= Xbox::Buttons::Y,
+	Up			= Xbox::Button::Up,
+	Down		= Xbox::Button::Down,
+	Left		= Xbox::Button::Left,
+	Right		= Xbox::Button::Right,
+	Start		= Xbox::Button::Start,
+	Select		= Xbox::Button::Back,
+	LeftStick	= Xbox::Button::LeftStick,
+	RightStick	= Xbox::Button::RightStick,
+	L1			= Xbox::Button::LeftShoulder,
+	R1			= Xbox::Button::RightShoulder,
+	Cross		= Xbox::Button::A,
+	Circle		= Xbox::Button::B,
+	Square		= Xbox::Button::X,
+	Triangle	= Xbox::Button::Y,
     
-    Button_Count = xbox::Buttons::Button_Count
+    Button_Count = Xbox::Button::Button_Count
 };
 enum Axis
 {
-	L2				= Xbox::Axes::LeftTrigger,
-	R2				= Xbox::Axes::RightTrigger,
-	LeftStickX		= Xbox::Axes::LeftStickX,
-	LeftStickY		= Xbox::Axes::LeftStickY,
-	RightStickX		= Xbox::Axes::RightStickX,
-	RightStickY		= Xbox::Axes::RightStickY,
+	L2				= Xbox::Axis::LeftTrigger,
+	R2				= Xbox::Axis::RightTrigger,
+	LeftStickX		= Xbox::Axis::LeftStickX,
+	LeftStickY		= Xbox::Axis::LeftStickY,
+	RightStickX		= Xbox::Axis::RightStickX,
+	RightStickY		= Xbox::Axis::RightStickY,
     
-    Xbox::Axis::Axis_Count
+    Axis_Count		= Xbox::Axis::Axis_Count
 };
-}
-
-union GamePadButton
-{
-    Xbox::Button xbox;
-    PS::Button ps;
-};
-
-union GamePadAxis
-{
-    Xbox::Axis xbox;
-    PS::Axis ps;
-};
-    
+}    
 
 }
 }

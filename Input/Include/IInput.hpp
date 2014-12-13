@@ -6,7 +6,7 @@
 
 #include "IKeyboardInput.hpp"
 #include "IMouseInput.hpp"
-#include "IXboxInput.hpp"
+#include "IGamePadInput.hpp"
 
 namespace Fnd
 {
@@ -27,7 +27,7 @@ class IInput
 		virtual const IMouseInput* GetMouse() const = 0;
 		
 		// Get the xbox input.
-		virtual const IXboxInput* GetXbox() const = 0;
+		virtual const IGamePadInput* GetGamePad() const = 0;
 };
 
 }

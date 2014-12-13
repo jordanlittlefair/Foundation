@@ -7,22 +7,33 @@ InputHandler::InputHandler():
 	_direct_input(nullptr),
 	_keyboard(),
 	_mouse(),
-	_xbox()
+	_gamepad()
 {
 }
 
-void InputHandler::SetWindow( HWND window )
+void InputHandler::SetWindow( void* window )
 {
 	_window = window;
 }
 
+#ifdef _WIN32
+#include "../Include/WindowsMouseInput.hpp"
+#include "../Include/WindowsKeyboardInput.hpp"
+#include "../Include/WindowsGamePadInput.hpp"
+#endif
+
 bool InputHandler::Initialise()
 {
+#ifdef _WIN32
 	if ( !_window )
 	{
 		return false;
 	}
 
+	std::unique_ptr<WindowsMouseInput> mouse( new WindowsMouseInput() );
+	std::unique_ptr<WindowsKeyboardInput> keyboard( new WindowsKeyboardInput() );
+	std::unique_ptr<WindowsGamePadInput> gamepad( new WindowsGamePadInput() );
+	
 	if ( FAILED( DirectInput8Create(	GetModuleHandle(0), 
 										DIRECTINPUT_VERSION,
 										IID_IDirectInput8,
@@ -33,69 +44,67 @@ bool InputHandler::Initialise()
 	}
 
 	// create keyboard input
-	_keyboard.SetWindow( _window );
-	_keyboard.SetDirectInputDevice( _direct_input );
+	keyboard->SetWindow( (HWND)_window );
+	keyboard->SetDirectInputDevice( _direct_input );
 	
-	if ( !_keyboard.Initialise() )
+	if ( !keyboard->Initialise() )
 	{
 		return false;
 	}
 		
 	// create mouse input
-	_mouse.SetWindow( _window );
-	_mouse.SetDirectInputDevice( _direct_input );
+	mouse->SetWindow( (HWND)_window );
+	mouse->SetDirectInputDevice( _direct_input );
 	
-	if ( !_mouse.Initialise() )
+	if ( !mouse->Initialise() )
 	{
 		return false;
 	}
 
 	// create xbox input
-	_xbox.SetDirectInputDevice( _direct_input );
-	if ( !_xbox.Initialise() )
+	gamepad->SetDirectInputDevice( _direct_input );
+	if ( !gamepad->Initialise() )
 	{
 		return false;
 	}
 
+	_mouse = std::move(mouse);
+	_keyboard = std::move(keyboard);
+	_gamepad = std::move(gamepad);
+	
 	return true;
-}
 
-void InputHandler::Activate()
-{
-	_xbox.Activate();
-}
+#endif
 
-void InputHandler::Deactivate()
-{ 
-	_xbox.Deactivate();
+	return false;
 }
 
 void InputHandler::Update()
 {
-	_keyboard.Update();
-	_mouse.Update();
-	_xbox.Update();
+	_keyboard->Update();
+	_mouse->Update();
+	_gamepad->Update();
 }
 
 const IKeyboardInput* InputHandler::GetKeyboard() const
 {
-	return &_keyboard;
+	return _keyboard.get();
 }
 
 const IMouseInput* InputHandler::GetMouse() const
 {
-	return &_mouse;
+	return _mouse.get();
 }
 
-const IXboxInput* InputHandler::GetXbox() const
+const IGamePadInput* InputHandler::GetGamePad() const
 {
-	return &_xbox;
+	return _gamepad.get();
 }
 
 InputHandler::~InputHandler()
 {
-	if ( _direct_input )
+	/*if ( _direct_input )
 	{
 		_direct_input->Release(); 
-	}
+	}*/
 }

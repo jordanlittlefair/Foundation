@@ -243,7 +243,7 @@ void Game::Play()
 {
 	_window->Show();
 
-	_input_handler->Activate();
+	//_input_handler->Activate();
 	
 	GameTimer game_timer;
 	game_timer.SetTimeStep(1);

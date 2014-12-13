@@ -19,15 +19,15 @@ public:
     
     bool IsConnected( unsigned int index = 0 ) const;
     
-    bool IsDown( GamePadButton button, unsigned int index = 0 ) const;
+    bool IsDown( Xbox::Button button, unsigned int index = 0 ) const;
     
-    bool IsUp( GamePadButton button, unsigned int index = 0 ) const;
+    bool IsUp( Xbox::Button button, unsigned int index = 0 ) const;
     
-    bool IsPressed( GamePadButton button, unsigned int index = 0 ) const;
+    bool IsPressed( Xbox::Button button, unsigned int index = 0 ) const;
     
-    bool IsReleased( GamePadButton button, unsigned int index = 0 ) const;
+    bool IsReleased( Xbox::Button button, unsigned int index = 0 ) const;
     
-    float GetAxisValue( GamePadAxis axis, unsigned int index = 0 ) const;
+    float GetAxisValue( Xbox::Axis axis, unsigned int index = 0 ) const;
     
     void Update();
     
@@ -38,7 +38,7 @@ protected:
         struct GamePadInstanceState
         {
             bool is_connected;
-            bool buttons[Xbox::Buttons::Button_Count];
+            bool buttons[Xbox::Button::Button_Count];
             float axes[Xbox::Axis::Axis_Count];
         };
         
@@ -53,6 +53,8 @@ private:
     
     unsigned int _current_state;
     unsigned int _previous_state;
+};
+
 }
 }
 

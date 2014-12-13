@@ -1,33 +1,37 @@
 #include "../Include/KeyboardInputBase.hpp"
 
-KeyboardInput::KeyboardInput():
+#include <cstring>
+
+using namespace Fnd::Input;
+
+KeyboardInputBase::KeyboardInputBase():
     _current_state(0),
     _previous_state(1)
 {
     memset( _keyboard_state, 0, sizeof(KeyboardState) * 2 );
 }
 
-bool KeyboardInput::IsDown( unsigned int key ) const
+bool KeyboardInputBase::IsDown( eKey key ) const
 {
-    return _keyboard_state[_current_state][key];
+    return _keyboard_state[_current_state].keys[key];
 }
 
-bool KeyboardInput::IsUp( unsigned int key ) const
+bool KeyboardInputBase::IsUp( eKey key ) const
 {
-    return !_keyboard_state[_current_state][key];
+    return !_keyboard_state[_current_state].keys[key];
 }
 
-bool KeyboardInput::IsPressed( unsigned int key ) const
+bool KeyboardInputBase::IsPressed( eKey key ) const
 {
-    return _keyboard_state[_current_state]key && !_keyboard_state[_previous_state][key];
+    return _keyboard_state[_current_state].keys[key] && !_keyboard_state[_previous_state].keys[key];
 }
 
-bool KeyboardInput::IsReleased( unsigned int key ) const
+bool KeyboardInputBase::IsReleased( eKey key ) const
 {
-    return !_keyboard_state[_current_state]key && _keyboard_state[_previous_state][key];
+    return !_keyboard_state[_current_state].keys[key] && _keyboard_state[_previous_state].keys[key];
 }
 
-void KeyboardInput::Update()
+void KeyboardInputBase::Update()
 {
     {
         const unsigned int temp = _current_state;

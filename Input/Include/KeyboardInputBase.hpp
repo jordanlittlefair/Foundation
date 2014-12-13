@@ -18,15 +18,15 @@ class KeyboardInputBase:
 {
 public:
     
-    KeyboardInput();
+    KeyboardInputBase();
     
-    bool IsDown( unsigned int key ) const;
+    bool IsDown( eKey key ) const;
     
-    bool IsUp( unsigned int key ) const;
+    bool IsUp( eKey key ) const;
     
-    bool IsPressed( unsigned int key ) const;
+    bool IsPressed( eKey key ) const;
     
-    bool IsReleased( unsigned int key ) const;
+    bool IsReleased( eKey key ) const;
     
     void Update();
     

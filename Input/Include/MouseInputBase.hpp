@@ -15,7 +15,7 @@ class MouseInputBase:
 {
     public:
     
-        MouseInputState();
+        MouseInputBase();
     
         bool IsDownLeft() const;
 
