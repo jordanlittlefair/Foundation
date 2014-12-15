@@ -19,7 +19,9 @@ using namespace Fnd::Logger;
 #ifdef _WIN32
 	#define WIN32WINDOW
 #else
+#ifdef NEED_TO_CREATE_MAC_WINDOW_CLASS
 	#define XWINDOWSWINDOW
+#endif
 #endif
 
 #ifdef USE_DIRECTX
@@ -67,11 +69,12 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::Applicat
 		return nullptr;
 	}
 	
+#ifdef _WIN32
 	window->SetWindowTitle( window_data.window_title );
 	window->SetWindowSize( window_data.initial_width, window_data.initial_height );
 	window->SetWindowResizable( window_data.is_resizable );
 	window->SetWindowFullscreen( window_data.is_fullscreen );
-
+#endif
 	Fnd::Logger::Logger::GetInstance().Log( LogMessage("Created Window [" + Settings::EngineConfig::GetWindowImplementationString(window_data.implementation) + "].") );
 	return window;
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100F58231A3F5FCD00309FBA /* libBullet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100F58221A3F5FCD00309FBA /* libBullet.a */; };
+		100F58251A3F614E00309FBA /* libBullet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100F58241A3F614E00309FBA /* libBullet.a */; };
+		100F584E1A3F61D300309FBA /* libBulletPhysics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100F584D1A3F61D300309FBA /* libBulletPhysics.a */; };
+		100F58501A3F640300309FBA /* libAssimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100F584F1A3F640300309FBA /* libAssimp.a */; };
+		100F58521A3F641300309FBA /* libAssimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100F58511A3F641300309FBA /* libAssimp.a */; };
+		100F58541A3F65C600309FBA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 100F58531A3F65C600309FBA /* OpenGL.framework */; };
 		10BE143F1A3CD03700B97CF2 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE143C1A3CD03700B97CF2 /* Game.cpp */; };
 		10BE14401A3CD03700B97CF2 /* GameTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE143D1A3CD03700B97CF2 /* GameTimer.cpp */; };
 		10BE14411A3CD03700B97CF2 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE143E1A3CD03700B97CF2 /* Main.cpp */; };
@@ -44,6 +50,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		100F58221A3F5FCD00309FBA /* libBullet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBullet.a; path = ../Bullet/Bin/Mac/Release/libBullet.a; sourceTree = "<group>"; };
+		100F58241A3F614E00309FBA /* libBullet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBullet.a; path = ../Bullet/Bin/Mac/Debug/libBullet.a; sourceTree = "<group>"; };
+		100F584D1A3F61D300309FBA /* libBulletPhysics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletPhysics.a; path = ../BulletPhysics/build/Debug/libBulletPhysics.a; sourceTree = "<group>"; };
+		100F584F1A3F640300309FBA /* libAssimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAssimp.a; path = ../Assimp/Bin/Mac/Debug/libAssimp.a; sourceTree = "<group>"; };
+		100F58511A3F641300309FBA /* libAssimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAssimp.a; path = ../Assimp/Bin/Mac/Release/libAssimp.a; sourceTree = "<group>"; };
+		100F58531A3F65C600309FBA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		10BE142E1A3CD02000B97CF2 /* Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Game; sourceTree = BUILT_PRODUCTS_DIR; };
 		10BE14391A3CD03700B97CF2 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		10BE143A1A3CD03700B97CF2 /* GameTimer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameTimer.hpp; sourceTree = "<group>"; };
@@ -76,6 +88,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				100F58541A3F65C600309FBA /* OpenGL.framework in Frameworks */,
+				100F58521A3F641300309FBA /* libAssimp.a in Frameworks */,
+				100F58501A3F640300309FBA /* libAssimp.a in Frameworks */,
+				100F584E1A3F61D300309FBA /* libBulletPhysics.a in Frameworks */,
+				100F58251A3F614E00309FBA /* libBullet.a in Frameworks */,
+				100F58231A3F5FCD00309FBA /* libBullet.a in Frameworks */,
 				10BE14551A3CD2A200B97CF2 /* libAssetManager.a in Frameworks */,
 				10BE14561A3CD2A200B97CF2 /* libCommonResources.a in Frameworks */,
 				10BE14571A3CD2A200B97CF2 /* libEntitySystem.a in Frameworks */,
@@ -104,6 +122,12 @@
 		10BE14251A3CD02000B97CF2 = {
 			isa = PBXGroup;
 			children = (
+				100F58531A3F65C600309FBA /* OpenGL.framework */,
+				100F58511A3F641300309FBA /* libAssimp.a */,
+				100F584F1A3F640300309FBA /* libAssimp.a */,
+				100F584D1A3F61D300309FBA /* libBulletPhysics.a */,
+				100F58241A3F614E00309FBA /* libBullet.a */,
+				100F58221A3F5FCD00309FBA /* libBullet.a */,
 				10BE14421A3CD2A200B97CF2 /* libAssetManager.a */,
 				10BE14431A3CD2A200B97CF2 /* libCommonResources.a */,
 				10BE14441A3CD2A200B97CF2 /* libEntitySystem.a */,
@@ -301,6 +325,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Game-anlieiphutwhmyagwgroscirxvae/Build/Products/Debug",
+					/Users/jordanlittlefair/Foundation/Bullet/Bin/Mac/Release,
+					/Users/jordanlittlefair/Foundation/Bullet/Bin/Mac/Debug,
+					/Users/jordanlittlefair/Foundation/BulletPhysics/build/Debug,
+					/Users/jordanlittlefair/Foundation/Assimp/Bin/Mac/Debug,
+					/Users/jordanlittlefair/Foundation/Assimp/Bin/Mac/Release,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -312,6 +341,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Game-anlieiphutwhmyagwgroscirxvae/Build/Products/Debug",
+					/Users/jordanlittlefair/Foundation/Bullet/Bin/Mac/Release,
+					/Users/jordanlittlefair/Foundation/Bullet/Bin/Mac/Debug,
+					/Users/jordanlittlefair/Foundation/BulletPhysics/build/Debug,
+					/Users/jordanlittlefair/Foundation/Assimp/Bin/Mac/Debug,
+					/Users/jordanlittlefair/Foundation/Assimp/Bin/Mac/Release,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -336,6 +370,7 @@
 				10BE14371A3CD02000B97CF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,7 +7,11 @@
 
 #include "../../GraphicsResources/Include/ScreenBufferResourcesBase.hpp"
 
+#ifdef _WIN32
 #include "../../glew/Include/glew.hpp"
+#else
+#include <OpenGL/gl3.h>
+#endif
 
 namespace Fnd
 {

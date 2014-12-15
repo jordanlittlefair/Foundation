@@ -8,7 +8,11 @@
 #include <wingdi.h>
 #endif
 
+#ifdef _WIN32
 #include "../../glew/Include/glew.hpp"
+#else
+#include <OpenGL/gl3.h>
+#endif
 
 using namespace Fnd::OpenGLGraphics;
 using namespace Fnd::GameComponentInterfaces;
@@ -104,7 +108,6 @@ void OpenGLGraphics::Release()
 void OpenGLGraphics::Present()
 {
 	glFlush();
-    
 #ifdef _WIN32
 	SwapBuffers(HDC(_game->GetHDC()));
 #endif
