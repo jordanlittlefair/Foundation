@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "103B5AE51A3373B900C2B236"
-               BuildableName = "EntitySystemGenerator"
-               BlueprintName = "EntitySystemGenerator"
-               ReferencedContainer = "container:EntitySystemGenerator.xcodeproj">
+               BlueprintIdentifier = "10BE142D1A3CD02000B97CF2"
+               BuildableName = "Game"
+               BlueprintName = "Game"
+               ReferencedContainer = "container:Game.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "103B5AE51A3373B900C2B236"
-            BuildableName = "EntitySystemGenerator"
-            BlueprintName = "EntitySystemGenerator"
-            ReferencedContainer = "container:EntitySystemGenerator.xcodeproj">
+            BlueprintIdentifier = "10BE142D1A3CD02000B97CF2"
+            BuildableName = "Game"
+            BlueprintName = "Game"
+            ReferencedContainer = "container:Game.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -44,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "$(SRCROOT)/../Foundation"
+      customWorkingDirectory = "$(SRCROOT)/../Foundation/Engine"
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -52,12 +52,22 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "103B5AE51A3373B900C2B236"
-            BuildableName = "EntitySystemGenerator"
-            BlueprintName = "EntitySystemGenerator"
-            ReferencedContainer = "container:EntitySystemGenerator.xcodeproj">
+            BlueprintIdentifier = "10BE142D1A3CD02000B97CF2"
+            BuildableName = "Game"
+            BlueprintName = "Game"
+            ReferencedContainer = "container:Game.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "$(SRCROOT)/../Foundation/TestApp"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "Mac"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,10 +80,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "103B5AE51A3373B900C2B236"
-            BuildableName = "EntitySystemGenerator"
-            BlueprintName = "EntitySystemGenerator"
-            ReferencedContainer = "container:EntitySystemGenerator.xcodeproj">
+            BlueprintIdentifier = "10BE142D1A3CD02000B97CF2"
+            BuildableName = "Game"
+            BlueprintName = "Game"
+            ReferencedContainer = "container:Game.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

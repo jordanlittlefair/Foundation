@@ -20,6 +20,18 @@
 using namespace Fnd::Logger;
 using namespace Fnd::Settings;
 
+#include <iostream>
+
+#ifdef _WIN32
+#define APPLICATIONDIR_INDEX 0
+#define CONFIGSTR_INDEX 1
+#define NUM_ARGS 2
+#else
+#define APPLICATIONDIR_INDEX 1
+#define CONFIGSTR_INDEX 2
+#define NUM_ARGS 3
+#endif
+
 #ifdef _WIN32
 int _stdcall
 WinMain (	_In_ struct HINSTANCE__* hIinstance,
@@ -45,18 +57,23 @@ int main( int argc, char* argv[] )
     }
 #endif
 	
-	if ( cmds.size() < 2 )
+	if ( cmds.size() < NUM_ARGS )
 	{
 		Fnd::Utility::BlockingMessageBox( "Failed to start", "Game.exe [ApplicationDirectory] [ConfigStr]" );
 
 		return 1;
 	}
 
-	std::string application_directory = Fnd::Utility::FileSystem::CanonicaliseDirectory(cmds[0]);
-	std::string config_str = cmds[1];
+	std::string application_directory = Fnd::Utility::FileSystem::CanonicaliseDirectory(cmds[APPLICATIONDIR_INDEX]);
+	std::string config_str = cmds[CONFIGSTR_INDEX];
 
-	const std::string engine_settings_filename = Fnd::Utility::FileSystem::CanonicaliseFile( Fnd::Utility::FileSystem::GetWorkingDirectory() + "/EngineSettings.xml" );
-	const std::string application_settings_filename = Fnd::Utility::FileSystem::CanonicaliseFile( application_directory + "/ApplicationSettings.xml" );
+	const std::string engine_settings_filename = Fnd::Utility::FileSystem::CanonicaliseFile( Fnd::Utility::FileSystem::GetWorkingDirectory() ) + "/EngineSettings.xml";
+	const std::string application_settings_filename = Fnd::Utility::FileSystem::CanonicaliseFile( application_directory ) + "/ApplicationSettings.xml";
+
+    std::cout << "App Settings:    " << application_settings_filename << std::endl;
+    std::cout << "Engine Settings: " << engine_settings_filename << std::endl;
+    std::cout << "Config:          " << config_str << std::endl;
+
 
 	ApplicationSettings application_settings;
 	if ( !application_settings.Load( application_settings_filename, EngineConfig::GetConfig(config_str) ) )

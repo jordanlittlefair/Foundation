@@ -49,6 +49,10 @@ std::string FileSystem::CanonicaliseDirectory( const std::string& directory )
 
 	std::transform( directory_local.begin(), directory_local.end(), directory_local.begin(), [](char c) { return ( c == '\\' ? '/' : c ); } );
 
+    return directory_local;
+    
+    // TODO: fix this
+
 	auto path_vec = SplitString( directory_local, '/' );
 
 	int parent_count = 0;
