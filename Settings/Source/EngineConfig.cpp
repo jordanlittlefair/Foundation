@@ -30,7 +30,7 @@ const int EngineConfig::_compatibility_map[Config_count][ImplementationType_coun
 	},
 	{	// Mac
 		ConsoleLogger_implementation | NetworkLogger_implementation,
-		XWindowsWindow_implementation,
+        MacWindow_implementation,
 		OpenGLGraphics_implementation,
 		BulletPhysics_implementation,
 		LoadedWorld_implementation,
@@ -65,27 +65,27 @@ int EngineConfig::GetCompatibleLoggers( EngineConfig::Config config )
 
 int EngineConfig::GetCompatibleWindows( EngineConfig::Config config )
 {
-	return _compatibility_map[config][LoggerImplementations_offset];
+	return _compatibility_map[config][WindowImplementations_offset];
 }
 
 int EngineConfig::GetCompatibleGraphics( EngineConfig::Config config )
 {
-	return _compatibility_map[config][LoggerImplementations_offset];
+	return _compatibility_map[config][GraphicsImplementations_offset];
 }
 
 int EngineConfig::GetCompatiblePhysics( EngineConfig::Config config )
 {
-	return _compatibility_map[config][LoggerImplementations_offset];
+	return _compatibility_map[config][PhysicsImplementations_offset];
 }
 
 int EngineConfig::GetCompatibleWorlds( EngineConfig::Config config )
 {
-	return _compatibility_map[config][LoggerImplementations_offset];
+	return _compatibility_map[config][WorldImplementations_offset];
 }
 
 int EngineConfig::GetCompatibleScripting( EngineConfig::Config config )
 {
-	return _compatibility_map[config][LoggerImplementations_offset];
+	return _compatibility_map[config][ScriptingImplementations_offset];
 }
 
 EngineConfig::LoggerImplementation EngineConfig::GetLoggerImplementation( const std::string& str )
@@ -104,7 +104,9 @@ EngineConfig::WindowImplementation EngineConfig::GetWindowImplementation( const 
 		return Win32Window_implementation;
 	else if ( str == "XWindowsWindow" )
 		return XWindowsWindow_implementation;
-	else
+	else if ( str == "MacWindow" )
+        return MacWindow_implementation;
+    else
 		return InvalidWindow_implementation;
 }
 
@@ -165,6 +167,8 @@ std::string EngineConfig::GetWindowImplementationString( EngineConfig::WindowImp
 		return "Win32Window";
 	case Fnd::Settings::EngineConfig::XWindowsWindow_implementation:
 		return "XWindowsWindow";
+    case Fnd::Settings::EngineConfig::MacWindow_implementation:
+        return "MacWindow";
 	default:
 		return "";
 	}

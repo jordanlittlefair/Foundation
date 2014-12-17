@@ -19,7 +19,9 @@ using namespace Fnd::Logger;
 #ifdef _WIN32
 	#define WIN32WINDOW
 #else
-#ifdef NEED_TO_CREATE_MAC_WINDOW_CLASS
+#ifdef __APPLE__
+    #define MACWINDOW
+#else
 	#define XWINDOWSWINDOW
 #endif
 #endif
@@ -35,6 +37,9 @@ using namespace Fnd::Logger;
 #endif
 #ifdef XWINDOWSWINDOW
 	#include "../../XWindowsWindow/Include/XWindowsWindow.hpp"
+#endif
+#ifdef MACWINDOW
+    #include "../../MacWindow/Include/MacWindow.hpp"
 #endif
 
 IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, const Fnd::Settings::EngineSettings::WindowSettings& window_settings )
@@ -59,6 +64,11 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::Applicat
 		window = new Fnd::XWindowsWindow::XWindowsWindow();
 #endif
 		break;
+    case Fnd::Settings::EngineConfig::MacWindow_implementation:
+#ifdef MACWINDOW
+        window = new Fnd::MacWindow::MacWindow();
+#endif
+        break;
 	}
 
 	if ( !window )
