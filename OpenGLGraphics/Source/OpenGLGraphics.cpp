@@ -107,10 +107,13 @@ void OpenGLGraphics::Release()
 
 void OpenGLGraphics::Present()
 {
-#ifdef _WIN32
 	glFlush();
     
+#ifdef _WIN32
 	SwapBuffers(HDC(_game->GetHDC()));
+#else
+
+    //glXSwapBuffers((Display)_game->GetXWindowsDisplay(), (GLXDrawable)_game->GetXWindowsWindow());
 #endif
 }
 
@@ -121,11 +124,9 @@ void OpenGLGraphics::Resize( unsigned int width, unsigned int height )
 
 void OpenGLGraphics::BeginRender()
 {
-#ifdef _WIN32
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	glClearColor( 0, 0.5f, 1.0f, 1 );
-#endif
 }
 
 std::vector<std::shared_ptr<Fnd::EntitySystem::System>> OpenGLGraphics::GetSystems()

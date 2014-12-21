@@ -21,6 +21,7 @@ using namespace Fnd::Logger;
 #else
 #ifdef __APPLE__
     #define MACWINDOW
+    #define XWINDOWSWINDOW
 #else
 	#define XWINDOWSWINDOW
 #endif

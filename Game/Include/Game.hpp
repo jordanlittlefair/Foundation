@@ -129,6 +129,11 @@ class Game:
 			@return Returns the device context handle.
 		*/
 		void* GetHDC() const;
+    
+        void* GetXWindowsDisplay() const;
+        
+        unsigned long GetXWindowsWindow() const;
+
 
 		bool GetVRTextureDimensions( unsigned int& width, unsigned int& height );
 

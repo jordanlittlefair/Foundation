@@ -41,6 +41,16 @@ void* MacWindow::GetHDC() const
     return nullptr;
 }
 
+void* MacWindow::GetXWindowsDisplay() const
+{
+    return nullptr;
+}
+
+unsigned long MacWindow::GetXWindowsWindow() const
+{
+    return 0;
+}
+
 void MacWindow::Show()
 {
 }

@@ -109,6 +109,10 @@ bool Game::Initialise()
 	}
 	
 	_window->SetWindowMessageListener(this);
+    
+    // Set a default window size
+    _window->SetWindowSize(1280, 720);
+    
 	if ( !_window->Initialise() )
 	{
 		Logger::Logger::GetInstance().Log( LogError( "Failed to initialise Window component." ) );
@@ -354,6 +358,16 @@ void* Game::GetHWND() const
 void* Game::GetHDC() const
 {
 	return _window->GetHDC();
+}
+
+void* Game::GetXWindowsDisplay() const
+{
+    return _window->GetXWindowsDisplay();
+}
+
+unsigned long Game::GetXWindowsWindow() const
+{
+    return _window->GetXWindowsWindow();
 }
 
 bool Game::GetVRTextureDimensions( unsigned int& width, unsigned int& height )

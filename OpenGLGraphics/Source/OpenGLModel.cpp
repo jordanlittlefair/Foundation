@@ -11,9 +11,6 @@ OpenGLModel::OpenGLModel( Fnd::OpenGLGraphics::OpenGLGraphics* graphics ):
 
 bool OpenGLModel::Create( const Fnd::AssetManager::ModelData& data )
 {
-#ifndef _WIN32
-    return true;
-#endif
 	for ( unsigned int i = 0; i < data.meshes.size(); ++i )
 	{
 		_resource.meshes.push_back(Model::Mesh());

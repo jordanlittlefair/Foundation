@@ -35,6 +35,7 @@
 		10BE14651A3CD2A200B97CF2 /* libSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BE14521A3CD2A200B97CF2 /* libSettings.a */; };
 		10BE14661A3CD2A200B97CF2 /* libUtility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BE14531A3CD2A200B97CF2 /* libUtility.a */; };
 		10BE14671A3CD2A200B97CF2 /* libWorldLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BE14541A3CD2A200B97CF2 /* libWorldLoader.a */; };
+		10CAC82A1A4640E200D9548D /* libXWindowsWindow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10CAC8291A4640E200D9548D /* libXWindowsWindow.a */; };
 		10D76FDB1A421B2D00EABEFF /* libMacWindow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D76FDA1A421B2D00EABEFF /* libMacWindow.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		10BE14521A3CD2A200B97CF2 /* libSettings.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSettings.a; path = "../../Library/Developer/Xcode/DerivedData/Game-anlieiphutwhmyagwgroscirxvae/Build/Products/Debug/libSettings.a"; sourceTree = "<group>"; };
 		10BE14531A3CD2A200B97CF2 /* libUtility.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtility.a; path = "../../Library/Developer/Xcode/DerivedData/Game-anlieiphutwhmyagwgroscirxvae/Build/Products/Debug/libUtility.a"; sourceTree = "<group>"; };
 		10BE14541A3CD2A200B97CF2 /* libWorldLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWorldLoader.a; path = "../../Library/Developer/Xcode/DerivedData/Game-anlieiphutwhmyagwgroscirxvae/Build/Products/Debug/libWorldLoader.a"; sourceTree = "<group>"; };
+		10CAC8291A4640E200D9548D /* libXWindowsWindow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXWindowsWindow.a; path = ../Bin/Mac/Debug/libXWindowsWindow.a; sourceTree = "<group>"; };
 		10D76FDA1A421B2D00EABEFF /* libMacWindow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMacWindow.a; path = ../Bin/Mac/Debug/libMacWindow.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CAC82A1A4640E200D9548D /* libXWindowsWindow.a in Frameworks */,
 				10D76FDB1A421B2D00EABEFF /* libMacWindow.a in Frameworks */,
 				100F58541A3F65C600309FBA /* OpenGL.framework in Frameworks */,
 				100F58521A3F641300309FBA /* libAssimp.a in Frameworks */,
@@ -125,6 +128,7 @@
 		10BE14251A3CD02000B97CF2 = {
 			isa = PBXGroup;
 			children = (
+				10CAC8291A4640E200D9548D /* libXWindowsWindow.a */,
 				10D76FDA1A421B2D00EABEFF /* libMacWindow.a */,
 				100F58531A3F65C600309FBA /* OpenGL.framework */,
 				100F58511A3F641300309FBA /* libAssimp.a */,
@@ -335,6 +339,12 @@
 					/Users/jordanlittlefair/Foundation/Assimp/Bin/Mac/Debug,
 					/Users/jordanlittlefair/Foundation/Assimp/Bin/Mac/Release,
 					/Users/jordanlittlefair/Foundation/Bin/Mac/Debug,
+					/usr/X11/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-lX11",
+					"-lGL",
+					"-lGLU",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -352,6 +362,12 @@
 					/Users/jordanlittlefair/Foundation/Assimp/Bin/Mac/Debug,
 					/Users/jordanlittlefair/Foundation/Assimp/Bin/Mac/Release,
 					/Users/jordanlittlefair/Foundation/Bin/Mac/Debug,
+					/usr/X11/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-lX11",
+					"-lGL",
+					"-lGLU",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

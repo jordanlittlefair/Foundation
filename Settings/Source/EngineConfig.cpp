@@ -30,7 +30,7 @@ const int EngineConfig::_compatibility_map[Config_count][ImplementationType_coun
 	},
 	{	// Mac
 		ConsoleLogger_implementation | NetworkLogger_implementation,
-        MacWindow_implementation,
+        XWindowsWindow_implementation | MacWindow_implementation,
 		OpenGLGraphics_implementation,
 		BulletPhysics_implementation,
 		LoadedWorld_implementation,
