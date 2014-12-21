@@ -3,10 +3,9 @@
 #include "../../GameComponentInterfaces/Include/IWindowMessageListener.hpp"
 
 #include <iostream>
-#include<X11/Xlib.h>
-#include<GL/gl.h>
-#include<GL/glx.h>
-#include<GL/glu.h>
+#include <X11/Xlib.h>
+#include "../../glew/Include/glew.hpp"
+#include <GL/glx.h>
 
 using namespace Fnd::XWindowsWindow;
 
@@ -107,13 +106,13 @@ bool XWindowsWindow::Initialise()
     swa.colormap = cmap;
     swa.event_mask = ExposureMask | KeyPressMask;
 
-    Window win = XCreateWindow( _data->display, _data->window, 0, 0, _width, _height, 0, _data->visual_info->depth, InputOutput, _data->visual_info->visual, CWColormap | CWEventMask, &swa);
+    _data->window = XCreateWindow( _data->display, _data->window, 0, 0, _width, _height, 0, _data->visual_info->depth, InputOutput, _data->visual_info->visual, CWColormap | CWEventMask, &swa);
 
-    XMapWindow( _data->display, win );
-    XStoreName( _data->display, win, _title.c_str() );
+    XMapWindow( _data->display, _data->window );
+    XStoreName( _data->display, _data->window, _title.c_str() );
 
     GLXContext glc = glXCreateContext( _data->display, _data->visual_info, nullptr, GL_TRUE);
-    glXMakeCurrent( _data->display , win, glc );
+    glXMakeCurrent( _data->display , _data->window, glc );
 
 	_is_open = true;
 

@@ -5,11 +5,7 @@
 
 #include "../../AssetManager/Include/Model.hpp"
 
-#ifdef _WIN32
 #include "../../glew/Include/glew.hpp"
-#else
-#include <OpenGL/gl3.h>
-#endif
 
 #include <memory>
 

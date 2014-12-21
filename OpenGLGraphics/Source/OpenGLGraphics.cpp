@@ -8,11 +8,9 @@
 #include <wingdi.h>
 #endif
 
-#ifdef _WIN32
+#include <X11/Xlib.h>
 #include "../../glew/Include/glew.hpp"
-#else
-#include <OpenGL/gl3.h>
-#endif
+#include <GL/glx.h>
 
 using namespace Fnd::OpenGLGraphics;
 using namespace Fnd::GameComponentInterfaces;
@@ -81,13 +79,15 @@ bool OpenGLGraphics::Initialise()
 	_hglrc = wglCreateContext(hdc);
 
 	wglMakeCurrent(hdc,(HGLRC)_hglrc);
+	
+#endif
 
-	GLenum err = glewInit();
+    glewExperimental = GL_TRUE; 
+    GLenum err = glewInit();
 	if ( err != GLEW_OK )
 	{
 		auto a = 0;
 	}
-#endif
 
 	return true;
 }
@@ -112,8 +112,9 @@ void OpenGLGraphics::Present()
 #ifdef _WIN32
 	SwapBuffers(HDC(_game->GetHDC()));
 #else
-
-    //glXSwapBuffers((Display)_game->GetXWindowsDisplay(), (GLXDrawable)_game->GetXWindowsWindow());
+    auto d = _game->GetXWindowsDisplay();
+    auto w = _game->GetXWindowsWindow();
+    glXSwapBuffers((Display*)_game->GetXWindowsDisplay(), (GLXDrawable)_game->GetXWindowsWindow());
 #endif
 }
 
