@@ -6,11 +6,11 @@
 #ifdef _WIN32
 #include <Windows.h>
 #include <wingdi.h>
-#endif
-
+#else
 #include <X11/Xlib.h>
 #include "../../glew/Include/glew.hpp"
 #include <GL/glx.h>
+#endif
 
 using namespace Fnd::OpenGLGraphics;
 using namespace Fnd::GameComponentInterfaces;
