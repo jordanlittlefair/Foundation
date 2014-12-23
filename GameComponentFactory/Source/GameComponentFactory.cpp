@@ -70,6 +70,9 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::Applicat
         window = new Fnd::MacWindow::MacWindow();
 #endif
         break;
+    case Fnd::Settings::EngineConfig::InvalidWindow_implementation:
+    default:
+            window = nullptr;
 	}
 
 	if ( !window )
@@ -116,7 +119,10 @@ IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::Appl
 #ifdef OPENGLGRAPHICS
 		graphics = new Fnd::OpenGLGraphics::OpenGLGraphics();
 #endif
-		break;
+        break;
+    case Fnd::Settings::EngineConfig::InvalidGraphics_implementation:
+    default:
+		graphics = nullptr;
 	}
 
 
@@ -149,6 +155,9 @@ Fnd::GameComponentInterfaces::IPhysics* GameComponentFactory::GetPhysicsComponen
 	case Fnd::Settings::EngineConfig::BulletPhysics_implementation:
 		physics = new Fnd::BulletPhysics::BulletPhysics();
 		break;
+    case Fnd::Settings::EngineConfig::InvalidPhysics_implementation:
+    default:
+        physics = nullptr;
 	}
 
 	if ( !physics )
@@ -178,6 +187,9 @@ Fnd::GameComponentInterfaces::IWorld* GameComponentFactory::GetWorldComponent( c
 	case Fnd::Settings::EngineConfig::LoadedWorld_implementation:
 		world = new Fnd::LoadedWorld::LoadedWorld();
 		break;
+    case Fnd::Settings::EngineConfig::InvalidWorld_implementation:
+    default:
+        world = nullptr;
 	}
 
 	if ( !world )
@@ -212,6 +224,9 @@ Fnd::Scripting::ScriptManager* GameComponentFactory::GetScriptManager( const Fnd
 	case Fnd::Settings::EngineConfig::LuaScripting_implementation:
 		scripting = nullptr;
 		break;
+    case Fnd::Settings::EngineConfig::InvalidScripting_implementation:
+    default:
+        scripting = nullptr;
 	}
 
 	if ( !scripting )

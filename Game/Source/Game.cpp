@@ -248,7 +248,6 @@ bool Game::Initialise()
 #include <sstream>
 #include <fstream>
 
-static int t = 0;
 void Game::Play()
 {
 	_window->Show();
@@ -274,7 +273,7 @@ void Game::Play()
 		//auto a = Fnd::EntitySystem::AmbientLightComponent();
 		//++t;
 
-		if (0)// (t/60) == 10 )
+		/*if (0)// (t/60) == 10 )
 		{
 			auto en = _entity_system->GetEntityContainer().GetEntityByName("Cube0Light");
 			if ( en )
@@ -289,7 +288,7 @@ void Game::Play()
 				}
 				//_entity_system->GetEntityContainer().RemoveEntity(en);
 			}
-		}
+		}*/
 
 		//GetEntitySystem().ReleaseComponent<Fnd::EntitySystem::AmbientLightComponent>(t/60);
 		//GetEntitySystem().ReleaseComponent<Fnd::EntitySystem::PointLightComponent>(t/60);

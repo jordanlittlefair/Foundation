@@ -86,7 +86,7 @@ bool OpenGLGraphics::Initialise()
     GLenum err = glewInit();
 	if ( err != GLEW_OK )
 	{
-		auto a = 0;
+		// TODO: failed to initialise glew
 	}
 
 	return true;
@@ -112,8 +112,6 @@ void OpenGLGraphics::Present()
 #ifdef _WIN32
 	SwapBuffers(HDC(_game->GetHDC()));
 #else
-    auto d = _game->GetXWindowsDisplay();
-    auto w = _game->GetXWindowsWindow();
     glXSwapBuffers((Display*)_game->GetXWindowsDisplay(), (GLXDrawable)_game->GetXWindowsWindow());
 #endif
 }

@@ -134,7 +134,7 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 		{
 			boost::asio::streambuf streambuf;
 
-			/*
+			/
 				Read status line.
 			/
 			boost::asio::read_until( socket, streambuf, "\r\n" );
@@ -149,7 +149,7 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 				return false;
 			}
 
-			/*
+			/
 				Read headers.
 			/
 			boost::asio::read_until( socket, streambuf, "\r\n\r\n" );
@@ -170,7 +170,7 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 				response.headers[key] = val;
 			}
 
-			/*
+			/
 				Read body.
 			/
 			std::stringstream body_ss;
