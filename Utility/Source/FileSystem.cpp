@@ -49,15 +49,6 @@ std::string FileSystem::CanonicaliseDirectory( const std::string& directory )
 
 	std::transform( directory_local.begin(), directory_local.end(), directory_local.begin(), [](char c) { return ( c == '\\' ? '/' : c ); } );
 
-	if ( !directory_local.empty() && directory_local.back() != '/' )
-	{
-		directory_local += '/';
-	}
-
-    return directory_local;
-    
-    // TODO: fix this
-
 	auto path_vec = SplitString( directory_local, '/' );
 
 	int parent_count = 0;
@@ -85,8 +76,12 @@ std::string FileSystem::CanonicaliseDirectory( const std::string& directory )
 	{
 		ret = "../" + ret;
 	}
-	
-	return ret;
+    
+#ifdef _WIN32
+    return ret;
+#else
+    return "/" + ret;
+#endif
 }
 
 void FileSystem::GetPathAndName( const std::string& full_path, std::string& path, std::string& name )
