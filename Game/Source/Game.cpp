@@ -195,6 +195,8 @@ bool Game::Initialise()
 
 #ifdef _WIN32
 	_input_handler->SetWindow((HWND)_window->GetHWND());
+#else
+    _input_handler->SetDisplay(_window->GetXWindowsDisplay());
 #endif
 	_input_handler->Initialise();
 

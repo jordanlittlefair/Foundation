@@ -11,6 +11,7 @@ using namespace Fnd::Input;
 
 InputHandler::InputHandler():
     _windows_data(),
+    _xwindows_data(),
 	_keyboard(),
 	_mouse(),
 	_gamepad()
@@ -23,14 +24,24 @@ void InputHandler::SetWindow( void* window )
 	_windows_data._window = window;
 }
 
+void InputHandler::SetDisplay( void* display )
+{
+    _xwindows_data.display = display;
+}
+
 #ifdef _WIN32
 #include "../Include/WindowsMouseInput.hpp"
 #include "../Include/WindowsKeyboardInput.hpp"
 #include "../Include/WindowsGamePadInput.hpp"
 #else
+#ifdef __APPLE__
 #include "../Include/MacMouseInput.hpp"
 #include "../Include/MacKeyboardInput.hpp"
 #include "../Include/MacGamePadInput.hpp"
+#endif
+#include "../Include/XWindowsMouseInput.hpp"
+#include "../Include/XWindowsKeyboardInput.hpp"
+#include "../Include/XWindowsGamePadInput.hpp"
 #endif
 
 bool InputHandler::Initialise()
@@ -86,10 +97,16 @@ bool InputHandler::Initialise()
 	return true;
 #else
 
-    std::unique_ptr<MacMouseInput> mouse( new MacMouseInput() );
-    std::unique_ptr<MacKeyboardInput> keyboard( new MacKeyboardInput() );
-    std::unique_ptr<MacGamePadInput> gamepad( new MacGamePadInput() );
+    std::unique_ptr<XWindowsMouseInput> mouse( new XWindowsMouseInput() );
+    std::unique_ptr<XWindowsKeyboardInput> keyboard( new XWindowsKeyboardInput() );
+    std::unique_ptr<XWindowsGamePadInput> gamepad( new XWindowsGamePadInput() );
 
+    keyboard->SetDisplay(_xwindows_data.display);
+    
+    mouse->Initialise();
+    keyboard->Initialise();
+    gamepad->Initialise();
+    
     _mouse = std::move(mouse);
     _keyboard = std::move(keyboard);
     _gamepad = std::move(gamepad);
@@ -133,5 +150,10 @@ InputHandler::~InputHandler()
 InputHandler::WindowsData::WindowsData():
     _window(nullptr),
     _direct_input(nullptr)
+{
+}
+
+InputHandler::XWindowsData::XWindowsData():
+    display(nullptr)
 {
 }

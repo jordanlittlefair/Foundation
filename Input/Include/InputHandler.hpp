@@ -26,6 +26,8 @@ class InputHandler:
 		InputHandler();
 
 		void SetWindow( void* window );
+    
+        void SetDisplay( void* display );
 
 		bool Initialise();
 
@@ -51,6 +53,15 @@ class InputHandler:
     
         WindowsData _windows_data;
 
+        struct XWindowsData
+        {
+            XWindowsData();
+            
+            void* display;
+        };
+    
+        XWindowsData _xwindows_data;
+    
 		std::unique_ptr<KeyboardInputBase> _keyboard;
 		std::unique_ptr<MouseInputBase> _mouse;
 		std::unique_ptr<GamePadInputBase> _gamepad;
