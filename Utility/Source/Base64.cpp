@@ -24,7 +24,7 @@ const unsigned char Base64::_decode_map[128] =
 
 std::string Base64::Encode( const std::vector<unsigned char>& source )
 {
-	return source.empty() ? "" : Encode( &source[0], source.size() );
+	return source.empty() ? "" : Encode( &source[0], (unsigned int)source.size() );
 }
 
 std::string Base64::Encode( const unsigned char* source, unsigned int length )
@@ -85,7 +85,7 @@ std::string Base64::Encode( const unsigned char* source, unsigned int length )
 
 std::vector<unsigned char> Base64::Decode( const std::string& source )
 {
-	return source.empty() ? std::vector<unsigned char>() : Decode( &source[0], source.size() );
+	return source.empty() ? std::vector<unsigned char>() : Decode( &source[0], (unsigned int)source.size() );
 }
 
 std::vector<unsigned char> Base64::Decode( const char* source, unsigned int length )

@@ -40,7 +40,7 @@ class SceneGraphSystem:
 			
 			std::vector<GraphNode> children;
 
-			void GenerateMatrices( SceneGraphSystem* system, Fnd::Math::Matrix4& xform );
+			void GenerateMatrices( SceneGraphSystem* system, const Fnd::Math::Matrix4& xform );
 
 			GraphNode* FindNode( unsigned int entity_id );
 		};

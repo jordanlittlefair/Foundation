@@ -75,14 +75,14 @@ ApplicationSettings::WindowSettings ReadWindowSettings( const std::string& direc
 		auto attrib = window_node->first_attribute("initial_width");
 		if ( attrib )
 		{
-			ret.initial_width = atol(attrib->value());
+			ret.initial_width = (unsigned int)atol(attrib->value());
 		}
 	}
 	{
 		auto attrib = window_node->first_attribute("initial_height");
 		if ( attrib )
 		{
-			ret.initial_height = atol(attrib->value());
+			ret.initial_height = (unsigned int)atol(attrib->value());
 		}
 	}
 	{

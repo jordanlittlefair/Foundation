@@ -64,7 +64,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;opengl32.lib;Dbghelp.lib;winmm.lib;XInput9_1_0.lib;dinput8.lib;dxguid.lib;..\LibOVR\Lib\Win32\VS2012\libovrd.lib;..\Lua\Bin\Win32\Debug\Lua.lib;..\bullet2.83\Bin\Win32\Debug\BulletCollision.lib;..\bullet2.83\Bin\Win32\Debug\BulletDynamics.lib;..\bullet2.83\Bin\Win32\Debug\BulletSoftBody.lib;..\bullet2.83\Bin\Win32\Debug\LinearMath.lib;../Assimp/lib/assimp_debug-dll_win32/assimp.lib;D3D11.lib;dxgi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;opengl32.lib;Dbghelp.lib;winmm.lib;XInput9_1_0.lib;dinput8.lib;dxguid.lib;..\LibOVR\Lib\Win32\VS2012\libovrd.lib;..\Lua\Bin\Win32\Debug\Lua.lib;..\Bullet\Bin\Win32\Debug\Bullet.lib;../Assimp/Bin/Win32/Debug/assimp.lib;D3D11.lib;dxgi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,7 +82,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>ws2_32.lib;opengl32.lib;Dbghelp.lib;winmm.lib;XInput9_1_0.lib;..\LibOVR\Lib\Win32\VS2012\libovr.lib;dinput8.lib;dxguid.lib;..\Lua\Bin\Win32\Release\Lua.lib;..\bullet2.83\Bin\Win32\Release\BulletCollision.lib;..\bullet2.83\Bin\Win32\Release\BulletDynamics.lib;..\bullet2.83\Bin\Win32\Release\BulletSoftBody.lib;..\bullet2.83\Bin\Win32\Release\LinearMath.lib;../Assimp/lib/assimp_release-dll_win32/assimp.lib;D3D11.lib;dxgi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;opengl32.lib;Dbghelp.lib;winmm.lib;XInput9_1_0.lib;..\LibOVR\Lib\Win32\VS2012\libovr.lib;dinput8.lib;dxguid.lib;..\Lua\Bin\Win32\Release\Lua.lib;..\Bullet\Bin\Win32\Release\Bullet.lib;../Assimp/Bin/Win32/Release/assimp.lib;D3D11.lib;dxgi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:glew/glew.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:XWindowsWindow/XWindowsWindow.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MacWindow/MacWindow.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:BulletPhysics/BulletPhysics.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Game/Game.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Input/Input.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Settings/Settings.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GameSystems/GameSystems.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GameComponentFactory/GameComponentFactory.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MockScripting/MockScripting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LoadedWorld/LoadedWorld.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OpenGLGraphics/OpenGLGraphics.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GraphicsResources/GraphicsResources.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Scripting/Scripting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WorldLoader/WorldLoader.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GameComponentInterfaces/GameComponentInterfaces.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:EntitySystem/EntitySystem.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CommonResources/CommonResources.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AssetManager/AssetManager.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Logger/Logger.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Math/Math.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ModelLoader/ModelLoader.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Utility/Utility.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:HTTPClient/HTTPClient.xcodeproj">
+   </FileRef>
+</Workspace>

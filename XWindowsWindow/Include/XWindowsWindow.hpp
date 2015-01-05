@@ -5,8 +5,6 @@
 
 #include "../../GameComponentInterfaces/Include/IWindow.hpp"
 
-struct Display;
-
 namespace Fnd
 {
 namespace XWindowsWindow
@@ -53,6 +51,10 @@ class XWindowsWindow:
 			@return Returns the device context handle.
 		*/
 		void* GetHDC() const;
+    
+        void* GetXWindowsDisplay() const;
+        
+        unsigned long GetXWindowsWindow() const;
 
 		// Show the window.
 		void Show();
@@ -95,10 +97,8 @@ class XWindowsWindow:
 
 	private:
 
-		Display* _display;
-		Window _window;
-		XVisualInfo* _visual_info;
-
+        struct XWindowsData;
+        std::unique_ptr<XWindowsData> _data;
 
 		bool _is_initialised;
 

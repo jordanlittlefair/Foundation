@@ -1,6 +1,6 @@
 #include "../Include/ComponentMapsSourceGenerator.hpp"
 
-#include "..\Include\ComponentDefinitionTags.hpp"
+#include "../Include/ComponentDefinitionTags.hpp"
 #include "../../Utility/Include/XmlManager.hpp"
 
 #include <iostream>

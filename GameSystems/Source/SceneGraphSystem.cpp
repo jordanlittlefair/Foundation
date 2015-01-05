@@ -16,7 +16,7 @@ SceneGraphSystem::GraphNode::GraphNode():
 }
 	
 
-void SceneGraphSystem::GraphNode::GenerateMatrices( SceneGraphSystem* system, Fnd::Math::Matrix4& xform )
+void SceneGraphSystem::GraphNode::GenerateMatrices( SceneGraphSystem* system, const Fnd::Math::Matrix4& xform )
 {
 	SceneNodeNode::Pointers components;
 

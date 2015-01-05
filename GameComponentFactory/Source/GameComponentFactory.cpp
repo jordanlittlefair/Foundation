@@ -11,12 +11,20 @@ using namespace Fnd::Settings;
 using namespace Fnd::Logger;
 
 #define OPENGLGRAPHICS
-#define USE_DIRECTX
+
+#ifdef _WIN32
+    #define USE_DIRECTX
+#endif
 
 #ifdef _WIN32
 	#define WIN32WINDOW
 #else
+#ifdef __APPLE__
+    #define MACWINDOW
+    #define XWINDOWSWINDOW
+#else
 	#define XWINDOWSWINDOW
+#endif
 #endif
 
 #ifdef USE_DIRECTX
@@ -30,6 +38,9 @@ using namespace Fnd::Logger;
 #endif
 #ifdef XWINDOWSWINDOW
 	#include "../../XWindowsWindow/Include/XWindowsWindow.hpp"
+#endif
+#ifdef MACWINDOW
+    #include "../../MacWindow/Include/MacWindow.hpp"
 #endif
 
 IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::ApplicationSettings::WindowSettings& window_data, const Fnd::Settings::EngineSettings::WindowSettings& window_settings )
@@ -54,6 +65,14 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::Applicat
 		window = new Fnd::XWindowsWindow::XWindowsWindow();
 #endif
 		break;
+    case Fnd::Settings::EngineConfig::MacWindow_implementation:
+#ifdef MACWINDOW
+        window = new Fnd::MacWindow::MacWindow();
+#endif
+        break;
+    case Fnd::Settings::EngineConfig::InvalidWindow_implementation:
+    default:
+            window = nullptr;
 	}
 
 	if ( !window )
@@ -64,11 +83,12 @@ IWindow* GameComponentFactory::GetWindowComponent( const Fnd::Settings::Applicat
 		return nullptr;
 	}
 	
+#ifdef _WIN32
 	window->SetWindowTitle( window_data.window_title );
 	window->SetWindowSize( window_data.initial_width, window_data.initial_height );
 	window->SetWindowResizable( window_data.is_resizable );
 	window->SetWindowFullscreen( window_data.is_fullscreen );
-
+#endif
 	Fnd::Logger::Logger::GetInstance().Log( LogMessage("Created Window [" + Settings::EngineConfig::GetWindowImplementationString(window_data.implementation) + "].") );
 	return window;
 }
@@ -99,7 +119,10 @@ IGraphics* GameComponentFactory::GetGraphicsComponent( const Fnd::Settings::Appl
 #ifdef OPENGLGRAPHICS
 		graphics = new Fnd::OpenGLGraphics::OpenGLGraphics();
 #endif
-		break;
+        break;
+    case Fnd::Settings::EngineConfig::InvalidGraphics_implementation:
+    default:
+		graphics = nullptr;
 	}
 
 
@@ -132,6 +155,9 @@ Fnd::GameComponentInterfaces::IPhysics* GameComponentFactory::GetPhysicsComponen
 	case Fnd::Settings::EngineConfig::BulletPhysics_implementation:
 		physics = new Fnd::BulletPhysics::BulletPhysics();
 		break;
+    case Fnd::Settings::EngineConfig::InvalidPhysics_implementation:
+    default:
+        physics = nullptr;
 	}
 
 	if ( !physics )
@@ -161,6 +187,9 @@ Fnd::GameComponentInterfaces::IWorld* GameComponentFactory::GetWorldComponent( c
 	case Fnd::Settings::EngineConfig::LoadedWorld_implementation:
 		world = new Fnd::LoadedWorld::LoadedWorld();
 		break;
+    case Fnd::Settings::EngineConfig::InvalidWorld_implementation:
+    default:
+        world = nullptr;
 	}
 
 	if ( !world )
@@ -195,6 +224,9 @@ Fnd::Scripting::ScriptManager* GameComponentFactory::GetScriptManager( const Fnd
 	case Fnd::Settings::EngineConfig::LuaScripting_implementation:
 		scripting = nullptr;
 		break;
+    case Fnd::Settings::EngineConfig::InvalidScripting_implementation:
+    default:
+        scripting = nullptr;
 	}
 
 	if ( !scripting )

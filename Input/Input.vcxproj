@@ -10,6 +10,30 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\GamePadButtons.hpp" />
+    <ClInclude Include="Include\GamePadInputBase.hpp" />
+    <ClInclude Include="Include\IGamePadInput.hpp" />
+    <ClInclude Include="Include\IInput.hpp" />
+    <ClInclude Include="Include\IKeyboardInput.hpp" />
+    <ClInclude Include="Include\IMouseInput.hpp" />
+    <ClInclude Include="Include\InputHandler.hpp" />
+    <ClInclude Include="Include\KeyboardInputBase.hpp" />
+    <ClInclude Include="Include\KeyboardKeys.hpp" />
+    <ClInclude Include="Include\MouseInputBase.hpp" />
+    <ClInclude Include="Include\WindowsGamePadInput.hpp" />
+    <ClInclude Include="Include\WindowsKeyboardInput.hpp" />
+    <ClInclude Include="Include\WindowsMouseInput.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\GamePadInputBase.cpp" />
+    <ClCompile Include="Source\InputHandler.cpp" />
+    <ClCompile Include="Source\KeyboardInputBase.cpp" />
+    <ClCompile Include="Source\MouseInputBase.cpp" />
+    <ClCompile Include="Source\WindowsGamePadInput.cpp" />
+    <ClCompile Include="Source\WindowsKeyboardInput.cpp" />
+    <ClCompile Include="Source\WindowsMouseInput.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5CDF0287-E9EC-4EE8-AFD0-7B228884FCD3}</ProjectGuid>
     <RootNamespace>Input</RootNamespace>
@@ -70,23 +94,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Source\InputHandler.cpp" />
-    <ClCompile Include="Source\KeyboardInput.cpp" />
-    <ClCompile Include="Source\MouseInput.cpp" />
-    <ClCompile Include="Source\XboxInput.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Include\GamePadButtons.hpp" />
-    <ClInclude Include="Include\IInput.hpp" />
-    <ClInclude Include="Include\IKeyboardInput.hpp" />
-    <ClInclude Include="Include\IMouseInput.hpp" />
-    <ClInclude Include="Include\InputHandler.hpp" />
-    <ClInclude Include="Include\IXboxInput.hpp" />
-    <ClInclude Include="Include\KeyboardInput.hpp" />
-    <ClInclude Include="Include\MouseInput.hpp" />
-    <ClInclude Include="Include\XboxInput.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

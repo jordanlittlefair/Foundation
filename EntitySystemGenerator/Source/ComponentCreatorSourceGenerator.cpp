@@ -1,7 +1,7 @@
-#include "..\Include\ComponentCreatorSourceGenerator.hpp"
-#include "..\Include\ComponentDataConversion.hpp"
+#include "../Include/ComponentCreatorSourceGenerator.hpp"
+#include "../Include/ComponentDataConversion.hpp"
 
-#include "..\Include\ComponentDefinitionTags.hpp"
+#include "../Include/ComponentDefinitionTags.hpp"
 
 #include <iostream>
 

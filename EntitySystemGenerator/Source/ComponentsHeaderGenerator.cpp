@@ -1,4 +1,4 @@
-#include "..\Include\ComponentsHeaderGenerator.hpp"
+#include "../Include/ComponentsHeaderGenerator.hpp"
 
 #include <iostream>
 

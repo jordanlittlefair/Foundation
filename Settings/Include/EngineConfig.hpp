@@ -48,7 +48,8 @@ class EngineConfig
 		{
 			InvalidWindow_implementation	= 0,
 			Win32Window_implementation		= 1 << 0,
-			XWindowsWindow_implementation	= 1 << 1
+			XWindowsWindow_implementation	= 1 << 1,
+            MacWindow_implementation        = 1 << 2
 		};
 
 		/**

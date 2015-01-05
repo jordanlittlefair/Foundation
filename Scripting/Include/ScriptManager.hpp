@@ -42,7 +42,7 @@ class ScriptManager
 
 		void Update( const Fnd::CommonResources::FrameData& frame_data );
 
-		~ScriptManager();
+		virtual ~ScriptManager();
 
 		Fnd::EntitySystem::EntitySystem* GetEntitySystem();
 		

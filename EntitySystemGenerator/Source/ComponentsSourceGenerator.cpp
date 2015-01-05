@@ -1,9 +1,9 @@
-#include "..\Include\ComponentsSourceGenerator.hpp"
-#include "..\Include\ComponentDataConversion.hpp"
+#include "../Include/ComponentsSourceGenerator.hpp"
+#include "../Include/ComponentDataConversion.hpp"
 
-#include "..\..\Utility\Include\XmlManager.hpp"
+#include "../../Utility/Include/XmlManager.hpp"
 
-#include "..\Include\ComponentDefinitionTags.hpp"
+#include "../Include/ComponentDefinitionTags.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -57,36 +57,7 @@ bool ComponentsSourceGenerator::CreateComponentCode( const ComponentDefinitions:
 		}
 	}
 
-	if (0) //if ( non_default_data_count != 0 )
-	{
-		File() << ":";
-	}
 	File() << '\n';
-	
-	/*
-		For each data node.
-	*/
-	unsigned int constructor_count = 0;
-	for ( unsigned int i = 0; i < component_definition.data.size(); ++i )
-	{
-		//if ( !component_definition.data[i].default_value.empty() )
-		if(0)
-		{
-			++constructor_count;
-
-			File() << "\t" << component_definition.data[i].data_name << "(";
-
-			//File() << default_attrib->value();
-		
-			File() << ")";
-			if ( i != constructor_count - 1 )
-			{
-				File() << ",";
-			}
-
-			File() << "\n";
-		}
-	}
 	
 	File() << "{\n}\n\n";
 

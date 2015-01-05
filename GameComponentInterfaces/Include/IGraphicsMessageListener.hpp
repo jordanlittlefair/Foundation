@@ -31,6 +31,10 @@ class IGraphicsMessageListener
 			@return Returns the device context handle.
 		*/
 		virtual void* GetHDC() const = 0;
+    
+        virtual void* GetXWindowsDisplay() const = 0;
+    
+        virtual unsigned long GetXWindowsWindow() const = 0;
 
 		virtual bool GetVRTextureDimensions( unsigned int& width, unsigned int& height ) = 0;
 };

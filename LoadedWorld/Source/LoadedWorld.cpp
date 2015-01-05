@@ -87,13 +87,10 @@ bool LoadedWorld::Initialise()
 		{
 			if ( !_game->GetEntitySystem().GetSystemNodesContainer().CreateSystemNode( data.entities[i].nodes[j], _game->GetEntitySystem(), new_entity ) )
 			{
-				auto a = 0;
+				// TODO: failed to create system node
 			}
 		}
 	}
-
-	auto& es = _game->GetEntitySystem();
-	auto& am = _game->GetAssetManager();
 
 	/*	
 		Set the model component ids - now handled in AssetLinkerSystem

@@ -44,8 +44,6 @@ void AssetLinkerSystem::AddNode( SystemNode* node )
 		}
 
 		model_components.model->data.model_id = GetAssetManager().GetAssetByName( model_components.model->data.model_asset_name );
-
-		auto a = 0;
 	}
 }
 

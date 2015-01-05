@@ -1,9 +1,9 @@
 #include <iostream>
 
 #include "../Include/EntitySystemGeneratorConfig.hpp"
-#include "..\Include\ComponentsHeaderGenerator.hpp"
-#include "..\Include\ComponentsSourceGenerator.hpp"
-#include "..\Include\ComponentCreatorSourceGenerator.hpp"
+#include "../Include/ComponentsHeaderGenerator.hpp"
+#include "../Include/ComponentsSourceGenerator.hpp"
+#include "../Include/ComponentCreatorSourceGenerator.hpp"
 #include "../Include/ComponentMapsHeaderGenerator.hpp"
 #include "../Include/ComponentMapsSourceGenerator.hpp"
 #include "../Include/SystemNodesHeaderGenerator.hpp"
@@ -14,9 +14,10 @@
 #include "../Include/ComponentDefinitions.hpp"
 #include "../Include/SystemNodeDefinitions.hpp"
 
-using namespace Fnd::EntitySystemCodeGeneration;
+#include "../../Utility/Include/FileSystem.hpp"
 
-#include <Windows.h>
+using namespace Fnd::EntitySystemCodeGeneration;
+using namespace Fnd::Utility;
 
 bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Directories& directories, const ComponentDefinitions& component_definitions, const Fnd::EntitySystemCodeGeneration::SystemNodeDefinitions& systemnode_definitions )
 {
@@ -24,23 +25,9 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 
 	std::cout << "Creating \"Include\" and \"Source\" directories...." << std::endl;
 
-	if ( !CreateDirectory( ( directories.output + "Include" ).c_str(), nullptr ) )
-	{
-		if ( GetLastError() != ERROR_ALREADY_EXISTS )
-		{
-			std::cout << "\tFailed to create \"Include\" directory." << std::endl;
-			return false;
-		}
-	}
-	if ( !CreateDirectory( ( directories.output + "Source" ).c_str(), nullptr ) )
-	{
-		if ( GetLastError() != ERROR_ALREADY_EXISTS )
-		{
-			std::cout << "\tFailed to create \"Source\" directory." << std::endl;
-			return false;
-		}
-	}
-
+    FileSystem::CreateNewDirectory( directories.output + "Include" );
+	
+	FileSystem::CreateNewDirectory( directories.output + "Source" );
 
 	/*
 		Generate Components.hpp
@@ -50,7 +37,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 
 		ComponentsHeaderGenerator chg;
 		success = chg.Generate(	component_definitions,
-								directories.output + "Include\\Components.hpp" );
+								directories.output + "Include/Components.hpp" );
 
 		if ( !success )
 		{
@@ -70,7 +57,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		ComponentsSourceGenerator csg;
 
 		success = csg.Generate(	component_definitions,
-								directories.output + "Source\\Components.cpp" );
+								directories.output + "Source/Components.cpp" );
 
 		if ( !success )
 		{
@@ -91,7 +78,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		ComponentCreatorSourceGenerator ccsg;
 
 		success = ccsg.Generate(	component_definitions,
-									directories.output + "Source\\ComponentCreator.cpp" );
+									directories.output + "Source/ComponentCreator.cpp" );
 
 		if ( !success )
 		{
@@ -112,7 +99,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		ComponentMapsHeaderGenerator cmhg;
 
 		success = cmhg.Generate(	component_definitions,
-									directories.output + "Include\\ComponentMaps.hpp" );
+									directories.output + "Include/ComponentMaps.hpp" );
 
 		if ( !success )
 		{
@@ -133,7 +120,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		ComponentMapsSourceGenerator cmsg;
 
 		success = cmsg.Generate(	component_definitions,
-									directories.output + "Source\\ComponentMaps.cpp" );
+									directories.output + "Source/ComponentMaps.cpp" );
 
 		if ( !success )
 		{
@@ -154,7 +141,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		SystemNodesHeaderGenerator snhg;
 
 		success = snhg.Generate(	systemnode_definitions,
-									directories.output + "Include\\SystemNodes.hpp" );
+									directories.output + "Include/SystemNodes.hpp" );
 
 		if ( !success )
 		{
@@ -175,7 +162,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		SystemNodesSourceGenerator snsg;
 
 		success = snsg.Generate(	systemnode_definitions,
-									directories.output + "Source\\SystemNodes.cpp" );
+									directories.output + "Source/SystemNodes.cpp" );
 
 		if ( !success )
 		{
@@ -196,7 +183,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		SystemNodesContainerHeaderGenerator snchg;
 
 		success = snchg.Generate(	systemnode_definitions,
-									directories.output + "Include\\SystemNodesContainer.hpp" );
+									directories.output + "Include/SystemNodesContainer.hpp" );
 
 		if ( !success )
 		{
@@ -217,7 +204,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 		SystemNodesContainerSourceGenerator sncsg;
 
 		success = sncsg.Generate(	systemnode_definitions,
-									directories.output + "Source\\SystemNodesContainer.cpp" );
+									directories.output + "Source/SystemNodesContainer.cpp" );
 
 		if ( !success )
 		{
@@ -232,7 +219,7 @@ bool Generate( const Fnd::EntitySystemGenerator::EntitySystemGeneratorConfig::Di
 	return true;
 }
 
-int wmain(int argc, wchar_t* argv[])
+int main(int argc, char* argv[])
 {
 	std::cout <<	"--------------------------------\n";
 	std::cout <<	"EntitySystemGenerator\n";
@@ -248,10 +235,10 @@ int wmain(int argc, wchar_t* argv[])
 	}
 
 	Fnd::EntitySystemCodeGeneration::ComponentDefinitions component_definitions;
-	auto a = component_definitions.Load( config.GetDirectories().input + "ComponentDefinitions.xml" );
+	component_definitions.Load( config.GetDirectories().input + "ComponentDefinitions.xml" );
 
 	Fnd::EntitySystemCodeGeneration::SystemNodeDefinitions systemnode_definitions;
-	auto b = systemnode_definitions.Load( config.GetDirectories().input + "SystemNodeDefinitions.xml" );
+	systemnode_definitions.Load( config.GetDirectories().input + "SystemNodeDefinitions.xml" );
 	//return 0;
 	bool success = Generate( config.GetDirectories(), component_definitions, systemnode_definitions );
 
@@ -265,10 +252,6 @@ int wmain(int argc, wchar_t* argv[])
 	}
 
 	//TODO: Destroy function- either auto generated or taken from that .xml file
-
-	std::cout <<	"--------------------------------" << std::endl;
-
-	system("pause");
 
 	std::cout <<	"--------------------------------" << std::endl;
 
