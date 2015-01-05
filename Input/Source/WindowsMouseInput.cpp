@@ -66,6 +66,19 @@ WindowsMouseInput::MouseState WindowsMouseInput::GetNextState()
 {
 	WindowsMouseInput::MouseState state;
 	memset( &state, 0, sizeof(state) );
-	
+
+	DIMOUSESTATE di_mouse_state;
+	memset( &di_mouse_state, 0, sizeof(DIMOUSESTATE) );
+
+	_mouse->Acquire();
+	_mouse->GetDeviceState( sizeof(DIMOUSESTATE), &di_mouse_state );
+
+	state.left_button = di_mouse_state.rgbButtons[0] != 0;
+    state.right_button = di_mouse_state.rgbButtons[1] != 0;
+    state.middle_button = di_mouse_state.rgbButtons[2] != 0;
+    state.delta_x = di_mouse_state.lX;
+    state.delta_y = di_mouse_state.lY;
+    state.delta_wheel = di_mouse_state.lZ;
+
 	return state;
 }
