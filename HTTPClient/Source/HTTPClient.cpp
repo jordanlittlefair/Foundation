@@ -1,7 +1,7 @@
 #include "../Include/HTTPClient.hpp"
 
 #define ASIO_STANDALONE
-#ifdef WIN32
+#ifdef _WIN32
 #define _WIN32_WINNT 0x0501
 #endif
 #include "../../Asio/include/asio.hpp"
@@ -32,6 +32,11 @@ class HTTPClientImpl
 }
 
 using namespace Fnd::HTTPClient;
+
+Response::Response():
+	return_code(0)
+{
+}
 
 HTTPClient::HTTPClient():
 	_impl(new Fnd::HTTPClient::HTTPClientImpl())
@@ -82,10 +87,10 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 		asio::ip::tcp::resolver resolver(io_service);
 		asio::ip::tcp::resolver::query query( _server, _port );
 		asio::ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
-		asio::ip:: tcp::resolver::iterator end;
+		asio::ip::tcp::resolver::iterator end;
 
-		asio::error_code error;
-		while (endpoint_iterator != end)
+		asio::error_code error = asio::error::host_not_found;
+		while ( error && endpoint_iterator != end)
 		{
 			socket.close();
 			socket.connect(*endpoint_iterator++, error);
@@ -206,12 +211,6 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 	}
 
 	return true;
-
-	/*
-		TODO: HTTPClient must be implemented again, without using boost.
-	*/
-
-	return false;
 }
 
 HTTPClientImpl::~HTTPClientImpl()

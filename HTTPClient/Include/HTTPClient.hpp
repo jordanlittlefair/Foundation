@@ -31,6 +31,8 @@ struct Request
 */
 struct Response
 {
+	Response();
+
 	int return_code;
 	std::string message;
 	std::map<std::string,std::string> headers;
