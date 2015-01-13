@@ -47,7 +47,9 @@ NetworkLogger::~NetworkLogger()
 {
 	// The thread MUST be stopped/joined in Shutdown.
 	// Calling join() here (global object destructor, after main) will cause the app to hang.
+#ifdef WIN32
 	assert( !_is_running );
+#endif
 
 	// Also, there is a known issue in VS2012- it will always leak 44 bytes when using std::thread.
 	// This is fixed in VS2013.

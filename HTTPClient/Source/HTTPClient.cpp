@@ -1,5 +1,11 @@
 #include "../Include/HTTPClient.hpp"
 
+#define ASIO_STANDALONE
+#ifdef WIN32
+#define _WIN32_WINNT 0x0501
+#endif
+#include "../../Asio/include/asio.hpp"
+
 namespace Fnd
 {
 namespace HTTPClient
@@ -68,19 +74,18 @@ void HTTPClientImpl::SetPort( const std::string& port )
 
 bool HTTPClientImpl::Send( const Request& request, Response& response )
 {
-	/*
 	try
 	{
-		boost::asio::io_service io_service;
-		boost::asio::ip::tcp::socket socket(io_service);
+		asio::io_service io_service;
+		asio::ip::tcp::socket socket(io_service);
 
-		boost::asio::ip::tcp::resolver resolver(io_service);
-		boost::asio::ip::tcp::resolver::query query( _server, _port );
-		boost::asio::ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
-		boost::asio::ip:: tcp::resolver::iterator end;
+		asio::ip::tcp::resolver resolver(io_service);
+		asio::ip::tcp::resolver::query query( _server, _port );
+		asio::ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
+		asio::ip:: tcp::resolver::iterator end;
 
-		boost::system::error_code error = boost::asio::error::host_not_found;
-		while (error && endpoint_iterator != end)
+		asio::error_code error;
+		while (endpoint_iterator != end)
 		{
 			socket.close();
 			socket.connect(*endpoint_iterator++, error);
@@ -92,7 +97,7 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 		}
 
 		{
-			boost::asio::streambuf streambuf;
+			asio::streambuf streambuf;
 			std::ostream request_stream(&streambuf);
 
 			std::string queries;
@@ -128,16 +133,16 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 				<< request.body << "\r\n"
 				<< "\r\n";
 
-			boost::asio::write( socket, streambuf );
+			asio::write( socket, streambuf );
 		}
 
 		{
-			boost::asio::streambuf streambuf;
+			asio::streambuf streambuf;
 
-			/
+			/*
 				Read status line.
-			/
-			boost::asio::read_until( socket, streambuf, "\r\n" );
+			*/
+			asio::read_until( socket, streambuf, "\r\n" );
 
 			std::istream response_stream(&streambuf);
 			std::string http_version;
@@ -149,10 +154,10 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 				return false;
 			}
 
-			/
+			/*
 				Read headers.
-			/
-			boost::asio::read_until( socket, streambuf, "\r\n\r\n" );
+			*/
+			asio::read_until( socket, streambuf, "\r\n\r\n" );
 
 			std::string header;
 			while ( std::getline( response_stream, header ) && header != "\r" )
@@ -170,9 +175,9 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 				response.headers[key] = val;
 			}
 
-			/
+			/*
 				Read body.
-			/
+			*/
 			std::stringstream body_ss;
 
 			if ( streambuf.size() > 0 )
@@ -180,12 +185,12 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 				body_ss << &streambuf;
 			}
 
-			boost::system::error_code err;
-			while ( boost::asio::read( socket, streambuf, boost::asio::transfer_at_least(1), err ) )
+			asio::error_code err;
+			while ( asio::read( socket, streambuf, asio::transfer_at_least(1), err ) )
 			{
 				body_ss << &streambuf;
 			}
-			if ( err != boost::asio::error::eof )
+			if ( err != asio::error::eof )
 			{
 				return false;
 			}
@@ -201,7 +206,6 @@ bool HTTPClientImpl::Send( const Request& request, Response& response )
 	}
 
 	return true;
-	*/
 
 	/*
 		TODO: HTTPClient must be implemented again, without using boost.
