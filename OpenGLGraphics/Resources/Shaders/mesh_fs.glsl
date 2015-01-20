@@ -3,18 +3,20 @@
 uniform vec4 colour;
 uniform float translucency;
 
-in vec3 world_position;
-in vec3 world_normal;
-in vec3 world_tangent;
-in vec2 texcoord;
+in vec3 view_position;
+in vec3 view_normal;
+in vec3 view_tangent;
+in vec2 texcoord_out;
 
-out vec3 world_position_out;
-out vec4 world_normal_out;
-out vec4 colour_out;
+out vec4 geometry_out;
+out vec4 diffuse_out;
+out vec4 specular_out;
 
 void main(void)
 {
-	world_position_out = world_position;
-	world_normal_out = vec4( normalize(world_normal), colour.w );
-	colour_out = vec4( colour.xyz, translucency );
+	geometry_out = vec4( view_normal, view_position.z );
+	
+	diffuse_out = vec4( 0.5, 0.5, 0.5, 0.5 );
+	
+	specular_out = vec4( 0.5, 0.5, 0.5, 0.5 );
 }

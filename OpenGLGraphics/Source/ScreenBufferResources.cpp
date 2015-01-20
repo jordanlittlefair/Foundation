@@ -140,29 +140,31 @@ bool ScreenBufferResources::CreateResources()
 	glTexImage2D( GL_TEXTURE_RECTANGLE, 0, GL_RGBA, GetWidth(), GetHeight(), 0, GL_RGBA, GL_FLOAT, 0 );
 	glFramebufferTexture2D( GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_RECTANGLE, _GBuffer1_tex, 0 );
 	
-	// Bind tex1 (specular)
+	// Bind tex2 (specular)
 	glBindTexture( GL_TEXTURE_RECTANGLE, _GBuffer2_tex );
 	glTexImage2D( GL_TEXTURE_RECTANGLE, 0, GL_RGBA, GetWidth(), GetHeight(), 0, GL_RGBA, GL_FLOAT, 0 );
 	glFramebufferTexture2D( GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT2, GL_TEXTURE_RECTANGLE, _GBuffer2_tex, 0 );
 	
-	// Bind tex1 (motion-currnetly unused)
+	// Bind tex3 (motion-currently unused)
 	glBindTexture( GL_TEXTURE_RECTANGLE, _GBuffer3_tex );
 	glTexImage2D( GL_TEXTURE_RECTANGLE, 0, GL_RG16F, GetWidth(), GetHeight(), 0, GL_RG, GL_FLOAT, 0 );
 	glFramebufferTexture2D( GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT3, GL_TEXTURE_RECTANGLE, _GBuffer3_tex, 0 );
 
 	GLenum draw_buffers[3] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
-
+	
 	glDrawBuffers( 3, draw_buffers );
 
 	framebuffer_status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+	
+	glBindTexture( GL_TEXTURE_RECTANGLE, 0 );
+	glBindFramebuffer( GL_FRAMEBUFFER, 0 );
+
 	if ( framebuffer_status != GL_FRAMEBUFFER_COMPLETE )
 	{
+		ReleaseResources();
+
 		return false;
 	}
-	else
-	{
-		glBindFramebuffer( GL_FRAMEBUFFER, 0 );
 
-		return true;
-	}
+	return true;
 }

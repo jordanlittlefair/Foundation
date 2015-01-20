@@ -161,7 +161,7 @@ std::vector<std::string> FileSystem::GetDirectories( const std::string& director
 #include <cassert>
 bool FileSystem::CopyFile_( const std::string& source, const std::string& destination )
 {
-#ifdef WINDOWS
+#ifdef _WIN32
 	return CopyFile( source.c_str(), destination.c_str(), false ) != 0;
 #else
     // TODO

@@ -90,7 +90,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\CameraManagerSystem.cpp" />
     <ClCompile Include="Source\OpenGLGraphics.cpp" />
     <ClCompile Include="Source\OpenGLGraphicsSystem.cpp" />
     <ClCompile Include="Source\OpenGLModel.cpp" />

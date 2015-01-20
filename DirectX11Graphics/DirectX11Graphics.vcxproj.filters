@@ -64,9 +64,6 @@
     <ClCompile Include="Source\DirectX11Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CameraManagerSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ScreenBufferResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

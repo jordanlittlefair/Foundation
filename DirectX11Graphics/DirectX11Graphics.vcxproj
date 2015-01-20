@@ -91,7 +91,6 @@
     <ClCompile Include="Source\DirectionalLightSystem.cpp" />
     <ClCompile Include="Source\DirectX11Material.cpp" />
     <ClCompile Include="Source\MeshSystem.cpp" />
-    <ClCompile Include="Source\CameraManagerSystem.cpp" />
     <ClCompile Include="Source\DirectX11Graphics.cpp" />
     <ClCompile Include="Source\DirectX11GraphicsSystem.cpp" />
     <ClCompile Include="Source\DirectX11Model.cpp" />

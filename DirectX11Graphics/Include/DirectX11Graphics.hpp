@@ -18,9 +18,7 @@ namespace Fnd
 {
 namespace DirectX11Graphics
 {
-
-class CameraManagerSystem;
-
+	
 /**
 	Base class for DX11 graphics implementations which handles creation of the back buffer and swap chain.
 */

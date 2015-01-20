@@ -13,7 +13,7 @@
 
 using namespace Fnd::OpenGLShaderCompiler;
 
-#ifdef _Win32
+#ifdef _WIN32
 LRESULT WINAPI wndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
 	return DefWindowProc(wnd,msg,wParam,lParam);
@@ -23,7 +23,7 @@ LRESULT WINAPI wndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam )
 OpenGLShaderCompiler::OpenGLShaderCompiler():
 	_initialised_successfully(false)
 {
-#ifdef _win32
+#ifdef _WIN32
 	WNDCLASSEX window_class;
 
 	window_class.cbSize = sizeof(WNDCLASSEX);

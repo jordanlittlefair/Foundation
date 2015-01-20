@@ -16,7 +16,7 @@ namespace GraphicsResources
 	This template should be used to avoid duplicate code.
 */
 
-template <typename GraphicsSystemType, typename  GraphicsImplementationType>
+template <typename GraphicsSystemType, typename GraphicsImplementationType>
 class CameraManagerSystemTemplate:
 	public GraphicsSystemType,
 	public Fnd::GraphicsResources::ICameraManagerSystem

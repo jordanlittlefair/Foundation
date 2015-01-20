@@ -23,22 +23,8 @@ class OpenGLGraphics:
 			Default constructor.
 		*/
 		OpenGLGraphics();
-
-		/**
-			Set the a pointer to the game.
-			@param game A pointer to the IGraphicsMessageListener inferface of the Game component.
-		*/
-		void SetGraphicsMessageListener( Fnd::GameComponentInterfaces::IGraphicsMessageListener* game );
-
-		void SetGraphicsSettings( const Fnd::Settings::EngineSettings::GraphicsSettings& config );
-
-		void SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system );
-
+		
 		bool VRIsSupported();
-
-		void EnableVR( bool enable );
-
-		bool VRIsEnabled() const;
 
 		/**
 			Initialise OpenGLGraphics.
@@ -72,22 +58,17 @@ class OpenGLGraphics:
 
 		Fnd::AssetManager::Texture2D* GetNewTexture2D();
 		Fnd::AssetManager::Model* GetNewModel();
-
-		void SetActiveCamera( unsigned int i, unsigned int j );
-
+		
 		Fnd::GameComponentInterfaces::IGraphics::OculusDataOpenGL GetOculusDataOpenGL();
-
-		void UpdateVRCameraOffsets( const CameraOffsets& camera_offsets );
 
 		bool AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height );
 
-	protected:
-
 		ScreenBufferResources* GetScreenBufferResources( unsigned int id );
 
+	protected:
+		
 		void OnSetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data );
 
-		Fnd::GameComponentInterfaces::IGraphicsMessageListener* _game;
 		void* _hglrc;
 };
 

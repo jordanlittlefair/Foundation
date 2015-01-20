@@ -2,6 +2,7 @@
 
 #include "../../GameComponentInterfaces/Include/IGraphicsMessageListener.hpp"
 #include "../Include/OpenGLModel.hpp"
+#include "../Include/CameraManagerSystem.hpp"
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -16,24 +17,8 @@ using namespace Fnd::OpenGLGraphics;
 using namespace Fnd::GameComponentInterfaces;
 
 OpenGLGraphics::OpenGLGraphics():
-	_game(nullptr),
 	_hglrc(nullptr)
 {
-}
-
-void OpenGLGraphics::SetGraphicsMessageListener( IGraphicsMessageListener* game )
-{
-	_game = game;
-}
-
-void OpenGLGraphics::SetGraphicsSettings( const Fnd::Settings::EngineSettings::GraphicsSettings& config )
-{
-	// TODO
-}
-
-void OpenGLGraphics::SetEntitySystem( Fnd::EntitySystem::EntitySystem* entity_system )
-{
-	// TODO
 }
 
 bool OpenGLGraphics::VRIsSupported()
@@ -41,26 +26,16 @@ bool OpenGLGraphics::VRIsSupported()
 	return false;
 }
 
-void OpenGLGraphics::EnableVR( bool enable )
-{
-	// TODO
-}
-
-bool OpenGLGraphics::VRIsEnabled() const
-{
-	return false;
-}
-
 bool OpenGLGraphics::Initialise()
 {
-	if ( !_game )
+	if ( !GetGame() )
 	{
 		return false;
 	}
 
 #ifdef _WIN32
 
-	HDC hdc = HDC(_game->GetHDC());
+	HDC hdc = HDC(GetGame()->GetHDC());
 	PIXELFORMATDESCRIPTOR pfd;
     int iFormat;
 
@@ -89,13 +64,22 @@ bool OpenGLGraphics::Initialise()
 		// TODO: failed to initialise glew
 	}
 
+	RECT rectangle;
+	GetClientRect( HWND(GetGame()->GetHWND()), &rectangle );
+
+	unsigned int width = rectangle.right - rectangle.left;
+	unsigned int height = rectangle.bottom - rectangle.top;
+
+	SetWidth( width );
+	SetHeight( height );
+
 	return true;
 }
 
 void OpenGLGraphics::Release()
 {
 #ifdef _WIN32
-	HDC hdc = HDC(_game->GetHDC());
+	HDC hdc = HDC(GetGame()->GetHDC());
 
 	wglMakeCurrent( hdc, nullptr );
 
@@ -110,7 +94,7 @@ void OpenGLGraphics::Present()
 	glFlush();
     
 #ifdef _WIN32
-	SwapBuffers(HDC(_game->GetHDC()));
+	SwapBuffers(HDC(GetGame()->GetHDC()));
 #else
     glXSwapBuffers((Display*)_game->GetXWindowsDisplay(), (GLXDrawable)_game->GetXWindowsWindow());
 #endif
@@ -118,11 +102,23 @@ void OpenGLGraphics::Present()
 
 void OpenGLGraphics::Resize( unsigned int width, unsigned int height )
 {
-	// TODO: resize resources
-}
+	if ( GetWidth() == width && GetHeight() == height )
+	{
+		return;
+	}
+
+	SetWidth( width );
+	SetHeight( height );
+
+	for ( auto iter = GetScreenBufferResourcesBase().begin(); iter != GetScreenBufferResourcesBase().end(); ++iter )
+	{
+		iter->second->Resize( GetWidth(), GetHeight() );
+	}}
 
 void OpenGLGraphics::BeginRender()
 {
+	glBindFramebuffer( GL_DRAW_FRAMEBUFFER, 0 );
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	glClearColor( 0, 0.5f, 1.0f, 1 );
@@ -130,7 +126,14 @@ void OpenGLGraphics::BeginRender()
 
 std::vector<std::shared_ptr<Fnd::EntitySystem::System>> OpenGLGraphics::GetSystems()
 {
-	return std::vector<std::shared_ptr<Fnd::EntitySystem::System>>();
+	auto systems = std::vector<std::shared_ptr<Fnd::EntitySystem::System>>();
+
+	CameraManagerSystem* camera_manager_system = new CameraManagerSystem( this );
+	SetCameraManagerSystem( camera_manager_system, camera_manager_system );
+
+	systems.push_back( (std::shared_ptr<Fnd::EntitySystem::System>)GetCameraManagerSystem() );
+
+	return systems;
 }
 
 Fnd::AssetManager::Texture2D* OpenGLGraphics::GetNewTexture2D()
@@ -141,10 +144,6 @@ Fnd::AssetManager::Texture2D* OpenGLGraphics::GetNewTexture2D()
 Fnd::AssetManager::Model* OpenGLGraphics::GetNewModel()
 {
 	return new OpenGLModel(this);
-}
-
-void OpenGLGraphics::SetActiveCamera( unsigned int i, unsigned int j )
-{
 }
 
 void OpenGLGraphics::OnSetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data )
@@ -161,10 +160,6 @@ Fnd::GameComponentInterfaces::IGraphics::OculusDataOpenGL OpenGLGraphics::GetOcu
 	return ret;
 }
 
-void OpenGLGraphics::UpdateVRCameraOffsets( const Fnd::GameComponentInterfaces::IGraphics::CameraOffsets& camera_offsets )
-{
-}
-
 ScreenBufferResources* OpenGLGraphics::GetScreenBufferResources( unsigned int id )
 {
 	auto found = GetScreenBufferResourcesBase().find(id);
@@ -178,7 +173,6 @@ ScreenBufferResources* OpenGLGraphics::GetScreenBufferResources( unsigned int id
 		return nullptr;
 	}
 }
-
 bool OpenGLGraphics::AddScreenBufferResources( unsigned int id, unsigned int width, unsigned int height )
 {
 	if ( !GetScreenBufferResources(id) )
