@@ -30,7 +30,7 @@ bool OpenGLModel::Create( const Fnd::AssetManager::ModelData& data )
 			glBufferData( GL_ELEMENT_ARRAY_BUFFER, mesh_data.indices.size() * sizeof(int), &mesh_data.indices[0], GL_STATIC_DRAW );
 			glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, 0 );
 
-			mesh.num_indices = mesh_data.indices.size();
+			mesh.num_indices = (unsigned int)mesh_data.indices.size();
 		}
 		{
 			glGenVertexArrays( 1, &mesh.vao );

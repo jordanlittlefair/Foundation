@@ -3,11 +3,17 @@
 
 using namespace Fnd::Utility;
 
+#ifdef _WIN32
 #include <Windows.h>
+#else
+#include <unistd.h>
+#include <sys/stat.h>
+#endif
 #include <algorithm>
 
 bool FileSystem::CreateNewDirectory( const std::string& directory_name )
 {
+#ifdef _WIN32
 	if ( !CreateDirectory( directory_name.c_str(), nullptr ) )
 	{
 		if ( GetLastError() != ERROR_ALREADY_EXISTS )
@@ -17,6 +23,9 @@ bool FileSystem::CreateNewDirectory( const std::string& directory_name )
 	}
 
 	return true;
+#else
+    return !mkdir( directory_name.c_str(), 0777 );
+#endif
 }
 
 
@@ -67,15 +76,19 @@ std::string FileSystem::CanonicaliseDirectory( const std::string& directory )
 	{
 		ret = "../" + ret;
 	}
-
-	return ret;
+    
+#ifdef _WIN32
+    return ret;
+#else
+    return "/" + ret;
+#endif
 }
 
 void FileSystem::GetPathAndName( const std::string& full_path, std::string& path, std::string& name )
 {
-	unsigned int last_slash = full_path.find_last_of( '/' );
+	unsigned int last_slash = (unsigned int)full_path.find_last_of( '/' );
 
-	if ( last_slash == std::string::npos )
+	if ( last_slash == (unsigned int)std::string::npos )
 	{
 		path = "";
 		name = full_path;
@@ -89,11 +102,19 @@ void FileSystem::GetPathAndName( const std::string& full_path, std::string& path
 
 std::string FileSystem::GetWorkingDirectory()
 {
+#ifdef _WIN32
 	char buffer[MAX_PATH] = {0};
 
 	GetCurrentDirectory( MAX_PATH, buffer );
 
 	return buffer;
+#else
+    char buffer[PATH_MAX] = {0};
+    
+    getcwd( buffer, 0777 );
+    
+    return buffer;
+#endif
 }
 
 std::vector<std::string> FileSystem::ParseCommandLine( const std::string& command_line )
@@ -137,8 +158,14 @@ std::vector<std::string> FileSystem::GetDirectories( const std::string& director
 {
 	return Fnd::Utility::SplitString( CanonicaliseFile( directory ), '/' );
 }
-
+#include <cassert>
 bool FileSystem::CopyFile_( const std::string& source, const std::string& destination )
 {
+#ifdef WINDOWS
 	return CopyFile( source.c_str(), destination.c_str(), false ) != 0;
+#else
+    // TODO
+    assert(!"Not Yet Implemented");
+    return  false;
+#endif
 }

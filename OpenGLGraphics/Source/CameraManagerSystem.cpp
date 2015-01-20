@@ -95,10 +95,7 @@ void CameraManagerSystem::OnUpdate( const Fnd::CommonResources::FrameData& frame
 		auto bufferdata = ((ScreenBufferResources*)camera_data.screenbuffer)->GetPositionReconstructionData();
 		bufferdata.tan_half_fov_y = tan( Fnd::Math::ToRadians(camera_data.camera_components.cameraproperties->data.fov) / 2 );
 
-		if ( ((ScreenBufferResources*)camera_data.screenbuffer)->UpdatePositionReconstructionData( bufferdata ) )
-		{
-			auto a = 0;
-		}
+		((ScreenBufferResources*)camera_data.screenbuffer)->UpdatePositionReconstructionData( bufferdata );
 	}
 	);
 }

@@ -148,6 +148,16 @@ void* Win32Window::GetHDC() const
 	return GetDC(_window);
 }
 
+void* Win32Window::GetXWindowsDisplay() const
+{
+    return nullptr;
+}
+
+unsigned long Win32Window::GetXWindowsWindow() const
+{
+    return 0;
+}
+
 void Win32Window::Show()
 {
 	ShowWindow( _window, SW_RESTORE );

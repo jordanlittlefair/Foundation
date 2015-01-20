@@ -3,13 +3,14 @@
 #include "../../GameComponentInterfaces/Include/IGraphicsMessageListener.hpp"
 #include "../Include/OpenGLModel.hpp"
 
-//#ifdef _WIN32
-//#define WIN32_LEAN_AND_MEAN
+#ifdef _WIN32
 #include <Windows.h>
 #include <wingdi.h>
-//#endif
-
+#else
+#include <X11/Xlib.h>
 #include "../../glew/Include/glew.hpp"
+#include <GL/glx.h>
+#endif
 
 using namespace Fnd::OpenGLGraphics;
 using namespace Fnd::GameComponentInterfaces;
@@ -78,19 +79,22 @@ bool OpenGLGraphics::Initialise()
 	_hglrc = wglCreateContext(hdc);
 
 	wglMakeCurrent(hdc,(HGLRC)_hglrc);
+	
+#endif
 
-	GLenum err = glewInit();
+    glewExperimental = GL_TRUE; 
+    GLenum err = glewInit();
 	if ( err != GLEW_OK )
 	{
-		auto a = 0;
+		// TODO: failed to initialise glew
 	}
-#endif
 
 	return true;
 }
 
 void OpenGLGraphics::Release()
 {
+#ifdef _WIN32
 	HDC hdc = HDC(_game->GetHDC());
 
 	wglMakeCurrent( hdc, nullptr );
@@ -98,12 +102,18 @@ void OpenGLGraphics::Release()
 	wglDeleteContext( (HGLRC)_hglrc );
 
 	_hglrc = nullptr;
+#endif
 }
 
 void OpenGLGraphics::Present()
 {
 	glFlush();
+    
+#ifdef _WIN32
 	SwapBuffers(HDC(_game->GetHDC()));
+#else
+    glXSwapBuffers((Display*)_game->GetXWindowsDisplay(), (GLXDrawable)_game->GetXWindowsWindow());
+#endif
 }
 
 void OpenGLGraphics::Resize( unsigned int width, unsigned int height )

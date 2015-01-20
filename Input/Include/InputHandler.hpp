@@ -3,12 +3,12 @@
 #ifndef _INPUT_INPUTHANDLER_HPP_
 #define _INPUT_INPUTHANDLER_HPP_
 
-#include "IInput.hpp"
-#include "KeyboardInput.hpp"
-#include "MouseInput.hpp"
-#include "XboxInput.hpp"
+#include <memory>
 
-struct IDirectInput8;
+#include "IInput.hpp"
+#include "KeyboardInputBase.hpp"
+#include "MouseInputBase.hpp"
+#include "GamePadInputBase.hpp"
 
 namespace Fnd
 {
@@ -16,53 +16,55 @@ namespace Input
 {
 
 /*
-	A class to handle the input from the keyboard, mouse and xbox controller.
+	A class to handle the input from the keyboard, mouse and gamepad.
 */
 class InputHandler: 
 	public IInput
 {
 	public:
 
-		// Default constructor.
 		InputHandler();
 
-		// Set the window handle.
-		void SetWindow( HWND window );
+		void SetWindow( void* window );
+    
+        void SetDisplay( void* display );
 
-		// Initialise the input handler.
-		// Returns true if successful
 		bool Initialise();
 
-		// Activate the input.
-		void Activate();
-		
-		// Deactivate the input.
-		void Deactivate();
-
-		// Update the input.
 		void Update();
 
-		// Get the keyboard input.
 		const IKeyboardInput* GetKeyboard() const;
 		
-		// Get the mouse input.
 		const IMouseInput* GetMouse() const;
 		
-		// Get the xbox input.
-		const IXboxInput* GetXbox() const;
+		const IGamePadInput* GetGamePad() const;
 		
-		// Destructor.
 		~InputHandler();
 
 	private:
 
-		HWND _window;
+        struct WindowsData
+        {
+            WindowsData();
+            
+            void* _window;
+            void* _direct_input;
+        };
+    
+        WindowsData _windows_data;
 
-		IDirectInput8* _direct_input;
-
-		KeyboardInput _keyboard;
-		MouseInput _mouse;
-		XboxInput _xbox;
+        struct XWindowsData
+        {
+            XWindowsData();
+            
+            void* display;
+        };
+    
+        XWindowsData _xwindows_data;
+    
+		std::unique_ptr<KeyboardInputBase> _keyboard;
+		std::unique_ptr<MouseInputBase> _mouse;
+		std::unique_ptr<GamePadInputBase> _gamepad;
 };
 
 }

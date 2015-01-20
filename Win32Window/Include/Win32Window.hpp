@@ -71,6 +71,10 @@ class Win32Window:
 			@return Returns the device context handle.
 		*/
 		void* GetHDC() const;
+    
+        void* GetXWindowsDisplay() const;
+        
+        unsigned long GetXWindowsWindow() const;
 
 		// Show the window.
 		void Show();

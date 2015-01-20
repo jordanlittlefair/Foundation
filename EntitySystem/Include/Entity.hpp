@@ -6,6 +6,8 @@
 #include <map>
 
 #include "Components.hpp"
+#include "EntitySystem.hpp"
+#include "ComponentMaps.hpp"
 
 namespace Fnd
 {
@@ -68,20 +70,19 @@ class Entity
 		std::map<unsigned int, unsigned int> _components;
 };
 
-
 template <class ComponentType>
 ComponentType* Fnd::EntitySystem::Entity::GetComponent( Fnd::EntitySystem::EntitySystem& entity_system ) const
 {
-	auto iter = _components.find( ComponentType::GetComponentIDstatic() );
-			
-	if ( iter != _components.end() )
-	{
-		return entity_system.GetComponentMaps().GetComponent<ComponentType>(iter->second);
-	}
-	else
-	{
-		return nullptr;
-	}
+    auto iter = _components.find( ComponentType::GetComponentIDstatic() );
+    
+    if ( iter != _components.end() )
+    {
+        return entity_system.GetComponentMaps().GetComponent<ComponentType>(iter->second);
+    }
+    else
+    {
+        return nullptr;
+    }
 }
 
 template <class ComponentType>

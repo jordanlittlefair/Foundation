@@ -1,101 +1,159 @@
 #include "../Include/InputHandler.hpp"
 
+#ifdef _WIN32
+#ifndef DIRECTINPUT_VERSION
+#define DIRECTINPUT_VERSION 0x0800
+#endif
+#include <dinput.h>
+#endif
+
 using namespace Fnd::Input;
 
 InputHandler::InputHandler():
-	_window(nullptr),
-	_direct_input(nullptr),
+    _windows_data(),
+    _xwindows_data(),
 	_keyboard(),
 	_mouse(),
-	_xbox()
+	_gamepad()
 {
+
 }
 
-void InputHandler::SetWindow( HWND window )
+void InputHandler::SetWindow( void* window )
 {
-	_window = window;
+	_windows_data._window = window;
 }
+
+void InputHandler::SetDisplay( void* display )
+{
+    _xwindows_data.display = display;
+}
+
+#ifdef _WIN32
+#include "../Include/WindowsMouseInput.hpp"
+#include "../Include/WindowsKeyboardInput.hpp"
+#include "../Include/WindowsGamePadInput.hpp"
+#else
+#ifdef __APPLE__
+#include "../Include/MacMouseInput.hpp"
+#include "../Include/MacKeyboardInput.hpp"
+#include "../Include/MacGamePadInput.hpp"
+#endif
+#include "../Include/XWindowsMouseInput.hpp"
+#include "../Include/XWindowsKeyboardInput.hpp"
+#include "../Include/XWindowsGamePadInput.hpp"
+#endif
 
 bool InputHandler::Initialise()
 {
-	if ( !_window )
+#ifdef _WIN32
+	if ( !_windows_data._window )
 	{
 		return false;
 	}
 
+	std::unique_ptr<WindowsMouseInput> mouse( new WindowsMouseInput() );
+	std::unique_ptr<WindowsKeyboardInput> keyboard( new WindowsKeyboardInput() );
+	std::unique_ptr<WindowsGamePadInput> gamepad( new WindowsGamePadInput() );
+	
 	if ( FAILED( DirectInput8Create(	GetModuleHandle(0), 
 										DIRECTINPUT_VERSION,
 										IID_IDirectInput8,
-										(void**)(&_direct_input),
+										(void**)(&_windows_data._direct_input),
 										0 )))
 	{
 		return false;
 	}
 
 	// create keyboard input
-	_keyboard.SetWindow( _window );
-	_keyboard.SetDirectInputDevice( _direct_input );
+	keyboard->SetWindow( (HWND)_windows_data._window );
+	keyboard->SetDirectInputDevice( (IDirectInput8*)_windows_data._direct_input );
 	
-	if ( !_keyboard.Initialise() )
+	if ( !keyboard->Initialise() )
 	{
 		return false;
 	}
 		
 	// create mouse input
-	_mouse.SetWindow( _window );
-	_mouse.SetDirectInputDevice( _direct_input );
+	mouse->SetWindow( (HWND)_windows_data._window );
+	mouse->SetDirectInputDevice( (IDirectInput8*)_windows_data._direct_input );
 	
-	if ( !_mouse.Initialise() )
+	if ( !mouse->Initialise() )
 	{
 		return false;
 	}
 
 	// create xbox input
-	_xbox.SetDirectInputDevice( _direct_input );
-	if ( !_xbox.Initialise() )
+	gamepad->SetDirectInputDevice( (IDirectInput8*)_windows_data._direct_input );
+	if ( !gamepad->Initialise() )
 	{
 		return false;
 	}
 
+	_mouse = std::move(mouse);
+	_keyboard = std::move(keyboard);
+	_gamepad = std::move(gamepad);
+	
 	return true;
-}
+#else
 
-void InputHandler::Activate()
-{
-	_xbox.Activate();
-}
+    std::unique_ptr<XWindowsMouseInput> mouse( new XWindowsMouseInput() );
+    std::unique_ptr<XWindowsKeyboardInput> keyboard( new XWindowsKeyboardInput() );
+    std::unique_ptr<XWindowsGamePadInput> gamepad( new XWindowsGamePadInput() );
 
-void InputHandler::Deactivate()
-{ 
-	_xbox.Deactivate();
+    keyboard->SetDisplay(_xwindows_data.display);
+    
+    mouse->Initialise();
+    keyboard->Initialise();
+    gamepad->Initialise();
+    
+    _mouse = std::move(mouse);
+    _keyboard = std::move(keyboard);
+    _gamepad = std::move(gamepad);
+    
+    return true;
+#endif
 }
 
 void InputHandler::Update()
 {
-	_keyboard.Update();
-	_mouse.Update();
-	_xbox.Update();
+	_keyboard->Update();
+	_mouse->Update();
+	_gamepad->Update();
 }
 
 const IKeyboardInput* InputHandler::GetKeyboard() const
 {
-	return &_keyboard;
+	return _keyboard.get();
 }
 
 const IMouseInput* InputHandler::GetMouse() const
 {
-	return &_mouse;
+	return _mouse.get();
 }
 
-const IXboxInput* InputHandler::GetXbox() const
+const IGamePadInput* InputHandler::GetGamePad() const
 {
-	return &_xbox;
+	return _gamepad.get();
 }
 
 InputHandler::~InputHandler()
 {
-	if ( _direct_input )
+#ifdef _WIN32
+	if ( _windows_data._direct_input )
 	{
-		_direct_input->Release(); 
+		((IDirectInput8*)_windows_data._direct_input)->Release();
 	}
+#endif
+}
+
+InputHandler::WindowsData::WindowsData():
+    _window(nullptr),
+    _direct_input(nullptr)
+{
+}
+
+InputHandler::XWindowsData::XWindowsData():
+    display(nullptr)
+{
 }

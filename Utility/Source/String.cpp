@@ -17,17 +17,10 @@ std::vector<std::string> Fnd::Utility::SplitString( const std::string& str, char
 
 	while( std::getline( ss, substring, c ) )
 	{
-		to_return.push_back(substring);
-	}
-
-	for ( unsigned int i = 0; i < to_return.size(); ++i )
-	{
-		if ( to_return[i].empty() )
-		{
-			to_return[i] = to_return.back();
-			to_return.pop_back();
-			--i;
-		}
+        if ( !substring.empty() )
+        {
+            to_return.push_back(substring);
+        }
 	}
 
 	return to_return;

@@ -129,6 +129,11 @@ class Game:
 			@return Returns the device context handle.
 		*/
 		void* GetHDC() const;
+    
+        void* GetXWindowsDisplay() const;
+        
+        unsigned long GetXWindowsWindow() const;
+
 
 		bool GetVRTextureDimensions( unsigned int& width, unsigned int& height );
 
@@ -159,8 +164,9 @@ class Game:
 		Fnd::GameComponentInterfaces::IWorld* _world;
 		Fnd::Scripting::ScriptManager* _script_manager;
 
+#ifdef _WIN32
 		std::unique_ptr<Fnd::OculusRift::OculusRift> _oculus;
-
+#endif
 
 		std::unique_ptr<Fnd::EntitySystem::EntitySystem> _entity_system;
 		std::unique_ptr<Fnd::AssetManager::AssetManager> _asset_manager;

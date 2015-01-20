@@ -95,8 +95,6 @@ void RigidBodySystem::AddNode( Fnd::EntitySystem::SystemNode* node )
 		return;
 	}
 
-	btVector3 position = BulletHelper::ToBullet( rigid_body_components.scenenode->data.position );
-	btQuaternion orientation = BulletHelper::ToBullet( rigid_body_components.scenenode->data.rotation );
 	btVector3 initial_linear_velocity = BulletHelper::ToBullet( rigid_body_components.rigidbody->data.velocity );
 	btVector3 initial_angular_velocity = BulletHelper::ToBullet( rigid_body_components.rigidbody->data.angular_velocity );
 	float mass = rigid_body_components.rigidbody->data.is_static ? 
@@ -171,7 +169,6 @@ void RigidBodySystem::OnUpdate( const Fnd::CommonResources::FrameData& frame_dat
 		
 		rigid_body_components.scenenode->data.position = BulletHelper::ToFnd( new_pos );
 		rigid_body_components.scenenode->data.rotation = BulletHelper::ToFnd( new_rot.normalized() );
-		auto model_rot = BulletHelper::ToFnd(new_rot).GetNormalised();
 
 		rigid_body->rigid_body->applyCentralImpulse( BulletHelper::ToBullet( rigid_body_components.rigidbody->data.linear_impulse ) );
 		rigid_body->rigid_body->applyTorqueImpulse( BulletHelper::ToBullet( rigid_body_components.rigidbody->data.angular_impulse ) );

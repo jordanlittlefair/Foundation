@@ -25,7 +25,7 @@ bool XmlManager::CreateFromFile( const std::string& filename )
 
 	std::ifstream file( filename.c_str(), std::ios::in );
 
-	if ( file )
+	if ( file.is_open() )
 	{
 		file.seekg( 0, std::ios::end );
 

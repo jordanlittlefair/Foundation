@@ -2,13 +2,25 @@
 
 #include "../../GameComponentInterfaces/Include/IWindowMessageListener.hpp"
 
-#include<X11/X.h>
-#include<X11/Xlib.h>
-#include<GL/gl.h>
-#include<GL/glx.h>
-#include<GL/glu.h>
+#include <iostream>
+#include <X11/Xlib.h>
+#include "../../glew/Include/glew.hpp"
+#include <GL/glx.h>
 
 using namespace Fnd::XWindowsWindow;
+
+struct XWindowsWindow::XWindowsData
+{
+    XWindowsData():
+        display(nullptr),
+        window(0),
+        visual_info(nullptr)
+    {
+    }
+    Display* display;
+    Window window;
+    XVisualInfo* visual_info;
+};
 
 XWindowsWindow::XWindowsWindow():
     _width(0),
@@ -19,9 +31,9 @@ XWindowsWindow::XWindowsWindow():
     _is_initialised(false),
     _is_open(false),
     _is_active(false),
-    _display(nullptr),
-    _visual_info(nullptr)
+    _data(nullptr)
 {
+    _data.reset( new XWindowsData() );
 }
 
 void XWindowsWindow::SetWindowTitle( const std::string& title )
@@ -68,42 +80,39 @@ bool XWindowsWindow::Initialise()
 	/*
         Initialise window.
     */
-    _display = XOpenDisplay(nullptr);
+    _data->display = XOpenDisplay(nullptr);
 
-    if( !_display )
+    if( !_data->display )
     {
        std::cout << "Cannot connect to X server\n";
        return false;
     }
 
-    _window = DefaultRootWindow(_display);
+    _data->window = DefaultRootWindow(_data->display);
 
     GLint att[] = { GLX_RGBA, GLX_DEPTH_SIZE, 24, GLX_DOUBLEBUFFER, None };
 
-    _visual_info = glXChooseVisual( _display, 0, att );
+    _data->visual_info = glXChooseVisual( _data->display, 0, att );
 
-    if( !_visual_info )
+    if( !_data->visual_info )
     {
         std::cout << "No appropriate visual found.\n";
-        return false;
+    //    return false;
     }
 
-    Colormap cmap = XCreateColormap(dpy, root, vi->visual, AllocNone);
+   Colormap cmap = XCreateColormap(_data->display, _data->window, _data->visual_info->visual, AllocNone);
 
     XSetWindowAttributes swa;
     swa.colormap = cmap;
     swa.event_mask = ExposureMask | KeyPressMask;
 
-    Window win = XCreateWindow( _display, _window, 0, 0, _width, _height, 0, _visual_info->depth, InputOutput, _visual_info->visual, CWColormap | CWEventMask, &swa);
+    _data->window = XCreateWindow( _data->display, _data->window, 0, 0, _width, _height, 0, _data->visual_info->depth, InputOutput, _data->visual_info->visual, CWColormap | CWEventMask, &swa);
 
-    XMapWindow( _display, win );
-    XStoreName( _display, win, _title.c_str() );
+    XMapWindow( _data->display, _data->window );
+    XStoreName( _data->display, _data->window, _title.c_str() );
 
-    GLXContext glc = glXCreateContext( _display, _visual_info, nullptr, GL_TRUE);
-    glXMakeCurrent( _display , win, glc );
-
-
-
+    GLXContext glc = glXCreateContext( _data->display, _data->visual_info, nullptr, GL_TRUE);
+    glXMakeCurrent( _data->display , _data->window, glc );
 
 	_is_open = true;
 
@@ -120,6 +129,16 @@ void* XWindowsWindow::GetHWND() const
 void* XWindowsWindow::GetHDC() const
 {
     return nullptr;
+}
+
+void* XWindowsWindow::GetXWindowsDisplay() const
+{
+    return _data->display;
+}
+
+unsigned long XWindowsWindow::GetXWindowsWindow() const
+{
+    return _data->window;
 }
 
 void XWindowsWindow::Show()

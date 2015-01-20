@@ -6,7 +6,21 @@ using namespace Fnd::Logger;
 
 #include <sstream>
 
+void OutputToConsole( const std::string& str );
+
+#ifdef _WIN32
 #include <Windows.h>
+void OutputToConsole( const std::string& str )
+{
+    OutputDebugString( str.c_str() );
+}
+#else
+#include <iostream>
+void OutputToConsole( const std::string& str )
+{
+    std::cout << str << std::endl;
+}
+#endif
 
 ConsoleLogger::ConsoleLogger()
 {
@@ -28,7 +42,7 @@ void ConsoleLogger::SetWindowSetupData( const Fnd::Settings::ApplicationSettings
 		<< "\tResizable: " << ( window_data.is_resizable ? "true" : "false" ) << "\n"
 		<< "\tFullscreen: " << ( window_data.is_fullscreen ? "true" : "false" ) << "\n";
 
-	OutputDebugString( ss.str().c_str() );
+	OutputToConsole( ss.str() );
 }
 
 void ConsoleLogger::SetGraphicsSetupData( const Fnd::Settings::ApplicationSettings::GraphicsSettings& graphics_data )
@@ -38,7 +52,7 @@ void ConsoleLogger::SetGraphicsSetupData( const Fnd::Settings::ApplicationSettin
 	ss	<< "Graphics Data:\n"
 		<< "\tImplementation: " << graphics_data.implementation << "\n";
 
-	OutputDebugString( ss.str().c_str() );
+	OutputToConsole( ss.str() );
 }
 
 void ConsoleLogger::SetWorldSetupData( const Fnd::Settings::ApplicationSettings::WorldSettings& world_data )
@@ -49,22 +63,22 @@ void ConsoleLogger::SetWorldSetupData( const Fnd::Settings::ApplicationSettings:
 		<< "\tImplementation: " << world_data.implementation << "\n"
 		<< "\tWorld files: " << "can't be arsed to get this from the map" << "\n";
 
-	OutputDebugString( ss.str().c_str() );
+	OutputToConsole( ss.str() );
 }
 
 void ConsoleLogger::Log( const LogMessage& log_message )
 {
-	OutputDebugString( ( log_message.message + '\n' ).c_str() );
+	OutputToConsole( log_message.message + '\n' );
 }
 
 void ConsoleLogger::Log( const LogError& log_error )
 {
-	OutputDebugString( ( "Error: " + log_error.message + '\n' ).c_str() );
+	OutputToConsole( "Error: " + log_error.message + '\n' );
 }
 
 void ConsoleLogger::Log( const LogWarning& log_warning )
 {
-	OutputDebugString( ( "Warning: " + log_warning.message + '\n' ).c_str() );
+	OutputToConsole( "Warning: " + log_warning.message + '\n' );
 }
 
 void ConsoleLogger::Shutdown()

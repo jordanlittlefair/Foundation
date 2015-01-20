@@ -9,7 +9,7 @@
 		<ConsoleLogger/>
 	</Logger>
 	
-	<Window	window = "Win32Window"
+	<Window	window = "XWindowsWindow"
 		window_title   = "Game Test"
 		initial_width  = "1280"
 		initial_height = "720"
@@ -17,7 +17,7 @@
 		is_fullscreen  = "false"
 	/>
 	
-	<Graphics	graphics = "DirectX11Graphics" 
+	<Graphics	graphics = "OpenGLGraphics"
 		enable_vr = "false"
 	/>
 	

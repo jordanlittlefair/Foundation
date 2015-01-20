@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1091207C1A4B221300987E42 /* XWindowsKeyboardInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1091207B1A4B221300987E42 /* XWindowsKeyboardInput.hpp */; };
+		1091207E1A4B22A300987E42 /* XWindowsKeyboardInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1091207D1A4B22A300987E42 /* XWindowsKeyboardInput.cpp */; };
+		109120801A4B235F00987E42 /* XWindowsMouseInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1091207F1A4B235F00987E42 /* XWindowsMouseInput.hpp */; };
+		109120821A4B23C200987E42 /* XWindowsMouseInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 109120811A4B23C200987E42 /* XWindowsMouseInput.cpp */; };
+		109120841A4B241600987E42 /* XWindowsGamePadInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 109120831A4B241600987E42 /* XWindowsGamePadInput.hpp */; };
+		109120861A4B246500987E42 /* XWindowsGamePadInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 109120851A4B246500987E42 /* XWindowsGamePadInput.cpp */; };
+		10BE13EE1A3C9A9700B97CF2 /* GamePadButtons.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E11A3C9A9700B97CF2 /* GamePadButtons.hpp */; };
+		10BE13EF1A3C9A9700B97CF2 /* GamePadInputBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E21A3C9A9700B97CF2 /* GamePadInputBase.hpp */; };
+		10BE13F01A3C9A9700B97CF2 /* IGamePadInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E31A3C9A9700B97CF2 /* IGamePadInput.hpp */; };
+		10BE13F11A3C9A9700B97CF2 /* IInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E41A3C9A9700B97CF2 /* IInput.hpp */; };
+		10BE13F21A3C9A9700B97CF2 /* IKeyboardInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E51A3C9A9700B97CF2 /* IKeyboardInput.hpp */; };
+		10BE13F31A3C9A9700B97CF2 /* IMouseInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E61A3C9A9700B97CF2 /* IMouseInput.hpp */; };
+		10BE13F41A3C9A9700B97CF2 /* InputHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E71A3C9A9700B97CF2 /* InputHandler.hpp */; };
+		10BE13F51A3C9A9700B97CF2 /* KeyboardInputBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E81A3C9A9700B97CF2 /* KeyboardInputBase.hpp */; };
+		10BE13F61A3C9A9700B97CF2 /* KeyboardKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13E91A3C9A9700B97CF2 /* KeyboardKeys.hpp */; };
+		10BE13F71A3C9A9700B97CF2 /* MouseInputBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE13EA1A3C9A9700B97CF2 /* MouseInputBase.hpp */; };
+		10BE140B1A3C9AC400B97CF2 /* GamePadInputBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE14041A3C9AC400B97CF2 /* GamePadInputBase.cpp */; };
+		10BE140C1A3C9AC400B97CF2 /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE14051A3C9AC400B97CF2 /* InputHandler.cpp */; };
+		10BE140D1A3C9AC400B97CF2 /* KeyboardInputBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE14061A3C9AC400B97CF2 /* KeyboardInputBase.cpp */; };
+		10BE140E1A3C9AC400B97CF2 /* MouseInputBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE14071A3C9AC400B97CF2 /* MouseInputBase.cpp */; };
+		10BE14131A3C9C8C00B97CF2 /* MacMouseInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE14121A3C9C8C00B97CF2 /* MacMouseInput.hpp */; };
+		10BE14151A3C9D1E00B97CF2 /* MacMouseInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE14141A3C9D1E00B97CF2 /* MacMouseInput.cpp */; };
+		10BE14171A3C9E1D00B97CF2 /* MacKeyboardInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE14161A3C9E1D00B97CF2 /* MacKeyboardInput.hpp */; };
+		10BE14191A3C9E9A00B97CF2 /* MacKeyboardInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE14181A3C9E9A00B97CF2 /* MacKeyboardInput.cpp */; };
+		10BE141C1A3C9F9D00B97CF2 /* MacGamePadInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10BE141B1A3C9F9D00B97CF2 /* MacGamePadInput.hpp */; };
+		10BE141E1A3CA03F00B97CF2 /* MacGamePadInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10BE141D1A3CA03F00B97CF2 /* MacGamePadInput.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1091207B1A4B221300987E42 /* XWindowsKeyboardInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XWindowsKeyboardInput.hpp; sourceTree = "<group>"; };
+		1091207D1A4B22A300987E42 /* XWindowsKeyboardInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XWindowsKeyboardInput.cpp; sourceTree = "<group>"; };
+		1091207F1A4B235F00987E42 /* XWindowsMouseInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XWindowsMouseInput.hpp; sourceTree = "<group>"; };
+		109120811A4B23C200987E42 /* XWindowsMouseInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XWindowsMouseInput.cpp; sourceTree = "<group>"; };
+		109120831A4B241600987E42 /* XWindowsGamePadInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XWindowsGamePadInput.hpp; sourceTree = "<group>"; };
+		109120851A4B246500987E42 /* XWindowsGamePadInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XWindowsGamePadInput.cpp; sourceTree = "<group>"; };
+		10BE13D21A3C9A7F00B97CF2 /* libInput.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libInput.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		10BE13E11A3C9A9700B97CF2 /* GamePadButtons.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GamePadButtons.hpp; sourceTree = "<group>"; };
+		10BE13E21A3C9A9700B97CF2 /* GamePadInputBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GamePadInputBase.hpp; sourceTree = "<group>"; };
+		10BE13E31A3C9A9700B97CF2 /* IGamePadInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IGamePadInput.hpp; sourceTree = "<group>"; };
+		10BE13E41A3C9A9700B97CF2 /* IInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IInput.hpp; sourceTree = "<group>"; };
+		10BE13E51A3C9A9700B97CF2 /* IKeyboardInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IKeyboardInput.hpp; sourceTree = "<group>"; };
+		10BE13E61A3C9A9700B97CF2 /* IMouseInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IMouseInput.hpp; sourceTree = "<group>"; };
+		10BE13E71A3C9A9700B97CF2 /* InputHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputHandler.hpp; sourceTree = "<group>"; };
+		10BE13E81A3C9A9700B97CF2 /* KeyboardInputBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyboardInputBase.hpp; sourceTree = "<group>"; };
+		10BE13E91A3C9A9700B97CF2 /* KeyboardKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyboardKeys.hpp; sourceTree = "<group>"; };
+		10BE13EA1A3C9A9700B97CF2 /* MouseInputBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MouseInputBase.hpp; sourceTree = "<group>"; };
+		10BE14041A3C9AC400B97CF2 /* GamePadInputBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GamePadInputBase.cpp; sourceTree = "<group>"; };
+		10BE14051A3C9AC400B97CF2 /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
+		10BE14061A3C9AC400B97CF2 /* KeyboardInputBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardInputBase.cpp; sourceTree = "<group>"; };
+		10BE14071A3C9AC400B97CF2 /* MouseInputBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseInputBase.cpp; sourceTree = "<group>"; };
+		10BE14121A3C9C8C00B97CF2 /* MacMouseInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MacMouseInput.hpp; sourceTree = "<group>"; };
+		10BE14141A3C9D1E00B97CF2 /* MacMouseInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MacMouseInput.cpp; sourceTree = "<group>"; };
+		10BE14161A3C9E1D00B97CF2 /* MacKeyboardInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MacKeyboardInput.hpp; sourceTree = "<group>"; };
+		10BE14181A3C9E9A00B97CF2 /* MacKeyboardInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MacKeyboardInput.cpp; sourceTree = "<group>"; };
+		10BE141B1A3C9F9D00B97CF2 /* MacGamePadInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MacGamePadInput.hpp; sourceTree = "<group>"; };
+		10BE141D1A3CA03F00B97CF2 /* MacGamePadInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MacGamePadInput.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10BE13CF1A3C9A7F00B97CF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10BE13C91A3C9A7F00B97CF2 = {
+			isa = PBXGroup;
+			children = (
+				10BE14031A3C9AC400B97CF2 /* Source */,
+				10BE13E01A3C9A9700B97CF2 /* Include */,
+				10BE13D31A3C9A7F00B97CF2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10BE13D31A3C9A7F00B97CF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10BE13D21A3C9A7F00B97CF2 /* libInput.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10BE13E01A3C9A9700B97CF2 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				10BE13E11A3C9A9700B97CF2 /* GamePadButtons.hpp */,
+				10BE13E21A3C9A9700B97CF2 /* GamePadInputBase.hpp */,
+				10BE13E31A3C9A9700B97CF2 /* IGamePadInput.hpp */,
+				10BE13E41A3C9A9700B97CF2 /* IInput.hpp */,
+				10BE13E51A3C9A9700B97CF2 /* IKeyboardInput.hpp */,
+				10BE13E61A3C9A9700B97CF2 /* IMouseInput.hpp */,
+				10BE13E71A3C9A9700B97CF2 /* InputHandler.hpp */,
+				10BE13E81A3C9A9700B97CF2 /* KeyboardInputBase.hpp */,
+				10BE13E91A3C9A9700B97CF2 /* KeyboardKeys.hpp */,
+				10BE13EA1A3C9A9700B97CF2 /* MouseInputBase.hpp */,
+				10BE14121A3C9C8C00B97CF2 /* MacMouseInput.hpp */,
+				10BE14161A3C9E1D00B97CF2 /* MacKeyboardInput.hpp */,
+				10BE141B1A3C9F9D00B97CF2 /* MacGamePadInput.hpp */,
+				1091207B1A4B221300987E42 /* XWindowsKeyboardInput.hpp */,
+				1091207F1A4B235F00987E42 /* XWindowsMouseInput.hpp */,
+				109120831A4B241600987E42 /* XWindowsGamePadInput.hpp */,
+			);
+			path = Include;
+			sourceTree = "<group>";
+		};
+		10BE14031A3C9AC400B97CF2 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				10BE14041A3C9AC400B97CF2 /* GamePadInputBase.cpp */,
+				10BE14051A3C9AC400B97CF2 /* InputHandler.cpp */,
+				10BE14061A3C9AC400B97CF2 /* KeyboardInputBase.cpp */,
+				10BE14071A3C9AC400B97CF2 /* MouseInputBase.cpp */,
+				10BE14141A3C9D1E00B97CF2 /* MacMouseInput.cpp */,
+				10BE14181A3C9E9A00B97CF2 /* MacKeyboardInput.cpp */,
+				10BE141D1A3CA03F00B97CF2 /* MacGamePadInput.cpp */,
+				1091207D1A4B22A300987E42 /* XWindowsKeyboardInput.cpp */,
+				109120811A4B23C200987E42 /* XWindowsMouseInput.cpp */,
+				109120851A4B246500987E42 /* XWindowsGamePadInput.cpp */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		10BE13D01A3C9A7F00B97CF2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				109120841A4B241600987E42 /* XWindowsGamePadInput.hpp in Headers */,
+				10BE13F21A3C9A9700B97CF2 /* IKeyboardInput.hpp in Headers */,
+				10BE13F01A3C9A9700B97CF2 /* IGamePadInput.hpp in Headers */,
+				109120801A4B235F00987E42 /* XWindowsMouseInput.hpp in Headers */,
+				10BE13F61A3C9A9700B97CF2 /* KeyboardKeys.hpp in Headers */,
+				10BE141C1A3C9F9D00B97CF2 /* MacGamePadInput.hpp in Headers */,
+				10BE13F11A3C9A9700B97CF2 /* IInput.hpp in Headers */,
+				10BE14171A3C9E1D00B97CF2 /* MacKeyboardInput.hpp in Headers */,
+				10BE13F71A3C9A9700B97CF2 /* MouseInputBase.hpp in Headers */,
+				1091207C1A4B221300987E42 /* XWindowsKeyboardInput.hpp in Headers */,
+				10BE13F31A3C9A9700B97CF2 /* IMouseInput.hpp in Headers */,
+				10BE13F41A3C9A9700B97CF2 /* InputHandler.hpp in Headers */,
+				10BE13EF1A3C9A9700B97CF2 /* GamePadInputBase.hpp in Headers */,
+				10BE13EE1A3C9A9700B97CF2 /* GamePadButtons.hpp in Headers */,
+				10BE13F51A3C9A9700B97CF2 /* KeyboardInputBase.hpp in Headers */,
+				10BE14131A3C9C8C00B97CF2 /* MacMouseInput.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		10BE13D11A3C9A7F00B97CF2 /* Input */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10BE13DD1A3C9A7F00B97CF2 /* Build configuration list for PBXNativeTarget "Input" */;
+			buildPhases = (
+				10BE13CE1A3C9A7F00B97CF2 /* Sources */,
+				10BE13CF1A3C9A7F00B97CF2 /* Frameworks */,
+				10BE13D01A3C9A7F00B97CF2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Input;
+			productName = Input;
+			productReference = 10BE13D21A3C9A7F00B97CF2 /* libInput.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10BE13CA1A3C9A7F00B97CF2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Jordan Littlefair";
+				TargetAttributes = {
+					10BE13D11A3C9A7F00B97CF2 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 10BE13CD1A3C9A7F00B97CF2 /* Build configuration list for PBXProject "Input" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 10BE13C91A3C9A7F00B97CF2;
+			productRefGroup = 10BE13D31A3C9A7F00B97CF2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10BE13D11A3C9A7F00B97CF2 /* Input */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10BE13CE1A3C9A7F00B97CF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10BE140B1A3C9AC400B97CF2 /* GamePadInputBase.cpp in Sources */,
+				109120821A4B23C200987E42 /* XWindowsMouseInput.cpp in Sources */,
+				10BE140D1A3C9AC400B97CF2 /* KeyboardInputBase.cpp in Sources */,
+				109120861A4B246500987E42 /* XWindowsGamePadInput.cpp in Sources */,
+				10BE140C1A3C9AC400B97CF2 /* InputHandler.cpp in Sources */,
+				10BE141E1A3CA03F00B97CF2 /* MacGamePadInput.cpp in Sources */,
+				10BE14191A3C9E9A00B97CF2 /* MacKeyboardInput.cpp in Sources */,
+				10BE14151A3C9D1E00B97CF2 /* MacMouseInput.cpp in Sources */,
+				1091207E1A4B22A300987E42 /* XWindowsKeyboardInput.cpp in Sources */,
+				10BE140E1A3C9AC400B97CF2 /* MouseInputBase.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		10BE13DB1A3C9A7F00B97CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		10BE13DC1A3C9A7F00B97CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		10BE13DE1A3C9A7F00B97CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /usr/X11/include;
+			};
+			name = Debug;
+		};
+		10BE13DF1A3C9A7F00B97CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /usr/X11/include;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10BE13CD1A3C9A7F00B97CF2 /* Build configuration list for PBXProject "Input" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10BE13DB1A3C9A7F00B97CF2 /* Debug */,
+				10BE13DC1A3C9A7F00B97CF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10BE13DD1A3C9A7F00B97CF2 /* Build configuration list for PBXNativeTarget "Input" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10BE13DE1A3C9A7F00B97CF2 /* Debug */,
+				10BE13DF1A3C9A7F00B97CF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10BE13CA1A3C9A7F00B97CF2 /* Project object */;
+}
