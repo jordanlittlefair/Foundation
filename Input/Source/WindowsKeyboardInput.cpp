@@ -75,7 +75,7 @@ KeyboardInputBase::KeyboardState WindowsKeyboardInput::GetNextState()
 
 	auto keyDown = [&,this]( const unsigned int key )
 	{
-		return kb_state[key] & 0x80;
+		return ( kb_state[key] & 0x80 ) != 0;
 	};
 
 	state.keys[Back_Key] = keyDown(DIK_BACK);
