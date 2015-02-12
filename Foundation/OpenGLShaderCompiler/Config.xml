@@ -1,10 +1,10 @@
 <Config>
 	<Shaders	source_directory = "../../OpenGLGraphics/Resources/Shaders/" 
 				output_directory = "../Engine/Graphics/OpenGLGraphics/Shaders/"
-				output_directory_debug = "n/a"
+				output_directory_debug = "../Engine/Graphics/OpenGLGraphics/Shaders/Debug/"
 				compiled_extension = "" 
-				shader_model = "n/a">
+				shader_model = "">
 
-		<RenderMesh					vs = "mesh_vs.glsl"					ps = "mesh_fs.glsl"					/>
+		<RenderMesh					vs = "mesh.vs.glsl"					ps = "mesh.fs.glsl"					/>
 	</Shaders>
 </Config>

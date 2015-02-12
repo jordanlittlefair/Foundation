@@ -66,7 +66,9 @@ class DirectX11Resources
 
 		bool Initialise();
 
-		bool LoadTexture( const Fnd::CommonResources::Texture2DDesc& texture_desc );
+		// If the explicit_name is blank, the texture's name will be set to its filename (for internal 'unnamed' textures)
+		// Textures associated with a name (like engine textures) should pass this name as explicit_name
+		bool LoadTexture( const Fnd::CommonResources::Texture2DDesc& texture_desc, const std::string& explicit_name = "" );
 
 		const Pipeline& GetShaders( const std::string& pipeline ) const;
 

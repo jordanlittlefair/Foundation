@@ -5,6 +5,7 @@
 
 #include "../../GraphicsResources/Include/GraphicsImplementation.hpp"
 #include "ScreenBufferResources.hpp"
+#include "OpenGLResources.hpp"
 
 namespace Fnd
 {
@@ -70,6 +71,8 @@ class OpenGLGraphics:
 		void OnSetOculusData( const Fnd::GameComponentInterfaces::IGraphics::OculusData& oculus_data );
 
 		void* _hglrc;
+
+		OpenGLResources _resources;
 };
 
 }

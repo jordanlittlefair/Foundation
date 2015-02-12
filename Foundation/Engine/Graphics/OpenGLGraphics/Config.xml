@@ -1,9 +1,5 @@
 <Config>
 	<Shaders	directory = "Shaders/" debug_directory = "Shaders/Debug/">
-		<RenderMesh		vs = "mesh.vs.gls"			ps = "mesh.fs.gls"/>
-		<SSAO			vs = "ssao.vs.gls"			ps = "ssao.fs.gls"/>
-		<SSAOBlurH		vs = "ssao_blur_h.vs.gls"	ps = "ssao_blur_h.fs.gls"/>
-		<SSAOBlurV		vs = "ssao_blur_v.vs.gls"	ps = "ssao_blur_v.fs.gls"/>
-		<AmbientPass	vs = "ambient_pass.vs.gls"	ps = "ambient_pass.fs.gls"/>
+		<RenderMesh		vs = "mesh.vs.glsl"			ps = "mesh.fs.glsl"/>
 	</Shaders>
 </Config>

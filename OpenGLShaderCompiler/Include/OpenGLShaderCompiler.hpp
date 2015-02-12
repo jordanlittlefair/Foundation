@@ -29,7 +29,7 @@ class OpenGLShaderCompiler
 
 		bool _initialised_successfully;
 
-		GLuint CompileShader( const std::string& input_filename, const std::string& output_filename, GLuint type, std::string& error );
+		GLuint CompileShader( const std::string& input_filename, const std::string& output_filename, const std::string& debug_output_filename, GLuint type, std::string& error );
 };
 
 }

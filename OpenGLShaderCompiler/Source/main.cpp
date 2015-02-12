@@ -14,7 +14,7 @@ int main()
 	/*
 		Create directories
 	*/
-	auto directories = Fnd::Utility::FileSystem::GetDirectories( config.GetShaderData().output_directory );
+	auto directories = Fnd::Utility::FileSystem::GetDirectories( config.GetShaderData().output_directory_debug );
 	std::string directory;
 	for ( unsigned int i = 0; i < directories.size(); ++i )
 	{

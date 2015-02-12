@@ -3,6 +3,7 @@
 #include "../../GameComponentInterfaces/Include/IGraphicsMessageListener.hpp"
 #include "../Include/OpenGLModel.hpp"
 #include "../Include/CameraManagerSystem.hpp"
+#include "../Include/MeshSystem.hpp"
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -17,7 +18,8 @@ using namespace Fnd::OpenGLGraphics;
 using namespace Fnd::GameComponentInterfaces;
 
 OpenGLGraphics::OpenGLGraphics():
-	_hglrc(nullptr)
+	_hglrc(nullptr),
+	_resources(this)
 {
 }
 
@@ -72,6 +74,12 @@ bool OpenGLGraphics::Initialise()
 
 	SetWidth( width );
 	SetHeight( height );
+
+	_resources.SetConfig(GetGraphicsSettings());
+	if ( !_resources.Initialise() )
+	{
+		return false;
+	}
 
 	return true;
 }
@@ -132,6 +140,7 @@ std::vector<std::shared_ptr<Fnd::EntitySystem::System>> OpenGLGraphics::GetSyste
 	SetCameraManagerSystem( camera_manager_system, camera_manager_system );
 
 	systems.push_back( (std::shared_ptr<Fnd::EntitySystem::System>)GetCameraManagerSystem() );
+	systems.push_back( (std::shared_ptr<Fnd::EntitySystem::System>)new MeshSystem( this ) );
 
 	return systems;
 }

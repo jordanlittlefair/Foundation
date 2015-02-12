@@ -6,6 +6,7 @@
 #include "../../ModelLoader/Include/ModelLoader.hpp"
 #include "../../AssetManager/Include/Model.hpp"
 #include "../../Utility/Include/Utility.hpp"
+#include "../../Utility/Include/MipMapGenerator.hpp"
 
 #include <fstream>
 #include <vector>
@@ -401,8 +402,8 @@ bool DirectX11Resources::LoadShaders()
 
 	return true;
 }
-#include "../../Utility/Include/MipMapGenerator.hpp"
-bool DirectX11Resources::LoadTexture( const Fnd::CommonResources::Texture2DDesc& texture_desc )
+
+bool DirectX11Resources::LoadTexture( const Fnd::CommonResources::Texture2DDesc& texture_desc, const std::string& explicit_name )
 {
 	if ( _textures.find( texture_desc.filename ) != _textures.end() )
 		return true;
@@ -497,7 +498,7 @@ bool DirectX11Resources::LoadTexture( const Fnd::CommonResources::Texture2DDesc&
 		tex->Release();
 	}
 
-	_textures[texture_desc.filename] = engine_texture;
+	_textures[ explicit_name.empty() ? texture_desc.filename : explicit_name ] = engine_texture;
 
 	return true;
 }
@@ -508,67 +509,8 @@ bool DirectX11Resources::LoadEngineTextures()
 	
 	for ( auto texture_iter = _config.common.textures.begin(); texture_iter != _config.common.textures.end(); ++texture_iter )
 	{
-		Texture2D engine_texture;
-		engine_texture.mip_levels = 1; // TODO: generate mip levels
-		
-		Fnd::Utility::Image image;
-
-		unsigned int format = 4;
-		
-		if ( image.CreateImageFromFile( texture_iter->second.filename, Fnd::Utility::Image::Format::RGBA_Format ) != Fnd::Utility::Image::Result::OK_Return )
-		{
-			continue;
-		}
-
-		engine_texture.width = image.GetWidth();
-		engine_texture.height = image.GetHeight();
-
-		D3D11_TEXTURE2D_DESC tex_desc;
-		tex_desc.Width = image.GetWidth();
-		tex_desc.Height = image.GetHeight();
-		tex_desc.MipLevels = 1;
-		tex_desc.ArraySize = 1;
-		tex_desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-		tex_desc.SampleDesc.Count = 1;
-		tex_desc.SampleDesc.Quality = 0;
-		tex_desc.Usage = D3D11_USAGE_IMMUTABLE;
-		tex_desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
-		tex_desc.CPUAccessFlags = 0;
-		tex_desc.MiscFlags = 0;
-
-		D3D11_SUBRESOURCE_DATA tex_data;
-		tex_data.pSysMem = image.GetData();
-		tex_data.SysMemPitch = format * image.GetWidth();
-		tex_data.SysMemSlicePitch = format * image.GetWidth() * image.GetHeight();
-
-		ID3D11Texture2D* tex = nullptr;
-
-		if ( FAILED( _graphics->Device()->CreateTexture2D( &tex_desc, &tex_data, &tex ) ) )
-		{
-			continue;
-		}
-
-		D3D11_SHADER_RESOURCE_VIEW_DESC sr_desc;
-		sr_desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-		sr_desc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
-		sr_desc.Texture2D.MostDetailedMip = 0;
-		sr_desc.Texture2D.MipLevels = 1;
-
-		if ( FAILED( _graphics->Device()->CreateShaderResourceView( tex, &sr_desc, &engine_texture.sr ) ) )
-		{
-			if ( tex )
-			{
-				tex->Release();
-			}
-			continue;
-		}
-
-		if ( tex )
-		{
-			tex->Release();
-		}
-
-		_textures[texture_iter->first] = engine_texture;
+		if ( !LoadTexture( texture_iter->second, texture_iter->first ) )
+			return false;
 	}
 
 	return true;

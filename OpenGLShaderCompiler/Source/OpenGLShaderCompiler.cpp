@@ -92,7 +92,7 @@ OpenGLShaderCompiler::OpenGLShaderCompiler():
 #endif
 }
 
-GLuint OpenGLShaderCompiler::CompileShader( const std::string& input_filename, const std::string& output_filename, GLuint type, std::string& error )
+GLuint OpenGLShaderCompiler::CompileShader( const std::string& input_filename, const std::string& output_filename, const std::string& debug_output_filename, GLuint type, std::string& error )
 {
 	std::cout << "----\nCompiling \"" << input_filename << "\"....\n" << std::endl;
 	GLint compile_status = 0;
@@ -115,6 +115,7 @@ GLuint OpenGLShaderCompiler::CompileShader( const std::string& input_filename, c
 		std::cout << "Successfully compiled \" " << input_filename << "\"." << std::endl;
 
 		Fnd::Utility::FileSystem::CopyFile_( input_filename, output_filename );
+		Fnd::Utility::FileSystem::CopyFile_( input_filename, debug_output_filename );
 
 		return shader;
 	}
@@ -157,6 +158,7 @@ bool OpenGLShaderCompiler::CompileShaders( const Fnd::GraphicsResources::ShaderC
 			std::string error;
 			if ( CompileShader(	shader_data.source_directory + iter->second.vertex_shader,
 								shader_data.output_directory + iter->second.vertex_shader + shader_data.compiled_extension,
+								shader_data.output_directory_debug + iter->second.vertex_shader + shader_data.compiled_extension,
 								GL_VERTEX_SHADER,
 								error ) )
 			{
@@ -195,6 +197,7 @@ bool OpenGLShaderCompiler::CompileShaders( const Fnd::GraphicsResources::ShaderC
 			std::string error;
 			if ( CompileShader(	shader_data.source_directory + iter->second.geometry_shader,
 								shader_data.output_directory + iter->second.geometry_shader + shader_data.compiled_extension,
+								shader_data.output_directory_debug + iter->second.geometry_shader + shader_data.compiled_extension,
 								GL_GEOMETRY_SHADER,
 								error ) )
 			{
@@ -217,6 +220,7 @@ bool OpenGLShaderCompiler::CompileShaders( const Fnd::GraphicsResources::ShaderC
 			std::string error;
 			if ( CompileShader(	shader_data.source_directory + iter->second.pixel_shader,
 								shader_data.output_directory + iter->second.pixel_shader + shader_data.compiled_extension,
+								shader_data.output_directory_debug + iter->second.pixel_shader + shader_data.compiled_extension,
 								GL_FRAGMENT_SHADER,
 								error ) )
 			{
