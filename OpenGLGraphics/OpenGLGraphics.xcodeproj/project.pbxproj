@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		107BD8EF1A8F83F10084B549 /* MeshSystem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 107BD8ED1A8F83F10084B549 /* MeshSystem.hpp */; };
+		107BD8F01A8F83F10084B549 /* OpenGLResources.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 107BD8EE1A8F83F10084B549 /* OpenGLResources.hpp */; };
+		107BD8F31A8F84030084B549 /* MeshSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 107BD8F11A8F84030084B549 /* MeshSystem.cpp */; };
+		107BD8F41A8F84030084B549 /* OpenGLResources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 107BD8F21A8F84030084B549 /* OpenGLResources.cpp */; };
 		10CED2681A3A258B00735617 /* CameraManagerSystem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10CED25D1A3A258B00735617 /* CameraManagerSystem.hpp */; };
 		10CED2691A3A258B00735617 /* OpenGLGraphics.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10CED25E1A3A258B00735617 /* OpenGLGraphics.hpp */; };
 		10CED26A1A3A258B00735617 /* OpenGLGraphicsSystem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10CED25F1A3A258B00735617 /* OpenGLGraphicsSystem.hpp */; };
 		10CED26B1A3A258B00735617 /* OpenGLModel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10CED2601A3A258B00735617 /* OpenGLModel.hpp */; };
 		10CED26C1A3A258B00735617 /* ScreenBufferResources.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 10CED2611A3A258B00735617 /* ScreenBufferResources.hpp */; };
-		10CED26D1A3A258B00735617 /* CameraManagerSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10CED2631A3A258B00735617 /* CameraManagerSystem.cpp */; };
 		10CED26E1A3A258B00735617 /* OpenGLGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10CED2641A3A258B00735617 /* OpenGLGraphics.cpp */; };
 		10CED26F1A3A258B00735617 /* OpenGLGraphicsSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10CED2651A3A258B00735617 /* OpenGLGraphicsSystem.cpp */; };
 		10CED2701A3A258B00735617 /* OpenGLModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10CED2661A3A258B00735617 /* OpenGLModel.cpp */; };
@@ -20,13 +23,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		107BD8ED1A8F83F10084B549 /* MeshSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MeshSystem.hpp; sourceTree = "<group>"; };
+		107BD8EE1A8F83F10084B549 /* OpenGLResources.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLResources.hpp; sourceTree = "<group>"; };
+		107BD8F11A8F84030084B549 /* MeshSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeshSystem.cpp; sourceTree = "<group>"; };
+		107BD8F21A8F84030084B549 /* OpenGLResources.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLResources.cpp; sourceTree = "<group>"; };
 		10CED24E1A3A257500735617 /* libOpenGLGraphics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOpenGLGraphics.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CED25D1A3A258B00735617 /* CameraManagerSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CameraManagerSystem.hpp; sourceTree = "<group>"; };
 		10CED25E1A3A258B00735617 /* OpenGLGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLGraphics.hpp; sourceTree = "<group>"; };
 		10CED25F1A3A258B00735617 /* OpenGLGraphicsSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLGraphicsSystem.hpp; sourceTree = "<group>"; };
 		10CED2601A3A258B00735617 /* OpenGLModel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLModel.hpp; sourceTree = "<group>"; };
 		10CED2611A3A258B00735617 /* ScreenBufferResources.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScreenBufferResources.hpp; sourceTree = "<group>"; };
-		10CED2631A3A258B00735617 /* CameraManagerSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraManagerSystem.cpp; sourceTree = "<group>"; };
 		10CED2641A3A258B00735617 /* OpenGLGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLGraphics.cpp; sourceTree = "<group>"; };
 		10CED2651A3A258B00735617 /* OpenGLGraphicsSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLGraphicsSystem.cpp; sourceTree = "<group>"; };
 		10CED2661A3A258B00735617 /* OpenGLModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLModel.cpp; sourceTree = "<group>"; };
@@ -64,6 +70,8 @@
 		10CED25C1A3A258B00735617 /* Include */ = {
 			isa = PBXGroup;
 			children = (
+				107BD8ED1A8F83F10084B549 /* MeshSystem.hpp */,
+				107BD8EE1A8F83F10084B549 /* OpenGLResources.hpp */,
 				10CED25D1A3A258B00735617 /* CameraManagerSystem.hpp */,
 				10CED25E1A3A258B00735617 /* OpenGLGraphics.hpp */,
 				10CED25F1A3A258B00735617 /* OpenGLGraphicsSystem.hpp */,
@@ -76,7 +84,8 @@
 		10CED2621A3A258B00735617 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				10CED2631A3A258B00735617 /* CameraManagerSystem.cpp */,
+				107BD8F11A8F84030084B549 /* MeshSystem.cpp */,
+				107BD8F21A8F84030084B549 /* OpenGLResources.cpp */,
 				10CED2641A3A258B00735617 /* OpenGLGraphics.cpp */,
 				10CED2651A3A258B00735617 /* OpenGLGraphicsSystem.cpp */,
 				10CED2661A3A258B00735617 /* OpenGLModel.cpp */,
@@ -92,10 +101,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				107BD8EF1A8F83F10084B549 /* MeshSystem.hpp in Headers */,
 				10CED2691A3A258B00735617 /* OpenGLGraphics.hpp in Headers */,
 				10CED26A1A3A258B00735617 /* OpenGLGraphicsSystem.hpp in Headers */,
 				10CED26C1A3A258B00735617 /* ScreenBufferResources.hpp in Headers */,
 				10CED2681A3A258B00735617 /* CameraManagerSystem.hpp in Headers */,
+				107BD8F01A8F83F10084B549 /* OpenGLResources.hpp in Headers */,
 				10CED26B1A3A258B00735617 /* OpenGLModel.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,10 +168,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				10CED26F1A3A258B00735617 /* OpenGLGraphicsSystem.cpp in Sources */,
-				10CED26D1A3A258B00735617 /* CameraManagerSystem.cpp in Sources */,
 				10CED2711A3A258B00735617 /* ScreenBufferResources.cpp in Sources */,
 				10CED2701A3A258B00735617 /* OpenGLModel.cpp in Sources */,
 				10CED26E1A3A258B00735617 /* OpenGLGraphics.cpp in Sources */,
+				107BD8F41A8F84030084B549 /* OpenGLResources.cpp in Sources */,
+				107BD8F31A8F84030084B549 /* MeshSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

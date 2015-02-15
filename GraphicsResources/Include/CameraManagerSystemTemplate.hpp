@@ -46,14 +46,14 @@ class CameraManagerSystemTemplate:
 
 				Fnd::EntitySystem::CameraNode::Pointers components;
 
-				if ( !cameranode->GetPointers( GetEntitySystem(), components ) )
+				if ( !cameranode->GetPointers( this->GetEntitySystem(), components ) )
 				{
 					return;
 				}
 
 				unsigned int camera_id = components.cameraproperties->data.camera_id;
 
-				GetGraphics()->AddScreenBufferResources( camera_id, GetGraphics()->GetWidth(), GetGraphics()->GetHeight() );
+				this->GetGraphics()->AddScreenBufferResources( camera_id, this->GetGraphics()->GetWidth(), this->GetGraphics()->GetHeight() );
 			}
 		}
 
@@ -94,8 +94,8 @@ class CameraManagerSystemTemplate:
 
 		void OnUpdate( const Fnd::CommonResources::FrameData& frame_data )
 		{
-			ForEachCamera( [this]( CameraData& camera_data )
-			{		
+			this->ForEachCamera( [this]( typename GraphicsSystemType::CameraData& camera_data )
+			{
 				auto scene_node = camera_data.camera_components.scenenode;
 				auto camera_properties = camera_data.camera_components.cameraproperties;
 
@@ -123,12 +123,12 @@ class CameraManagerSystemTemplate:
 					}
 				}
 
-				auto bufferdata = ((ScreenBufferResources*)camera_data.screenbuffer)->GetPositionReconstructionData();
+				auto bufferdata = ((OpenGLGraphics::ScreenBufferResources*)camera_data.screenbuffer)->GetPositionReconstructionData();
 				bufferdata.tan_half_fov_y = tan( Fnd::Math::ToRadians(camera_data.camera_components.cameraproperties->data.fov) / 2 );
 
-				if ( ((ScreenBufferResources*)camera_data.screenbuffer)->UpdatePositionReconstructionData( bufferdata ) )
+				if ( ((OpenGLGraphics::ScreenBufferResources*)camera_data.screenbuffer)->UpdatePositionReconstructionData( bufferdata ) )
 				{
-					auto a = 0;
+					//auto a = 0;
 				}
 			}
 			);

@@ -66,12 +66,16 @@ bool OpenGLGraphics::Initialise()
 		// TODO: failed to initialise glew
 	}
 
+#ifdef WIN32
 	RECT rectangle;
 	GetClientRect( HWND(GetGame()->GetHWND()), &rectangle );
 
 	unsigned int width = rectangle.right - rectangle.left;
 	unsigned int height = rectangle.bottom - rectangle.top;
-
+#else
+    unsigned int width = 1280;
+    unsigned int height = 720;
+#endif
 	SetWidth( width );
 	SetHeight( height );
 
@@ -104,7 +108,7 @@ void OpenGLGraphics::Present()
 #ifdef _WIN32
 	SwapBuffers(HDC(GetGame()->GetHDC()));
 #else
-    glXSwapBuffers((Display*)_game->GetXWindowsDisplay(), (GLXDrawable)_game->GetXWindowsWindow());
+    glXSwapBuffers((Display*)GetGame()->GetXWindowsDisplay(), (GLXDrawable)GetGame()->GetXWindowsWindow());
 #endif
 }
 

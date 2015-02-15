@@ -162,7 +162,7 @@ bool OpenGLResources::LoadTexture( const Fnd::CommonResources::Texture2DDesc& te
 	glBindTexture( GL_TEXTURE_2D, engine_texture.texture );
 
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0 );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, mipmaps.size() );
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, (int)mipmaps.size() );
 
 	for ( unsigned int i = 0; i < mipmaps.size(); ++i )
 	{
@@ -337,7 +337,6 @@ GLuint OpenGLResources::CompileShader( const std::string& input_filename, GLuint
 
 bool OpenGLResources::LoadShaders()
 {
-
 	// Create a default empty pipeline
 	_pipelines[""] = Pipeline();
 
@@ -416,7 +415,7 @@ bool OpenGLResources::LoadEngineModels()
 
 		EngineMesh mesh;
 
-		mesh.num_indices = mesh_data.indices.size();
+		mesh.num_indices = (unsigned int)mesh_data.indices.size();
 
 		glGenBuffers( 1, &mesh.vertex_vbo );
 		glBindBuffer( GL_ARRAY_BUFFER, mesh.vertex_vbo );

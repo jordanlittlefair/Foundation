@@ -89,11 +89,14 @@ OpenGLShaderCompiler::OpenGLShaderCompiler():
 		std::cout << "Failed to initialise glew, error code: " << err << std::endl;
 	}
 #else
+    std::cout << "Not yet supported on Mac- won't check shaders but will copy to target" << std::endl;
+    _initialised_successfully = true;
 #endif
 }
 
 GLuint OpenGLShaderCompiler::CompileShader( const std::string& input_filename, const std::string& output_filename, const std::string& debug_output_filename, GLuint type, std::string& error )
 {
+#ifdef _WIN32
 	std::cout << "----\nCompiling \"" << input_filename << "\"....\n" << std::endl;
 	GLint compile_status = 0;
 
@@ -131,6 +134,13 @@ GLuint OpenGLShaderCompiler::CompileShader( const std::string& input_filename, c
 
 		return 0;
 	}
+#else
+    std::cout << "----\nCompiling \"" << input_filename << "\"....\n" << std::endl;
+    Fnd::Utility::FileSystem::CopyFile_( input_filename, output_filename );
+    Fnd::Utility::FileSystem::CopyFile_( input_filename, debug_output_filename );
+    std::cout << "Compilation is not yet supported on Mac- assuming all shaders compile and copying files to target." << std::endl;
+    return true;
+#endif
 }
 
 bool OpenGLShaderCompiler::CompileShaders( const Fnd::GraphicsResources::ShaderCompilerConfig::ShaderData& shader_data )
